@@ -76,8 +76,8 @@ export async function POST(req: NextRequest) {
 
     response.cookies.set("ec_token", token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "lax",
+      secure: true, // must be true for sameSite: "none"
+      sameSite: "none", // required for cross-site fetch (frontend ≠ api domain)
       maxAge: 30 * 24 * 60 * 60, // 30 days
       path: "/",
     });

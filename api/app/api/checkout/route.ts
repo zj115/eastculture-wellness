@@ -116,6 +116,8 @@ export async function POST(req: NextRequest) {
       cancel_url: `${origin}/payment/cancel`,
       customer_email: user.email,
       metadata,
+      // Pass metadata to subscription so invoice.paid webhook can find userId
+      ...(mode === "subscription" && { subscription_data: { metadata } }),
       payment_method_types: ["card"],
       locale: lang === "zh" ? "zh" : "en",
     });

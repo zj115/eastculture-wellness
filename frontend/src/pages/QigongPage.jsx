@@ -208,13 +208,6 @@ export default function AcupressurePage({ lang, onBack, currentUser, isOwned: is
         <div className="min-h-screen bg-white text-slate-900">
             <main className="mx-auto max-w-6xl px-4 pb-16 pt-8 md:pt-12">
                 <div className="mb-6 flex items-center justify-between gap-3">
-                    <button
-                        onClick={onBack}
-                        className="rounded-full border border-slate-200 bg-white px-3 py-1 text-[11px] text-slate-600 hover:bg-slate-50"
-                    >
-                        {isZh ? "← 返回课程列表" : "← Back"}
-                    </button>
-
                     <div className="flex items-center gap-2 text-[11px] text-slate-500">
                     </div>
                 </div>
@@ -307,14 +300,6 @@ export default function AcupressurePage({ lang, onBack, currentUser, isOwned: is
                                 {isZh ? `购买本课时 NZD 10` : `Buy This Lesson NZD 10`}
                             </button>
 
-                            <button
-                                type="button"
-                                onClick={handleUnlockCourse}
-                                className="w-full rounded-2xl bg-amber-500 px-4 py-3 text-sm font-semibold text-slate-900 hover:bg-amber-400 transition"
-                            >
-                                {isZh ? "立即解锁并观看" : "Unlock and watch"}
-                            </button>
-
                             {!isLoggedIn && (
                                 <p className="text-xs text-amber-700">
                                     {isZh ? "请先登录后购买并观看课程。" : "Please sign in to purchase and watch."}
@@ -393,12 +378,6 @@ export default function AcupressurePage({ lang, onBack, currentUser, isOwned: is
                                                 ? "登录并购买后即可观看全部 6 节课程。未购买用户可试看前 2 节。"
                                                 : "Sign in and unlock to watch all lessons. Preview is available for the first 2 lessons."}
                                         </p>
-                                        <button
-                                            onClick={handleUnlockCourse}
-                                            className="mt-4 rounded-2xl bg-amber-500 px-4 py-2 text-sm font-semibold text-slate-900 hover:bg-amber-400"
-                                        >
-                                            {isZh ? "立即解锁" : "Unlock now"}
-                                        </button>
                                     </div>
                                 </div>
                             )}

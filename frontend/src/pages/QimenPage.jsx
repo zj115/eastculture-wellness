@@ -308,6 +308,8 @@ export default function QimenPage({ lang, onBack, currentUser, isOwned: isOwnedP
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
 
+    const [qty, setQty] = useState(1);
+
     const activeLesson = useMemo(
         () => LESSONS.find((x) => x.id === activeLessonId) || LESSONS[0],
         [activeLessonId]
@@ -364,6 +366,15 @@ export default function QimenPage({ lang, onBack, currentUser, isOwned: isOwnedP
 
     function handleUnlockCourse() {
         onPurchase?.("course", { courseId: "taichi" });
+    }
+
+    function handleBuyVideo() {
+        const title = isZh ? activeLesson.titleZh : activeLesson.titleEn;
+        onPurchase?.("video", {
+            courseId: "taichi",
+            videoKey: activeLesson.s3Key,
+            videoTitle: title,
+        });
     }
 
     useEffect(() => {
@@ -480,12 +491,6 @@ export default function QimenPage({ lang, onBack, currentUser, isOwned: isOwnedP
                                                     ? "登录并购买后即可观看全部 4 节课程。未购买用户可试看前 2 节。"
                                                     : "Sign in and unlock to watch all lessons. Preview is available for the first 2 lessons."}
                                             </p>
-                                            <button
-                                                onClick={handleUnlockCourse}
-                                                className="mt-4 rounded-2xl bg-amber-500 px-4 py-2 text-sm font-semibold text-black hover:bg-amber-400"
-                                            >
-                                                {isZh ? "立即解锁" : "Unlock now"}
-                                            </button>
                                         </div>
                                     </div>
                                 )}
@@ -501,6 +506,44 @@ export default function QimenPage({ lang, onBack, currentUser, isOwned: isOwnedP
 
                     {/* ✅ 右侧目录（手机：会自然排到下方；电脑：右侧固定一栏） */}
                     <aside className="space-y-3">
+                        {/* Purchase block */}
+                        {!isOwned && (
+                            <div className="rounded-2xl border border-slate-200 bg-white p-4 space-y-3">
+                                <div className="text-xs text-slate-500">{isZh ? "数量" : "Quantity"}</div>
+                                <div className="flex items-center gap-2">
+                                    <button
+                                        type="button"
+                                        className="h-10 w-10 rounded-xl border border-slate-200 bg-white text-slate-900 hover:bg-slate-50"
+                                        onClick={() => setQty((v) => Math.max(1, v - 1))}
+                                    >
+                                        −
+                                    </button>
+                                    <div className="h-10 min-w-[56px] rounded-xl border border-slate-200 bg-white px-3 flex items-center justify-center text-sm">
+                                        {qty}
+                                    </div>
+                                    <button
+                                        type="button"
+                                        className="h-10 w-10 rounded-xl border border-slate-200 bg-white text-slate-900 hover:bg-slate-50"
+                                        onClick={() => setQty((v) => v + 1)}
+                                    >
+                                        +
+                                    </button>
+                                </div>
+                                <button
+                                    type="button"
+                                    onClick={handleBuyVideo}
+                                    className="w-full rounded-2xl border border-slate-300 bg-white px-4 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-50 transition"
+                                >
+                                    {isZh ? `购买本课时 NZD 10` : `Buy This Lesson NZD 10`}
+                                </button>
+                                {!isLoggedIn && (
+                                    <p className="text-xs text-amber-700">
+                                        {isZh ? "请先登录后购买并观看课程。" : "Please sign in to purchase and watch."}
+                                    </p>
+                                )}
+                            </div>
+                        )}
+
                         <div className="flex items-end justify-between">
                             <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-600">
                                 {isZh ? "课程目录" : "Lessons"}

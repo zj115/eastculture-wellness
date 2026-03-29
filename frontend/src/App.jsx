@@ -95,42 +95,45 @@ const content = {
                 text: "Members can join live online practice sessions and Q&A with instructors.",
             },
         ],
-        membershipTitle: "Flexible ways to learn",
-        membershipSubtitle: "Choose a plan that fits your practice style.",
+        membershipTitle: "Choose your membership",
+        membershipSubtitle: "Unlock all courses with one simple plan.",
         plans: [
             {
-                name: "Single Lesson",
-                price: "From $9",
-                desc: "Buy one class at a time.",
+                name: "Monthly",
+                price: "NZD 30 / month",
+                desc: "Flexible month-to-month access.",
+                purchaseType: "membership_monthly",
                 items: [
-                    "Lifetime access to purchased lesson",
-                    "Watch on mobile, tablet or desktop",
-                    "Downloadable practice notes",
-                    "Perfect to try before committing",
+                    "Unlimited access to all video courses",
+                    "New lessons added monthly",
+                    "Watch on any device",
+                    "Cancel anytime",
                 ],
                 highlight: false,
             },
             {
-                name: "Course Series",
-                price: "From $79",
-                desc: "Structured, themed programs.",
+                name: "Quarterly",
+                price: "NZD 100 / 3 months",
+                desc: "Save NZD 10 vs monthly.",
+                purchaseType: "membership_quarterly",
                 items: [
-                    "Full Tai Chi or Wing Chun basics program",
-                    "Step-by-step progress tracking",
-                    "Bonus theory and culture videos",
-                    "Discounts on future series",
+                    "Unlimited access to all video courses",
+                    "New lessons added monthly",
+                    "Watch on any device",
+                    "Best for consistent practice",
                 ],
                 highlight: true,
             },
             {
-                name: "All-Access Membership",
-                price: "$29 / month",
-                desc: "For dedicated practitioners.",
+                name: "Annual",
+                price: "NZD 168 / year",
+                desc: "Best value — save NZD 192 vs monthly.",
+                purchaseType: "membership_annual",
                 items: [
                     "Unlimited access to all video courses",
                     "New lessons added monthly",
-                    "Member-only live sessions",
-                    "Special price in culture shop",
+                    "Watch on any device",
+                    "Lowest price per month",
                 ],
                 highlight: false,
             },
@@ -224,42 +227,45 @@ const content = {
                 text: "会员可参与线上练习课与老师问答，获得个性化建议。",
             },
         ],
-        membershipTitle: "灵活的学习方式",
-        membershipSubtitle: "根据你的练习节奏，自由选择方案。",
+        membershipTitle: "选择你的会员方案",
+        membershipSubtitle: "一次订阅，解锁全站所有课程。",
         plans: [
             {
-                name: "单节课购买",
-                price: "每节约 ¥68 起",
-                desc: "按课付费，随时开始。",
+                name: "月卡",
+                price: "NZD 30 / 月",
+                desc: "灵活按月订阅，随时可取消。",
+                purchaseType: "membership_monthly",
                 items: [
-                    "已购课程终身可看",
+                    "全站所有视频课程不限次观看",
+                    "每月持续新增课程",
                     "手机 / 平板 / 电脑均可观看",
-                    "提供练习要点笔记",
-                    "适合先体验再深入学习",
+                    "随时可取消",
                 ],
                 highlight: false,
             },
             {
-                name: "系列课程",
-                price: "整套约 ¥588 起",
-                desc: "完整主题训练计划。",
+                name: "季卡",
+                price: "NZD 100 / 3个月",
+                desc: "比月卡节省 NZD 10。",
+                purchaseType: "membership_quarterly",
                 items: [
-                    "完整太极或咏春基础课程",
-                    "循序渐进的进度安排",
-                    "附赠理论与文化讲解",
-                    "后续课程享优惠价格",
+                    "全站所有视频课程不限次观看",
+                    "每月持续新增课程",
+                    "手机 / 平板 / 电脑均可观看",
+                    "适合持续练习者",
                 ],
                 highlight: true,
             },
             {
-                name: "全站会员",
-                price: "¥199 / 月",
-                desc: "适合长期、系统练习者。",
+                name: "年卡",
+                price: "NZD 168 / 年",
+                desc: "最超值 — 比月卡节省 NZD 192。",
+                purchaseType: "membership_annual",
                 items: [
                     "全站所有视频课程不限次观看",
-                    "每月新增新课程",
-                    "会员专属直播课",
-                    "文化商城会员价优惠",
+                    "每月持续新增课程",
+                    "手机 / 平板 / 电脑均可观看",
+                    "最低月均价格",
                 ],
                 highlight: false,
             },
@@ -697,18 +703,7 @@ function App() {
                                             ? "bg-amber-600 text-white hover:bg-amber-500"
                                             : "border border-slate-300 bg-white text-slate-900 hover:border-amber-300 hover:text-amber-700"
                                     }`}
-                                    onClick={() => {
-                                        if (idx === 0) {
-                                            // Single lesson - go to courses
-                                            setActivePage("qimen");
-                                        } else if (idx === 1) {
-                                            // Course series
-                                            setActivePage("qimen");
-                                        } else if (idx === 2) {
-                                            // Membership
-                                            handlePurchase("membership");
-                                        }
-                                    }}
+                                    onClick={() => handlePurchase(plan.purchaseType)}
                                 >
                                     {lang === "en" ? "Choose plan" : "选择此方案"}
                                 </button>

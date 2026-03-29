@@ -29,11 +29,25 @@ const PRODUCTS = {
       nameZh: "穴位疗程大师课",
     },
   },
-  // Membership - 29 NZD/month (as shown on website)
-  membership: {
-    price: 2900, // 29 NZD per month
-    name: "EastCulture All-Access Membership",
-    nameZh: "全站会员",
+  // Membership plans
+  membership_monthly: {
+    price: 3000, // 30 NZD per month
+    interval: "month" as const,
+    name: "EastCulture Monthly Membership",
+    nameZh: "月卡会员",
+  },
+  membership_quarterly: {
+    price: 10000, // 100 NZD per quarter (3 months)
+    interval: "month" as const,
+    interval_count: 3,
+    name: "EastCulture Quarterly Membership",
+    nameZh: "季卡会员",
+  },
+  membership_annual: {
+    price: 16800, // 168 NZD per year
+    interval: "year" as const,
+    name: "EastCulture Annual Membership",
+    nameZh: "年卡会员",
   },
 } as const;
 
@@ -89,15 +103,19 @@ export async function POST(req: NextRequest) {
         },
       ];
       metadata.courseId = courseId;
-    } else if (type === "membership") {
-      const productName = lang === "zh" ? PRODUCTS.membership.nameZh : PRODUCTS.membership.name;
+    } else if (type === "membership_monthly" || type === "membership_quarterly" || type === "membership_annual") {
+      const plan = PRODUCTS[type as "membership_monthly" | "membership_quarterly" | "membership_annual"];
+      const productName = lang === "zh" ? plan.nameZh : plan.name;
+      const recurringInterval = "interval_count" in plan
+        ? { interval: plan.interval, interval_count: plan.interval_count }
+        : { interval: plan.interval };
       lineItems = [
         {
           price_data: {
             currency: "nzd",
             product_data: { name: productName },
-            unit_amount: PRODUCTS.membership.price,
-            recurring: { interval: "month" as const },
+            unit_amount: plan.price,
+            recurring: recurringInterval as Stripe.Checkout.SessionCreateParams.LineItem.PriceData.Recurring,
           },
           quantity: 1,
         },
@@ -107,7 +125,8 @@ export async function POST(req: NextRequest) {
     }
 
     // Create Stripe Checkout Session
-    const mode = type === "membership" ? "subscription" : "payment";
+    const isMembershipType = type === "membership_monthly" || type === "membership_quarterly" || type === "membership_annual";
+    const mode = isMembershipType ? "subscription" : "payment";
 
     const session = await stripe.checkout.sessions.create({
       mode,
@@ -123,19 +142,24 @@ export async function POST(req: NextRequest) {
     });
 
     // Create pending order record
+    const membershipPrices: Record<string, number> = {
+      membership_monthly: 30,
+      membership_quarterly: 100,
+      membership_annual: 168,
+    };
     const amountNzd =
       type === "video"
         ? 10
         : type === "course"
         ? (PRODUCTS.courses[courseId as keyof typeof PRODUCTS.courses]?.price ?? 0) / 100
-        : 29;
+        : membershipPrices[type] ?? 0;
 
     await supabaseAdmin.from("orders").insert({
       user_id: user.id,
       stripe_session_id: session.id,
       amount_nzd: amountNzd,
       currency: "nzd",
-      purchase_type: type,
+      purchase_type: isMembershipType ? "membership" : type,
       course_id: metadata.courseId || null,
       video_key: metadata.videoKey || null,
       status: "pending",

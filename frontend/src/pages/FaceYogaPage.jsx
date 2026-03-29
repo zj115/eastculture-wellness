@@ -396,14 +396,6 @@ export default function FaceYogaPage({ lang, onBack, currentUser, isOwned: isOwn
                                 {isZh ? `购买本课时 NZD 10` : `Buy This Lesson NZD 10`}
                             </button>
 
-                            <button
-                                type="button"
-                                onClick={handleUnlockCourse}
-                                className="w-full rounded-2xl bg-amber-500 px-4 py-3 text-sm font-semibold text-slate-900 hover:bg-amber-400 transition"
-                            >
-                                {isZh ? "立即解锁并观看" : "Unlock and watch"}
-                            </button>
-
                             {!isLoggedIn && (
                                 <p className="text-xs text-amber-700">
                                     {isZh ? "请先登录后购买并观看课程。" : "Please sign in to purchase and watch."}
@@ -482,12 +474,6 @@ export default function FaceYogaPage({ lang, onBack, currentUser, isOwned: isOwn
                                                 ? "登录并购买后即可观看全部 16 节课程。未购买用户可试看前 2 节。"
                                                 : "Sign in and unlock to watch all lessons. Preview is available for the first 2 lessons."}
                                         </p>
-                                        <button
-                                            onClick={handleUnlockCourse}
-                                            className="mt-4 rounded-2xl bg-amber-500 px-4 py-2 text-sm font-semibold text-slate-900 hover:bg-amber-400"
-                                        >
-                                            {isZh ? "立即解锁" : "Unlock now"}
-                                        </button>
                                     </div>
                                 </div>
                             )}

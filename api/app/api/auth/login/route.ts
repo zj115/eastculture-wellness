@@ -44,6 +44,7 @@ export async function POST(req: NextRequest) {
         username: user.username,
         email: user.email,
       },
+      token, // also return token in body for localStorage fallback (iOS Safari cross-site cookie issue)
     });
 
     response.cookies.set("ec_token", token, {

@@ -318,16 +318,28 @@ function App() {
 
     const t = content[lang];
 
+    // Helper: build auth headers from localStorage token (fixes iOS Safari cross-site cookie issue)
+    function getAuthHeaders() {
+        const token = localStorage.getItem("ec_token");
+        return token ? { "Authorization": `Bearer ${token}` } : {};
+    }
+
     // Restore session on page load
     useEffect(() => {
         async function refreshPurchases() {
             try {
-                const res = await fetch(`${API_BASE}/api/auth/me`, { credentials: "include" });
+                const res = await fetch(`${API_BASE}/api/auth/me`, {
+                    credentials: "include",
+                    headers: getAuthHeaders(),
+                });
                 if (res.ok) {
                     const data = await res.json();
                     if (data.user) {
                         setCurrentUser(data.user);
                         setPurchases(data.purchases || []);
+                    } else {
+                        // Token invalid/expired — clear it
+                        localStorage.removeItem("ec_token");
                     }
                 }
             } catch { /* ignore */ } finally {
@@ -357,10 +369,12 @@ function App() {
             await fetch(`${API_BASE}/api/auth/logout`, {
                 method: "POST",
                 credentials: "include",
+                headers: getAuthHeaders(),
             });
         } catch {
             // Ignore
         }
+        localStorage.removeItem("ec_token");
         setCurrentUser(null);
         setPurchases([]);
         setActivePage("home");
@@ -396,7 +410,7 @@ function App() {
         try {
             const res = await fetch(`${API_BASE}/api/checkout`, {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
+                headers: { "Content-Type": "application/json", ...getAuthHeaders() },
                 credentials: "include",
                 body: JSON.stringify({ type, lang, ...options }),
             });
@@ -773,8 +787,11 @@ function App() {
                 onLoginSuccess={(user) => {
                     setCurrentUser(user);
                     setActivePage("home");
-                    // Refresh purchases after login
-                    fetch(`${API_BASE}/api/auth/me`, { credentials: "include" })
+                    // Refresh purchases after login (token already in localStorage from LoginPage)
+                    fetch(`${API_BASE}/api/auth/me`, {
+                        credentials: "include",
+                        headers: getAuthHeaders(),
+                    })
                         .then(r => r.json())
                         .then(d => { if (d.purchases) setPurchases(d.purchases); })
                         .catch(() => {});

@@ -50,6 +50,11 @@ export default function RegisterPage({
         return;
       }
 
+      // Store token in localStorage for cross-site requests (iOS Safari cookie fix)
+      if (data.token) {
+        localStorage.setItem("ec_token", data.token);
+      }
+
       onRegisterSuccess(data.user);
     } catch {
       setError(

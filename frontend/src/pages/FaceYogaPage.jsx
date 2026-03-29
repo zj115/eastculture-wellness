@@ -239,9 +239,14 @@ export default function FaceYogaPage({ lang, onBack, currentUser, authLoading = 
         setVideoUrl("");
 
         try {
+            const token = localStorage.getItem("ec_token");
             const res = await fetch(
                 `${API_BASE}/api/video-url?key=${encodeURIComponent(s3Key)}`,
-                { cache: "no-store", credentials: "include" }
+                {
+                    cache: "no-store",
+                    credentials: "include",
+                    headers: token ? { "Authorization": `Bearer ${token}` } : {},
+                }
             );
 
             const data = await res.json().catch(() => ({}));

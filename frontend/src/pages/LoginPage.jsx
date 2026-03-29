@@ -37,6 +37,11 @@ export default function LoginPage({
         return;
       }
 
+      // Store token in localStorage for cross-site requests (iOS Safari cookie fix)
+      if (data.token) {
+        localStorage.setItem("ec_token", data.token);
+      }
+
       onLoginSuccess(data.user);
     } catch {
       setError(

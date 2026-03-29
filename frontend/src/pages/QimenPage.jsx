@@ -296,7 +296,7 @@ function IntroBlock({ isZh, lesson }) {
     );
 }
 
-export default function QimenPage({ lang, onBack, currentUser, isOwned: isOwnedProp, purchases = [], onPurchase, onGoLogin }) {
+export default function QimenPage({ lang, onBack, currentUser, authLoading = false, isOwned: isOwnedProp, purchases = [], onPurchase, onGoLogin }) {
     const isZh = lang === "zh";
 
     const isLoggedIn = !!currentUser;
@@ -367,6 +367,7 @@ export default function QimenPage({ lang, onBack, currentUser, isOwned: isOwnedP
 
     function handleSelectLesson(lesson) {
         if (!hasVideoAccess(lesson.s3Key)) {
+            if (authLoading) return; // wait for session check
             if (!isLoggedIn) {
                 onGoLogin?.();
             } else {
@@ -507,8 +508,8 @@ export default function QimenPage({ lang, onBack, currentUser, isOwned: isOwnedP
                                             <p className="text-lg font-semibold">{isZh ? "内容已锁定" : "Locked"}</p>
                                             <p className="mt-2 text-sm text-slate-600">
                                                 {isZh
-                                                    ? "登录并购买后即可观看全部 4 节课程。未购买用户可试看前 2 节。"
-                                                    : "Sign in and unlock to watch all lessons. Preview is available for the first 2 lessons."}
+                                                    ? "购买后即可观看全部 4 节课程。"
+                                                    : "Purchase a lesson or the full course to start watching."}
                                             </p>
                                         </div>
                                     </div>

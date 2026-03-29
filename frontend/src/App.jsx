@@ -312,6 +312,7 @@ function App() {
     const [currentUser, setCurrentUser] = useState(null);
     const [purchases, setPurchases] = useState([]);
     const [sidebarOpen, setSidebarOpen] = useState(false);
+    const [authLoading, setAuthLoading] = useState(true); // true until session check completes
 
     const [touchStartX, setTouchStartX] = useState(null);
 
@@ -329,7 +330,9 @@ function App() {
                         setPurchases(data.purchases || []);
                     }
                 }
-            } catch { /* ignore */ }
+            } catch { /* ignore */ } finally {
+                setAuthLoading(false);
+            }
         }
 
         refreshPurchases();
@@ -342,6 +345,7 @@ function App() {
             // Webhook may need a moment to write to DB, poll a few times
             setTimeout(() => refreshPurchases(), 1500);
             setTimeout(() => refreshPurchases(), 4000);
+            setTimeout(() => refreshPurchases(), 8000);
             setActivePage("mycourses");
         } else if (payment === "cancelled") {
             window.history.replaceState({}, "", window.location.pathname);
@@ -384,6 +388,7 @@ function App() {
     }
 
     async function handlePurchase(type, options = {}) {
+        if (authLoading) return; // wait for session check to complete
         if (!currentUser) {
             setActivePage("login");
             return;
@@ -748,11 +753,11 @@ function App() {
             </main>
         );
     } else if (activePage === "faceyoga") {
-        pageContent = <FaceYogaPage lang={lang} currentUser={currentUser} isOwned={hasCourseAccess("faceyoga")} purchases={purchases} onPurchase={handlePurchase} onGoLogin={() => setActivePage("login")} />;
+        pageContent = <FaceYogaPage lang={lang} currentUser={currentUser} authLoading={authLoading} isOwned={hasCourseAccess("faceyoga")} purchases={purchases} onPurchase={handlePurchase} onGoLogin={() => setActivePage("login")} />;
     } else if (activePage === "qimen") {
-        pageContent = <QimenPage lang={lang} currentUser={currentUser} isOwned={hasCourseAccess("taichi")} purchases={purchases} onPurchase={handlePurchase} onGoLogin={() => setActivePage("login")} />;
+        pageContent = <QimenPage lang={lang} currentUser={currentUser} authLoading={authLoading} isOwned={hasCourseAccess("taichi")} purchases={purchases} onPurchase={handlePurchase} onGoLogin={() => setActivePage("login")} />;
     } else if (activePage === "qigong") {
-        pageContent = <QigongPage lang={lang} currentUser={currentUser} isOwned={hasCourseAccess("qigong")} purchases={purchases} onPurchase={handlePurchase} onGoLogin={() => setActivePage("login")} />;
+        pageContent = <QigongPage lang={lang} currentUser={currentUser} authLoading={authLoading} isOwned={hasCourseAccess("qigong")} purchases={purchases} onPurchase={handlePurchase} onGoLogin={() => setActivePage("login")} />;
     } else if (activePage === "wingchun") {
         pageContent = <WingChunPage lang={lang} />;
     } else if (activePage === "tcm") {

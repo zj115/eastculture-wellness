@@ -8,7 +8,7 @@ import { supabaseAdmin } from "@/lib/supabase";
 const PRODUCTS = {
   // Individual video - 10 NZD each
   video: {
-    price: 1, // 0.01 NZD (test)
+    price: 50, // 0.50 NZD (test - Stripe minimum)
     name: (videoTitle: string) => `EastCulture - ${videoTitle}`,
   },
   // Course series
@@ -19,7 +19,7 @@ const PRODUCTS = {
       nameZh: "面部瑜伽与按摩大师课",
     },
     taichi: {
-      price: 1, // 0.01 NZD (test)
+      price: 50, // 0.50 NZD (test - Stripe minimum)
       name: "Tai Chi System Course Series",
       nameZh: "太极系统课程",
     },
@@ -167,7 +167,8 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ url: session.url });
   } catch (err) {
-    console.error("Checkout error:", err);
-    return NextResponse.json({ error: "Failed to create checkout" }, { status: 500 });
+    const msg = err instanceof Error ? err.message : String(err);
+    console.error("Checkout error:", msg);
+    return NextResponse.json({ error: "Failed to create checkout", detail: msg }, { status: 500 });
   }
 }

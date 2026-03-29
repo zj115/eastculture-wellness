@@ -281,6 +281,13 @@ export default function FaceYogaPage({ lang, onBack, currentUser, isOwned: isOwn
         if (!lesson.canPreview && !isOwned) {
             if (!isLoggedIn) {
                 onGoLogin?.();
+            } else {
+                const title = isZh ? lesson.titleZh : lesson.titleEn;
+                onPurchase?.("video", {
+                    courseId: "faceyoga",
+                    videoKey: lesson.s3Key,
+                    videoTitle: title,
+                });
             }
             return;
         }
@@ -573,8 +580,8 @@ export default function FaceYogaPage({ lang, onBack, currentUser, isOwned: isOwn
                                                 </span>
                                             )}
                                             {!isOwned && !lesson.canPreview && (
-                                                <span className="rounded-full border border-slate-200 bg-white px-2 py-1 text-[11px] text-slate-700">
-                                                    🔒 {isZh ? "锁定" : "Locked"}
+                                                <span className="rounded-full border border-amber-200 bg-amber-50 px-2 py-1 text-[11px] text-amber-700">
+                                                    🔒 {isZh ? "购买解锁" : "Buy NZD 10"}
                                                 </span>
                                             )}
                                             {isOwned && (

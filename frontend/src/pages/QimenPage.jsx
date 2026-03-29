@@ -368,7 +368,17 @@ export default function QimenPage({ lang, onBack, currentUser, isOwned: isOwnedP
 
     function handleSelectLesson(lesson) {
         if (!hasVideoAccess(lesson.s3Key) && !lesson.canPreview) {
-            if (!isLoggedIn) onGoLogin?.();
+            if (!isLoggedIn) {
+                onGoLogin?.();
+            } else {
+                // Trigger purchase for this specific lesson
+                const title = isZh ? lesson.titleZh : lesson.titleEn;
+                onPurchase?.("video", {
+                    courseId: "taichi",
+                    videoKey: lesson.s3Key,
+                    videoTitle: title,
+                });
+            }
             return;
         }
         setActiveLessonId(lesson.id);
@@ -594,8 +604,8 @@ export default function QimenPage({ lang, onBack, currentUser, isOwned: isOwnedP
                         </span>
                                             )}
                                             {!hasVideoAccess(lesson.s3Key) && !lesson.canPreview && (
-                                                <span className="rounded-full bg-white px-2 py-1 text-[11px] text-slate-600 border border-slate-200">
-                          🔒 {isZh ? "锁定" : "Locked"}
+                                                <span className="rounded-full bg-amber-50 px-2 py-1 text-[11px] text-amber-700 border border-amber-200">
+                          🔒 {isZh ? "购买解锁" : "Buy NZD 10"}
                         </span>
                                             )}
                                             {hasVideoAccess(lesson.s3Key) && (

@@ -318,11 +318,9 @@ function App() {
 
     // Restore session on page load
     useEffect(() => {
-        async function restoreSession() {
+        async function refreshPurchases() {
             try {
-                const res = await fetch(`${API_BASE}/api/auth/me`, {
-                    credentials: "include",
-                });
+                const res = await fetch(`${API_BASE}/api/auth/me`, { credentials: "include" });
                 if (res.ok) {
                     const data = await res.json();
                     if (data.user) {
@@ -330,21 +328,19 @@ function App() {
                         setPurchases(data.purchases || []);
                     }
                 }
-            } catch {
-                // Not logged in or network error, ignore
-            }
+            } catch { /* ignore */ }
         }
-        restoreSession();
+
+        refreshPurchases();
 
         // Handle payment success redirect
         const params = new URLSearchParams(window.location.search);
         const payment = params.get("payment");
         if (payment === "success") {
             window.history.replaceState({}, "", window.location.pathname);
-            // Wait briefly for webhook to process, then refresh session
-            setTimeout(() => {
-                restoreSession();
-            }, 2000);
+            // Webhook may need a moment to write to DB, poll a few times
+            setTimeout(() => refreshPurchases(), 1500);
+            setTimeout(() => refreshPurchases(), 4000);
             setActivePage("mycourses");
         } else if (payment === "cancelled") {
             window.history.replaceState({}, "", window.location.pathname);

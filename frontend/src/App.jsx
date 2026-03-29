@@ -340,10 +340,12 @@ function App() {
         const params = new URLSearchParams(window.location.search);
         const payment = params.get("payment");
         if (payment === "success") {
-            // Clean URL and refresh purchases
             window.history.replaceState({}, "", window.location.pathname);
-            restoreSession();
-            setActivePage("home");
+            // Wait briefly for webhook to process, then refresh session
+            setTimeout(() => {
+                restoreSession();
+            }, 2000);
+            setActivePage("mycourses");
         } else if (payment === "cancelled") {
             window.history.replaceState({}, "", window.location.pathname);
         }

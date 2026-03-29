@@ -131,8 +131,8 @@ export async function POST(req: NextRequest) {
     const session = await stripe.checkout.sessions.create({
       mode,
       line_items: lineItems,
-      success_url: `${origin}/payment/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${origin}/payment/cancel`,
+      success_url: `${origin}?payment=success`,
+      cancel_url: `${origin}?payment=cancelled`,
       customer_email: user.email,
       metadata,
       // Pass metadata to subscription so invoice.paid webhook can find userId

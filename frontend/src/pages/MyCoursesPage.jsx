@@ -43,6 +43,12 @@ const ALL_COURSES = [
     },
 ];
 
+const COURSE_VIDEO_PREFIXES = {
+    faceyoga: "face-yoga/",
+    taichi: "taichi/",
+    qigong: "acupressure/",
+};
+
 function getAccessibleCourses(purchases) {
     if (!purchases || purchases.length === 0) return [];
     const now = new Date();
@@ -51,10 +57,16 @@ function getAccessibleCourses(purchases) {
     for (const p of purchases) {
         if (p.expires_at && new Date(p.expires_at) < now) continue;
         if (p.purchase_type === "membership") {
-            // Membership unlocks all courses
             ALL_COURSES.forEach((c) => accessed.add(c.id));
         } else if (p.purchase_type === "course" && p.course_id) {
             accessed.add(p.course_id);
+        } else if (p.purchase_type === "video" && p.video_key) {
+            // Any video purchase from a course counts as having access to that course page
+            for (const [courseId, prefix] of Object.entries(COURSE_VIDEO_PREFIXES)) {
+                if (p.video_key.startsWith(prefix)) {
+                    accessed.add(courseId);
+                }
+            }
         }
     }
     return ALL_COURSES.filter((c) => accessed.has(c.id));
@@ -232,7 +244,7 @@ export default function MyCoursesPage({ lang, purchases = [], currentUser, onNav
                     <div className="mt-6 rounded-2xl border border-amber-200 bg-amber-50 p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                         <div>
                             <div className="text-sm font-semibold text-slate-900">
-                                {t ? "全站会员 · $29/月" : "All-Access Membership · $29/month"}
+                                {t ? "全站会员 · NZD 30/月起" : "All-Access Membership · from NZD 30/month"}
                             </div>
                             <div className="mt-0.5 text-xs text-slate-600">
                                 {t
@@ -241,7 +253,7 @@ export default function MyCoursesPage({ lang, purchases = [], currentUser, onNav
                             </div>
                         </div>
                         <button
-                            onClick={() => onPurchase("membership")}
+                            onClick={() => onPurchase("membership_monthly")}
                             className="shrink-0 rounded-full bg-amber-600 px-5 py-2 text-xs font-semibold text-white hover:bg-amber-500 transition"
                         >
                             {t ? "立即订阅" : "Subscribe Now"}

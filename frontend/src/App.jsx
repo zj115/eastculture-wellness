@@ -17,6 +17,8 @@ import ProgramPage from "./pages/ProgramPage";
 import ShopPage from "./pages/ShopPage";
 import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
+import MyCoursesPage from "./pages/MyCoursesPage";
+import AccountPage from "./pages/AccountPage";
 
 const content = {
     en: {
@@ -801,6 +803,25 @@ function App() {
         pageContent = <AboutPage lang={lang} onBackHome={goHome} />;
     } else if (activePage === "contact") {
         pageContent = <ContactPage lang={lang} onBackHome={goHome} />;
+    } else if (activePage === "mycourses") {
+        pageContent = (
+            <MyCoursesPage
+                lang={lang}
+                purchases={purchases}
+                currentUser={currentUser}
+                onNavigate={setActivePage}
+                onPurchase={handlePurchase}
+            />
+        );
+    } else if (activePage === "account") {
+        pageContent = (
+            <AccountPage
+                lang={lang}
+                currentUser={currentUser}
+                purchases={purchases}
+                onLogout={handleLogout}
+            />
+        );
     }
 
     return (
@@ -854,12 +875,6 @@ function App() {
                     </nav>
 
                     <div className="flex items-center gap-3">
-                        {currentUser && (
-                            <span className="hidden text-xs text-slate-600 md:inline">
-                {lang === "en" ? `Hi, ${currentUser.username}` : `欢迎，${currentUser.username}`}
-              </span>
-                        )}
-
                         {!currentUser ? (
                             <button
                                 className="hidden rounded-full border border-amber-300 bg-white px-3 py-1 text-xs text-amber-700 hover:bg-amber-50 md:inline-flex"
@@ -868,12 +883,20 @@ function App() {
                                 {t.login}
                             </button>
                         ) : (
-                            <button
-                                className="hidden rounded-full border border-slate-300 bg-white px-3 py-1 text-xs text-slate-700 hover:border-amber-300 hover:text-amber-700 md:inline-flex"
-                                onClick={handleLogout}
-                            >
-                                {t.logout}
-                            </button>
+                            <div className="hidden md:flex items-center gap-2">
+                                <button
+                                    className="text-xs text-slate-600 hover:text-amber-700 transition"
+                                    onClick={() => setActivePage("mycourses")}
+                                >
+                                    {lang === "en" ? "My Courses" : "我的课程"}
+                                </button>
+                                <button
+                                    className="rounded-full border border-slate-300 bg-white px-3 py-1 text-xs text-slate-700 hover:border-amber-300 hover:text-amber-700 transition"
+                                    onClick={() => setActivePage("account")}
+                                >
+                                    {lang === "en" ? `${currentUser.username}` : `${currentUser.username}`}
+                                </button>
+                            </div>
                         )}
 
                         <div className="flex items-center gap-1 rounded-full border border-slate-200 bg-white px-2 py-1 text-[11px] shadow-sm">

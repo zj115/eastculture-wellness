@@ -210,7 +210,7 @@ const DETAILS = {
     ],
 };
 
-export default function FaceYogaPage({ lang, onBack, currentUser, isOwned: isOwnedProp, onPurchase, onGoLogin }) {
+export default function FaceYogaPage({ lang, onBack, currentUser, isOwned: isOwnedProp, purchases = [], onPurchase, onGoLogin }) {
     const isZh = lang === "zh";
 
     const isLoggedIn = !!currentUser;
@@ -231,8 +231,11 @@ export default function FaceYogaPage({ lang, onBack, currentUser, isOwned: isOwn
 
     const canPlayActive = useMemo(() => {
         if (isOwned) return true;
-        return !!activeLesson.canPreview;
-    }, [isOwned, activeLesson]);
+        return purchases.some((p) => {
+            if (p.expires_at && new Date(p.expires_at) < new Date()) return false;
+            return p.purchase_type === "video" && p.video_key === activeLesson.s3Key;
+        });
+    }, [isOwned, activeLesson, purchases]);
 
     const fetchSignedUrl = async (s3Key) => {
         setLoading(true);
@@ -278,16 +281,16 @@ export default function FaceYogaPage({ lang, onBack, currentUser, isOwned: isOwn
     };
 
     function handleSelectLesson(lesson) {
-        if (!lesson.canPreview && !isOwned) {
+        const hasAccess = isOwned || purchases.some((p) => {
+            if (p.expires_at && new Date(p.expires_at) < new Date()) return false;
+            return p.purchase_type === "video" && p.video_key === lesson.s3Key;
+        });
+        if (!hasAccess) {
             if (!isLoggedIn) {
                 onGoLogin?.();
             } else {
                 const title = isZh ? lesson.titleZh : lesson.titleEn;
-                onPurchase?.("video", {
-                    courseId: "faceyoga",
-                    videoKey: lesson.s3Key,
-                    videoTitle: title,
-                });
+                onPurchase?.("video", { courseId: "faceyoga", videoKey: lesson.s3Key, videoTitle: title });
             }
             return;
         }
@@ -547,7 +550,11 @@ export default function FaceYogaPage({ lang, onBack, currentUser, isOwned: isOwn
 
                         <div className="max-h-[720px] space-y-2 overflow-auto pr-1">
                             {LESSONS.map((lesson) => {
-                                const locked = !isOwned && !lesson.canPreview;
+                                const hasAccess = isOwned || purchases.some((p) => {
+                                    if (p.expires_at && new Date(p.expires_at) < new Date()) return false;
+                                    return p.purchase_type === "video" && p.video_key === lesson.s3Key;
+                                });
+                                const locked = !hasAccess;
                                 const active = lesson.id === activeLessonId;
 
                                 return (
@@ -574,17 +581,12 @@ export default function FaceYogaPage({ lang, onBack, currentUser, isOwned: isOwn
                                         </div>
 
                                         <div className="flex shrink-0 items-center gap-2 text-xs">
-                                            {!isOwned && lesson.canPreview && (
-                                                <span className="rounded-full border border-slate-200 bg-slate-50 px-2 py-1 text-[11px] text-slate-700">
-                                                    {isZh ? "试看" : "Preview"}
-                                                </span>
-                                            )}
-                                            {!isOwned && !lesson.canPreview && (
+                                            {locked && (
                                                 <span className="rounded-full border border-amber-200 bg-amber-50 px-2 py-1 text-[11px] text-amber-700">
                                                     🔒 {isZh ? "购买解锁" : "Buy NZD 10"}
                                                 </span>
                                             )}
-                                            {isOwned && (
+                                            {!locked && (
                                                 <span className="rounded-full border border-slate-200 bg-white px-2 py-1 text-[11px] text-slate-700">
                                                     {isZh ? "已解锁" : "Unlocked"}
                                                 </span>

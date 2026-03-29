@@ -326,8 +326,7 @@ export default function QimenPage({ lang, onBack, currentUser, isOwned: isOwnedP
     );
 
     const canPlayActive = useMemo(() => {
-        if (hasVideoAccess(activeLesson.s3Key)) return true;
-        return !!activeLesson.canPreview;
+        return hasVideoAccess(activeLesson.s3Key);
     }, [isOwned, activeLesson, purchases]);
 
     const fetchSignedUrl = async (s3Key) => {
@@ -367,7 +366,7 @@ export default function QimenPage({ lang, onBack, currentUser, isOwned: isOwnedP
     };
 
     function handleSelectLesson(lesson) {
-        if (!hasVideoAccess(lesson.s3Key) && !lesson.canPreview) {
+        if (!hasVideoAccess(lesson.s3Key)) {
             if (!isLoggedIn) {
                 onGoLogin?.();
             } else {
@@ -575,7 +574,7 @@ export default function QimenPage({ lang, onBack, currentUser, isOwned: isOwnedP
 
                         <div className="space-y-2 overflow-auto pr-1 md:max-h-[720px]">
                             {LESSONS.map((lesson) => {
-                                const locked = !hasVideoAccess(lesson.s3Key) && !lesson.canPreview;
+                                const locked = !hasVideoAccess(lesson.s3Key);
                                 const active = lesson.id === activeLessonId;
 
                                 return (
@@ -598,20 +597,15 @@ export default function QimenPage({ lang, onBack, currentUser, isOwned: isOwnedP
                                         </div>
 
                                         <div className="flex shrink-0 items-center gap-2 text-xs">
-                                            {!hasVideoAccess(lesson.s3Key) && lesson.canPreview && (
-                                                <span className="rounded-full bg-amber-50 px-2 py-1 text-[11px] text-amber-700">
-                          {isZh ? "试看" : "Preview"}
-                        </span>
-                                            )}
-                                            {!hasVideoAccess(lesson.s3Key) && !lesson.canPreview && (
+                                            {locked && (
                                                 <span className="rounded-full bg-amber-50 px-2 py-1 text-[11px] text-amber-700 border border-amber-200">
-                          🔒 {isZh ? "购买解锁" : "Buy NZD 10"}
-                        </span>
+                                                    🔒 {isZh ? "购买解锁" : "Buy NZD 10"}
+                                                </span>
                                             )}
-                                            {hasVideoAccess(lesson.s3Key) && (
+                                            {!locked && (
                                                 <span className="rounded-full bg-white px-2 py-1 text-[11px] text-slate-700 border border-slate-200">
-                          {isZh ? "已解锁" : "Unlocked"}
-                        </span>
+                                                    {isZh ? "已解锁" : "Unlocked"}
+                                                </span>
                                             )}
                                             <span className="text-slate-500">{lesson.duration}</span>
                                         </div>

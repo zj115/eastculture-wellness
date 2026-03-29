@@ -19,16 +19,6 @@ function getCourseIdFromKey(key: string): string {
   return key.split("/")[0];
 }
 
-// Lesson numbers that are always free to preview
-const FREE_PREVIEW_KEYS = new Set([
-  "face-yoga/lesson-01-introduction-guide.mp4",
-  "face-yoga/lesson-02-forehead-wrinkle-relief.mp4",
-  "taichi/lesson-01-five-element-wellness-qigong.mp4",
-  "taichi/lesson-02-six-healing-sounds-breathing.mp4",
-  "acupressure/lesson-01-head-acupressure.mp4",
-  "acupressure/lesson-02-face-acupressure.mp4",
-]);
-
 export async function GET(req: NextRequest) {
   try {
     const { searchParams } = new URL(req.url);
@@ -38,17 +28,7 @@ export async function GET(req: NextRequest) {
       return NextResponse.json({ error: "Video key required" }, { status: 400 });
     }
 
-    // Free preview lessons - no auth needed
-    if (FREE_PREVIEW_KEYS.has(key)) {
-      const command = new GetObjectCommand({
-        Bucket: process.env.S3_BUCKET_NAME!,
-        Key: key,
-      });
-      const signedUrl = await getSignedUrl(s3, command, { expiresIn: 600 });
-      return NextResponse.json({ url: signedUrl });
-    }
-
-    // All other videos require authentication + purchase
+    // All videos require authentication + purchase
     const user = await getUserFromRequest(req);
     if (!user) {
       return NextResponse.json(

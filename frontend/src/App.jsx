@@ -311,6 +311,7 @@ function App() {
     const [activePage, setActivePage] = useState("home");
     const [currentUser, setCurrentUser] = useState(null);
     const [purchases, setPurchases] = useState([]);
+    const [sidebarOpen, setSidebarOpen] = useState(false);
 
     const [touchStartX, setTouchStartX] = useState(null);
 
@@ -747,7 +748,7 @@ function App() {
             </main>
         );
     } else if (activePage === "faceyoga") {
-        pageContent = <FaceYogaPage lang={lang} currentUser={currentUser} isOwned={hasCourseAccess("faceyoga")} onPurchase={handlePurchase} onGoLogin={() => setActivePage("login")} />;
+        pageContent = <FaceYogaPage lang={lang} currentUser={currentUser} isOwned={hasCourseAccess("faceyoga")} purchases={purchases} onPurchase={handlePurchase} onGoLogin={() => setActivePage("login")} />;
     } else if (activePage === "qimen") {
         pageContent = <QimenPage lang={lang} currentUser={currentUser} isOwned={hasCourseAccess("taichi")} purchases={purchases} onPurchase={handlePurchase} onGoLogin={() => setActivePage("login")} />;
     } else if (activePage === "qigong") {
@@ -826,9 +827,14 @@ function App() {
             <header className="sticky top-0 z-30 border-b border-slate-200 bg-white/85 backdrop-blur">
                 <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
                     <div className="flex items-center gap-2">
-            <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-amber-600 text-white text-lg font-bold shadow-sm">
-              太
-            </span>
+                        {/* Mobile: "太" logo opens sidebar */}
+                        <button
+                            className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-amber-600 text-white text-lg font-bold shadow-sm md:cursor-default"
+                            onClick={() => setSidebarOpen(true)}
+                            aria-label="Open menu"
+                        >
+                            太
+                        </button>
                         <div>
                             <div className="text-lg font-semibold tracking-wide text-slate-900">
                                 {t.brand}
@@ -865,6 +871,14 @@ function App() {
                         >
                             {t.navContact}
                         </button>
+                        {currentUser && (
+                            <button
+                                className="text-slate-700 hover:text-amber-700 transition"
+                                onClick={() => setActivePage("mycourses")}
+                            >
+                                {lang === "en" ? "My Courses" : "我的课程"}
+                            </button>
+                        )}
                     </nav>
 
                     <div className="flex items-center gap-3">
@@ -876,20 +890,12 @@ function App() {
                                 {t.login}
                             </button>
                         ) : (
-                            <div className="hidden md:flex items-center gap-2">
-                                <button
-                                    className="text-xs text-slate-600 hover:text-amber-700 transition"
-                                    onClick={() => setActivePage("mycourses")}
-                                >
-                                    {lang === "en" ? "My Courses" : "我的课程"}
-                                </button>
-                                <button
-                                    className="rounded-full border border-slate-300 bg-white px-3 py-1 text-xs text-slate-700 hover:border-amber-300 hover:text-amber-700 transition"
-                                    onClick={() => setActivePage("account")}
-                                >
-                                    {lang === "en" ? `${currentUser.username}` : `${currentUser.username}`}
-                                </button>
-                            </div>
+                            <button
+                                className="hidden rounded-full border border-slate-300 bg-white px-3 py-1 text-xs text-slate-700 hover:border-amber-300 hover:text-amber-700 transition md:inline-flex"
+                                onClick={() => setActivePage("account")}
+                            >
+                                {currentUser.username}
+                            </button>
                         )}
 
                         <div className="flex items-center gap-1 rounded-full border border-slate-200 bg-white px-2 py-1 text-[11px] shadow-sm">
@@ -918,6 +924,75 @@ function App() {
                     </div>
                 </div>
             </header>
+
+            {/* Mobile Sidebar */}
+            {sidebarOpen && (
+                <div className="fixed inset-0 z-50 flex md:hidden">
+                    {/* Backdrop */}
+                    <div
+                        className="absolute inset-0 bg-black/40"
+                        onClick={() => setSidebarOpen(false)}
+                    />
+                    {/* Drawer */}
+                    <div className="relative flex w-72 flex-col bg-white shadow-xl">
+                        <div className="flex items-center justify-between border-b border-slate-100 px-5 py-4">
+                            <div className="flex items-center gap-2">
+                                <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-amber-600 text-white text-lg font-bold">太</span>
+                                <span className="text-base font-semibold text-slate-900">EastCulture</span>
+                            </div>
+                            <button
+                                onClick={() => setSidebarOpen(false)}
+                                className="text-slate-400 hover:text-slate-600 text-xl leading-none"
+                                aria-label="Close menu"
+                            >
+                                ×
+                            </button>
+                        </div>
+                        <nav className="flex flex-col gap-1 px-4 py-4 text-sm">
+                            {[
+                                { label: lang === "en" ? "Courses" : "课程", action: () => { goHome(); setSidebarOpen(false); } },
+                                { label: lang === "en" ? "Program" : "计划", action: () => { setActivePage("program"); setSidebarOpen(false); } },
+                                { label: lang === "en" ? "Shop" : "商店", action: () => { setActivePage("shop"); setSidebarOpen(false); } },
+                                { label: lang === "en" ? "About" : "关于", action: () => { setActivePage("about"); setSidebarOpen(false); } },
+                                { label: lang === "en" ? "Contact" : "联系我们", action: () => { setActivePage("contact"); setSidebarOpen(false); } },
+                            ].map(({ label, action }) => (
+                                <button
+                                    key={label}
+                                    onClick={action}
+                                    className="rounded-lg px-3 py-2.5 text-left text-slate-700 hover:bg-amber-50 hover:text-amber-700 transition"
+                                >
+                                    {label}
+                                </button>
+                            ))}
+                            {currentUser && (
+                                <button
+                                    onClick={() => { setActivePage("mycourses"); setSidebarOpen(false); }}
+                                    className="rounded-lg px-3 py-2.5 text-left text-slate-700 hover:bg-amber-50 hover:text-amber-700 transition"
+                                >
+                                    {lang === "en" ? "My Courses" : "我的课程"}
+                                </button>
+                            )}
+                        </nav>
+                        <div className="mt-auto border-t border-slate-100 px-4 py-4">
+                            {!currentUser ? (
+                                <button
+                                    onClick={() => { setActivePage("login"); setSidebarOpen(false); }}
+                                    className="w-full rounded-full bg-amber-600 px-4 py-2 text-sm font-semibold text-white hover:bg-amber-500 transition"
+                                >
+                                    {lang === "en" ? "Login" : "登录"}
+                                </button>
+                            ) : (
+                                <button
+                                    onClick={() => { setActivePage("account"); setSidebarOpen(false); }}
+                                    className="w-full rounded-full border border-slate-200 px-4 py-2 text-sm text-slate-700 hover:border-amber-300 hover:text-amber-700 transition"
+                                >
+                                    {currentUser.username}
+                                </button>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            )}
 
             {pageContent}
 

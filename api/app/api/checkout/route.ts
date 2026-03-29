@@ -8,7 +8,7 @@ import { supabaseAdmin } from "@/lib/supabase";
 const PRODUCTS = {
   // Individual video - 10 NZD each
   video: {
-    price: 1000, // 10.00 NZD in cents
+    price: 1, // 0.01 NZD (test)
     name: (videoTitle: string) => `EastCulture - ${videoTitle}`,
   },
   // Course series
@@ -19,7 +19,7 @@ const PRODUCTS = {
       nameZh: "面部瑜伽与按摩大师课",
     },
     taichi: {
-      price: 3000, // 30 NZD per series (as specified)
+      price: 1, // 0.01 NZD (test)
       name: "Tai Chi System Course Series",
       nameZh: "太极系统课程",
     },

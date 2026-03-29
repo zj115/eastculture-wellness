@@ -296,11 +296,21 @@ function IntroBlock({ isZh, lesson }) {
     );
 }
 
-export default function QimenPage({ lang, onBack, currentUser, isOwned: isOwnedProp, onPurchase, onGoLogin }) {
+export default function QimenPage({ lang, onBack, currentUser, isOwned: isOwnedProp, purchases = [], onPurchase, onGoLogin }) {
     const isZh = lang === "zh";
 
     const isLoggedIn = !!currentUser;
     const isOwned = !!isOwnedProp;
+
+    // Check if a specific video was individually purchased
+    const now = new Date();
+    function hasVideoAccess(s3Key) {
+        if (isOwned) return true;
+        return purchases.some((p) => {
+            if (p.expires_at && new Date(p.expires_at) < now) return false;
+            return p.purchase_type === "video" && p.video_key === s3Key;
+        });
+    }
 
     const [activeLessonId, setActiveLessonId] = useState(1);
 
@@ -316,9 +326,9 @@ export default function QimenPage({ lang, onBack, currentUser, isOwned: isOwnedP
     );
 
     const canPlayActive = useMemo(() => {
-        if (isOwned) return true;
+        if (hasVideoAccess(activeLesson.s3Key)) return true;
         return !!activeLesson.canPreview;
-    }, [isOwned, activeLesson]);
+    }, [isOwned, activeLesson, purchases]);
 
     const fetchSignedUrl = async (s3Key) => {
         setLoading(true);
@@ -357,7 +367,7 @@ export default function QimenPage({ lang, onBack, currentUser, isOwned: isOwnedP
     };
 
     function handleSelectLesson(lesson) {
-        if (!lesson.canPreview && !isOwned) {
+        if (!hasVideoAccess(lesson.s3Key) && !lesson.canPreview) {
             if (!isLoggedIn) onGoLogin?.();
             return;
         }
@@ -555,7 +565,7 @@ export default function QimenPage({ lang, onBack, currentUser, isOwned: isOwnedP
 
                         <div className="space-y-2 overflow-auto pr-1 md:max-h-[720px]">
                             {LESSONS.map((lesson) => {
-                                const locked = !isOwned && !lesson.canPreview;
+                                const locked = !hasVideoAccess(lesson.s3Key) && !lesson.canPreview;
                                 const active = lesson.id === activeLessonId;
 
                                 return (
@@ -578,17 +588,17 @@ export default function QimenPage({ lang, onBack, currentUser, isOwned: isOwnedP
                                         </div>
 
                                         <div className="flex shrink-0 items-center gap-2 text-xs">
-                                            {!isOwned && lesson.canPreview && (
+                                            {!hasVideoAccess(lesson.s3Key) && lesson.canPreview && (
                                                 <span className="rounded-full bg-amber-50 px-2 py-1 text-[11px] text-amber-700">
                           {isZh ? "试看" : "Preview"}
                         </span>
                                             )}
-                                            {!isOwned && !lesson.canPreview && (
+                                            {!hasVideoAccess(lesson.s3Key) && !lesson.canPreview && (
                                                 <span className="rounded-full bg-white px-2 py-1 text-[11px] text-slate-600 border border-slate-200">
                           🔒 {isZh ? "锁定" : "Locked"}
                         </span>
                                             )}
-                                            {isOwned && (
+                                            {hasVideoAccess(lesson.s3Key) && (
                                                 <span className="rounded-full bg-white px-2 py-1 text-[11px] text-slate-700 border border-slate-200">
                           {isZh ? "已解锁" : "Unlocked"}
                         </span>

@@ -749,9 +749,9 @@ function App() {
     } else if (activePage === "faceyoga") {
         pageContent = <FaceYogaPage lang={lang} currentUser={currentUser} isOwned={hasCourseAccess("faceyoga")} onPurchase={handlePurchase} onGoLogin={() => setActivePage("login")} />;
     } else if (activePage === "qimen") {
-        pageContent = <QimenPage lang={lang} currentUser={currentUser} isOwned={hasCourseAccess("taichi")} onPurchase={handlePurchase} onGoLogin={() => setActivePage("login")} />;
+        pageContent = <QimenPage lang={lang} currentUser={currentUser} isOwned={hasCourseAccess("taichi")} purchases={purchases} onPurchase={handlePurchase} onGoLogin={() => setActivePage("login")} />;
     } else if (activePage === "qigong") {
-        pageContent = <QigongPage lang={lang} currentUser={currentUser} isOwned={hasCourseAccess("qigong")} onPurchase={handlePurchase} onGoLogin={() => setActivePage("login")} />;
+        pageContent = <QigongPage lang={lang} currentUser={currentUser} isOwned={hasCourseAccess("qigong")} purchases={purchases} onPurchase={handlePurchase} onGoLogin={() => setActivePage("login")} />;
     } else if (activePage === "wingchun") {
         pageContent = <WingChunPage lang={lang} />;
     } else if (activePage === "tcm") {

@@ -519,66 +519,6 @@ function App() {
                     viewport={{ once: true, amount: 0.3 }}
                     transition={{ duration: 0.7, ease: "easeOut" }}
                     variants={fadeInUp}
-                    className="space-y-6"
-                >
-                    <div className="space-y-3 text-sm text-slate-700 md:max-w-3xl">
-                        <h2 className="text-xl font-semibold text-slate-900 md:text-2xl">
-                            {t.galleryTitle}
-                        </h2>
-                        <p className="text-sm md:text-base">{t.galleryText}</p>
-                        <p className="text-xs md:text-sm text-slate-500">
-                            {lang === "en"
-                                ? "All images on this page are for demonstration of the learning atmosphere. Course videos will be filmed with clear angles and slow, safe demonstrations."
-                                : "本页图片用于展示学习氛围与文化场景。正式课程视频会使用清晰机位与慢速、安全的示范讲解。"}
-                        </p>
-                    </div>
-
-                    <div className="grid gap-3 sm:grid-cols-3">
-                        {galleryImages.map((img, idx) => (
-                            <motion.div
-                                key={idx}
-                                className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm"
-                                whileHover={{ scale: 1.02 }}
-                                transition={{ type: "spring", stiffness: 220, damping: 18 }}
-                            >
-                                <img
-                                    src={img.src}
-                                    alt={img.alt}
-                                    className="h-40 w-full object-cover md:h-48"
-                                />
-                            </motion.div>
-                        ))}
-                    </div>
-                </motion.section>
-
-                <motion.section
-                    initial="hidden"
-                    whileInView="show"
-                    viewport={{ once: true, amount: 0.3 }}
-                    transition={{ duration: 0.6, ease: "easeOut" }}
-                    variants={fadeInUp}
-                >
-                    <h2 className="mb-4 text-xl font-semibold text-slate-900 md:text-2xl">
-                        {t.forWhoTitle}
-                    </h2>
-                    <div className="grid gap-4 md:grid-cols-2">
-                        {t.forWhoItems.map((item, idx) => (
-                            <div
-                                key={idx}
-                                className="rounded-2xl border border-slate-200 bg-white p-4 text-sm text-slate-700 shadow-sm"
-                            >
-                                {item}
-                            </div>
-                        ))}
-                    </div>
-                </motion.section>
-
-                <motion.section
-                    initial="hidden"
-                    whileInView="show"
-                    viewport={{ once: true, amount: 0.3 }}
-                    transition={{ duration: 0.7, ease: "easeOut" }}
-                    variants={fadeInUp}
                 >
                     <div className="mb-4 flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
                         <div>

@@ -28,6 +28,11 @@ const PRODUCTS = {
       name: "Acupressure Masterclass",
       nameZh: "穴位疗程大师课",
     },
+    wingchun: {
+      price: 2900, // 29 NZD
+      name: "Wing Chun Foundations – Health & Self-Defense",
+      nameZh: "咏春基础课：养生十式 + 防卫九式",
+    },
   },
   // Membership plans
   membership_monthly: {

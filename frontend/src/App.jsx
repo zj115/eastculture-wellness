@@ -773,7 +773,7 @@ function App() {
     } else if (activePage === "qigong") {
         pageContent = <QigongPage lang={lang} currentUser={currentUser} authLoading={authLoading} isOwned={hasCourseAccess("qigong")} purchases={purchases} onPurchase={handlePurchase} onGoLogin={() => setActivePage("login")} />;
     } else if (activePage === "wingchun") {
-        pageContent = <WingChunPage lang={lang} />;
+        pageContent = <WingChunPage lang={lang} currentUser={currentUser} authLoading={authLoading} isOwned={hasCourseAccess("wingchun")} purchases={purchases} onPurchase={handlePurchase} onGoLogin={() => setActivePage("login")} />;
     } else if (activePage === "tcm") {
         pageContent = <TcmPage lang={lang} />;
     } else if (activePage === "fengshui") {

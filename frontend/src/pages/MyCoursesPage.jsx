@@ -41,12 +41,24 @@ const ALL_COURSES = [
         lessons: 6,
         tag: "Acupressure",
     },
+    {
+        id: "wingchun",
+        page: "wingchun",
+        titleEn: "Wing Chun Foundations",
+        titleZh: "咏春基础课",
+        descEn: "Health Qigong 10 Forms + Self-Defense 9 Forms. ~7 min each, for all ages.",
+        descZh: "养生十式 + 防卫九式，每节约 7 分钟，零基础友好，老少皆宜。",
+        image: "/images/wing-chun-yangsheng-cover.jpg",
+        lessons: 2,
+        tag: "Wing Chun",
+    },
 ];
 
 const COURSE_VIDEO_PREFIXES = {
     faceyoga: "face-yoga/",
     taichi: "taichi/",
     qigong: "acupressure/",
+    wingchun: "wingchun/",
 };
 
 function getAccessibleCourses(purchases) {

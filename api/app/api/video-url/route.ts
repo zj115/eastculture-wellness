@@ -16,6 +16,7 @@ function getCourseIdFromKey(key: string): string {
   if (key.startsWith("face-yoga/")) return "faceyoga";
   if (key.startsWith("taichi/")) return "taichi";
   if (key.startsWith("acupressure/")) return "qigong";
+  if (key.startsWith("wingchun/")) return "wingchun";
   return key.split("/")[0];
 }
 

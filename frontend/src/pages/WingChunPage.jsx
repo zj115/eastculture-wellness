@@ -1,7 +1,6 @@
 // src/pages/WingChunPage.jsx
-// Wing Chun (咏春) 课程门户页 v2
-// 完整实现：lesson 切换 + 视频 + 详细介绍同步 + 手机适配
-// App.jsx props: lang, currentUser, authLoading, isOwned, purchases, onPurchase, onGoLogin
+// Wing Chun (咏春) 课程门户页 v3
+// Fixes: hero image mobile layout, full lesson descriptions, responsive layout
 
 import { motion } from "framer-motion";
 import { useEffect, useMemo, useState } from "react";
@@ -15,7 +14,7 @@ const API_BASE =
     import.meta?.env?.VITE_API_BASE || "https://eastculture-api.vercel.app";
 
 // ─────────────────────────────────────────────
-// LESSON DATA — structured, easy to extend
+// LESSON DATA
 // ─────────────────────────────────────────────
 const LESSONS = [
     {
@@ -119,15 +118,15 @@ const LESSONS = [
         ],
 
         forms: [
-            { num: 1, name: "Tan Sau + Step + Chain Punches", relieves: "Right straight punch from a taller attacker", core: "Deflect, not block; expose gaps; counter fast — neutralize heavy punches without strength" },
-            { num: 2, name: "Fu Sau + Punch", relieves: "Strong direct punch / full-force attack", core: "Change angle, seal power, push attacker off balance — stop even big attackers instantly" },
-            { num: 3, name: "Lap Sau vs. Swing Punch", relieves: "Big swings, left-right hooks", core: "Stick to the arm, change attack path, open gaps — avoid being knocked out; counter quickly" },
-            { num: 4, name: "Bong Sau + Roll + Hook Punch", relieves: "Elevator attack, front assault, no room to retreat", core: "Turn waist, seal the arm, close-quarters strike — works in tight spaces; defend and counter at once" },
-            { num: 5, name: "Double Slap Control", relieves: "Face grabbing, chest grabbing, provocation", core: "Dual slap to disable attack ability — shut down all incoming moves in 1 second" },
-            { num: 6, name: "Tan Sau + Step + Block & Slap", relieves: "Sudden rush, close control", core: "Step forward, block face, control distance — keep attacker away and take control" },
-            { num: 7, name: "Cross Finger Strike vs. Straight Punch", relieves: "Direct punch to body", core: "Deflect first, strike lower body — one move to weaken the attacker" },
-            { num: 8, name: "Elbow Control & Escape", relieves: "Wrist grab, clothes grab, held arm", core: "Lift, guide, redirect force — break free in 1 second even if grabbed tight" },
-            { num: 9, name: "Horse Stance + Rear Strike", relieves: "Bear hug from behind, sudden restraint", core: "Stable stance, rear counter, break free — life-saving move for women in real danger" },
+            { num: 1, name: "Tan Sau + Step + Chain Punches", relieves: "Right straight punch from a taller attacker", core: "Deflect, not block; expose gaps; counter fast", benefit: "Neutralize heavy punches without strength" },
+            { num: 2, name: "Fu Sau + Punch", relieves: "Strong direct punch / full-force attack", core: "Change angle, seal power, push attacker off balance", benefit: "Stop even big attackers instantly" },
+            { num: 3, name: "Lap Sau vs. Swing Punch", relieves: "Big swings, left-right hooks", core: "Stick to the arm, change attack path, open gaps", benefit: "Avoid being knocked out; counter quickly" },
+            { num: 4, name: "Bong Sau + Roll + Hook Punch", relieves: "Elevator attack, front assault, no room to retreat", core: "Turn waist, seal the arm, close-quarters strike", benefit: "Works in tight spaces; defend and counter at once" },
+            { num: 5, name: "Double Slap Control", relieves: "Face grabbing, chest grabbing, provocation", core: "Dual slap to disable attack ability", benefit: "Shut down all incoming moves in 1 second" },
+            { num: 6, name: "Tan Sau + Step + Block & Slap", relieves: "Sudden rush, close control", core: "Step forward, block face, control distance", benefit: "Keep attacker away and take control" },
+            { num: 7, name: "Cross Finger Strike vs. Straight Punch", relieves: "Direct punch to body", core: "Deflect first, strike lower body", benefit: "One move to weaken the attacker" },
+            { num: 8, name: "Elbow Control & Escape", relieves: "Wrist grab, clothes grab, held arm", core: "Lift, guide, redirect force", benefit: "Break free in 1 second even if grabbed tight" },
+            { num: 9, name: "Horse Stance + Rear Strike", relieves: "Bear hug from behind, sudden restraint", core: "Stable stance, rear counter, break free", benefit: "Life-saving move for women in real danger" },
         ],
 
         advantages: [
@@ -177,7 +176,7 @@ const COURSE = {
 
 function SectionTitle({ children }) {
     return (
-        <h3 className="text-base font-semibold text-slate-900 mb-3">
+        <h3 className="text-sm font-bold uppercase tracking-wide text-slate-500 mb-3">
             {children}
         </h3>
     );
@@ -185,10 +184,10 @@ function SectionTitle({ children }) {
 
 function PainPointsList({ items }) {
     return (
-        <ul className="space-y-2">
+        <ul className="space-y-2.5">
             {items.map((item, i) => (
-                <li key={i} className="flex gap-2 text-sm text-slate-600">
-                    <span className="mt-0.5 shrink-0 text-amber-500">✕</span>
+                <li key={i} className="flex gap-3 text-sm text-slate-700 leading-snug">
+                    <span className="mt-0.5 shrink-0 text-amber-500 font-bold text-base leading-none">✕</span>
                     <span>{item}</span>
                 </li>
             ))}
@@ -196,39 +195,40 @@ function PainPointsList({ items }) {
     );
 }
 
-function FormsList({ forms, label }) {
+function FormsList({ forms }) {
     return (
-        <div>
-            {label && (
-                <div className="mb-3 inline-flex items-center rounded-full bg-slate-900 px-3 py-1 text-xs font-semibold text-white">
-                    {label}
-                </div>
-            )}
-            <div className="grid gap-3 sm:grid-cols-2">
-                {forms.map((f) => (
-                    <div
-                        key={f.num}
-                        className="rounded-2xl border border-slate-200 bg-white p-3 space-y-1.5"
-                    >
-                        <div className="flex items-center gap-2">
-                            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-amber-100 text-[11px] font-bold text-amber-700">
-                                {f.num}
-                            </span>
-                            <p className="text-sm font-semibold text-slate-900 leading-tight">
-                                {f.name}
-                            </p>
-                        </div>
-                        <p className="text-xs text-slate-500 pl-8">
-                            <span className="font-medium text-slate-600">For: </span>
-                            {f.relieves}
-                        </p>
-                        <p className="text-xs text-slate-500 pl-8">
-                            <span className="font-medium text-slate-600">Core: </span>
-                            {f.core}
+        <div className="grid gap-3 sm:grid-cols-2">
+            {forms.map((f) => (
+                <div
+                    key={f.num}
+                    className="rounded-2xl border border-slate-200 bg-white p-4 space-y-2"
+                >
+                    <div className="flex items-start gap-3">
+                        <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-amber-100 text-xs font-bold text-amber-700 mt-0.5">
+                            {f.num}
+                        </span>
+                        <p className="text-sm font-semibold text-slate-900 leading-snug">
+                            {f.name}
                         </p>
                     </div>
-                ))}
-            </div>
+                    <div className="pl-10 space-y-1.5">
+                        <p className="text-xs text-slate-600 leading-relaxed">
+                            <span className="font-semibold text-amber-700">For: </span>
+                            {f.relieves}
+                        </p>
+                        <p className="text-xs text-slate-600 leading-relaxed">
+                            <span className="font-semibold text-slate-700">How: </span>
+                            {f.core}
+                        </p>
+                        {f.benefit && (
+                            <p className="text-xs text-emerald-700 leading-relaxed">
+                                <span className="font-semibold">Benefit: </span>
+                                {f.benefit}
+                            </p>
+                        )}
+                    </div>
+                </div>
+            ))}
         </div>
     );
 }
@@ -239,11 +239,11 @@ function AdvantagesGrid({ items }) {
             {items.map((a, i) => (
                 <div
                     key={i}
-                    className="rounded-2xl border border-slate-200 bg-slate-50 p-3 space-y-1"
+                    className="rounded-2xl border border-slate-200 bg-slate-50 p-3.5 space-y-1.5"
                 >
-                    <div className="text-xl">{a.icon}</div>
-                    <p className="text-sm font-semibold text-slate-900">{a.title}</p>
-                    <p className="text-xs text-slate-500">{a.desc}</p>
+                    <div className="text-2xl">{a.icon}</div>
+                    <p className="text-sm font-semibold text-slate-900 leading-snug">{a.title}</p>
+                    <p className="text-xs text-slate-500 leading-relaxed">{a.desc}</p>
                 </div>
             ))}
         </div>
@@ -251,15 +251,12 @@ function AdvantagesGrid({ items }) {
 }
 
 function CheckList({ items, color = "emerald" }) {
-    const colors = {
-        emerald: "text-emerald-600",
-        amber: "text-amber-600",
-    };
+    const dotColor = color === "emerald" ? "text-emerald-600" : "text-amber-600";
     return (
-        <ul className="space-y-2">
+        <ul className="space-y-2.5">
             {items.map((item, i) => (
-                <li key={i} className="flex gap-2 text-sm text-slate-600">
-                    <span className={`mt-0.5 shrink-0 font-bold ${colors[color]}`}>✓</span>
+                <li key={i} className="flex gap-3 text-sm text-slate-700 leading-snug">
+                    <span className={`mt-0.5 shrink-0 font-bold text-base leading-none ${dotColor}`}>✓</span>
                     <span>{item}</span>
                 </li>
             ))}
@@ -267,42 +264,47 @@ function CheckList({ items, color = "emerald" }) {
     );
 }
 
-function LessonDetail({ lesson, isZh }) {
-    const formsTitle = lesson.formsLabel || lesson.scenariosLabel || "Course Content";
+function LessonDetail({ lesson }) {
+    const label = lesson.formsLabel || lesson.scenariosLabel || "Course Content";
     return (
-        <div className="space-y-6 mt-6">
-            {/* Intro */}
+        <div className="space-y-5">
+            {/* ── Intro card ── */}
             <div className="rounded-3xl border border-slate-200 bg-white p-5 space-y-3">
                 <div>
-                    <h2 className="text-lg font-semibold text-slate-900 leading-snug">
+                    <h2 className="text-lg font-bold text-slate-900 leading-snug">
                         {lesson.titleEn}
                     </h2>
-                    <p className="text-sm text-slate-500 mt-0.5">{lesson.subtitleEn}</p>
+                    <p className="text-sm text-amber-700 mt-1 font-medium">{lesson.subtitleEn}</p>
                 </div>
                 <p className="text-sm text-slate-700 leading-relaxed">{lesson.introEn}</p>
             </div>
 
-            {/* Pain Points */}
+            {/* ── Pain Points ── */}
             <div className="rounded-3xl border border-amber-200 bg-amber-50 p-5">
                 <SectionTitle>Do Any of These Sound Familiar?</SectionTitle>
                 <PainPointsList items={lesson.painPoints} />
             </div>
 
-            {/* Forms / Scenarios */}
+            {/* ── Forms / Scenarios ── */}
             <div className="rounded-3xl border border-slate-200 bg-slate-50 p-5">
-                <SectionTitle>{formsTitle}</SectionTitle>
-                <FormsList forms={lesson.forms} label={lesson.formsLabel || lesson.scenariosLabel} />
+                <div className="flex items-center gap-3 mb-4">
+                    <SectionTitle>{label}</SectionTitle>
+                    <span className="mb-3 rounded-full bg-slate-900 px-3 py-1 text-xs font-semibold text-white">
+                        {label}
+                    </span>
+                </div>
+                <FormsList forms={lesson.forms} />
             </div>
 
-            {/* Advantages */}
+            {/* ── Advantages ── */}
             <div className="rounded-3xl border border-slate-200 bg-white p-5">
                 <SectionTitle>Course Advantages</SectionTitle>
                 <AdvantagesGrid items={lesson.advantages} />
             </div>
 
-            {/* Two-column: Audience + Gains */}
+            {/* ── Audience + Gains side by side on desktop, stacked on mobile ── */}
             <div className="grid gap-4 sm:grid-cols-2">
-                <div className="rounded-3xl border border-slate-200 bg-white p-5">
+                <div className="rounded-3xl border border-amber-100 bg-amber-50 p-5">
                     <SectionTitle>Who Is This For?</SectionTitle>
                     <CheckList items={lesson.audience} color="amber" />
                 </div>
@@ -312,15 +314,15 @@ function LessonDetail({ lesson, isZh }) {
                 </div>
             </div>
 
-            {/* Closing */}
-            <div className="rounded-2xl border border-slate-200 bg-slate-900 px-5 py-4 text-center">
+            {/* ── Closing ── */}
+            <div className="rounded-3xl bg-slate-900 px-5 py-5 text-center">
                 <p className="text-sm font-medium text-white/90 leading-relaxed">
                     {lesson.closingEn}
                 </p>
             </div>
 
-            {/* Disclaimer */}
-            <div className="rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-xs text-amber-900">
+            {/* ── Disclaimer ── */}
+            <div className="rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-xs text-amber-900 leading-relaxed">
                 Note: Please train in a safe environment with enough space. All demonstrations are for educational purposes only and do not encourage violence.
             </div>
         </div>
@@ -347,13 +349,16 @@ export default function WingChunPage({
     const [videoUrl, setVideoUrl] = useState("");
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
+    const [imgError, setImgError] = useState(false);
 
     const activeLesson = useMemo(
         () => LESSONS.find((x) => x.id === activeLessonId) || LESSONS[0],
         [activeLessonId]
     );
 
-    // 判断当前课时是否有播放权限
+    // reset imgError when lesson changes
+    useEffect(() => { setImgError(false); }, [activeLessonId]);
+
     const canPlayActive = useMemo(() => {
         if (isOwned) return true;
         return purchases.some((p) => {
@@ -362,7 +367,6 @@ export default function WingChunPage({
         });
     }, [isOwned, activeLesson, purchases]);
 
-    // 请求 S3 presigned URL
     const fetchSignedUrl = async (s3Key) => {
         setLoading(true);
         setError("");
@@ -394,7 +398,6 @@ export default function WingChunPage({
         }
     };
 
-    // 切换课时
     function handleSelectLesson(lesson) {
         const hasAccess =
             isOwned ||
@@ -414,7 +417,6 @@ export default function WingChunPage({
             return;
         }
         setActiveLessonId(lesson.id);
-        // scroll to video on mobile
         setTimeout(() => {
             const el = document.getElementById("wc-video-player");
             if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -446,11 +448,35 @@ export default function WingChunPage({
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [activeLessonId, activeLesson.s3Key, canPlayActive]);
 
+    const heroSrc = imgError ? activeLesson.fallbackImage : activeLesson.coverImage;
+
     return (
         <div className="min-h-screen bg-white text-slate-900">
             <main className="mx-auto max-w-4xl px-4 pb-20 pt-6 md:pt-10">
 
-                {/* ── COURSE HEADER ── */}
+                {/* ══════════════════════════════════════
+                    HERO IMAGE — active lesson cover
+                    key={activeLessonId} triggers fade-swap
+                ══════════════════════════════════════ */}
+                <motion.div
+                    key={`hero-${activeLessonId}`}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.4 }}
+                    className="mb-6 w-full overflow-hidden rounded-3xl border border-slate-200 shadow-sm"
+                >
+                    <img
+                        src={heroSrc}
+                        alt={activeLesson.titleEn}
+                        onError={() => setImgError(true)}
+                        className="w-full object-cover object-center"
+                        style={{ display: "block", aspectRatio: "16/9", maxHeight: "420px" }}
+                    />
+                </motion.div>
+
+                {/* ══════════════════════════════════════
+                    COURSE HEADER
+                ══════════════════════════════════════ */}
                 <motion.div
                     initial="hidden" animate="show" variants={fadeInUp}
                     transition={{ duration: 0.5 }}
@@ -466,23 +492,67 @@ export default function WingChunPage({
                             </span>
                         )}
                     </div>
-                    <h1 className="text-2xl font-semibold leading-tight text-slate-900 md:text-3xl">
+                    <h1 className="text-2xl font-bold leading-tight text-slate-900 md:text-3xl">
                         Wing Chun Foundations
                     </h1>
-                    <p className="mt-1 text-base text-slate-500">咏春基础课</p>
-                    <div className="mt-3 flex flex-wrap items-center gap-3">
-                        <span className="text-xl font-bold text-slate-900">{COURSE.priceNow}</span>
+                    <p className="mt-1 text-sm text-slate-500">咏春基础课</p>
+
+                    {/* Price row — spaced properly on mobile */}
+                    <div className="mt-4 flex flex-wrap items-center gap-3">
+                        <span className="text-2xl font-bold text-slate-900">{COURSE.priceNow}</span>
                         <span className="text-sm text-slate-400 line-through">{COURSE.priceOld}</span>
-                        <span className="text-xs text-slate-500">· 2 lessons · lifetime access</span>
+                        <span className="rounded-full border border-amber-200 bg-amber-50 px-2.5 py-0.5 text-xs text-amber-700">
+                            2 lessons · lifetime access
+                        </span>
                     </div>
                 </motion.div>
 
-                {/* ── LESSON SELECTOR TABS ── */}
+                {/* ══════════════════════════════════════
+                    PURCHASE BUTTONS — above lesson selector
+                ══════════════════════════════════════ */}
                 <motion.div
                     initial="hidden" animate="show" variants={fadeInUp}
                     transition={{ duration: 0.5, delay: 0.05 }}
+                    className="mb-6 space-y-3"
+                >
+                    {isOwned ? (
+                        <div className="w-full rounded-2xl border border-emerald-300 bg-emerald-50 px-4 py-3 text-center text-sm font-semibold text-emerald-800">
+                            ✓ Full Course Unlocked · 全套课程已解锁
+                        </div>
+                    ) : (
+                        <>
+                            <button
+                                onClick={handleUnlockCourse}
+                                className="w-full rounded-2xl bg-amber-600 px-4 py-4 text-sm font-bold text-white hover:bg-amber-500 transition active:scale-[0.98]"
+                            >
+                                Unlock Full Course (Both Lessons) · {COURSE.priceNow}
+                            </button>
+                            <button
+                                onClick={handleBuyActiveVideo}
+                                className="w-full rounded-2xl border border-slate-300 bg-white px-4 py-3.5 text-sm font-semibold text-slate-900 hover:bg-slate-50 transition active:scale-[0.98]"
+                            >
+                                Buy Lesson {activeLesson.id} Only · NZD 10
+                            </button>
+                            {!isLoggedIn && (
+                                <p className="text-center text-xs text-amber-700 pt-1">
+                                    Please sign in to purchase and watch.
+                                </p>
+                            )}
+                        </>
+                    )}
+                </motion.div>
+
+                {/* ══════════════════════════════════════
+                    LESSON SELECTOR TABS
+                ══════════════════════════════════════ */}
+                <motion.div
+                    initial="hidden" animate="show" variants={fadeInUp}
+                    transition={{ duration: 0.5, delay: 0.1 }}
                     className="mb-5"
                 >
+                    <p className="text-[11px] uppercase tracking-widest text-slate-400 mb-2">
+                        Lessons
+                    </p>
                     <div className="grid grid-cols-2 gap-3">
                         {LESSONS.map((lesson) => {
                             const hasAccess =
@@ -497,7 +567,7 @@ export default function WingChunPage({
                                     key={lesson.id}
                                     onClick={() => handleSelectLesson(lesson)}
                                     className={[
-                                        "relative flex flex-col items-start gap-1 rounded-2xl border px-4 py-3 text-left transition-all",
+                                        "relative flex flex-col items-start gap-1.5 rounded-2xl border px-4 py-3.5 text-left transition-all",
                                         active
                                             ? "border-amber-400 bg-amber-50 shadow-sm"
                                             : "border-slate-200 bg-white hover:border-amber-200 hover:bg-amber-50/40",
@@ -507,23 +577,23 @@ export default function WingChunPage({
                                         <span className="absolute right-3 top-3 h-2 w-2 rounded-full bg-amber-500" />
                                     )}
                                     {!hasAccess && !active && (
-                                        <span className="absolute right-3 top-3 text-[11px] text-slate-400">🔒</span>
+                                        <span className="absolute right-3 top-3 text-[13px] text-slate-400">🔒</span>
                                     )}
-                                    <span className="text-[11px] uppercase tracking-wide text-slate-500">
+                                    <span className="text-[11px] uppercase tracking-wide text-slate-400">
                                         Lesson {lesson.id}
                                     </span>
-                                    <span className="text-sm font-semibold text-slate-900 leading-snug">
+                                    <span className="text-sm font-bold text-slate-900 leading-snug pr-4">
                                         {isZh ? lesson.titleZh : lesson.titleEn}
                                     </span>
                                     <span className="text-xs text-slate-500">
                                         {isZh ? lesson.tagZh : lesson.tagEn} · {lesson.duration}
                                     </span>
                                     {hasAccess ? (
-                                        <span className="mt-1 rounded-full border border-emerald-200 bg-emerald-50 px-2 py-0.5 text-[10px] font-medium text-emerald-700">
+                                        <span className="mt-0.5 rounded-full border border-emerald-200 bg-emerald-50 px-2 py-0.5 text-[10px] font-medium text-emerald-700">
                                             Unlocked
                                         </span>
                                     ) : (
-                                        <span className="mt-1 rounded-full border border-amber-200 bg-white px-2 py-0.5 text-[10px] text-amber-700">
+                                        <span className="mt-0.5 rounded-full border border-amber-200 bg-white px-2 py-0.5 text-[10px] text-amber-700">
                                             NZD 10 per lesson
                                         </span>
                                     )}
@@ -533,12 +603,14 @@ export default function WingChunPage({
                     </div>
                 </motion.div>
 
-                {/* ── VIDEO PLAYER ── */}
+                {/* ══════════════════════════════════════
+                    VIDEO PLAYER
+                ══════════════════════════════════════ */}
                 <motion.div
                     id="wc-video-player"
                     initial="hidden" animate="show" variants={fadeInUp}
-                    transition={{ duration: 0.5, delay: 0.1 }}
-                    className="mb-5"
+                    transition={{ duration: 0.5, delay: 0.15 }}
+                    className="mb-6"
                 >
                     <div className="overflow-hidden rounded-3xl border border-slate-200 bg-black">
                         {canPlayActive ? (
@@ -570,7 +642,7 @@ export default function WingChunPage({
                                         controls playsInline preload="metadata"
                                         crossOrigin="anonymous"
                                         className="w-full"
-                                        style={{ display: "block" }}
+                                        style={{ display: "block", aspectRatio: "16/9" }}
                                     >
                                         <source src={videoUrl} type="video/mp4" />
                                         Your browser does not support video.
@@ -584,23 +656,23 @@ export default function WingChunPage({
                             </div>
                         ) : (
                             <div className="flex aspect-video w-full items-center justify-center p-6 text-center text-white">
-                                <div className="max-w-sm">
-                                    <p className="text-3xl mb-2">🔒</p>
-                                    <p className="text-base font-semibold">Locked</p>
-                                    <p className="mt-2 text-sm text-white/70">
+                                <div className="max-w-sm space-y-3">
+                                    <p className="text-3xl">🔒</p>
+                                    <p className="text-base font-bold">Locked</p>
+                                    <p className="text-sm text-white/70">
                                         Purchase to unlock and watch.
                                     </p>
                                     {isLoggedIn ? (
                                         <button
                                             onClick={handleUnlockCourse}
-                                            className="mt-4 rounded-2xl bg-amber-500 px-5 py-2.5 text-sm font-semibold text-slate-900"
+                                            className="mt-2 rounded-2xl bg-amber-500 px-5 py-2.5 text-sm font-semibold text-slate-900 hover:bg-amber-400 transition"
                                         >
                                             Unlock Full Course {COURSE.priceNow}
                                         </button>
                                     ) : (
                                         <button
                                             onClick={() => onGoLogin?.()}
-                                            className="mt-4 rounded-2xl border border-white/30 bg-white/10 px-5 py-2.5 text-sm font-semibold text-white"
+                                            className="mt-2 rounded-2xl border border-white/30 bg-white/10 px-5 py-2.5 text-sm font-semibold text-white hover:bg-white/20 transition"
                                         >
                                             Sign in to purchase
                                         </button>
@@ -612,54 +684,32 @@ export default function WingChunPage({
 
                     {/* Now Playing bar */}
                     <div className="mt-3 rounded-2xl border border-slate-200 bg-white px-4 py-3">
-                        <p className="text-[11px] uppercase tracking-wide text-slate-400">Now Playing</p>
-                        <p className="mt-0.5 text-sm font-semibold text-slate-900">
+                        <p className="text-[10px] uppercase tracking-widest text-slate-400">Now Playing</p>
+                        <p className="mt-1 text-sm font-bold text-slate-900">
                             Lesson {activeLesson.id} · {activeLesson.titleEn}
                         </p>
-                        <p className="text-xs text-slate-500">{activeLesson.subtitleEn}</p>
+                        <p className="text-xs text-slate-500 mt-0.5">{activeLesson.subtitleEn}</p>
                     </div>
                 </motion.div>
 
-                {/* ── PURCHASE BUTTONS ── */}
+                {/* ══════════════════════════════════════
+                    LESSON DETAIL — syncs with active lesson
+                    key={activeLessonId} re-mounts on switch
+                ══════════════════════════════════════ */}
                 <motion.div
-                    initial="hidden" animate="show" variants={fadeInUp}
-                    transition={{ duration: 0.5, delay: 0.15 }}
-                    className="mb-8 space-y-3"
-                >
-                    {isOwned ? (
-                        <div className="w-full rounded-2xl border border-emerald-300 bg-emerald-50 px-4 py-3 text-center text-sm font-semibold text-emerald-800">
-                            ✓ Full Course Unlocked · 全套课程已解锁
-                        </div>
-                    ) : (
-                        <>
-                            <button
-                                onClick={handleUnlockCourse}
-                                className="w-full rounded-2xl bg-amber-600 px-4 py-3.5 text-sm font-semibold text-white hover:bg-amber-500 transition active:scale-[0.98]"
-                            >
-                                Unlock Full Course (Both Lessons) · {COURSE.priceNow}
-                            </button>
-                            <button
-                                onClick={handleBuyActiveVideo}
-                                className="w-full rounded-2xl border border-slate-300 bg-white px-4 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-50 transition active:scale-[0.98]"
-                            >
-                                Buy Lesson {activeLesson.id} Only · NZD 10
-                            </button>
-                            {!isLoggedIn && (
-                                <p className="text-center text-xs text-amber-700">
-                                    Please sign in to purchase and watch.
-                                </p>
-                            )}
-                        </>
-                    )}
-                </motion.div>
-
-                {/* ── LESSON DETAILED INTRO (switches with active lesson) ── */}
-                <motion.div
-                    key={activeLessonId}           // remount animation on lesson switch
+                    key={activeLessonId}
                     initial="hidden" animate="show" variants={fadeInUp}
                     transition={{ duration: 0.4 }}
                 >
-                    <LessonDetail lesson={activeLesson} isZh={isZh} />
+                    <div className="mb-4">
+                        <h2 className="text-base font-bold text-slate-900">
+                            Lesson {activeLesson.id} — Full Description
+                        </h2>
+                        <p className="text-xs text-slate-400 mt-0.5">
+                            Switch lessons above to see details for each
+                        </p>
+                    </div>
+                    <LessonDetail lesson={activeLesson} />
                 </motion.div>
 
             </main>

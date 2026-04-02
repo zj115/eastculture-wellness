@@ -1,401 +1,526 @@
 // src/pages/QimenPage.jsx
-// Tai Chi System Course 二级页面（4节课版）
-// App.jsx 传入 lang（zh/en）与 onBack（返回课程列表）
+// Tai Chi System Course — 7 Lessons (Wudang Sanfeng series)
+// Same structure as WingChunPage: lesson selector + hero image + video + full detail
+// App.jsx props: lang, currentUser, authLoading, isOwned, purchases, onPurchase, onGoLogin
 
 import { motion } from "framer-motion";
 import { useEffect, useMemo, useState } from "react";
 
 const fadeInUp = {
-    hidden: { opacity: 0, y: 28 },
+    hidden: { opacity: 0, y: 24 },
     show: { opacity: 1, y: 0 },
 };
 
 const API_BASE =
     import.meta?.env?.VITE_API_BASE || "https://eastculture-api.vercel.app";
 
-// ✅ 关键：你 S3 里文件夹叫 taichi/（不是 tai-chi/）
-const S3_PREFIX = "taichi/";
+// ─────────────────────────────────────────────
+// COURSE META
+// ─────────────────────────────────────────────
+const COURSE = {
+    titleEn: "Wudang Sanfeng Tai Chi",
+    titleZh: "武当三丰太极系列课",
+    priceNow: "NZD 49",
+    priceOld: "NZD 79",
+    sale: true,
+    lessonCount: 7,
+};
 
-// ✅ 图片放在 frontend/public/images/tai-chi/ 下面（Vite 会从 /images 读）
-const IMG_PREFIX = "/images/tai-chi/";
-
-// ✅ 每节课都带：标题 + 多段落 + 列表 + 亮点（切换课时自动换）
+// ─────────────────────────────────────────────
+// LESSON DATA
+// docx numbers are the course sequence numbers (1–7)
+// S3 keys from actual uploaded files
+// Images copied to /public/images/tai-chi/
+// ─────────────────────────────────────────────
 const LESSONS = [
     {
         id: 1,
-        titleZh: "五行养生功",
-        titleEn: "Five Elements Guiding Qigong",
-        image: `${IMG_PREFIX}lesson-01-five-element-wellness-qigong.png`,
-        duration: "10–20 min",
-        canPreview: true,
-        s3Key: `${S3_PREFIX}lesson-01-five-element-wellness-qigong.mp4`,
+        titleEn: "Bone-Invigorating Health Qigong",
+        titleZh: "活骨养生功",
+        subtitleEn: "11 Minutes | Unblock Joints, Relieve Stiffness, Ease Bone Pain, Strengthen Tendons and Bones",
+        duration: "~11 min",
+        s3Key: "taichi/lesson-07-huogu-yangsheng-gong.mp4",
+        coverImage: "/images/tai-chi/lesson-07-huogu-yangsheng.png",
+        fallbackImage: "/images/taiji-mountain.jpg",
 
-        introTitleZh: "本节课介绍",
-        introTitleEn: "Lesson Introduction",
+        intro: "Stop enduring joint pain! Don't rely on painkillers and massages that only treat the symptoms, not the root cause! Bone-Invigorating Health Qigong is taught personally by Master Liu Shigao, the 15th-generation authentic inheritor of the Wudang Sanfeng Sect. This 11-minute course is specially designed for stiff joints, cold and aching bone cavities, and sedentary strain. It unblocks stagnation deep in the joints, relieves pain in the shoulders, neck, lower back and knees, and restores flexibility to your joints.",
 
-        introZh: {
-            paragraphs: [
-                "这一节你可以理解成：一套“有方向”的养生功，不是随便拉伸活动一下就结束。",
-                "它用“五行对应五脏”的思路，把五个动物式（龟、龙、鹤、虎、蛇）串成一套系统练法：你练的每一个动作，都更像是在“对准”某个身体系统去调。",
-                "如果你平时压力大、睡不稳、容易累、气血不顺，或者你练过一些养生视频但总觉得乱，这套就很适合当你的“固定日常”。",
-                "练的时候不用追求用力大，也不需要大空间。你只要跟着节奏走：站稳→放松→呼吸顺→动作连贯，身体就会慢慢记住那种“稳、松、顺”的感觉。",
-            ],
-            bulletsTitle: "你可能正在遇到这些情况：",
-            bullets: [
-                "情绪容易烦躁，压力一大就睡不好、心很乱",
-                "总是疲惫，精力不够用，腰膝容易酸",
-                "消化一般，吃一点就胀，或胃口不稳定",
-                "一换季就容易不舒服，气短、没劲、容易感冒",
-                "网上视频看了一堆，但越练越乱，不知道先练什么",
-            ],
-            highlightTitle: "你练完通常会有这些感觉：",
-            highlight: [
-                "身体更“顺”，肩颈/胸口那种紧的感觉会松一点",
-                "呼吸更深更稳，脑子更安静，睡前练也很舒服",
-                "动作不难，但很“整体”，更容易坚持下去",
+        painPoints: [
+            "Office workers: Stiff and sore shoulders, neck and lower back, difficulty standing after sitting, limited range of motion when turning or bending",
+            "Middle-aged and elderly people with joint discomfort: Knee pain, joint cracking, difficulty climbing stairs, worsened symptoms on rainy days",
+            "People with minor sports injuries: Mild waist and knee strain, unable to do intense exercise, in need of gentle recovery",
+            "People with cold-damp constitution: Cold and tight joints, cold hands and feet, persistent cold pain deep in the bones year-round",
+        ],
+
+        instructor: {
+            name: "Master Liu Shigao",
+            title: "15th-Generation Authentic Inheritor of the Wudang Sanfeng Sect",
+            points: [
+                "Authentic Lineage: Disciple of Grandmaster Zhong Yunlong, the 14th-generation leader of the Wudang Sanfeng Sect",
+                "Professional Achievements: Double champion in international Tai Chi and Tai Chi Sword competitions",
+                "Precise Teaching: Trained systematically at the Wudang Zixiao Palace since childhood",
             ],
         },
 
-        introEn: {
-            paragraphs: [
-                "This lesson is a structured daily routine—not random stretching or isolated movements.",
-                "Based on the Five Elements and Five Zang-Organs framework, you’ll practise five animal-inspired forms (Turtle, Dragon, Crane, Tiger, Snake) in a connected sequence, so each movement feels purposeful and targeted.",
-                "If you feel tired, stressed, sleep lightly, or you’ve tried scattered videos but never built a stable foundation, this lesson gives you a clear path: stand well → relax → breathe naturally → move smoothly.",
-                "No large space or advanced flexibility is required. Keep it gentle, consistent, and your body will gradually absorb that “stable + relaxed + flowing” Tai Chi rhythm.",
-            ],
-            bulletsTitle: "This helps if you often feel:",
-            bullets: [
-                "Stressed or restless with light sleep",
-                "Low energy with soreness in the waist/knees",
-                "Digestive discomfort or bloating",
-                "Seasonal sensitivity, fatigue, breathlessness",
-                "Confused by scattered online videos without a system",
-            ],
-            highlightTitle: "After practice, many people notice:",
-            highlight: [
-                "More openness and smoothness in the body",
-                "Calmer breathing and a quieter mind",
-                "A routine that feels simple yet complete—and easy to stick with",
-            ],
-        },
+        benefits: [
+            { title: "Unblocks joints with Qi guidance", desc: "Qi penetrates bone cavities, dissolves cold-damp stagnation, and quickly eases sharp, cold pain in the shoulders, lower back and knees" },
+            { title: "Activates joints and eliminates stiffness", desc: "Stretches ligaments and joint capsules, improves mobility, ends \"cracking joints when turning\" and \"struggling to bend\"" },
+            { title: "Expels cold and dampness", desc: "Guides Yang Qi inward, removes deep cold-dampness from joints, reduces discomfort on rainy and cold days" },
+            { title: "Strengthens tendons and bones", desc: "Reinforces muscle and ligament support, reduces joint wear, prevents recurring strain" },
+            { title: "Time-saving and easy to stick to", desc: "11-minute short practice, no equipment needed, can be done at home or the office" },
+        ],
+
+        closingEn: "Stop enduring joint pain at a young age. Bone-Invigorating Health Qigong — 11 minutes to unblock, warm and strengthen your joints every day.",
     },
 
     {
         id: 2,
-        titleZh: "六字诀呼吸法",
-        titleEn: "Six Healing Sounds Breathing",
-        image: `${IMG_PREFIX}lesson-02-six-healing-sounds-breathing.png`,
-        duration: "10–20 min",
-        canPreview: true,
-        s3Key: `${S3_PREFIX}lesson-02-six-healing-sounds-breathing.mp4`,
+        titleEn: "Hunyuan Wuji Stance",
+        titleZh: "无极混元桩",
+        subtitleEn: "10 Minutes | Strengthen Kidney Qi, Secure Primordial Qi, Warm Waist and Knees, Boost Energy",
+        duration: "~10 min",
+        s3Key: "taichi/lesson-06-wuji-hunyuan-zhuang.mp4",
+        coverImage: "/images/tai-chi/lesson-06-hunyuan-zhuang.png",
+        fallbackImage: "/images/taiji-mountain.jpg",
 
-        introTitleZh: "本节课介绍",
-        introTitleEn: "Lesson Introduction",
+        intro: "Stop suffering from physical weakness, fatigue and sore waist and knees! Stop relying blindly on supplements that only make you weaker! Hunyuan Wuji Stance is taught personally by Master Liu Shigao, the 15th-generation authentic inheritor of the Wudang Sanfeng Sect. This 10-minute ancient standing practice is specially designed for those with insufficient kidney Qi, depleted primordial energy, cold hands and feet, and poor concentration. It gathers Qi and consolidates your foundation, replenishing your exhausted body from the root.",
 
-        introZh: {
-            paragraphs: [
-                "这一节超级适合“想快速恢复状态”的人：主打用呼吸 + 发声来调气。",
-                "你会练到六个音：嘘、呵、呼、思、吹、嘻。听起来像在念字，其实是配合口型、呼气长度、节奏，让身体慢慢从紧绷切回“放松模式”。",
-                "它的优点就是：动作很少、几乎不挑场地，办公室、家里、睡前都能做。你忙的时候，只做 10 分钟也很有用。",
-                "如果你经常脑子停不下来、睡不踏实、胸口闷、容易累，这节可以当你的“每日重启键”。",
-            ],
-            bulletsTitle: "适合你如果你：",
-            bullets: [
-                "压力大，情绪紧，晚上躺下脑子还在转",
-                "睡眠浅，半夜容易醒，醒了又很难睡回去",
-                "经常疲惫、气短、没精神，恢复很慢",
-                "消化容易不舒服，吃完感觉堵、胀、沉",
-                "想要一个随时随地能做的放松方法",
-            ],
-            highlightTitle: "这节课的特点：",
-            highlight: [
-                "不需要器材，不需要大空间，动作极简",
-                "特别适合：午休/睡前/练功前的“清理一下”",
-                "你会更清楚“呼气怎么放松”，而不是硬憋着",
+        painPoints: [
+            "People with insufficient kidney Qi: Sore, weak waist and knees, low energy",
+            "People with cold constitution: Cold hands and feet, cold lower abdomen, aversion to wind and cold",
+            "People with high stress and late nights: Fatigue, poor concentration, easy palpitations",
+            "People with insomnia and restless sleep: Difficulty falling asleep, light sleep, easy waking",
+            "People with weak immunity: Prone to colds and frequent minor illnesses",
+        ],
+
+        instructor: {
+            name: "Master Liu Shigao",
+            title: "15th-Generation Authentic Inheritor of the Wudang Sanfeng Sect",
+            points: [
+                "Authentic Lineage: Bestowed the Taoist name \"Shigao\" — core 15th-generation inheritor, decades of Wudang internal stance practice",
+                "Professional Achievements: Double champion in international Tai Chi and Tai Chi Sword competitions",
+                "Precise Teaching: Proficient in the essence of \"gathering Qi through standing and returning to origin\"",
             ],
         },
 
-        introEn: {
-            paragraphs: [
-                "This lesson is perfect when you want a quick reset—using breath + sound to regulate qi.",
-                "You’ll practise six syllables: Xu (嘘), He (呵), Hu (呼), Si (思), Chui (吹), Xi (嘻). The key is the mouth shape, breathing rhythm, and slow exhale—helping your body shift from tension into calm.",
-                "Minimal movement, no equipment, and easy to do anywhere—home, office, or before bed. Even 10 minutes can make a real difference on a busy day.",
-                "If you often feel mentally overactive, sleep lightly, or get fatigued easily, this is a practical daily tool.",
-            ],
-            bulletsTitle: "Helpful if you struggle with:",
-            bullets: [
-                "Stress and restlessness",
-                "Light sleep or waking up at night",
-                "Low energy and slow recovery",
-                "Digestive heaviness or bloating",
-                "Needing a quick calming practice",
-            ],
-            highlightTitle: "Why people love it:",
-            highlight: [
-                "Simple and beginner-friendly",
-                "Works well as a pre-sleep or break-time practice",
-                "Teaches you how to release tension through exhale",
-            ],
-        },
+        benefits: [
+            { title: "Strengthens kidneys and consolidates primordial Qi", desc: "Quickly gathers scattered vital energy, relieves soreness and fatigue" },
+            { title: "Warms Yang and dispels cold", desc: "Improves circulation in the lower body, warms hands, feet and abdomen from within" },
+            { title: "Calms the mind and stabilizes emotions", desc: "Relieves irritation, calms the heart, deepens sleep" },
+            { title: "Boosts energy and eliminates drowsiness", desc: "Keeps you alert and focused during the day" },
+            { title: "Zero-threshold and easy to stick to", desc: "10-minute standing practice, no space or equipment required, suitable for all ages" },
+        ],
+
+        closingEn: "Just 10 minutes a day to gradually recover your scattered vital energy. Hunyuan Wuji Stance — simple, deep, effective.",
     },
 
     {
         id: 3,
-        titleZh: "十二段锦",
-        titleEn: "Twelve-Section Brocade",
-        image: `${IMG_PREFIX}lesson-03-twelve-pieces-of-brocade.png`,
-        duration: "10–20 min",
-        canPreview: false,
-        s3Key: `${S3_PREFIX}lesson-03-twelve-pieces-of-brocade.mp4`,
+        titleEn: "Wudang Taoist Baduanjin",
+        titleZh: "武当道门八段锦",
+        subtitleEn: "17 Minutes | Strengthen Spleen and Stomach, Improve Digestion, Regulate Metabolism, Reduce Bloating",
+        duration: "~17 min",
+        s3Key: "taichi/lesson-05-wudang-daomen-baduanjin.mp4",
+        coverImage: "/images/tai-chi/lesson-05-baduanjin.png",
+        fallbackImage: "/images/taiji-mountain.jpg",
 
-        introTitleZh: "本节课介绍",
-        introTitleEn: "Lesson Introduction",
+        intro: "Stop suffering from weak spleen and stomach, indigestion, bloating and edema! Wudang Taoist Baduanjin is taught personally by Master Liu Shigao, the 15th-generation authentic inheritor of the Wudang Sanfeng Sect. This 17-minute ancient Daoyin practice specially regulates the spleen and stomach, enhances digestion, improves absorption and speeds up metabolism, solving the root problems of poor appetite, malabsorption, weight gain and weakness.",
 
-        introZh: {
-            paragraphs: [
-                "十二段锦属于“练完全身都舒服”的那种经典养生功：12 个动作覆盖经络、脊柱、肩颈、腰胯、腿部的整体打开。",
-                "如果你是久坐党、肩颈背紧、腰也硬，或者你一运动就容易觉得身体不顺，这节课特别适合当“每日全身保养”。",
-                "它的节奏不会很激烈，但练完通常会觉得更松、更暖、呼吸更顺，整个人像被“重新拉直”了一遍。",
-                "建议你把它当成固定套餐：比如每周 3–5 次，长期坚持效果更明显。",
-            ],
-            bulletsTitle: "你会明显受益如果你：",
-            bullets: [
-                "肩颈背紧，坐久就难受，转头都卡",
-                "腰背僵，弯腰费劲，站久也累",
-                "气血不畅，手脚容易凉，没精神",
-                "压力大、睡不稳，想要温和的规律练习",
-            ],
-            highlightTitle: "这节课的好处：",
-            highlight: [
-                "全身覆盖：不只是局部放松",
-                "动作清楚好跟练，越练越顺手",
-                "适合长期坚持，做成生活习惯",
+        painPoints: [
+            "People with weak spleen and stomach: Indigestion, bloating, poor appetite",
+            "People with intestinal disorders: Recurring constipation or loose stools, abdominal discomfort",
+            "People with bloating and edema: Slow metabolism, fat accumulation, heavy body",
+            "People with sallow complexion: Malnutrition, poor absorption, fatigue and laziness",
+            "Middle-aged and elderly health seekers: Weak physique, unable to do intense exercise, in need of gentle conditioning",
+        ],
+
+        instructor: {
+            name: "Master Liu Shigao",
+            title: "15th-Generation Authentic Inheritor of the Wudang Sanfeng Sect",
+            points: [
+                "Authentic Lineage: Holding the complete ancient Baduanjin Daoyin tradition passed down from Grandmaster Zhong Yunlong",
+                "Professional Achievements: International martial arts champion, proficient in internal organ regulation",
+                "Precise Teaching: Breaks down ancient Baduanjin into simple moves, no empty theories — only tangible effects",
             ],
         },
 
-        introEn: {
-            paragraphs: [
-                "Twelve-Section Brocade is a classic full-body wellness routine with 12 movements designed to open the body and support circulation.",
-                "It’s especially useful for modern life—long sitting, stiffness, low energy—and works well as a stable daily maintenance practice.",
-                "The pace is gentle, but many people feel warmer, looser, and more upright after practice, with smoother breathing and less tightness.",
-                "For best results, treat it like a weekly routine (3–5 times/week) rather than a one-off workout.",
-            ],
-            bulletsTitle: "Great for people who:",
-            bullets: [
-                "Feel stiff in neck/shoulders/back",
-                "Have tight hips/waist and limited mobility",
-                "Want better circulation and steady energy",
-                "Prefer a gentle, repeatable practice for stress relief",
-            ],
-            highlightTitle: "What you’ll get:",
-            highlight: [
-                "Whole-body mobility and opening",
-                "A warmer, looser body after practice",
-                "A sustainable routine you can stick with",
-            ],
-        },
+        benefits: [
+            { title: "Strengthens spleen and stomach", desc: "Improves digestion and absorption, relieves bloating, helps nutrients absorb effectively" },
+            { title: "Regulates intestines", desc: "Eases constipation and diarrhea, balances intestinal rhythm, stops recurring discomfort" },
+            { title: "Boosts metabolism", desc: "Reduces bloating and fat, improves circulation, reduces excess fat and edema" },
+            { title: "Replenishes Qi", desc: "Improves sallow complexion, restores rosy color and stronger energy" },
+            { title: "Gentle and safe for the whole family", desc: "Soft movements, suitable for beginners, the elderly and weak people" },
+        ],
+
+        closingEn: "17 minutes of authentic Wudang Baduanjin — feel your spleen and stomach improve with every practice.",
     },
 
     {
         id: 4,
-        titleZh: "太极十三式",
-        titleEn: "Tai Chi 13 Forms",
-        image: `${IMG_PREFIX}lesson-04-tai-chi-13-forms.png`,
-        duration: "10–20 min",
-        canPreview: false,
-        s3Key: `${S3_PREFIX}lesson-04-tai-chi-13-forms.mp4`,
+        titleEn: "Tai Chi for Heart Calming",
+        titleZh: "太极心神安定功",
+        subtitleEn: "11 Minutes | Calm the Mind, Improve Sleep, Stabilize Emotions, Relieve Anxiety",
+        duration: "~11 min",
+        s3Key: "taichi/lesson-03-wudang-sanfeng-taichi-18-forms.mp4",
+        coverImage: "/images/tai-chi/lesson-03-wudang-18forms.png",
+        fallbackImage: "/images/taiji-mountain.jpg",
 
-        introTitleZh: "本节课介绍",
-        introTitleEn: "Lesson Introduction",
+        intro: "Stop being destroyed by insomnia, palpitations, irritation and internal friction! Tai Chi for Heart Calming is taught personally by Master Liu Shigao, the 15th-generation authentic inheritor of the Wudang Sanfeng Sect. This 11-minute gentle Tai Chi set specially calms the mind, relieves stress, improves sleep and soothes emotions, helping you relax mentally and physically.",
 
-        introZh: {
-            paragraphs: [
-                "这一节是“系统入门太极”的关键：把 13 个基础动作先拆开讲清楚，再教你怎么把它们连成一整套。",
-                "很多人学太极卡住，不是因为笨，而是因为：动作多 + 转换难 + 没人讲重心。你看视频跟着比划，越练越不稳。",
-                "这节课会重点讲：重心怎么换、脚怎么落、腰怎么带手。你只要跟着练，慢慢就会从“乱动”变成“有控制的流动”。",
-                "每天 10 分钟也够用，特别适合没时间线下上课的人。",
-            ],
-            bulletsTitle: "很多人会卡在这些地方：",
-            bullets: [
-                "动作看着简单，但一连起来就乱、就忘",
-                "不知道重心怎么换，膝盖和腰容易顶着不舒服",
-                "练了很久还是像体操，没有太极那种“稳”和“松”",
-            ],
-            highlightTitle: "这节课会帮你解决：",
-            highlight: [
-                "先拆分再串联：学得清楚，不容易乱",
-                "重点讲重心与转换：更安全、更稳",
-                "形成可坚持的练法：每天 10 分钟也能进步",
+        painPoints: [
+            "People with insomnia: Difficulty falling asleep, light sleep, easy waking, tired after rest",
+            "Anxious and stressed people: Irritability, overthinking, mental tension",
+            "People with palpitations: Chest tightness, shortness of breath, easy nervousness",
+            "People with mental fatigue: Nerve weakness, poor concentration, brain fog",
+            "People with internal friction: Low mood, physical and mental exhaustion",
+        ],
+
+        instructor: {
+            name: "Master Liu Shigao",
+            title: "15th-Generation Authentic Inheritor of the Wudang Sanfeng Sect",
+            points: [
+                "Authentic Lineage: Proficient in Tai Chi static practice and heart-nourishing methods",
+                "Professional Achievements: International Tai Chi champion, steady and gentle movements",
+                "Practical Teaching: Specially designed for stressed, insomniac and anxious people",
             ],
         },
 
-        introEn: {
-            paragraphs: [
-                "This is the key lesson for learning Tai Chi in a systematic way: first we break down 13 core movements clearly, then we connect them into one flowing routine.",
-                "Many people struggle not because they’re bad at it, but because transitions and weight shifts are rarely explained. Without that, practice can feel unstable and confusing.",
-                "This lesson focuses on weight transfer, stepping, and how the waist guides the hands—so your movement becomes controlled, stable, and smooth over time.",
-                "Designed for busy schedules: practise around 10 minutes a day at home.",
-            ],
-            bulletsTitle: "Common struggles this addresses:",
-            bullets: [
-                "Moves feel easy alone but fall apart when connected",
-                "Unclear weight shift leads to knee/lower back discomfort",
-                "Practice looks like exercise but doesn’t feel ‘Tai Chi’ (stable + relaxed)",
-            ],
-            highlightTitle: "You’ll like this approach because:",
-            highlight: [
-                "Step-by-step breakdown + connection training",
-                "Clear emphasis on safer alignment and transitions",
-                "A practical routine you can keep daily",
+        benefits: [
+            { title: "Calms the heart and relieves anxiety", desc: "Releases mental pressure, stabilizes emotions" },
+            { title: "Improves insomnia and sleep quality", desc: "Faster onset, deeper sleep, more energy upon waking" },
+            { title: "Relieves palpitations and chest tightness", desc: "Balances breathing, eases discomfort" },
+            { title: "Relaxes the brain and reduces fatigue", desc: "Sharpens the mind, improves focus" },
+            { title: "Time-efficient and sustainable", desc: "11-minute practice, suitable for morning or night" },
+        ],
+
+        closingEn: "The heart governs the spirit. An unsettled heart leads to poor sleep and weak health. Practice daily — more peace with every session.",
+    },
+
+    {
+        id: 5,
+        titleEn: "Tai Chi for Soothing the Liver",
+        titleZh: "太极疏肝理气功",
+        subtitleEn: "11 Minutes | Release Liver Stagnation, Clear Liver Fire, Relieve Chest Tightness, Smooth Qi Flow",
+        duration: "~11 min",
+        s3Key: "taichi/lesson-02-wudang-sanfeng-taichi-13-forms.mp4",
+        coverImage: "/images/tai-chi/lesson-02-wudang-13forms.png",
+        fallbackImage: "/images/taiji-mountain.jpg",
+
+        intro: "Stop letting liver Qi stagnation, chest tightness, irritation and acne harm your body! Tai Chi for Soothing the Liver is taught personally by Master Liu Shigao, the 15th-generation authentic inheritor of the Wudang Sanfeng Sect. This 11-minute stretching Tai Chi set specially soothes the liver, regulates Qi, releases stagnation and clears liver fire, making your body free of blockage, tightness and irritation.",
+
+        painPoints: [
+            "People with liver Qi stagnation: Chest tightness, frequent sighing, rib pain",
+            "Irritable people: Bad temper, depression, strong mood swings",
+            "People with liver damage from late nights: Bitter mouth, acne, dry eyes",
+            "People with Qi stagnation: Dizziness, body tightness, blocked meridians",
+            "Women in need of regulation: Breast tenderness and mood swings before menstruation",
+        ],
+
+        instructor: {
+            name: "Master Liu Shigao",
+            title: "15th-Generation Authentic Inheritor of the Wudang Sanfeng Sect",
+            points: [
+                "Authentic Lineage: Proficient in meridian stretching and Qi regulation",
+                "Professional Achievements: International Tai Chi champion, open and smooth movements with clear Qi paths",
+                "Precise Teaching: Simple and easy to learn, specially designed for liver meridian blockage",
             ],
         },
+
+        benefits: [
+            { title: "Soothes the liver and regulates Qi", desc: "Eliminates chest tightness and sighing, relaxes the body" },
+            { title: "Clears liver fire", desc: "Relieves bitter mouth, dry eyes and irritation" },
+            { title: "Smooths Qi flow and unblocks meridians", desc: "Reduces body tightness and soreness" },
+            { title: "Calms emotions", desc: "Less anger, less internal friction, more ease" },
+            { title: "Simple and efficient", desc: "11-minute stretching, usable at work or home" },
+        ],
+
+        closingEn: "The liver governs free flow of Qi. Once unblocked, the whole body flows. Soothe the liver — feel the difference every day.",
+    },
+
+    {
+        id: 6,
+        titleEn: "Tai Chi for Nourishing the Lungs",
+        titleZh: "太极养肺功",
+        subtitleEn: "28 Minutes | Moisten Lung Qi, Boost Immunity, Relieve Coughing, Soothe Throat and Nose",
+        duration: "~28 min",
+        s3Key: "taichi/lesson-01-wudang-sanfeng-taichi-28-forms.mp4",
+        coverImage: "/images/tai-chi/lesson-01-wudang-28forms.png",
+        fallbackImage: "/images/taiji-mountain.jpg",
+
+        intro: "Stop catching colds every season and feeling uncomfortable in the wind! Tai Chi for Nourishing the Lungs is taught personally by Master Liu Shigao, the 15th-generation authentic inheritor of the Wudang Sanfeng Sect. This 28-minute breath-coordinated Tai Chi set specially moistens the lungs, strengthens lung Qi, improves immunity and relieves dry throat, making you full of energy with stronger defense.",
+
+        painPoints: [
+            "People with weak lung Qi: Prone to colds, low immunity, weak health",
+            "People with throat discomfort: Dry throat, easy coughing, phlegm discomfort",
+            "People with shallow breathing: Shortness of breath, weak voice, chest tightness",
+            "Public speakers and voice users: Teachers, streamers with chronic throat fatigue",
+            "People in dry environments: Nasal dryness, skin dryness, sensitive lungs",
+        ],
+
+        instructor: {
+            name: "Master Liu Shigao",
+            title: "15th-Generation Authentic Inheritor of the Wudang Sanfeng Sect",
+            points: [
+                "Authentic Lineage: Direct inheritor, proficient in breath Daoyin and lung regulation",
+                "Professional Achievements: International Tai Chi champion, expert in guiding Qi with form",
+                "Practical Teaching: Movements matched with breathing, easy to learn, obvious long-term effects",
+            ],
+        },
+
+        benefits: [
+            { title: "Moistens lungs and boosts lung function", desc: "Deepens breathing, relieves shortness of breath" },
+            { title: "Enhances immunity", desc: "Reduces seasonal colds, strengthens external defense" },
+            { title: "Relieves dry throat and coughing", desc: "Moistens nose and throat, reduces irritation" },
+            { title: "Replenishes Qi and improves complexion", desc: "Boosts energy, strengthens voice" },
+            { title: "Gentle health care", desc: "Suitable for the weak, elderly and beginners" },
+        ],
+
+        closingEn: "The lungs govern Qi of the whole body. Strong lung Qi means a strong body. Practice daily — breathe deeper, live better.",
+    },
+
+    {
+        id: 7,
+        titleEn: "Tai Chi for Qi and Blood Regulation",
+        titleZh: "太极调气活血功",
+        subtitleEn: "30 Minutes | Balance Qi and Blood, Nourish Five Organs, Unblock the Whole Body, Strengthen the Foundation",
+        duration: "~30 min",
+        s3Key: "taichi/lesson-04-wudang-sanfeng-taichi-108-forms.mp4",
+        coverImage: "/images/tai-chi/lesson-04-wudang-108forms.png",
+        fallbackImage: "/images/taiji-mountain.jpg",
+
+        intro: "Stop suffering from Qi and blood deficiency, organ imbalance and overall sub-health! Tai Chi for Qi and Blood Regulation is taught personally by Master Liu Shigao, the 15th-generation authentic inheritor of the Wudang Sanfeng Sect. This 30-minute complete Tai Chi set balances Qi and blood, nourishes the heart, liver, spleen, lungs and kidneys, unblocks meridians, providing full-body conditioning in one practice.",
+
+        painPoints: [
+            "People with Qi and blood deficiency: Sallow complexion, dizziness, fatigue, numb hands and feet",
+            "People with organ disorders: Combined heart, liver, spleen, lung and kidney weakness",
+            "People with full-body sub-health: Aches, fatigue, poor sleep, bad complexion",
+            "Middle-aged and elderly health seekers: Declining health, in need of comprehensive anti-aging care",
+            "Systematic health lovers: Want one complete routine instead of mixed fragments",
+        ],
+
+        instructor: {
+            name: "Master Liu Shigao",
+            title: "15th-Generation Authentic Inheritor of the Wudang Sanfeng Sect",
+            points: [
+                "Authentic Lineage: Holding the complete Wudang Tai Chi system, proficient in Qi, blood and organ regulation",
+                "Professional Achievements: International Tai Chi champion, integrating heart, liver, spleen, lung and kidney nourishment",
+                "Systematic Teaching: Step-by-step, full-body coverage in one complete set",
+            ],
+        },
+
+        benefits: [
+            { title: "Balances full-body Qi and blood", desc: "Improves pale complexion, dizziness and fatigue" },
+            { title: "Nourishes five internal organs", desc: "Synchronously balances heart, liver, spleen, lungs and kidneys" },
+            { title: "Unblocks full-body meridians", desc: "Relieves soreness, stiffness and stagnation" },
+            { title: "Strengthens foundation and immunity", desc: "Slows aging, boosts energy" },
+            { title: "All-in-one full-body practice", desc: "One set completes full-body conditioning without switching routines" },
+        ],
+
+        closingEn: "Imbalanced Qi and blood lead to disordered organs. This comprehensive practice regulates both — nourishing all at once, leaving you fully open after every session.",
     },
 ];
 
-function IntroBlock({ isZh, lesson }) {
-    const data = isZh ? lesson.introZh : lesson.introEn;
+// ─────────────────────────────────────────────
+// SUB-COMPONENTS (same pattern as WingChunPage)
+// ─────────────────────────────────────────────
 
+function SectionTitle({ children }) {
     return (
-        <div className="rounded-3xl border border-slate-200 bg-white p-5">
-            <p className="text-xs text-slate-500">{isZh ? lesson.introTitleZh : lesson.introTitleEn}</p>
+        <h3 className="text-sm font-bold uppercase tracking-wide text-slate-500 mb-3">
+            {children}
+        </h3>
+    );
+}
 
-            <div className="mt-3 space-y-3 text-sm leading-6 text-slate-700">
-                {data?.paragraphs?.map((p, idx) => (
-                    <p key={idx}>{p}</p>
-                ))}
-            </div>
+function PainPointsList({ items }) {
+    return (
+        <ul className="space-y-2.5">
+            {items.map((item, i) => (
+                <li key={i} className="flex gap-3 text-sm text-slate-700 leading-snug">
+                    <span className="mt-0.5 shrink-0 text-amber-500 font-bold text-base leading-none">✕</span>
+                    <span>{item}</span>
+                </li>
+            ))}
+        </ul>
+    );
+}
 
-            {data?.bulletsTitle && (
-                <div className="mt-5">
-                    <p className="text-sm font-semibold text-slate-900">{data.bulletsTitle}</p>
-                    <ul className="mt-2 space-y-2 text-sm text-slate-700">
-                        {data?.bullets?.map((b, idx) => (
-                            <li key={idx} className="flex gap-2">
-                                <span className="mt-[2px] text-slate-500">•</span>
-                                <span>{b}</span>
-                            </li>
-                        ))}
-                    </ul>
+function BenefitsList({ items }) {
+    return (
+        <div className="grid gap-3 sm:grid-cols-2">
+            {items.map((b, i) => (
+                <div key={i} className="rounded-2xl border border-slate-200 bg-white p-4 space-y-1.5">
+                    <p className="text-sm font-semibold text-slate-900 leading-snug">
+                        <span className="text-emerald-600 mr-1.5">✓</span>{b.title}
+                    </p>
+                    <p className="text-xs text-slate-500 leading-relaxed pl-5">{b.desc}</p>
                 </div>
-            )}
-
-            {data?.highlightTitle && (
-                <div className="mt-5 rounded-2xl border border-amber-200 bg-amber-50 p-4">
-                    <p className="text-sm font-semibold text-amber-700">{data.highlightTitle}</p>
-                    <ul className="mt-2 space-y-2 text-sm text-slate-900">
-                        {data?.highlight?.map((h, idx) => (
-                            <li key={idx} className="flex gap-2">
-                                <span className="mt-[2px] text-amber-700">✓</span>
-                                <span>{h}</span>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-            )}
+            ))}
         </div>
     );
 }
 
-export default function QimenPage({ lang, onBack, currentUser, authLoading = false, isOwned: isOwnedProp, purchases = [], onPurchase, onGoLogin }) {
-    const isZh = lang === "zh";
+function InstructorCard({ instructor }) {
+    return (
+        <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 space-y-2">
+            <div>
+                <p className="text-sm font-bold text-slate-900">{instructor.name}</p>
+                <p className="text-xs text-amber-700 mt-0.5">{instructor.title}</p>
+            </div>
+            <ul className="space-y-1.5">
+                {instructor.points.map((pt, i) => (
+                    <li key={i} className="flex gap-2 text-xs text-slate-600 leading-relaxed">
+                        <span className="shrink-0 text-slate-400 mt-0.5">•</span>
+                        <span>{pt}</span>
+                    </li>
+                ))}
+            </ul>
+        </div>
+    );
+}
 
+function LessonDetail({ lesson }) {
+    return (
+        <div className="space-y-5">
+            {/* Intro */}
+            <div className="rounded-3xl border border-slate-200 bg-white p-5 space-y-3">
+                <div>
+                    <h2 className="text-lg font-bold text-slate-900 leading-snug">{lesson.titleEn}</h2>
+                    <p className="text-sm text-amber-700 mt-1 font-medium">{lesson.subtitleEn}</p>
+                </div>
+                <p className="text-sm text-slate-700 leading-relaxed">{lesson.intro}</p>
+            </div>
+
+            {/* Pain Points */}
+            <div className="rounded-3xl border border-amber-200 bg-amber-50 p-5">
+                <SectionTitle>Who Is This For?</SectionTitle>
+                <PainPointsList items={lesson.painPoints} />
+            </div>
+
+            {/* Benefits */}
+            <div className="rounded-3xl border border-slate-200 bg-slate-50 p-5">
+                <SectionTitle>Core Benefits</SectionTitle>
+                <BenefitsList items={lesson.benefits} />
+            </div>
+
+            {/* Instructor */}
+            <div className="rounded-3xl border border-slate-200 bg-white p-5">
+                <SectionTitle>Instructor</SectionTitle>
+                <InstructorCard instructor={lesson.instructor} />
+            </div>
+
+            {/* Closing */}
+            <div className="rounded-3xl bg-slate-900 px-5 py-5 text-center">
+                <p className="text-sm font-medium text-white/90 leading-relaxed">{lesson.closingEn}</p>
+            </div>
+
+            {/* Disclaimer */}
+            <div className="rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-xs text-amber-900 leading-relaxed">
+                Disclaimer: This program is for wellness purposes only and is not medical advice. Please consult a qualified healthcare professional if you have any health concerns.
+            </div>
+        </div>
+    );
+}
+
+// ─────────────────────────────────────────────
+// MAIN PAGE
+// ─────────────────────────────────────────────
+export default function QimenPage({
+    lang,
+    currentUser,
+    authLoading = false,
+    isOwned: isOwnedProp,
+    purchases = [],
+    onPurchase,
+    onGoLogin,
+}) {
+    const isZh = lang === "zh";
     const isLoggedIn = !!currentUser;
     const isOwned = !!isOwnedProp;
 
-    // Check if a specific video was individually purchased
-    const now = new Date();
-    function hasVideoAccess(s3Key) {
-        if (isOwned) return true;
-        return purchases.some((p) => {
-            if (p.expires_at && new Date(p.expires_at) < now) return false;
-            return p.purchase_type === "video" && p.video_key === s3Key;
-        });
-    }
-
     const [activeLessonId, setActiveLessonId] = useState(1);
-
     const [videoUrl, setVideoUrl] = useState("");
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
-
-    const [qty, setQty] = useState(1);
+    const [imgError, setImgError] = useState(false);
 
     const activeLesson = useMemo(
         () => LESSONS.find((x) => x.id === activeLessonId) || LESSONS[0],
         [activeLessonId]
     );
 
-    const canPlayActive = useMemo(() => {
-        return hasVideoAccess(activeLesson.s3Key);
-    }, [isOwned, activeLesson, purchases]);
+    useEffect(() => { setImgError(false); }, [activeLessonId]);
+
+    function hasAccess(lesson) {
+        if (isOwned) return true;
+        return purchases.some((p) => {
+            if (p.expires_at && new Date(p.expires_at) < new Date()) return false;
+            return p.purchase_type === "video" && p.video_key === lesson.s3Key;
+        });
+    }
+
+    const canPlayActive = useMemo(() => hasAccess(activeLesson), [isOwned, activeLesson, purchases]);
 
     const fetchSignedUrl = async (s3Key) => {
         setLoading(true);
         setError("");
         setVideoUrl("");
-
         try {
             const token = localStorage.getItem("ec_token");
-            const res = await fetch(`${API_BASE}/api/video-url?key=${encodeURIComponent(s3Key)}`, {
-                cache: "no-store",
-                credentials: "include",
-                headers: token ? { "Authorization": `Bearer ${token}` } : {},
-            });
-
+            const res = await fetch(
+                `${API_BASE}/api/video-url?key=${encodeURIComponent(s3Key)}`,
+                {
+                    cache: "no-store",
+                    credentials: "include",
+                    headers: token ? { Authorization: `Bearer ${token}` } : {},
+                }
+            );
             const data = await res.json().catch(() => ({}));
-
             if (!res.ok) {
-                setError(data?.error || (isZh ? "获取视频链接失败" : "Failed to load video URL"));
+                setError(data?.error || "Failed to load video URL");
                 return;
             }
-
-            if (!data?.url || typeof data.url !== "string") {
-                setError(isZh ? "后端没有返回可用的 url" : "Backend returned no usable url");
+            if (!data?.url || typeof data.url !== "string" || !data.url.startsWith("https://")) {
+                setError("Unable to get a valid video link");
                 return;
             }
-
-            if (!data.url.startsWith("https://")) {
-                setError(isZh ? "视频链接不是 https，浏览器可能会拦截" : "URL is not https (may be blocked)");
-                return;
-            }
-
             setVideoUrl(data.url);
         } catch {
-            setError(isZh ? "网络错误：无法连接后端" : "Network error: cannot reach backend");
+            setError("Network error: cannot reach backend");
         } finally {
             setLoading(false);
         }
     };
 
     function handleSelectLesson(lesson) {
-        if (!hasVideoAccess(lesson.s3Key)) {
-            if (authLoading) return; // wait for session check
-            if (!isLoggedIn) {
-                onGoLogin?.();
-            } else {
-                // Trigger purchase for this specific lesson
-                const title = isZh ? lesson.titleZh : lesson.titleEn;
-                onPurchase?.("video", {
-                    courseId: "taichi",
-                    videoKey: lesson.s3Key,
-                    videoTitle: title,
-                });
-            }
+        if (!hasAccess(lesson)) {
+            if (authLoading) return;
+            if (!isLoggedIn) { onGoLogin?.(); return; }
+            onPurchase?.("video", {
+                courseId: "taichi",
+                videoKey: lesson.s3Key,
+                videoTitle: lesson.titleEn,
+            });
             return;
         }
         setActiveLessonId(lesson.id);
+        setTimeout(() => {
+            const el = document.getElementById("tc-video-player");
+            if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 50);
     }
 
     function handleUnlockCourse() {
+        if (!isLoggedIn) { onGoLogin?.(); return; }
         onPurchase?.("course", { courseId: "taichi" });
     }
 
-    function handleBuyVideo() {
-        const title = isZh ? activeLesson.titleZh : activeLesson.titleEn;
+    function handleBuyActiveVideo() {
+        if (!isLoggedIn) { onGoLogin?.(); return; }
         onPurchase?.("video", {
             courseId: "taichi",
             videoKey: activeLesson.s3Key,
-            videoTitle: title,
+            videoTitle: activeLesson.titleEn,
         });
     }
 
@@ -407,218 +532,245 @@ export default function QimenPage({ lang, onBack, currentUser, authLoading = fal
             return;
         }
         fetchSignedUrl(activeLesson.s3Key);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [activeLessonId, activeLesson.s3Key, canPlayActive]);
+
+    const heroSrc = imgError ? activeLesson.fallbackImage : activeLesson.coverImage;
 
     return (
         <div className="min-h-screen bg-white text-slate-900">
-            <div className="mx-auto max-w-6xl px-4 pb-16 pt-8 md:pt-12">
-                {/* 顶部栏 */}
-            <div className="mb-6 flex flex-wrap items-center justify-end gap-3">
-            </div>
+            <main className="mx-auto max-w-4xl px-4 pb-20 pt-6 md:pt-10">
 
-                <motion.section
-                    initial="hidden"
-                    animate="show"
-                    variants={fadeInUp}
-                    transition={{ duration: 0.6 }}
-                    className="grid gap-8 md:grid-cols-[1fr_360px]"
+                {/* ══ HERO IMAGE ══ */}
+                <motion.div
+                    key={`hero-${activeLessonId}`}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.4 }}
+                    className="mb-6 w-full overflow-hidden rounded-3xl border border-slate-200 shadow-sm"
                 >
-                    {/* ✅ 左侧主内容（手机：上；电脑：左） */}
-                    <div className="space-y-4">
-                        {/* 封面图 */}
-                        <div className="rounded-3xl border border-slate-200 bg-white overflow-hidden">
-                            <div className="relative aspect-[16/9]">
-                                <img
-                                    src={activeLesson.image}
-                                    alt={isZh ? activeLesson.titleZh : activeLesson.titleEn}
-                                    className="h-full w-full object-cover opacity-90"
-                                />
-                                <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(255,255,255,0.08),rgba(255,255,255,0.7))]" />
-                                <div className="absolute bottom-5 left-5 right-5">
-                                    <p className="text-xs text-slate-600">{isZh ? "正在学习" : "Now learning"}</p>
-                                    <p className="mt-1 text-xl font-semibold">
-                                        {isZh
-                                            ? `第 ${activeLesson.id} 课：${activeLesson.titleZh}`
-                                            : `Lesson ${activeLesson.id}: ${activeLesson.titleEn}`}
-                                    </p>
-                                    <p className="mt-1 text-sm text-slate-600">
-                                        {isZh ? activeLesson.titleEn : activeLesson.titleZh}
-                                    </p>
-                                </div>
-                            </div>
+                    <img
+                        src={heroSrc}
+                        alt={activeLesson.titleEn}
+                        onError={() => setImgError(true)}
+                        className="w-full object-cover object-center"
+                        style={{ display: "block", aspectRatio: "16/9", maxHeight: "420px" }}
+                    />
+                </motion.div>
+
+                {/* ══ COURSE HEADER ══ */}
+                <motion.div
+                    initial="hidden" animate="show" variants={fadeInUp}
+                    transition={{ duration: 0.5 }}
+                    className="mb-6"
+                >
+                    <div className="flex flex-wrap items-center gap-2 mb-2">
+                        <span className="text-[11px] uppercase tracking-widest text-slate-500">
+                            Video Course · 视频课程
+                        </span>
+                        {COURSE.sale && (
+                            <span className="rounded-full bg-slate-900 px-2.5 py-0.5 text-[11px] font-semibold text-white">
+                                Sale
+                            </span>
+                        )}
+                    </div>
+                    <h1 className="text-2xl font-bold leading-tight text-slate-900 md:text-3xl">
+                        {COURSE.titleEn}
+                    </h1>
+                    <p className="mt-1 text-sm text-slate-500">{COURSE.titleZh}</p>
+                    <div className="mt-4 flex flex-wrap items-center gap-3">
+                        <span className="text-2xl font-bold text-slate-900">{COURSE.priceNow}</span>
+                        <span className="text-sm text-slate-400 line-through">{COURSE.priceOld}</span>
+                        <span className="rounded-full border border-amber-200 bg-amber-50 px-2.5 py-0.5 text-xs text-amber-700">
+                            {COURSE.lessonCount} lessons · lifetime access
+                        </span>
+                    </div>
+                </motion.div>
+
+                {/* ══ PURCHASE BUTTONS ══ */}
+                <motion.div
+                    initial="hidden" animate="show" variants={fadeInUp}
+                    transition={{ duration: 0.5, delay: 0.05 }}
+                    className="mb-6 space-y-3"
+                >
+                    {isOwned ? (
+                        <div className="w-full rounded-2xl border border-emerald-300 bg-emerald-50 px-4 py-3 text-center text-sm font-semibold text-emerald-800">
+                            ✓ Full Course Unlocked · 全套课程已解锁
                         </div>
+                    ) : (
+                        <>
+                            <button
+                                onClick={handleUnlockCourse}
+                                className="w-full rounded-2xl bg-amber-600 px-4 py-4 text-sm font-bold text-white hover:bg-amber-500 transition active:scale-[0.98]"
+                            >
+                                Unlock Full Course (All {COURSE.lessonCount} Lessons) · {COURSE.priceNow}
+                            </button>
+                            <button
+                                onClick={handleBuyActiveVideo}
+                                className="w-full rounded-2xl border border-slate-300 bg-white px-4 py-3.5 text-sm font-semibold text-slate-900 hover:bg-slate-50 transition active:scale-[0.98]"
+                            >
+                                Buy Lesson {activeLesson.id} Only · NZD 10
+                            </button>
+                            {!isLoggedIn && (
+                                <p className="text-center text-xs text-amber-700 pt-1">
+                                    Please sign in to purchase and watch.
+                                </p>
+                            )}
+                        </>
+                    )}
+                </motion.div>
 
-                        {/* ✅ 本节课介绍（每节课不同文案，全放这里） */}
-                        <IntroBlock isZh={isZh} lesson={activeLesson} />
+                {/* ══ LESSON SELECTOR ══ */}
+                <motion.div
+                    initial="hidden" animate="show" variants={fadeInUp}
+                    transition={{ duration: 0.5, delay: 0.1 }}
+                    className="mb-5"
+                >
+                    <p className="text-[11px] uppercase tracking-widest text-slate-400 mb-2">Lessons</p>
+                    {/* 3 columns on desktop, 2 on mobile (7 lessons) */}
+                    <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4">
+                        {LESSONS.map((lesson) => {
+                            const unlocked = hasAccess(lesson);
+                            const active = lesson.id === activeLessonId;
+                            return (
+                                <button
+                                    key={lesson.id}
+                                    onClick={() => handleSelectLesson(lesson)}
+                                    className={[
+                                        "relative flex flex-col items-start gap-1 rounded-2xl border px-3 py-3 text-left transition-all",
+                                        active
+                                            ? "border-amber-400 bg-amber-50 shadow-sm"
+                                            : "border-slate-200 bg-white hover:border-amber-200 hover:bg-amber-50/40",
+                                    ].join(" ")}
+                                >
+                                    {active && (
+                                        <span className="absolute right-2 top-2 h-2 w-2 rounded-full bg-amber-500" />
+                                    )}
+                                    <span className="text-[10px] uppercase tracking-wide text-slate-400">
+                                        Lesson {lesson.id}
+                                    </span>
+                                    <span className="text-xs font-bold text-slate-900 leading-snug pr-3 line-clamp-2">
+                                        {lesson.titleEn}
+                                    </span>
+                                    <span className="text-[10px] text-slate-500">{lesson.duration}</span>
+                                    {unlocked ? (
+                                        <span className="mt-0.5 rounded-full border border-emerald-200 bg-emerald-50 px-2 py-0.5 text-[9px] font-medium text-emerald-700">
+                                            Unlocked
+                                        </span>
+                                    ) : (
+                                        <span className="mt-0.5 rounded-full border border-amber-200 bg-white px-2 py-0.5 text-[9px] text-amber-700">
+                                            🔒 NZD 10
+                                        </span>
+                                    )}
+                                </button>
+                            );
+                        })}
+                    </div>
+                </motion.div>
 
-                        {/* 视频播放器 */}
-                        <div className="rounded-3xl border border-slate-200 bg-slate-100 p-3">
-                            <div className="overflow-hidden rounded-2xl bg-white">
-                                {canPlayActive ? (
-                                    <div className="relative">
-                                        {loading && (
-                                            <div className="absolute inset-0 z-10 flex items-center justify-center bg-white/80">
-                                                <div className="rounded-2xl border border-slate-200 bg-white px-4 py-2 text-sm text-slate-700">
-                                                    {isZh ? "加载中..." : "Loading..."}
-                                                </div>
-                                            </div>
-                                        )}
-
-                                        {error && !loading && (
-                                            <div className="flex aspect-video items-center justify-center p-8 text-center">
-                                                <div className="max-w-md">
-                                                    <p className="text-lg font-semibold">{isZh ? "播放失败" : "Playback error"}</p>
-                                                    <p className="mt-2 text-sm text-slate-600">{error}</p>
-                                                    <button
-                                                        onClick={() => fetchSignedUrl(activeLesson.s3Key)}
-                                                        className="mt-4 rounded-2xl bg-amber-500 px-4 py-2 text-sm font-semibold text-black hover:bg-amber-400"
-                                                    >
-                                                        {isZh ? "重试" : "Retry"}
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        )}
-
-                                        {!error && !loading && videoUrl && (
-                                            <video
-                                                key={activeLesson.id}
-                                                controls
-                                                playsInline
-                                                preload="metadata"
-                                                crossOrigin="anonymous"
-                                                className="h-full w-full"
-                                            >
-                                                <source src={videoUrl} type="video/mp4" />
-                                                {isZh ? "你的浏览器不支持视频播放。" : "Your browser does not support the video tag."}
-                                            </video>
-                                        )}
-
-                                        {!error && !loading && !videoUrl && (
-                                            <div className="flex aspect-video items-center justify-center p-8 text-center">
-                                                <div className="max-w-md">
-                                                    <p className="text-lg font-semibold">{isZh ? "准备播放" : "Ready"}</p>
-                                                    <p className="mt-2 text-sm text-slate-600">
-                                                        {isZh ? "点击右侧课时开始播放。" : "Select a lesson on the right to start."}
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        )}
-                                    </div>
-                                ) : (
-                                    <div className="flex aspect-video items-center justify-center p-8 text-center">
-                                        <div className="max-w-md">
-                                            <p className="text-lg font-semibold">{isZh ? "内容已锁定" : "Locked"}</p>
-                                            <p className="mt-2 text-sm text-slate-600">
-                                                {isZh
-                                                    ? "购买后即可观看全部 4 节课程。"
-                                                    : "Purchase a lesson or the full course to start watching."}
-                                            </p>
+                {/* ══ VIDEO PLAYER ══ */}
+                <motion.div
+                    id="tc-video-player"
+                    initial="hidden" animate="show" variants={fadeInUp}
+                    transition={{ duration: 0.5, delay: 0.15 }}
+                    className="mb-6"
+                >
+                    <div className="overflow-hidden rounded-3xl border border-slate-200 bg-black">
+                        {canPlayActive ? (
+                            <div className="relative w-full">
+                                {loading && (
+                                    <div className="absolute inset-0 z-10 flex items-center justify-center bg-black/60">
+                                        <div className="rounded-2xl border border-white/10 bg-white/10 px-4 py-2 text-sm text-white">
+                                            Loading…
                                         </div>
                                     </div>
                                 )}
-                            </div>
-                        </div>
-
-                        <div className="rounded-2xl border border-amber-200/40 bg-amber-50 px-4 py-3 text-[11px] md:text-xs text-amber-700">
-                            {isZh
-                                ? "提醒：本课程不构成医疗建议。如有严重不适，请咨询专业医生。"
-                                : "Disclaimer: This program is for wellness purposes only and is not medical advice."}
-                        </div>
-                    </div>
-
-                    {/* ✅ 右侧目录（手机：会自然排到下方；电脑：右侧固定一栏） */}
-                    <aside className="space-y-3">
-                        {/* Purchase block */}
-                        {!isOwned && (
-                            <div className="rounded-2xl border border-slate-200 bg-white p-4 space-y-3">
-                                <div className="text-xs text-slate-500">{isZh ? "数量" : "Quantity"}</div>
-                                <div className="flex items-center gap-2">
-                                    <button
-                                        type="button"
-                                        className="h-10 w-10 rounded-xl border border-slate-200 bg-white text-slate-900 hover:bg-slate-50"
-                                        onClick={() => setQty((v) => Math.max(1, v - 1))}
-                                    >
-                                        −
-                                    </button>
-                                    <div className="h-10 min-w-[56px] rounded-xl border border-slate-200 bg-white px-3 flex items-center justify-center text-sm">
-                                        {qty}
+                                {error && !loading && (
+                                    <div className="flex aspect-video w-full items-center justify-center p-6 text-center text-white">
+                                        <div>
+                                            <p className="text-base font-semibold">Playback error</p>
+                                            <p className="mt-2 text-sm text-white/70">{error}</p>
+                                            <button
+                                                onClick={() => fetchSignedUrl(activeLesson.s3Key)}
+                                                className="mt-4 rounded-2xl bg-amber-500 px-4 py-2 text-sm font-semibold text-slate-900"
+                                            >
+                                                Retry
+                                            </button>
+                                        </div>
                                     </div>
-                                    <button
-                                        type="button"
-                                        className="h-10 w-10 rounded-xl border border-slate-200 bg-white text-slate-900 hover:bg-slate-50"
-                                        onClick={() => setQty((v) => v + 1)}
-                                    >
-                                        +
-                                    </button>
-                                </div>
-                                <button
-                                    type="button"
-                                    onClick={handleBuyVideo}
-                                    className="w-full rounded-2xl border border-slate-300 bg-white px-4 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-50 transition"
-                                >
-                                    {isZh ? `购买本课时 NZD 10` : `Buy This Lesson NZD 10`}
-                                </button>
-                                {!isLoggedIn && (
-                                    <p className="text-xs text-amber-700">
-                                        {isZh ? "请先登录后购买并观看课程。" : "Please sign in to purchase and watch."}
-                                    </p>
                                 )}
+                                {!error && !loading && videoUrl && (
+                                    <video
+                                        key={activeLesson.id}
+                                        controls playsInline preload="metadata"
+                                        crossOrigin="anonymous"
+                                        className="w-full"
+                                        style={{ display: "block", aspectRatio: "16/9" }}
+                                    >
+                                        <source src={videoUrl} type="video/mp4" />
+                                        Your browser does not support video.
+                                    </video>
+                                )}
+                                {!error && !loading && !videoUrl && (
+                                    <div className="flex aspect-video w-full items-center justify-center p-6 text-center text-white">
+                                        <p className="text-sm text-white/70">Select a lesson above to play.</p>
+                                    </div>
+                                )}
+                            </div>
+                        ) : (
+                            <div className="flex aspect-video w-full items-center justify-center p-6 text-center text-white">
+                                <div className="max-w-sm space-y-3">
+                                    <p className="text-3xl">🔒</p>
+                                    <p className="text-base font-bold">Locked</p>
+                                    <p className="text-sm text-white/70">Purchase to unlock and watch.</p>
+                                    {isLoggedIn ? (
+                                        <button
+                                            onClick={handleUnlockCourse}
+                                            className="mt-2 rounded-2xl bg-amber-500 px-5 py-2.5 text-sm font-semibold text-slate-900 hover:bg-amber-400 transition"
+                                        >
+                                            Unlock Full Course {COURSE.priceNow}
+                                        </button>
+                                    ) : (
+                                        <button
+                                            onClick={() => onGoLogin?.()}
+                                            className="mt-2 rounded-2xl border border-white/30 bg-white/10 px-5 py-2.5 text-sm font-semibold text-white hover:bg-white/20 transition"
+                                        >
+                                            Sign in to purchase
+                                        </button>
+                                    )}
+                                </div>
                             </div>
                         )}
+                    </div>
 
-                        <div className="flex items-end justify-between">
-                            <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-600">
-                                {isZh ? "课程目录" : "Lessons"}
-                            </h2>
-                            <p className="text-xs text-slate-500">
-                                {LESSONS.length} {isZh ? "节" : "total"}
-                            </p>
-                        </div>
+                    {/* Now Playing bar */}
+                    <div className="mt-3 rounded-2xl border border-slate-200 bg-white px-4 py-3">
+                        <p className="text-[10px] uppercase tracking-widest text-slate-400">Now Playing</p>
+                        <p className="mt-1 text-sm font-bold text-slate-900">
+                            Lesson {activeLesson.id} · {activeLesson.titleEn}
+                        </p>
+                        <p className="text-xs text-slate-500 mt-0.5">{activeLesson.subtitleEn}</p>
+                    </div>
+                </motion.div>
 
-                        <div className="space-y-2 overflow-auto pr-1 md:max-h-[720px]">
-                            {LESSONS.map((lesson) => {
-                                const locked = !hasVideoAccess(lesson.s3Key);
-                                const active = lesson.id === activeLessonId;
+                {/* ══ LESSON DETAIL — syncs with active lesson ══ */}
+                <motion.div
+                    key={activeLessonId}
+                    initial="hidden" animate="show" variants={fadeInUp}
+                    transition={{ duration: 0.4 }}
+                >
+                    <div className="mb-4">
+                        <h2 className="text-base font-bold text-slate-900">
+                            Lesson {activeLesson.id} — Full Description
+                        </h2>
+                        <p className="text-xs text-slate-400 mt-0.5">
+                            Switch lessons above to see details for each
+                        </p>
+                    </div>
+                    <LessonDetail lesson={activeLesson} />
+                </motion.div>
 
-                                return (
-                                    <button
-                                        key={lesson.id}
-                                        onClick={() => handleSelectLesson(lesson)}
-                                        className={[
-                                            "flex w-full items-center justify-between gap-3 rounded-2xl border px-3 py-3 text-left transition",
-                                            active
-                                                ? "border-amber-300/60 bg-amber-50"
-                                                : "border-slate-200 bg-white hover:bg-slate-100",
-                                            locked ? "opacity-70" : "opacity-100",
-                                        ].join(" ")}
-                                    >
-                                        <div className="min-w-0">
-                                            <p className="truncate text-sm font-semibold text-slate-900">
-                                                {isZh ? `第 ${lesson.id} 课 · ${lesson.titleZh}` : `Lesson ${lesson.id} · ${lesson.titleEn}`}
-                                            </p>
-                                            <p className="truncate text-xs text-slate-500">{isZh ? lesson.titleEn : lesson.titleZh}</p>
-                                        </div>
-
-                                        <div className="flex shrink-0 items-center gap-2 text-xs">
-                                            {locked && (
-                                                <span className="rounded-full bg-amber-50 px-2 py-1 text-[11px] text-amber-700 border border-amber-200">
-                                                    🔒 {isZh ? "购买解锁" : "Buy NZD 10"}
-                                                </span>
-                                            )}
-                                            {!locked && (
-                                                <span className="rounded-full bg-white px-2 py-1 text-[11px] text-slate-700 border border-slate-200">
-                                                    {isZh ? "已解锁" : "Unlocked"}
-                                                </span>
-                                            )}
-                                            <span className="text-slate-500">{lesson.duration}</span>
-                                        </div>
-                                    </button>
-                                );
-                            })}
-                        </div>
-                    </aside>
-                </motion.section>
-            </div>
+            </main>
         </div>
     );
 }

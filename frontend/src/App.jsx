@@ -34,13 +34,6 @@ const content = {
         navShop: "Shop",
         navAbout: "About",
         navContact: "Contact",
-        forWhoTitle: "Who is this program for?",
-        forWhoItems: [
-            "Beginners who want a safe and structured way to start Tai Chi.",
-            "Busy people who need short, easy-to-follow lessons.",
-            "Students looking to improve balance, flexibility and calmness.",
-            "Practitioners of traditional Chinese arts who want deeper understanding.",
-        ],
         stylesTitle: "What you can learn here",
         stylesIntro:
             "Our curriculum is rooted in traditional Chinese culture, with clear explanations and modern teaching methods.",
@@ -147,9 +140,6 @@ const content = {
         languageLabel: "Language",
         langEn: "EN",
         langZh: "中文",
-        galleryTitle: "Practice & Culture Moments",
-        galleryText:
-            "Real practice, real spaces and real tools that support your body, mind and spirit.",
         login: "Login",
         logout: "Log out",
     },
@@ -166,13 +156,6 @@ const content = {
         navShop: "文化商城",
         navAbout: "关于我们",
         navContact: "联系我们",
-        forWhoTitle: "适合哪些人？",
-        forWhoItems: [
-            "零基础，希望安全、系统地开始太极练习的人。",
-            "工作繁忙，只能利用碎片时间练习的人。",
-            "想改善平衡感、柔韧性和情绪压力的学习者。",
-            "对中华传统文化有兴趣，希望深入理解的人。",
-        ],
         stylesTitle: "在这里你可以学到",
         stylesIntro:
             "课程以传统文化为根基，用清晰易懂的方式讲解，让你真正理解动作背后的原理。",
@@ -279,9 +262,6 @@ const content = {
         languageLabel: "语言",
         langEn: "EN",
         langZh: "中文",
-        galleryTitle: "练功与文化瞬间",
-        galleryText:
-            "真实的练功场景、香火与中药细节，让东方传统文化变得可以触摸、可以实践。",
         login: "登录",
         logout: "退出",
     },
@@ -424,15 +404,6 @@ function App() {
             alert("Network error. Please try again.");
         }
     }
-
-    const galleryImages = [
-        { src: "/images/martial-beach-group-training.jpg", alt: "Group practice at the beach" },
-        { src: "/images/temple-offering-table.jpg", alt: "Temple offering table" },
-        { src: "/images/tcm-acupuncture.jpg", alt: "TCM acupuncture practice" },
-        { src: "/images/temple-incense-burner.jpg", alt: "Temple incense burner" },
-        { src: "/images/tcm-herb-drawers.jpg", alt: "TCM herb drawers" },
-        { src: "/images/tcm-herb-spoon.jpg", alt: "Herbal spoon and spices" },
-    ];
 
     const goHome = () => setActivePage("home");
 

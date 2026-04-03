@@ -351,15 +351,15 @@ export default function FaceYogaPage({ lang, onBack, currentUser, authLoading = 
                             </div>
                             {DETAILS.sale && (
                                 <span className="rounded-full bg-slate-900 px-2.5 py-1 text-[11px] font-semibold text-white">
-                                    Sale
+                                    {isZh ? "优惠中" : "Sale"}
                                 </span>
                             )}
                         </div>
 
                         <h1 className="text-2xl font-semibold leading-tight md:text-3xl">
-                            {DETAILS.titleEn}
+                            {isZh ? DETAILS.titleZh : DETAILS.titleEn}
                         </h1>
-                        <p className="text-sm text-slate-600">{DETAILS.titleZh}</p>
+                        <p className="text-sm text-slate-600">{isZh ? DETAILS.titleEn : DETAILS.titleZh}</p>
 
                         <div className="flex items-center gap-3">
                             <span className="text-lg font-semibold text-slate-900">{DETAILS.priceNow}</span>
@@ -368,13 +368,12 @@ export default function FaceYogaPage({ lang, onBack, currentUser, authLoading = 
 
                         <div className="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2 text-xs text-slate-700">
                             <div>• {LESSONS.length} {isZh ? "节课" : "lessons"} · {isZh ? "终身访问" : "lifetime access"}</div>
-                            <div>• {DETAILS.introEn}</div>
-                            <div className="text-slate-600">• {DETAILS.introZh}</div>
+                            <div>• {isZh ? DETAILS.introZh : DETAILS.introEn}</div>
                         </div>
 
                         <div className="space-y-1 text-xs text-slate-600">
                             {DETAILS.highlights.map((it, idx) => (
-                                <div key={idx}>• {it.en} / {it.zh}</div>
+                                <div key={idx}>• {isZh ? it.zh : it.en}</div>
                             ))}
                         </div>
 
@@ -495,37 +494,31 @@ export default function FaceYogaPage({ lang, onBack, currentUser, authLoading = 
                             <p className="text-xs text-slate-500">{isZh ? "正在播放" : "Now playing"}</p>
                             <p className="mt-1 text-base font-semibold text-slate-900">
                                 {isZh ? `第 ${activeLesson.id} 课：` : `Lesson ${activeLesson.id}: `}
-                                {activeLesson.titleEn}
+                                {isZh ? activeLesson.titleZh : activeLesson.titleEn}
                             </p>
-                            <p className="mt-1 text-sm text-slate-600">{activeLesson.titleZh}</p>
+                            <p className="mt-1 text-sm text-slate-600">
+                                {isZh ? activeLesson.titleEn : activeLesson.titleZh}
+                            </p>
                         </div>
 
                         <div className="rounded-3xl border border-slate-200 bg-white p-6 space-y-3">
                             <h2 className="text-lg font-semibold text-slate-900">
-                                {DETAILS.basedOnTitleEn}
+                                {isZh ? DETAILS.basedOnTitleZh : DETAILS.basedOnTitleEn}
                             </h2>
-                            <p className="text-sm text-slate-600">{DETAILS.basedOnTitleZh}</p>
                             <ul className="list-disc pl-5 text-sm text-slate-700 space-y-2">
                                 {DETAILS.basedOn.map((it, idx) => (
-                                    <li key={idx}>
-                                        <div>{it.en}</div>
-                                        <div className="text-slate-600">{it.zh}</div>
-                                    </li>
+                                    <li key={idx}>{isZh ? it.zh : it.en}</li>
                                 ))}
                             </ul>
                         </div>
 
                         <div className="rounded-3xl border border-slate-200 bg-white p-6 space-y-3">
                             <h2 className="text-lg font-semibold text-slate-900">
-                                {DETAILS.suitableTitleEn}
+                                {isZh ? DETAILS.suitableTitleZh : DETAILS.suitableTitleEn}
                             </h2>
-                            <p className="text-sm text-slate-600">{DETAILS.suitableTitleZh}</p>
                             <ul className="list-disc pl-5 text-sm text-slate-700 space-y-2">
                                 {DETAILS.suitable.map((it, idx) => (
-                                    <li key={idx}>
-                                        <div>{it.en}</div>
-                                        <div className="text-slate-600">{it.zh}</div>
-                                    </li>
+                                    <li key={idx}>{isZh ? it.zh : it.en}</li>
                                 ))}
                             </ul>
                         </div>
@@ -534,11 +527,6 @@ export default function FaceYogaPage({ lang, onBack, currentUser, authLoading = 
                             {isZh
                                 ? "提醒：本课程不构成医疗建议。如有严重不适，请咨询专业医生。"
                                 : "Disclaimer: This program is for wellness purposes only and is not medical advice."}
-                            <div className="mt-1 text-amber-800/90">
-                                {isZh
-                                    ? "Disclaimer (EN): This program is for wellness purposes only and is not medical advice."
-                                    : "免责声明（中文）：本课程不构成医疗建议。如有严重不适，请咨询专业医生。"}
-                            </div>
                         </div>
                     </div>
 

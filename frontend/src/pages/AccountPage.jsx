@@ -44,6 +44,7 @@ function courseLabel(purchase, lang) {
         faceyoga: t ? "面部瑜伽与按摩" : "Face Yoga & Facial Massage",
         taichi: t ? "太极系统课" : "Tai Chi System Course",
         qigong: t ? "穴位疗程" : "Acupressure Therapy",
+        wingchun: t ? "咏春基础课" : "Wing Chun Foundations",
     };
     if (purchase.course_id && map[purchase.course_id]) return map[purchase.course_id];
     if (purchase.video_key) {

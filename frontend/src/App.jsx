@@ -176,13 +176,25 @@ function App() {
         setActivePage("home");
     }
 
+    const COURSE_VIDEO_PREFIXES = {
+        taichi: "taichi/",
+        qigong: "acupressure/",
+        wingchun: "wingchun/",
+        faceyoga: "face-yoga/",
+    };
+
     function hasCourseAccess(courseId) {
         if (!currentUser) return false;
         const now = new Date();
         return purchases.some((p) => {
             if (p.expires_at && new Date(p.expires_at) < now) return false;
-            if (p.purchase_type === "membership") return true;
+            // membership (any variant) grants all access
+            if (p.purchase_type === "membership" || p.purchase_type === "membership_monthly" || p.purchase_type === "membership_quarterly" || p.purchase_type === "membership_annual") return true;
+            // full course purchase
             if (p.purchase_type === "course" && p.course_id === courseId) return true;
+            // individual video purchase from this course also grants course page access
+            const prefix = COURSE_VIDEO_PREFIXES[courseId];
+            if (p.purchase_type === "video" && prefix && p.video_key && p.video_key.startsWith(prefix)) return true;
             return false;
         });
     }
@@ -247,43 +259,13 @@ function App() {
         pageContent = (
             <main className="pb-20">
                 {/* ── HERO ─────────────────────────────────────────────────── */}
-                <section className="relative w-full overflow-hidden" style={{ minHeight: "480px", height: "56vw", maxHeight: "680px" }}>
+                <section className="w-full">
                     <img
                         src="/images/hero-eastculture.jpg"
                         alt="Ancient Eastern mountain temple"
-                        className="absolute inset-0 w-full h-full object-cover object-center"
+                        className="w-full h-auto block"
+                        style={{ display: "block" }}
                     />
-                    {/* Dark gradient overlay left side */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/40 to-transparent" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-
-                    {/* Hero text */}
-                    <div className="absolute inset-0 flex items-center">
-                        <div className="px-6 md:px-12 lg:px-20 max-w-3xl">
-                            <h1 className="font-extrabold leading-tight tracking-tight drop-shadow-lg" style={{ fontSize: "clamp(1.6rem, 4vw, 2.8rem)" }}>
-                                <span className="text-white block">Tired of Pain, Stress &amp; Stagnation?</span>
-                                <span className="text-red-500 block mt-1">Unlock Ancient Eastern Wisdom</span>
-                            </h1>
-                            <p className="mt-4 text-white/90 font-medium drop-shadow" style={{ fontSize: "clamp(0.8rem, 1.5vw, 1.05rem)", lineHeight: 1.6 }}>
-                                End Chronic Aches, Anxiety &amp; Fatigue With 5,000-Year-Old Eastern Wisdom.<br />
-                                Simple, At-Home Practices for Instant Relief &amp; Lasting Balance.
-                            </p>
-                            <div className="mt-6 flex flex-wrap gap-3">
-                                <button
-                                    onClick={() => setActivePage("qimen")}
-                                    className="rounded-full bg-amber-500 hover:bg-amber-400 text-white font-semibold px-6 py-2.5 text-sm shadow-lg transition"
-                                >
-                                    Browse Courses
-                                </button>
-                                <button
-                                    onClick={() => setActivePage("qimen")}
-                                    className="rounded-full border border-white/70 bg-white/15 backdrop-blur text-white font-medium px-6 py-2.5 text-sm hover:bg-white/25 transition"
-                                >
-                                    Watch Intro Video
-                                </button>
-                            </div>
-                        </div>
-                    </div>
                 </section>
 
                 {/* ── WHAT YOU CAN LEARN ───────────────────────────────────── */}

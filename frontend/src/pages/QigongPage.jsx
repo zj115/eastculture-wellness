@@ -35,14 +35,14 @@ const LESSONS = [
         id: 1,
         titleEn: "Head & Face Discomfort Relief",
         titleZh: "头部穴位按摩",
-        subtitleEn: "23 Conditions • 3 Pressure Points Each • Drug-Free Relief at Home",
+        subtitleEn: "23 Conditions • 3 Simple Pressure Points • Fast Relief at Home",
         subtitleZh: "23种症状 · 每症3个穴位 · 居家无药缓解",
         duration: "~60 min",
         s3Key: "acupressure/lesson-01-head.mp4",
         coverImage: "/images/acupressure-lesson-01.png",
         fallbackImage: "/images/tai-chi/acupressure-cover.jpg",
 
-        intro: "23 Head & Face Issues • No Drugs • No Doctors • Relieve at Home in 3 Steps. Stop reaching for pills every time your head or face plays up. This lesson teaches 3 simple pressure points for each of 23 common head and face conditions — headaches, tinnitus, dry eyes, toothache, nasal congestion, stiff neck, and more. Every technique is 100% natural, requires no tools, and can be done at home in minutes. One course solves 23 head & face problems. Learn once, benefit for life.",
+        intro: "23 Head & Face Issues • No Drugs • No Doctors • Relieve at Home in 3 Steps\n\nPain points you're suffering from:\nOccipital headache (back of head pain), worse with bad pillow or stress\nTop of head pain & tightness from liver fire, stomach fire or heart issues\nMiddle ear discharge & pus, ear infection, pain, hearing loss\nTinnitus (ringing, buzzing, chirping in ears), worse at night\nUpper & lower toothache, radiating pain, multiple teeth hurting\nGum swelling, facial puffiness, severe oral discomfort\nExcessive tearing when wind blows, watery eyes\nDry eyes, itchy eyes, eye strain, blurred vision\nSore throat, dry throat, pain when swallowing\nPersistent hiccups, diaphragm spasms, embarrassing attacks\nStyes (blepharitis), swollen eyelids, painful bumps\nNasal congestion, stuffy nose, blocked sinuses\nStiff neck / crick neck (cannot turn, lower or raise head)\nEye bags, puffiness, saggy eyelids, tired-looking eyes\nScalp pain, tight fascia, cold & dampness discomfort\nFolliculitis on scalp, bumps, inflammation, itching\nEye bulging, pressure behind eyeballs, nerve discomfort\nFrontal headache, tightness like wearing a tight hat\nMigraine (temple pain), anger or cold-induced headaches\nFacial tension, nerve sensitivity, recurring discomforts",
         introZh: "不要每次头脸不舒服就伸手拿药。这节课针对26种常见头面部症状，每种症状教你3个简单穴位——头痛、耳鸣、眼干、牙痛、鼻塞、颈僵等等。由经验丰富的中医师讲授，所有手法100%纯天然，无需任何工具，在家几分钟即可完成。",
 
         conditions: [
@@ -100,12 +100,13 @@ const LESSONS = [
         ],
 
         highlights: [
-            { title: "100% Natural", desc: "No pills, no injections, no side effects" },
-            { title: "3 Fixed Points Per Condition", desc: "Easy to find, remember and use every time" },
-            { title: "Self-Treatment at Home", desc: "Do it yourself anytime, anywhere" },
-            { title: "Fast Relief", desc: "Headaches, toothaches, hiccups and congestion reduce quickly" },
-            { title: "Root-Cause Repair", desc: "Long-term improvement for tinnitus, dry eyes, scalp issues" },
-            { title: "Zero Experience Needed", desc: "No anatomy or meridian knowledge required" },
+            { title: "100% natural physical method", desc: "No pills, no injections, no side effects" },
+            { title: "3 fixed pressure points per condition", desc: "Easy to find, remember and use" },
+            { title: "Self-treatment at home", desc: "Do it yourself anytime, anywhere" },
+            { title: "Fast relief", desc: "Headaches, toothaches, hiccups, congestion reduce quickly" },
+            { title: "Root-cause repair", desc: "Long-term improvement for tinnitus, dry eyes, scalp issues" },
+            { title: "Zero experience needed", desc: "No anatomy or meridian knowledge required" },
+            { title: "For all ages", desc: "Adults, seniors, students, office workers" },
         ],
         highlightsZh: [
             { title: "100%纯天然", desc: "不吃药、不打针、零副作用" },
@@ -121,7 +122,7 @@ const LESSONS = [
             "Those with eye strain, dry eyes, blurred vision from screen use",
             "People suffering from toothache, gum swelling, oral discomfort",
             "Those with tinnitus, ear infections, ear discharge",
-            "People with stiff neck or limited neck movement",
+            "People with stiff neck, limited neck movement",
             "Those with nasal congestion, sore throat, recurring hiccups",
             "People with scalp pain, folliculitis, eye bags, saggy eyelids",
             "Anyone who wants safe, natural, drug-free relief at home",
@@ -145,14 +146,14 @@ const LESSONS = [
         id: 2,
         titleEn: "Women's Private Wellness",
         titleZh: "女性私密健康课",
-        subtitleEn: "7 Common Women's Issues • 3–5 Pressure Points • Natural Relief at Home",
+        subtitleEn: "7 Common Women's Issues • 3–5 Pressure Points for Natural Relief at Home",
         subtitleZh: "7种常见女性问题 · 每症3-5个穴位 · 居家自然调理",
         duration: "~40 min",
         s3Key: "acupressure/lesson-02-women.mp4",
         coverImage: "/images/acupressure-lesson-02.png",
         fallbackImage: "/images/tai-chi/acupressure-cover.jpg",
 
-        intro: "7 Most Common Women's Private Issues • No Drugs • No Embarrassment • Relieve at Home in 3 Steps. Seven of the most common private women's health issues — addressed naturally, privately, and effectively at home. No embarrassing hospital visits, no side effects from medication. Using 3–5 targeted pressure points per condition, this lesson covers breast hyperplasia, menstrual cramps, irregular periods, heavy bleeding, popliteal cysts, private area itching, and urine leakage. Safe for all ages including postpartum women. One course solves 7 common women's problems. Learn once, benefit for life — gentle, natural, and completely private.",
+        intro: "7 Most Common Women's Private Issues • No Drugs • No Embarrassment • Relieve at Home in 3 Steps\n\nPain points you're suffering from:\nBreast hyperplasia with lumps and severe pain during menstruation, worse when angry or tired\nPopliteal cyst (lump behind knee), pain when squatting or walking, difficulty bending legs\nPrivate area itching that comes and goes, unbearable and embarrassing, affecting work and life\nSevere menstrual cramps: stabbing abdominal pain, cold sweats, unable to get out of bed\nUrine leakage when coughing, laughing, or lifting; common after childbirth, causing social anxiety\nIrregular periods, delayed or missed for months, worrying about early ovarian aging\nHeavy menstrual bleeding (flooding), weakness and dizziness, uncontrollable flow\nExpensive hospital visits, long waiting times, and embarrassing private exams\nMedications with side effects, temporary relief from creams, no real solution\nLong-term physical and mental stress, affecting sleep, mood, and confidence",
         introZh: "七种最常见的女性私密健康问题——在家自然、私密、有效地解决。无需尴尬的就医，无需药物副作用。每种症状运用3-5个精准穴位，本课涵盖：乳腺增生、痛经、月经不调、月经过多、腘窝囊肿、私处瘙痒及漏尿。适合各年龄段女性，包括产后女性。",
 
         conditions: [
@@ -175,12 +176,13 @@ const LESSONS = [
         ],
 
         highlights: [
-            { title: "100% Natural", desc: "No drugs, no needles, no rinsing, no side effects" },
-            { title: "Fixed Pressure Points", desc: "3–5 key points per issue, easy to find, remember and use" },
-            { title: "Private & Safe", desc: "Do it yourself at home, no help needed, no embarrassment" },
-            { title: "Save Time & Money", desc: "No hospital visits, no expensive treatments, 5–10 minutes a day" },
-            { title: "Acute + Chronic Care", desc: "Fast relief for sudden symptoms, long-term prevention" },
-            { title: "Gentle & Effective", desc: "Safe for all ages including postpartum women" },
+            { title: "100% natural physical method", desc: "No drugs, no needles, no rinsing, no side effects" },
+            { title: "Fixed pressure points", desc: "3–5 key points per issue, easy to find, remember, and use" },
+            { title: "Private & safe", desc: "Do it yourself at home, no help needed, no embarrassment" },
+            { title: "Save time & money", desc: "No hospital visits, no expensive treatments, 5–10 minutes a day" },
+            { title: "Acute + chronic care", desc: "Fast relief for sudden symptoms, long-term prevention" },
+            { title: "Zero basics required", desc: "No anatomy or meridian knowledge needed" },
+            { title: "Gentle & effective", desc: "Safe for all ages, including postpartum women" },
         ],
         highlightsZh: [
             { title: "100%纯天然", desc: "不吃药、不打针、不冲洗、零副作用" },
@@ -199,6 +201,7 @@ const LESSONS = [
             "Postpartum women or those with urine leakage when coughing/laughing",
             "Women with irregular, delayed, or missed periods",
             "Women with heavy, prolonged menstrual bleeding",
+            "Women who value privacy and prefer safe, natural healing",
             "Anyone who wants to stop wasting time and money on private health issues",
         ],
         audienceZh: [
@@ -212,7 +215,7 @@ const LESSONS = [
             "希望停止在私密健康问题上浪费时间和金钱的所有人",
         ],
 
-        closingEn: "One course solves 7 common women's problems. Learn once, benefit for life — gentle, natural, and completely private.",
+        closingEn: "One course solves 7 common women's problems. Learn once, benefit for life – gentle, natural, and completely private.",
         closingZh: "一套课程解决7种常见女性问题。学一次，受益终生——温和、自然、完全私密。",
     },
 
@@ -220,14 +223,14 @@ const LESSONS = [
         id: 3,
         titleEn: "Hand & Foot Pain Relief",
         titleZh: "手脚穴位按摩",
-        subtitleEn: "28 Conditions • 3 Pressure Points Each • Drug-Free Relief at Home",
+        subtitleEn: "25 Common Hand & Foot Pains • 3 Simple Pressure Points • Fast Relief at Home",
         subtitleZh: "28种症状 · 每症3个穴位 · 居家无药缓解",
         duration: "~90 min",
         s3Key: "acupressure/lesson-03-hands-feet.mp4",
         coverImage: "/images/acupressure-lesson-03.png",
         fallbackImage: "/images/tai-chi/acupressure-cover.jpg",
 
-        intro: "25 Common Hand & Foot Pains • No Drugs • No Doctors • Relieve at Home in 3 Steps. From trigger finger and tennis elbow to plantar fasciitis and restless legs — this lesson covers 28 of the most common hand and foot problems using just 3 pressure points each. Whether you're dealing with work-related strain, sports injuries, or age-related stiffness, every technique is safe, natural and can be done without any tools or medical knowledge. One course solves 28 hand & foot problems. Learn once, benefit for life.",
+        intro: "25 Common Hand & Foot Pains • No Drugs • No Doctors • Relieve at Home in 3 Steps\n\nPain points you're suffering from:\nTrigger finger (middle finger locks, can't straighten or bend)\nGolfer's elbow (inner elbow pain when sweeping, cooking)\nHeel pain (worse with walking, can't stand long)\nChronic athlete's foot (itching, blisters, peeling, recurring)\nMorning hand stiffness, can't make a fist, weak grip\nPinky & ring finger numbness (wake up numb at night)\nSprained ankle (inversion & eversion, swelling, pain)\nTinea manuum (itchy blisters on palms, seasonal)\nTennis elbow (pain when twisting towels, sweeping)\nWeak walking (fatigue, low energy, weak legs)\nThumb tenosynovitis & mom's wrist (pain from holding baby, phone use)\nFingertip numbness (cervical-related, tingling)\nWrist pain when turning\nRestless legs (uncomfortable, can't sleep, no place to put legs)\nArm can't reach back (shoulder pain, limited movement)\nPlantar fasciitis (sharp pain first step in morning)\nNight arm pain (worse at night, radiating pain)\nForearm outer stabbing pain (severe, untouchable)\nArmpit cyst (lump, lymphatic congestion)\nPalm pain when gripping (throttle, grip pain)\nFront shin pain (pain when lifting foot, stepping on gas)\nArch pain (sore when standing or walking)\nBunion (big toe deformity, rubbing pain, walking discomfort)\nVarious hand & foot stiffness, numbness, soreness, weakness\nWasting time and money at clinics, medicines with side effects",
         introZh: "从扳机指、网球肘到足底筋膜炎、不宁腿综合征——这节课用每症仅3个穴位涵盖28种最常见的手脚问题。无论你面对的是职业劳损、运动损伤还是年龄相关的僵硬，所有手法安全自然，无需任何工具或医学知识即可操作。",
 
         conditions: [
@@ -292,12 +295,13 @@ const LESSONS = [
         ],
 
         highlights: [
-            { title: "100% Natural", desc: "No pills, no injections, no side effects" },
-            { title: "3 Points Per Problem", desc: "Fixed, easy to find, remember and use" },
-            { title: "Self-Treatment at Home", desc: "Do it yourself anytime, anywhere" },
-            { title: "Fast Pain Relief", desc: "Acute pain reduces immediately" },
-            { title: "Root-Cause Repair", desc: "Improve tenosynovitis, numbness, strain long-term" },
-            { title: "For the Whole Family", desc: "Workers, housewives, seniors, kids" },
+            { title: "100% natural physical method", desc: "No pills, no injections, no side effects" },
+            { title: "3 fixed pressure points for each problem", desc: "Easy to find, remember and use" },
+            { title: "Self-treatment at home", desc: "Do it yourself anytime, anywhere" },
+            { title: "Fast pain relief", desc: "Acute pain reduces immediately" },
+            { title: "Root-cause repair", desc: "Improve tenosynovitis, numbness, strain long-term" },
+            { title: "Zero basics needed", desc: "No meridian or anatomy knowledge required" },
+            { title: "For the whole family", desc: "Workers, housewives, seniors, kids" },
         ],
         highlightsZh: [
             { title: "100%纯天然", desc: "不吃药、不打针、零副作用" },
@@ -335,14 +339,14 @@ const LESSONS = [
         id: 4,
         titleEn: "Common Daily Discomforts Relief",
         titleZh: "日常常见问题穴位按摩",
-        subtitleEn: "16 Daily Aches & Pains • 3 Pressure Points Each • Drug-Free Relief at Home",
+        subtitleEn: "16 Common Daily Discomforts • 3 Simple Pressure Points • Fast Relief at Home",
         subtitleZh: "16种日常不适 · 每症3个穴位 · 居家无药缓解",
         duration: "~60 min",
         s3Key: "acupressure/lesson-04-daily-issues.mp4",
         coverImage: "/images/acupressure-lesson-04.png",
         fallbackImage: "/images/tai-chi/acupressure-cover.jpg",
 
-        intro: "16 Common Daily Aches & Pains • No Drugs • No Doctors • Relieve at Home in 3 Steps. Insomnia, anxiety, carsickness, bloating, palpitations, mouth ulcers, night sweats — these everyday problems quietly wear you down. This lesson addresses 16 common daily health issues using 3 natural pressure points each. Quick relief for acute symptoms, long-term improvement for chronic patterns. No clinic visits, no side effects, suitable for the whole family. One course solves 16 common daily health problems. Learn once, benefit for life.",
+        intro: "16 Common Daily Aches & Pains • No Drugs • No Doctors • Relieve at Home in 3 Steps\n\nPain points you're suffering from:\nSharp tongue tip pain that makes eating and talking uncomfortable\nSevere carsickness: nausea, vomiting, dizziness every time you travel\nVisceral ptosis, protruding lower belly, loose postpartum abdomen\nBloating, fullness, slow digestion, food sits in your stomach for hours\nChest tightness, pressure, anxiety, but no problems found in hospital checks\nUncontrolled mouth twitching, embarrassing facial spasms\nExtreme restlessness, anxiety, irritability, especially early in the morning\nNight sweats, waking up wet, poor sleep, body weakness\nSudden rapid heartbeat, heart palpitations, panic for no reason\nInsomnia: lying awake for hours, overactive nerves, poor sleep quality\nNo appetite, don't feel like eating, low energy, weight loss\nBurning pain when urinating, urgent and frequent trips to the bathroom\nSudden side stitch (rib pain), sharp pain when breathing or moving\nTeeth grinding at night, worn teeth, sore jaw, disturbing family\nRecurrent mouth ulcers, severe pain, slow healing\nThyroid nodules or cysts, neck tightness, discomfort\nFrequent nighttime urination, waking up 4–6 times a night, no good sleep\nSudden diarrhea, stomach cramps, loose bowels after eating bad food\nWasting time and money on clinics, medicines with side effects, repeated problems",
         introZh: "失眠、焦虑、晕车、腹胀、心悸、口腔溃疡、盗汗——这些日常问题悄悄地消耗着你的身体。这节课针对16种常见日常健康问题，每症运用3个天然穴位。急性症状快速缓解，慢性问题长期改善。无需就医，零副作用，全家适用。",
 
         conditions: [
@@ -387,12 +391,13 @@ const LESSONS = [
         ],
 
         highlights: [
-            { title: "100% Natural", desc: "No pills, no needles, no side effects" },
-            { title: "3 Points Per Issue", desc: "Easy to find, remember and use" },
-            { title: "Self-Treatment at Home", desc: "Do it yourself anytime, anywhere" },
-            { title: "Fast Results", desc: "Quick relief for acute symptoms, long-term improvement" },
-            { title: "Save Time & Money", desc: "No clinic visits, no expensive bills" },
-            { title: "For the Whole Family", desc: "Adults, seniors, daily common problems all covered" },
+            { title: "100% natural physical method", desc: "No pills, no needles, no side effects" },
+            { title: "3 fixed pressure points for each issue", desc: "Easy to find, remember and use" },
+            { title: "Self-treatment at home", desc: "Do it yourself anytime, anywhere" },
+            { title: "Fast results", desc: "Quick relief for acute symptoms, long-term improvement" },
+            { title: "Save time & money", desc: "No clinic visits, no expensive bills" },
+            { title: "Zero experience needed", desc: "No anatomy or meridian knowledge required" },
+            { title: "For the whole family", desc: "Adults, seniors, daily common problems all covered" },
         ],
         highlightsZh: [
             { title: "100%纯天然", desc: "不吃药、不打针、零副作用" },
@@ -430,14 +435,14 @@ const LESSONS = [
         id: 5,
         titleEn: "Neck & Shoulder Pain Relief",
         titleZh: "肩颈穴位按摩",
-        subtitleEn: "8 Neck & Shoulder Conditions • 3 Key Pressure Points • No Doctor Needed",
+        subtitleEn: "8 Common Neck & Shoulder Pains • 3 Key Pressure Points to Relieve Pain at Home",
         subtitleZh: "8种肩颈症状 · 每症3个关键穴位 · 无需就医",
         duration: "~45 min",
         s3Key: "acupressure/lesson-05-neck-shoulders.mp4",
         coverImage: "/images/acupressure-lesson-05.png",
         fallbackImage: "/images/tai-chi/acupressure-cover.jpg",
 
-        intro: "8 Common Neck & Shoulder Pains • No Doctor • No Medication • Relieve at Home in 3 Steps. Chronic shoulder blade pain, morning back stiffness, frozen shoulder, Dowager's hump, intercostal neuralgia — this lesson targets 8 of the most persistent neck and shoulder problems using just 3 key pressure points each. No needles, no drugs, no helper needed. Designed for office workers, drivers, and anyone whose pain keeps coming back. One course, solve 8 neck & shoulder problems. Learn once, benefit for life.",
+        intro: "8 Common Neck & Shoulder Pains • No Doctor • No Medication • Relieve at Home in 3 Steps\n\nPain points you're suffering from:\nChronic shoulder blade pain that hurts even when you're not moving\nMorning back stiffness that makes it hard to get out of bed\nShoulder pain and coldness that gets worse in air conditioning\nFrozen shoulder: can't lift your arm, can't reach back, sharp pulling pain\nNeck pain, stiff neck and Dowager's hump (fat pad on neck)\nIntercostal neuralgia: stabbing pain between ribs when breathing\nPain that lasts for months or years and keeps coming back\nExpensive clinic visits, massages and treatments that waste time and money\nMedication with side effects, patches that only mask pain temporarily\nPain that ruins sleep, work and daily life",
         introZh: "慢性肩胛骨痛、晨起背部僵硬、肩周炎、驼背富贵包、肋间神经痛——这节课针对8种最顽固的肩颈问题，每症仅用3个关键穴位。无需针灸、无需药物、无需他人帮助。专为上班族、司机及疼痛反复发作的人群设计。",
 
         conditions: [
@@ -462,12 +467,12 @@ const LESSONS = [
         ],
 
         highlights: [
-            { title: "All-Natural Physical Method", desc: "No needles, no drugs, no side effects" },
-            { title: "3 Key Pressure Points", desc: "Easy to find, easy to remember, fast relief" },
-            { title: "Self-Treatment at Home", desc: "Do it yourself, no helper needed" },
-            { title: "Save Time & Money", desc: "No clinic visits, no expensive bills" },
-            { title: "Root-Cause Relief", desc: "Treat front for back pain, target deep fascia" },
-            { title: "Zero Basics Needed", desc: "No anatomy knowledge required" },
+            { title: "All-natural physical method", desc: "No needles, no drugs, no side effects" },
+            { title: "3 key pressure points", desc: "Easy to find, easy to remember, fast relief" },
+            { title: "Self-treatment at home", desc: "Do it yourself, no helper needed" },
+            { title: "Save time & money", desc: "No clinic visits, no expensive bills" },
+            { title: "Root-cause relief", desc: "Treat front for back pain, target deep fascia" },
+            { title: "Zero basics needed", desc: "No anatomy knowledge required" },
         ],
         highlightsZh: [
             { title: "全天然物理疗法", desc: "不扎针、不吃药、零副作用" },
@@ -501,14 +506,14 @@ const LESSONS = [
         id: 6,
         titleEn: "Waist & Leg Pain Relief",
         titleZh: "腰腿穴位按摩",
-        subtitleEn: "22 Waist & Leg Conditions • 3 Pressure Points Each • No Surgery Needed",
+        subtitleEn: "18 Waist & Leg Pain Relief Course • 3 Pressure Points • Fast Relief at Home",
         subtitleZh: "22种腰腿症状 · 每症3个穴位 · 无需手术",
         duration: "~75 min",
         s3Key: "acupressure/lesson-06-waist-legs-description.mp4",
         coverImage: "/images/acupressure-lesson-06.png",
         fallbackImage: "/images/tai-chi/acupressure-cover.jpg",
 
-        intro: "18 Waist & Leg Pains • No Drugs • No Surgery • Relieve at Home in 3 Steps. Sciatica, knee pain, cold legs, calf cramps, tailbone pain, acute lumbar sprains, hemorrhoids — this lesson covers 22 waist and leg problems that affect daily movement and sleep. Every condition is addressed with 3 simple, fixed pressure points. No surgery, no drugs, no side effects. Suitable for seniors, office workers, and anyone who suffers from lower body pain. One course solves 22 waist & leg problems. Learn once, benefit for life.",
+        intro: "18 Waist & Leg Pains • No Drugs • No Surgery • Relieve at Home in 3 Steps\n\nPain points you're suffering from:\nCrawling sensation, numbness & tingling on outer lower leg\nChronically cold lower legs, poor circulation, cold to the touch\nSevere calf cramps at night, sudden muscle spasms, pain from cold\nNumbness & loss of feeling on outer thigh\nCold kneecaps, icy joint pain, stiffness\nCannot squat or bend knees, joint stiffness\nKnee pain going upstairs & downstairs\nSwollen knees with fluid buildup (effusion)\nPain in the back of knee (hamstring/popliteal area)\nSciatica: radiating pain from buttock down to leg\nTailbone (coccyx) pain, cannot sit long, sore when seated\nLower back pain when bending forward while sitting\nAcute lumbar sprain: locked back, cannot stand straight\nSacroiliac joint pain, pain walking & sleeping\nAching & tightness on back of thighs from prolonged sitting\nLower back pain triggered by sneezing or coughing\nWeak legs, fatigue, difficulty walking long distances\nAcute hemorrhoids: pain, burning, discomfort sitting & walking\nChronic waist & leg strain, stiffness, limited movement",
         introZh: "坐骨神经痛、膝盖痛、腿部发凉、小腿抽筋、尾骨痛、急性腰扭伤、痔疮——这节课涵盖22种影响日常活动和睡眠的腰腿问题。每种症状运用3个简单固定的穴位。无需手术、无需药物、零副作用。适合老年人、上班族及任何有下肢疼痛的人群。",
 
         conditions: [
@@ -561,12 +566,13 @@ const LESSONS = [
         ],
 
         highlights: [
-            { title: "100% Natural", desc: "No pills, injections, or side effects" },
-            { title: "3 Fixed Points Per Condition", desc: "Easy to find, remember & apply" },
-            { title: "Self-Treatment at Home", desc: "Do it yourself anytime, anywhere" },
-            { title: "Fast Pain Relief", desc: "Acute sprains, cramps & sharp pain reduce quickly" },
-            { title: "Root-Cause Repair", desc: "Long-term improvement for numbness, cold & stiffness" },
-            { title: "For All Ages", desc: "Seniors, office workers, manual workers, athletes" },
+            { title: "100% natural physical method", desc: "No pills, injections, or side effects" },
+            { title: "3 fixed pressure points per condition", desc: "Easy to find, remember & apply" },
+            { title: "Self-treatment at home", desc: "Do it yourself anytime, anywhere" },
+            { title: "Fast pain relief", desc: "Acute sprains, cramps & sharp pain reduce quickly" },
+            { title: "Root-cause repair", desc: "Long-term improvement for numbness, cold & stiffness" },
+            { title: "Zero experience needed", desc: "No anatomy or meridian knowledge required" },
+            { title: "For all ages", desc: "Seniors, office workers, manual workers, athletes" },
         ],
         highlightsZh: [
             { title: "100%纯天然", desc: "不吃药、不打针、零副作用" },
@@ -665,7 +671,7 @@ function LessonDetail({ lesson, isZh }) {
                         {isZh ? lesson.subtitleZh : lesson.subtitleEn}
                     </p>
                 </div>
-                <p className="text-sm text-slate-700 leading-relaxed">
+                <p className="text-sm text-slate-700 leading-relaxed whitespace-pre-line">
                     {isZh ? lesson.introZh : lesson.intro}
                 </p>
             </div>

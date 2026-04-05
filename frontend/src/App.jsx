@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 const API_BASE = import.meta?.env?.VITE_API_BASE || "https://eastculture-api.vercel.app";
 
 import FaceYogaPage from "./pages/FaceYogaPage";
-import QimenPage from "./pages/QimenPage"; // 现在作为太极二级页使用
+import QimenPage from "./pages/QimenPage";
 import QigongPage from "./pages/QigongPage";
 import WingChunPage from "./pages/WingChunPage";
 import TcmPage from "./pages/TcmPage";
@@ -20,291 +20,112 @@ import ContactPage from "./pages/ContactPage";
 import MyCoursesPage from "./pages/MyCoursesPage";
 import AccountPage from "./pages/AccountPage";
 
-const content = {
-    en: {
-        brand: "EastCulture",
-        subtitle: "Tai Chi & Traditional Arts Online Academy",
-        heroTitle: "Learn Tai Chi for Health, Balance and Inner Peace",
-        heroText:
-            "Inspired by traditional teaching methods, EastCulture brings you step-by-step Tai Chi and traditional Chinese arts courses you can follow at home, at your own pace.",
-        heroPrimary: "Browse Courses",
-        heroSecondary: "Watch Intro Video",
-        navCourses: "Courses",
-        navProgram: "Program",
-        navShop: "Shop",
-        navAbout: "About",
-        navContact: "Contact",
-        stylesTitle: "What you can learn here",
-        stylesIntro:
-            "Our curriculum is rooted in traditional Chinese culture, with clear explanations and modern teaching methods.",
-        styles: [
-            {
-                key: "qigong",
-                title: "Acupressure Therapy",
-                desc: "Simple, practical acupressure routines to release tension, support daily self-care, and restore calm.",
-            },
-            {
-                key: "baji",
-                title: "Tai Chi Practice",
-                desc: "Soft, flowing Tai Chi routines to nourish your joints, balance and inner calm.",
-            },
-            {
-                key: "wingchun",
-                title: "Wing Chun Foundations",
-                desc: "Centerline theory, structure, and partner drills explained step by step.",
-            },
-            {
-                key: "tcm",
-                title: "Traditional Chinese Medicine for Daily Life",
-                desc: "Meridian basics, body types, and practical lifestyle suggestions.",
-            },
-            {
-                key: "fengshui",
-                title: "Feng Shui & Space Harmony",
-                desc: "Understand directions, layout and simple adjustments for home and office.",
-            },
-            {
-                key: "faceyoga",
-                title: "Face Yoga & Facial Massage",
-                desc: "Gentle routines to lift, relax and refresh your facial muscles.",
-            },
-        ],
-        pathTitle: "A clear learning path",
-        pathSteps: [
-            {
-                title: "1. Start with the Foundations",
-                text: "Short beginner modules teach posture, breathing and safe movement. No previous experience needed.",
-            },
-            {
-                title: "2. Build a Weekly Practice",
-                text: "Follow guided routines 10–20 minutes per day, with clear video breakdowns and reminders.",
-            },
-            {
-                title: "3. Go Deeper with Series Courses",
-                text: "Enroll in full series on Tai Chi, Wing Chun, Qigong, Feng Shui and more.",
-            },
-            {
-                title: "4. Join Live Sessions (optional)",
-                text: "Members can join live online practice sessions and Q&A with instructors.",
-            },
-        ],
-        membershipTitle: "Choose your membership",
-        membershipSubtitle: "Unlock all courses with one simple plan.",
-        plans: [
-            {
-                name: "Monthly",
-                price: "NZD 30 / month",
-                desc: "Flexible month-to-month access.",
-                purchaseType: "membership_monthly",
-                items: [
-                    "Unlimited access to all video courses",
-                    "New lessons added monthly",
-                    "Watch on any device",
-                    "Cancel anytime",
-                ],
-                highlight: false,
-            },
-            {
-                name: "Quarterly",
-                price: "NZD 100 / 3 months",
-                desc: "Save NZD 10 vs monthly.",
-                purchaseType: "membership_quarterly",
-                items: [
-                    "Unlimited access to all video courses",
-                    "New lessons added monthly",
-                    "Watch on any device",
-                    "Best for consistent practice",
-                ],
-                highlight: true,
-            },
-            {
-                name: "Annual",
-                price: "NZD 168 / year",
-                desc: "Best value — save NZD 192 vs monthly.",
-                purchaseType: "membership_annual",
-                items: [
-                    "Unlimited access to all video courses",
-                    "New lessons added monthly",
-                    "Watch on any device",
-                    "Lowest price per month",
-                ],
-                highlight: false,
-            },
-        ],
-        shopTitle: "Culture shop",
-        shopText:
-            "Support your practice with carefully selected bracelets, Taoist items and traditional tools, shipped worldwide.",
-        shopButton: "Visit Shop",
-        footerText:
-            "All educational content is provided for wellness and cultural learning. It does not replace medical advice.",
-        languageLabel: "Language",
-        langEn: "EN",
-        langZh: "中文",
-        login: "Login",
-        logout: "Log out",
-    },
-    zh: {
-        brand: "EastCulture",
-        subtitle: "太极与东方传统文化线上学院",
-        heroTitle: "在家系统学习太极，提高健康、平衡与内心宁静",
-        heroText:
-            "EastCulture 结合传统师承与现代教学方式，让你在家也能跟着老师一步一步练太极、气功以及其他中华传统文化课程。",
-        heroPrimary: "查看全部课程",
-        heroSecondary: "观看介绍视频",
-        navCourses: "课程中心",
-        navProgram: "学习路径",
-        navShop: "文化商城",
-        navAbout: "关于我们",
-        navContact: "联系我们",
-        stylesTitle: "在这里你可以学到",
-        stylesIntro:
-            "课程以传统文化为根基，用清晰易懂的方式讲解，让你真正理解动作背后的原理。",
-        styles: [
-            {
-                key: "qigong",
-                title: "穴位疗程与自我调理",
-                desc: "用简单易学的穴位按压与放松流程，缓解紧张与疲劳，帮助日常自我调理。",
-            },
-            {
-                key: "baji",
-                title: "太极系统课",
-                desc: "学习太极基础，从站桩、步法到整套演练，循序渐进打好基础。",
-            },
-            {
-                key: "wingchun",
-                title: "咏春基础",
-                desc: "中线理论、结构与黐手训练，逐步分解讲解。",
-            },
-            {
-                key: "tcm",
-                title: "生活中的中医思维",
-                desc: "经络基础、体质类型与日常调养建议。",
-            },
-            {
-                key: "fengshui",
-                title: "家居风水与空间和谐",
-                desc: "方位、布局与简单调整思路，适合日常应用。",
-            },
-            {
-                key: "faceyoga",
-                title: "面部瑜伽与按摩",
-                desc: "温和的面部练习，帮助提升紧致、放松表情，恢复光泽。",
-            },
-        ],
-        pathTitle: "清晰的学习路径",
-        pathSteps: [
-            {
-                title: "1. 从基础开始",
-                text: "先学站姿、呼吸、安全动作要领，不需要任何经验。",
-            },
-            {
-                title: "2. 养成每周练习习惯",
-                text: "跟着 10–20 分钟的引导练习，逐步建立身体记忆。",
-            },
-            {
-                title: "3. 深入系列课程",
-                text: "系统学习太极、咏春、气功、风水等完整系列。",
-            },
-            {
-                title: "4. 参加在线直播（可选）",
-                text: "会员可参与线上练习课与老师问答，获得个性化建议。",
-            },
-        ],
-        membershipTitle: "选择你的会员方案",
-        membershipSubtitle: "一次订阅，解锁全站所有课程。",
-        plans: [
-            {
-                name: "月卡",
-                price: "NZD 30 / 月",
-                desc: "灵活按月订阅，随时可取消。",
-                purchaseType: "membership_monthly",
-                items: [
-                    "全站所有视频课程不限次观看",
-                    "每月持续新增课程",
-                    "手机 / 平板 / 电脑均可观看",
-                    "随时可取消",
-                ],
-                highlight: false,
-            },
-            {
-                name: "季卡",
-                price: "NZD 100 / 3个月",
-                desc: "比月卡节省 NZD 10。",
-                purchaseType: "membership_quarterly",
-                items: [
-                    "全站所有视频课程不限次观看",
-                    "每月持续新增课程",
-                    "手机 / 平板 / 电脑均可观看",
-                    "适合持续练习者",
-                ],
-                highlight: true,
-            },
-            {
-                name: "年卡",
-                price: "NZD 168 / 年",
-                desc: "最超值 — 比月卡节省 NZD 192。",
-                purchaseType: "membership_annual",
-                items: [
-                    "全站所有视频课程不限次观看",
-                    "每月持续新增课程",
-                    "手机 / 平板 / 电脑均可观看",
-                    "最低月均价格",
-                ],
-                highlight: false,
-            },
-        ],
-        shopTitle: "文化商城",
-        shopText:
-            "精心挑选练功手串、道家用品与传统器具，让修习与日常生活自然融合，支持全球寄送。",
-        shopButton: "进入商城",
-        footerText:
-            "本平台内容仅用于身心健康与文化学习，不构成任何医疗或诊断建议。",
-        languageLabel: "语言",
-        langEn: "EN",
-        langZh: "中文",
-        login: "登录",
-        logout: "退出",
-    },
-};
-
 const fadeInUp = {
     hidden: { opacity: 0, y: 40 },
     show: { opacity: 1, y: 0 },
 };
 
-const fadeIn = {
-    hidden: { opacity: 0 },
-    show: { opacity: 1 },
-};
+// ─── Tai Chi lessons (from QimenPage data) ───────────────────────────────────
+const TAICHI_LESSONS = [
+    { id: 1, titleEn: "Bone-Invigorating Health Qigong", duration: "~11 min", coverImage: "/images/tai-chi/lesson-07-huogu-yangsheng.png", fallbackImage: "/images/taiji-mountain.jpg", priceNow: "NZD 49", priceOld: "NZD 79", sale: true, page: "qimen" },
+    { id: 2, titleEn: "Hunyuan Wuji Stance", duration: "~10 min", coverImage: "/images/tai-chi/lesson-06-hunyuan-zhuang.png", fallbackImage: "/images/taiji-mountain.jpg", priceNow: "NZD 49", priceOld: "NZD 79", sale: true, page: "qimen" },
+    { id: 3, titleEn: "Wudang Taoist Baduanjin", duration: "~17 min", coverImage: "/images/tai-chi/lesson-05-baduanjin.png", fallbackImage: "/images/taiji-mountain.jpg", priceNow: "NZD 49", priceOld: "NZD 79", sale: true, page: "qimen" },
+    { id: 4, titleEn: "Tai Chi for Heart Calming", duration: "~11 min", coverImage: "/images/tai-chi/lesson-03-wudang-18forms.png", fallbackImage: "/images/taiji-mountain.jpg", priceNow: "NZD 49", priceOld: "NZD 79", sale: true, page: "qimen" },
+    { id: 5, titleEn: "Tai Chi for Soothing the Liver", duration: "~11 min", coverImage: "/images/tai-chi/lesson-02-wudang-13forms.png", fallbackImage: "/images/taiji-mountain.jpg", priceNow: "NZD 49", priceOld: "NZD 79", sale: true, page: "qimen" },
+    { id: 6, titleEn: "Tai Chi for Nourishing the Lungs", duration: "~28 min", coverImage: "/images/tai-chi/lesson-01-wudang-28forms.png", fallbackImage: "/images/taiji-mountain.jpg", priceNow: "NZD 49", priceOld: "NZD 79", sale: true, page: "qimen" },
+    { id: 7, titleEn: "Tai Chi for Qi and Blood Regulation", duration: "~30 min", coverImage: "/images/tai-chi/lesson-04-wudang-108forms.png", fallbackImage: "/images/taiji-mountain.jpg", priceNow: "NZD 49", priceOld: "NZD 79", sale: true, page: "qimen" },
+];
 
-const styleImages = {
-    qigong: "/images/tai-chi/acupressure-cover.jpg",
-    baji: "/images/taiji-mountain.jpg",
-    wingchun: "/images/martial-staff-demo.jpg",
-    tcm: "/images/tcm-herb-grinding.jpg",
-    fengshui: "/images/temple-incense-hall.jpg",
-    faceyoga: "/images/face-yoga-before-after.jpg",
-};
+// ─── Wing Chun lessons ────────────────────────────────────────────────────────
+const WINGCHUN_LESSONS = [
+    { id: 1, titleEn: "Wing Chun Health Qigong – 10 Forms", duration: "~7 min", coverImage: "/images/wing-chun-yangsheng-cover.jpg", fallbackImage: "/images/martial-staff-demo.jpg", priceNow: "NZD 39", priceOld: "NZD 69", sale: true, page: "wingchun" },
+    { id: 2, titleEn: "Wing Chun Fang Wei Self-Defense", duration: "~12 min", coverImage: "/images/wing-chun-fangwei-cover.png", fallbackImage: "/images/martial-staff-demo.jpg", priceNow: "NZD 39", priceOld: "NZD 69", sale: true, page: "wingchun" },
+];
+
+// ─── Acupoint lessons ─────────────────────────────────────────────────────────
+const ACUPOINT_LESSONS = [
+    { id: 1, titleEn: "Head & Face Discomfort Relief", subtitle: "23 Conditions • 3 Pressure Points Each", duration: "~60 min", coverImage: "/images/acupressure-lesson-01.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "NZD 99", priceOld: "NZD 149", sale: true, page: "qigong" },
+    { id: 2, titleEn: "Women's Private Wellness", subtitle: "7 Conditions • Natural Relief at Home", duration: "~45 min", coverImage: "/images/acupressure-lesson-02.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "NZD 99", priceOld: "NZD 149", sale: true, page: "qigong" },
+    { id: 3, titleEn: "Hand & Foot Pain Relief", subtitle: "28 Conditions • 3 Pressure Points Each", duration: "~90 min", coverImage: "/images/acupressure-lesson-03.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "NZD 99", priceOld: "NZD 149", sale: true, page: "qigong" },
+    { id: 4, titleEn: "Common Daily Discomforts Relief", subtitle: "16 Conditions • Fast Relief at Home", duration: "~70 min", coverImage: "/images/acupressure-lesson-04.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "NZD 99", priceOld: "NZD 149", sale: true, page: "qigong" },
+    { id: 5, titleEn: "Neck & Shoulder Pain Relief", subtitle: "8 Conditions • 3 Key Pressure Points", duration: "~40 min", coverImage: "/images/acupressure-lesson-05.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "NZD 99", priceOld: "NZD 149", sale: true, page: "qigong" },
+    { id: 6, titleEn: "Waist & Leg Pain Relief", subtitle: "18 Conditions • 3 Pressure Points Each", duration: "~80 min", coverImage: "/images/acupressure-lesson-06.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "NZD 99", priceOld: "NZD 149", sale: true, page: "qigong" },
+];
+
+// ─── Card component ───────────────────────────────────────────────────────────
+function LessonCard({ lesson, onNavigate }) {
+    const [imgErr, setImgErr] = useState(false);
+    return (
+        <div
+            className="group cursor-pointer bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden"
+            onClick={() => onNavigate(lesson.page)}
+        >
+            <div className="relative overflow-hidden aspect-[4/3]">
+                <img
+                    src={imgErr ? lesson.fallbackImage : lesson.coverImage}
+                    alt={lesson.titleEn}
+                    onError={() => setImgErr(true)}
+                    className="w-full h-full object-cover transition duration-500 group-hover:scale-105"
+                />
+                {lesson.sale && (
+                    <span className="absolute bottom-2 left-2 bg-blue-600 text-white text-[10px] font-semibold px-2.5 py-1 rounded-full">
+                        Sale
+                    </span>
+                )}
+            </div>
+            <div className="p-3">
+                <p className="text-sm font-medium text-slate-900 leading-snug mb-1 line-clamp-2">
+                    {lesson.titleEn}
+                </p>
+                {lesson.subtitle && (
+                    <p className="text-[11px] text-slate-500 mb-2 leading-snug">{lesson.subtitle}</p>
+                )}
+                <p className="text-[11px] text-slate-400 mb-2">{lesson.duration}</p>
+                {lesson.priceOld && (
+                    <div className="flex items-center gap-1.5 flex-wrap">
+                        <span className="text-[11px] text-slate-400 line-through">{lesson.priceOld} USD</span>
+                        <span className="text-sm font-semibold text-slate-900">{lesson.priceNow} USD</span>
+                    </div>
+                )}
+            </div>
+        </div>
+    );
+}
+
+// ─── Section heading ──────────────────────────────────────────────────────────
+function SectionHeading({ title, subtitle, onViewAll, viewAllPage, onNavigate }) {
+    return (
+        <div className="flex items-end justify-between mb-6">
+            <div>
+                <h2 className="text-2xl md:text-3xl font-semibold text-slate-900">{title}</h2>
+                {subtitle && <p className="mt-1 text-sm text-slate-500 max-w-xl">{subtitle}</p>}
+            </div>
+            {onViewAll && (
+                <button
+                    onClick={() => onNavigate(viewAllPage)}
+                    className="text-xs text-amber-700 hover:text-amber-600 transition shrink-0 ml-4"
+                >
+                    View all →
+                </button>
+            )}
+        </div>
+    );
+}
 
 function App() {
-    const [lang, setLang] = useState("en");
     const [activePage, setActivePage] = useState("home");
     const [currentUser, setCurrentUser] = useState(null);
     const [purchases, setPurchases] = useState([]);
     const [sidebarOpen, setSidebarOpen] = useState(false);
-    const [authLoading, setAuthLoading] = useState(true); // true until session check completes
+    const [authLoading, setAuthLoading] = useState(true);
 
     const [touchStartX, setTouchStartX] = useState(null);
 
-    const t = content[lang];
-
-    // Helper: build auth headers from localStorage token (fixes iOS Safari cross-site cookie issue)
     function getAuthHeaders() {
         const token = localStorage.getItem("ec_token");
         return token ? { "Authorization": `Bearer ${token}` } : {};
     }
 
-    // Restore session on page load
     useEffect(() => {
         async function refreshPurchases() {
             try {
@@ -318,7 +139,6 @@ function App() {
                         setCurrentUser(data.user);
                         setPurchases(data.purchases || []);
                     } else {
-                        // Token invalid/expired — clear it
                         localStorage.removeItem("ec_token");
                     }
                 }
@@ -329,12 +149,10 @@ function App() {
 
         refreshPurchases();
 
-        // Handle payment success redirect
         const params = new URLSearchParams(window.location.search);
         const payment = params.get("payment");
         if (payment === "success") {
             window.history.replaceState({}, "", window.location.pathname);
-            // Webhook may need a moment to write to DB, poll a few times
             setTimeout(() => refreshPurchases(), 1500);
             setTimeout(() => refreshPurchases(), 4000);
             setTimeout(() => refreshPurchases(), 8000);
@@ -351,9 +169,7 @@ function App() {
                 credentials: "include",
                 headers: getAuthHeaders(),
             });
-        } catch {
-            // Ignore
-        }
+        } catch { /* ignore */ }
         localStorage.removeItem("ec_token");
         setCurrentUser(null);
         setPurchases([]);
@@ -382,7 +198,7 @@ function App() {
     }
 
     async function handlePurchase(type, options = {}) {
-        if (authLoading) return; // wait for session check to complete
+        if (authLoading) return;
         if (!currentUser) {
             setActivePage("login");
             return;
@@ -392,7 +208,7 @@ function App() {
                 method: "POST",
                 headers: { "Content-Type": "application/json", ...getAuthHeaders() },
                 credentials: "include",
-                body: JSON.stringify({ type, lang, ...options }),
+                body: JSON.stringify({ type, lang: "en", ...options }),
             });
             const data = await res.json();
             if (data.url) {
@@ -429,280 +245,246 @@ function App() {
 
     if (activePage === "home") {
         pageContent = (
-            <main className="mx-auto max-w-6xl px-4 pb-16 pt-10 md:pt-14 space-y-16 md:space-y-24">
-                <motion.section
-                    className="grid gap-10 md:grid-cols-[1.08fr,1fr] items-center"
-                    initial="hidden"
-                    whileInView="show"
-                    viewport={{ once: true, amount: 0.4 }}
-                    transition={{ duration: 0.7, ease: "easeOut" }}
-                    variants={fadeInUp}
-                >
-                    <div>
-                        <p className="mb-3 text-xs uppercase tracking-[0.18em] text-amber-700/90">
-                            {t.subtitle}
-                        </p>
-                        <h1 className="mb-4 text-3xl font-semibold leading-tight text-slate-900 md:text-4xl lg:text-5xl">
-                            {t.heroTitle}
-                        </h1>
-                        <p className="mb-6 max-w-xl text-sm text-slate-600 md:text-base">
-                            {t.heroText}
-                        </p>
+            <main className="pb-20">
+                {/* ── HERO ─────────────────────────────────────────────────── */}
+                <section className="relative w-full overflow-hidden" style={{ minHeight: "480px", height: "56vw", maxHeight: "680px" }}>
+                    <img
+                        src="/images/hero-eastculture.jpg"
+                        alt="Ancient Eastern mountain temple"
+                        className="absolute inset-0 w-full h-full object-cover object-center"
+                    />
+                    {/* Dark gradient overlay left side */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/40 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
 
-                        {/* ✅ 这里改：两个按钮都跳转到太极页 qimen */}
-                        <div className="flex flex-wrap gap-3 text-sm">
-                            <button
-                                onClick={() => setActivePage("qimen")}
-                                className="rounded-full bg-amber-600 px-5 py-2 font-semibold text-white shadow-sm hover:bg-amber-500 transition"
-                            >
-                                {t.heroPrimary}
-                            </button>
-                            <button
-                                onClick={() => setActivePage("qimen")}
-                                className="rounded-full border border-slate-300 bg-white px-5 py-2 text-slate-900 hover:border-amber-300 hover:text-amber-700 transition"
-                            >
-                                {t.heroSecondary}
-                            </button>
-                        </div>
-                    </div>
-
-                    <motion.div
-                        className="relative h-64 overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-[0_20px_60px_-30px_rgba(15,23,42,0.35)] md:h-80"
-                        variants={fadeIn}
-                    >
-                        <img
-                            src="/images/martial-beach-group-training.jpg"
-                            alt="Tai chi group training at the beach"
-                            className="h-full w-full object-cover"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-tr from-black/35 via-black/10 to-transparent" />
-                        <div className="absolute bottom-3 left-4 text-xs text-white/95">
-                            <div className="rounded-full bg-black/50 px-3 py-1 text-[11px] backdrop-blur">
-                                {lang === "en" ? "Morning practice • Calm body, calm mind" : "清晨练功 · 身心安稳"}
-                            </div>
-                        </div>
-                    </motion.div>
-                </motion.section>
-
-                <motion.section
-                    initial="hidden"
-                    whileInView="show"
-                    viewport={{ once: true, amount: 0.3 }}
-                    transition={{ duration: 0.7, ease: "easeOut" }}
-                    variants={fadeInUp}
-                >
-                    <div className="mb-4 flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
-                        <div>
-                            <h2 className="text-xl font-semibold text-slate-900 md:text-2xl">
-                                {t.stylesTitle}
-                            </h2>
-                            <p className="mt-1 max-w-xl text-sm text-slate-600">
-                                {t.stylesIntro}
+                    {/* Hero text */}
+                    <div className="absolute inset-0 flex items-center">
+                        <div className="px-6 md:px-12 lg:px-20 max-w-3xl">
+                            <h1 className="font-extrabold leading-tight tracking-tight drop-shadow-lg" style={{ fontSize: "clamp(1.6rem, 4vw, 2.8rem)" }}>
+                                <span className="text-white block">Tired of Pain, Stress &amp; Stagnation?</span>
+                                <span className="text-red-500 block mt-1">Unlock Ancient Eastern Wisdom</span>
+                            </h1>
+                            <p className="mt-4 text-white/90 font-medium drop-shadow" style={{ fontSize: "clamp(0.8rem, 1.5vw, 1.05rem)", lineHeight: 1.6 }}>
+                                End Chronic Aches, Anxiety &amp; Fatigue With 5,000-Year-Old Eastern Wisdom.<br />
+                                Simple, At-Home Practices for Instant Relief &amp; Lasting Balance.
                             </p>
+                            <div className="mt-6 flex flex-wrap gap-3">
+                                <button
+                                    onClick={() => setActivePage("qimen")}
+                                    className="rounded-full bg-amber-500 hover:bg-amber-400 text-white font-semibold px-6 py-2.5 text-sm shadow-lg transition"
+                                >
+                                    Browse Courses
+                                </button>
+                                <button
+                                    onClick={() => setActivePage("qimen")}
+                                    className="rounded-full border border-white/70 bg-white/15 backdrop-blur text-white font-medium px-6 py-2.5 text-sm hover:bg-white/25 transition"
+                                >
+                                    Watch Intro Video
+                                </button>
+                            </div>
                         </div>
                     </div>
+                </section>
 
-                    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                        {t.styles.map((style) => (
-                            <div
-                                key={style.key}
-                                className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm hover:shadow-md transition"
-                            >
-                                <div
-                                    className="relative h-32 w-full overflow-hidden cursor-pointer"
-                                    onClick={() => {
-                                        if (style.key === "faceyoga") setActivePage("faceyoga");
-                                        if (style.key === "baji") setActivePage("qimen");
-                                        if (style.key === "qigong") setActivePage("qigong");
-                                        if (style.key === "wingchun") setActivePage("wingchun");
-                                        if (style.key === "tcm") setActivePage("tcm");
-                                        if (style.key === "fengshui") setActivePage("fengshui");
-                                    }}
-                                >
-                                    <img
-                                        src={styleImages[style.key]}
-                                        alt={style.title}
-                                        className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
-                                    <div className="absolute bottom-2 left-3 rounded-full bg-white/85 px-2.5 py-1 text-[10px] text-slate-900 backdrop-blur">
-                                        {lang === "en" ? "Course preview" : "课程预览图"}
-                                    </div>
-                                </div>
-
-                                <div className="p-4">
-                                    <div className="mb-2 flex items-center justify-between">
-                                        <h3 className="text-base font-semibold text-slate-900">
-                                            {style.title}
-                                        </h3>
-                                        <span className="rounded-full border border-slate-200 bg-slate-50 px-2 py-0.5 text-[10px] text-slate-700">
-                      Video course
-                    </span>
-                                    </div>
-
-                                    <p className="mb-3 text-xs text-slate-600">{style.desc}</p>
-
-                                    <button
-                                        className="mt-2 inline-flex items-center gap-1 text-xs text-amber-700 hover:text-amber-600 transition"
-                                        onClick={() => {
-                                            if (style.key === "faceyoga") setActivePage("faceyoga");
-                                            if (style.key === "baji") setActivePage("qimen");
-                                            if (style.key === "qigong") setActivePage("qigong");
-                                            if (style.key === "wingchun") setActivePage("wingchun");
-                                            if (style.key === "tcm") setActivePage("tcm");
-                                            if (style.key === "fengshui") setActivePage("fengshui");
-                                        }}
-                                    >
-                                        {lang === "en" ? "View lessons" : "查看课程"}
-                                        <span className="inline-block translate-x-0 group-hover:translate-x-1 transition">
-                      →
-                    </span>
-                                    </button>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </motion.section>
-
+                {/* ── WHAT YOU CAN LEARN ───────────────────────────────────── */}
                 <motion.section
+                    className="mx-auto max-w-6xl px-4 pt-16"
                     initial="hidden"
                     whileInView="show"
                     viewport={{ once: true, amount: 0.3 }}
                     transition={{ duration: 0.7, ease: "easeOut" }}
                     variants={fadeInUp}
                 >
-                    <h2 className="mb-4 text-xl font-semibold text-slate-900 md:text-2xl">
-                        {t.pathTitle}
-                    </h2>
-
-                    <div className="grid gap-4 md:grid-cols-2">
-                        {t.pathSteps.map((step, idx) => (
-                            <div
-                                key={idx}
-                                className="rounded-2xl border border-amber-200 bg-amber-50/60 p-4"
-                            >
-                                <h3 className="mb-2 text-sm font-semibold text-slate-900">
-                                    {step.title}
-                                </h3>
-                                <p className="text-xs text-slate-700">{step.text}</p>
-                            </div>
-                        ))}
-                    </div>
-                </motion.section>
-
-                <motion.section
-                    initial="hidden"
-                    whileInView="show"
-                    viewport={{ once: true, amount: 0.3 }}
-                    transition={{ duration: 0.7, ease: "easeOut" }}
-                    variants={fadeInUp}
-                >
-                    <div className="mb-4">
-                        <h2 className="text-xl font-semibold text-slate-900 md:text-2xl">
-                            {t.membershipTitle}
-                        </h2>
-                        <p className="mt-1 text-sm text-slate-600">
-                            {t.membershipSubtitle}
+                    <div className="text-center mb-10">
+                        <h2 className="text-2xl md:text-3xl font-semibold text-slate-900">What You Can Learn Here</h2>
+                        <p className="mt-2 text-sm text-slate-500 max-w-xl mx-auto">
+                            Ancient Eastern practices for modern health — rooted in tradition, made simple for everyday life.
                         </p>
                     </div>
-
                     <div className="grid gap-4 md:grid-cols-3">
-                        {t.plans.map((plan, idx) => (
+                        {[
+                            {
+                                title: "Tai Chi Practice",
+                                desc: "Soft, flowing Tai Chi routines to nourish your joints, restore balance, and calm the nervous system.",
+                                img: "/images/taiji-mountain.jpg",
+                                page: "qimen",
+                            },
+                            {
+                                title: "Wing Chun Foundations",
+                                desc: "Body coordination, centerline structure, and gentle movement — from authentic Wing Chun lineage.",
+                                img: "/images/martial-staff-demo.jpg",
+                                page: "wingchun",
+                            },
+                            {
+                                title: "Acupoint Self-Care",
+                                desc: "Simple pressure-point routines for pain relief, internal wellness, and daily self-healing at home.",
+                                img: "/images/tai-chi/acupressure-cover.jpg",
+                                page: "qigong",
+                            },
+                        ].map((item) => (
                             <div
-                                key={idx}
-                                className={`flex flex-col rounded-2xl border p-4 shadow-sm ${
-                                    plan.highlight
-                                        ? "border-amber-300 bg-white shadow-[0_18px_60px_-40px_rgba(217,119,6,0.35)]"
-                                        : "border-slate-200 bg-white"
-                                }`}
+                                key={item.title}
+                                className="group relative overflow-hidden rounded-2xl cursor-pointer"
+                                onClick={() => setActivePage(item.page)}
                             >
-                                <h3 className="text-sm font-semibold text-slate-900">{plan.name}</h3>
-                                <div className="mt-1 text-lg font-bold text-amber-700">{plan.price}</div>
-                                <p className="mt-1 text-xs text-slate-600">{plan.desc}</p>
+                                <div className="relative h-48 overflow-hidden">
+                                    <img
+                                        src={item.img}
+                                        alt={item.title}
+                                        className="w-full h-full object-cover transition duration-500 group-hover:scale-105"
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                                    <div className="absolute bottom-3 left-4 right-4">
+                                        <h3 className="text-white font-semibold text-base">{item.title}</h3>
+                                    </div>
+                                </div>
+                                <div className="bg-white border border-t-0 border-slate-200 rounded-b-2xl px-4 py-3">
+                                    <p className="text-xs text-slate-600 leading-relaxed">{item.desc}</p>
+                                    <p className="mt-2 text-xs text-amber-700 font-medium">View lessons →</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </motion.section>
 
-                                <ul className="mt-3 flex-1 space-y-1.5 text-xs text-slate-700">
-                                    {plan.items.map((it, i) => (
-                                        <li key={i}>• {it}</li>
-                                    ))}
+                {/* ── TAI CHI SECTION ──────────────────────────────────────── */}
+                <motion.section
+                    className="mx-auto max-w-6xl px-4 pt-16"
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.7, ease: "easeOut" }}
+                    variants={fadeInUp}
+                >
+                    <SectionHeading
+                        title="Tai Chi"
+                        subtitle="Wudang Sanfeng series — gentle movement for joints, organs, sleep, and inner calm."
+                        onViewAll
+                        viewAllPage="qimen"
+                        onNavigate={setActivePage}
+                    />
+                    <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+                        {TAICHI_LESSONS.map((lesson) => (
+                            <LessonCard key={lesson.id} lesson={lesson} onNavigate={setActivePage} />
+                        ))}
+                    </div>
+                </motion.section>
+
+                {/* ── WING CHUN SECTION ────────────────────────────────────── */}
+                <motion.section
+                    className="mx-auto max-w-6xl px-4 pt-16"
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.7, ease: "easeOut" }}
+                    variants={fadeInUp}
+                >
+                    <SectionHeading
+                        title="Wing Chun"
+                        subtitle="Authentic Wing Chun fundamentals — body coordination, structure, and self-care routines."
+                        onViewAll
+                        viewAllPage="wingchun"
+                        onNavigate={setActivePage}
+                    />
+                    <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+                        {WINGCHUN_LESSONS.map((lesson) => (
+                            <LessonCard key={lesson.id} lesson={lesson} onNavigate={setActivePage} />
+                        ))}
+                    </div>
+                </motion.section>
+
+                {/* ── ACUPOINT SECTION ─────────────────────────────────────── */}
+                <motion.section
+                    className="mx-auto max-w-6xl px-4 pt-16"
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.7, ease: "easeOut" }}
+                    variants={fadeInUp}
+                >
+                    <SectionHeading
+                        title="Acupoint Self-Care"
+                        subtitle="Drug-free, at-home pressure point routines — 3 simple points for each condition."
+                        onViewAll
+                        viewAllPage="qigong"
+                        onNavigate={setActivePage}
+                    />
+                    <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+                        {ACUPOINT_LESSONS.map((lesson) => (
+                            <LessonCard key={lesson.id} lesson={lesson} onNavigate={setActivePage} />
+                        ))}
+                    </div>
+                </motion.section>
+
+                {/* ── MEMBERSHIP ───────────────────────────────────────────── */}
+                <motion.section
+                    className="mx-auto max-w-6xl px-4 pt-16"
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.7, ease: "easeOut" }}
+                    variants={fadeInUp}
+                >
+                    <div className="text-center mb-8">
+                        <h2 className="text-2xl md:text-3xl font-semibold text-slate-900">Choose Your Membership</h2>
+                        <p className="mt-2 text-sm text-slate-500">Unlock all courses with one simple plan.</p>
+                    </div>
+                    <div className="grid gap-4 md:grid-cols-3">
+                        {[
+                            { name: "Monthly", price: "NZD 30", per: "/ month", desc: "Flexible month-to-month access.", purchaseType: "membership_monthly", highlight: false, items: ["Unlimited access to all video courses", "New lessons added monthly", "Watch on any device", "Cancel anytime"] },
+                            { name: "Quarterly", price: "NZD 100", per: "/ 3 months", desc: "Save NZD 10 vs monthly.", purchaseType: "membership_quarterly", highlight: true, items: ["Unlimited access to all video courses", "New lessons added monthly", "Watch on any device", "Best for consistent practice"] },
+                            { name: "Annual", price: "NZD 168", per: "/ year", desc: "Best value — save NZD 192 vs monthly.", purchaseType: "membership_annual", highlight: false, items: ["Unlimited access to all video courses", "New lessons added monthly", "Watch on any device", "Lowest price per month"] },
+                        ].map((plan) => (
+                            <div
+                                key={plan.name}
+                                className={`flex flex-col rounded-2xl border p-5 shadow-sm ${plan.highlight ? "border-amber-300 bg-white shadow-amber-100" : "border-slate-200 bg-white"}`}
+                            >
+                                {plan.highlight && (
+                                    <span className="self-start mb-2 rounded-full bg-amber-100 px-2.5 py-0.5 text-[10px] font-semibold text-amber-800">Most Popular</span>
+                                )}
+                                <h3 className="text-base font-semibold text-slate-900">{plan.name}</h3>
+                                <div className="mt-1">
+                                    <span className="text-2xl font-bold text-amber-700">{plan.price}</span>
+                                    <span className="text-sm text-slate-500 ml-1">{plan.per}</span>
+                                </div>
+                                <p className="mt-1 text-xs text-slate-500">{plan.desc}</p>
+                                <ul className="mt-4 flex-1 space-y-2 text-xs text-slate-700">
+                                    {plan.items.map((it, i) => <li key={i} className="flex gap-2"><span className="text-emerald-500 shrink-0">✓</span>{it}</li>)}
                                 </ul>
-
                                 <button
-                                    className={`mt-3 rounded-full px-3 py-1.5 text-xs font-semibold transition ${
-                                        plan.highlight
-                                            ? "bg-amber-600 text-white hover:bg-amber-500"
-                                            : "border border-slate-300 bg-white text-slate-900 hover:border-amber-300 hover:text-amber-700"
-                                    }`}
+                                    className={`mt-5 rounded-full px-4 py-2 text-sm font-semibold transition ${plan.highlight ? "bg-amber-600 text-white hover:bg-amber-500" : "border border-slate-300 bg-white text-slate-900 hover:border-amber-300 hover:text-amber-700"}`}
                                     onClick={() => handlePurchase(plan.purchaseType)}
                                 >
-                                    {lang === "en" ? "Choose plan" : "选择此方案"}
+                                    Choose Plan
                                 </button>
                             </div>
                         ))}
                     </div>
                 </motion.section>
-
-                <motion.section
-                    className="rounded-3xl border border-slate-200 bg-white p-5 md:p-6 shadow-sm"
-                    initial="hidden"
-                    whileInView="show"
-                    viewport={{ once: true, amount: 0.3 }}
-                    transition={{ duration: 0.7, ease: "easeOut" }}
-                    variants={fadeInUp}
-                >
-                    <div className="grid gap-4 md:grid-cols-[1.2fr,1fr] md:items-center">
-                        <div>
-                            <h2 className="text-lg font-semibold text-slate-900 md:text-xl">
-                                {t.shopTitle}
-                            </h2>
-                            <p className="mt-1 max-w-xl text-sm text-slate-600">{t.shopText}</p>
-                        </div>
-
-                        <div className="flex items-center gap-3">
-                            <div className="hidden h-20 w-20 overflow-hidden rounded-2xl border border-slate-200 md:block">
-                                <img
-                                    src="/images/temple-offering-table.jpg"
-                                    alt="Temple offerings"
-                                    className="h-full w-full object-cover"
-                                />
-                            </div>
-
-                            <button
-                                className="w-full rounded-full bg-amber-600 px-5 py-2 text-sm font-semibold text-white hover:bg-amber-500 transition md:w-auto"
-                                onClick={() => setActivePage("shop")}
-                            >
-                                {t.shopButton}
-                            </button>
-                        </div>
-                    </div>
-                </motion.section>
             </main>
         );
     } else if (activePage === "faceyoga") {
-        pageContent = <FaceYogaPage lang={lang} currentUser={currentUser} authLoading={authLoading} isOwned={hasCourseAccess("faceyoga")} purchases={purchases} onPurchase={handlePurchase} onGoLogin={() => setActivePage("login")} />;
+        pageContent = <FaceYogaPage lang="en" currentUser={currentUser} authLoading={authLoading} isOwned={hasCourseAccess("faceyoga")} purchases={purchases} onPurchase={handlePurchase} onGoLogin={() => setActivePage("login")} />;
     } else if (activePage === "qimen") {
-        pageContent = <QimenPage lang={lang} currentUser={currentUser} authLoading={authLoading} isOwned={hasCourseAccess("taichi")} purchases={purchases} onPurchase={handlePurchase} onGoLogin={() => setActivePage("login")} />;
+        pageContent = <QimenPage lang="en" currentUser={currentUser} authLoading={authLoading} isOwned={hasCourseAccess("taichi")} purchases={purchases} onPurchase={handlePurchase} onGoLogin={() => setActivePage("login")} />;
     } else if (activePage === "qigong") {
-        pageContent = <QigongPage lang={lang} currentUser={currentUser} authLoading={authLoading} isOwned={hasCourseAccess("qigong")} purchases={purchases} onPurchase={handlePurchase} onGoLogin={() => setActivePage("login")} />;
+        pageContent = <QigongPage lang="en" currentUser={currentUser} authLoading={authLoading} isOwned={hasCourseAccess("qigong")} purchases={purchases} onPurchase={handlePurchase} onGoLogin={() => setActivePage("login")} />;
     } else if (activePage === "wingchun") {
-        pageContent = <WingChunPage lang={lang} currentUser={currentUser} authLoading={authLoading} isOwned={hasCourseAccess("wingchun")} purchases={purchases} onPurchase={handlePurchase} onGoLogin={() => setActivePage("login")} />;
+        pageContent = <WingChunPage lang="en" currentUser={currentUser} authLoading={authLoading} isOwned={hasCourseAccess("wingchun")} purchases={purchases} onPurchase={handlePurchase} onGoLogin={() => setActivePage("login")} />;
     } else if (activePage === "tcm") {
-        pageContent = <TcmPage lang={lang} />;
+        pageContent = <TcmPage lang="en" />;
     } else if (activePage === "fengshui") {
-        pageContent = <FengShuiPage lang={lang} />;
+        pageContent = <FengShuiPage lang="en" />;
     } else if (activePage === "login") {
         pageContent = (
             <LoginPage
-                lang={lang}
+                lang="en"
                 onBackHome={goHome}
                 onGoRegister={() => setActivePage("register")}
                 onLoginSuccess={(user) => {
                     setCurrentUser(user);
                     setActivePage("home");
-                    // Refresh purchases after login (token already in localStorage from LoginPage)
-                    fetch(`${API_BASE}/api/auth/me`, {
-                        credentials: "include",
-                        headers: getAuthHeaders(),
-                    })
+                    fetch(`${API_BASE}/api/auth/me`, { credentials: "include", headers: getAuthHeaders() })
                         .then(r => r.json())
                         .then(d => { if (d.purchases) setPurchases(d.purchases); })
                         .catch(() => {});
@@ -712,7 +494,7 @@ function App() {
     } else if (activePage === "register") {
         pageContent = (
             <RegisterPage
-                lang={lang}
+                lang="en"
                 onBackHome={goHome}
                 onGoLogin={() => setActivePage("login")}
                 onRegisterSuccess={(user) => {
@@ -723,17 +505,17 @@ function App() {
             />
         );
     } else if (activePage === "program") {
-        pageContent = <ProgramPage lang={lang} onBack={goHome} />;
+        pageContent = <ProgramPage lang="en" onBack={goHome} />;
     } else if (activePage === "shop") {
-        pageContent = <ShopPage lang={lang} onBackHome={goHome} />;
+        pageContent = <ShopPage lang="en" onBackHome={goHome} />;
     } else if (activePage === "about") {
-        pageContent = <AboutPage lang={lang} onBackHome={goHome} />;
+        pageContent = <AboutPage lang="en" onBackHome={goHome} />;
     } else if (activePage === "contact") {
-        pageContent = <ContactPage lang={lang} onBackHome={goHome} />;
+        pageContent = <ContactPage lang="en" onBackHome={goHome} />;
     } else if (activePage === "mycourses") {
         pageContent = (
             <MyCoursesPage
-                lang={lang}
+                lang="en"
                 purchases={purchases}
                 currentUser={currentUser}
                 onNavigate={setActivePage}
@@ -743,7 +525,7 @@ function App() {
     } else if (activePage === "account") {
         pageContent = (
             <AccountPage
-                lang={lang}
+                lang="en"
                 currentUser={currentUser}
                 purchases={purchases}
                 onLogout={handleLogout}
@@ -757,10 +539,10 @@ function App() {
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}
         >
-            <header className="sticky top-0 z-30 border-b border-slate-200 bg-white/85 backdrop-blur">
+            {/* ── HEADER ───────────────────────────────────────────────── */}
+            <header className="sticky top-0 z-30 border-b border-slate-200 bg-white/90 backdrop-blur">
                 <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
                     <div className="flex items-center gap-2">
-                        {/* Mobile: "太" logo opens sidebar */}
                         <button
                             className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-amber-600 text-white text-lg font-bold shadow-sm md:cursor-default"
                             onClick={() => setSidebarOpen(true)}
@@ -768,59 +550,34 @@ function App() {
                         >
                             太
                         </button>
-                        <div>
-                            <div className="text-lg font-semibold tracking-wide text-slate-900">
-                                {t.brand}
-                            </div>
+                        <div
+                            className="cursor-pointer"
+                            onClick={goHome}
+                        >
+                            <div className="text-lg font-semibold tracking-wide text-slate-900">EastCulture</div>
                             <div className="text-[11px] text-slate-500">Tai Chi · Traditional Arts</div>
                         </div>
                     </div>
 
                     <nav className="hidden items-center gap-6 text-sm md:flex">
-                        <button className="text-slate-700 hover:text-amber-700 transition" onClick={goHome}>
-                            {t.navCourses}
-                        </button>
-                        <button
-                            className="text-slate-700 hover:text-amber-700 transition"
-                            onClick={() => setActivePage("program")}
-                        >
-                            {t.navProgram}
-                        </button>
-                        <button
-                            className="text-slate-700 hover:text-amber-700 transition"
-                            onClick={() => setActivePage("shop")}
-                        >
-                            {t.navShop}
-                        </button>
-                        <button
-                            className="text-slate-700 hover:text-amber-700 transition"
-                            onClick={() => setActivePage("about")}
-                        >
-                            {t.navAbout}
-                        </button>
-                        <button
-                            className="text-slate-700 hover:text-amber-700 transition"
-                            onClick={() => setActivePage("contact")}
-                        >
-                            {t.navContact}
-                        </button>
+                        <button className="text-slate-700 hover:text-amber-700 transition" onClick={goHome}>Home</button>
+                        <button className="text-slate-700 hover:text-amber-700 transition" onClick={() => setActivePage("qimen")}>Tai Chi</button>
+                        <button className="text-slate-700 hover:text-amber-700 transition" onClick={() => setActivePage("wingchun")}>Wing Chun</button>
+                        <button className="text-slate-700 hover:text-amber-700 transition" onClick={() => setActivePage("qigong")}>Acupoint</button>
+                        <button className="text-slate-700 hover:text-amber-700 transition" onClick={() => setActivePage("about")}>About</button>
+                        <button className="text-slate-700 hover:text-amber-700 transition" onClick={() => setActivePage("contact")}>Contact</button>
                         {currentUser && (
-                            <button
-                                className="text-slate-700 hover:text-amber-700 transition"
-                                onClick={() => setActivePage("mycourses")}
-                            >
-                                {lang === "en" ? "My Courses" : "我的课程"}
-                            </button>
+                            <button className="text-slate-700 hover:text-amber-700 transition" onClick={() => setActivePage("mycourses")}>My Courses</button>
                         )}
                     </nav>
 
                     <div className="flex items-center gap-3">
                         {!currentUser ? (
                             <button
-                                className="hidden rounded-full border border-amber-300 bg-white px-3 py-1 text-xs text-amber-700 hover:bg-amber-50 md:inline-flex"
+                                className="hidden rounded-full border border-amber-300 bg-white px-3 py-1 text-xs text-amber-700 hover:bg-amber-50 md:inline-flex transition"
                                 onClick={() => setActivePage("login")}
                             >
-                                {t.login}
+                                Login
                             </button>
                         ) : (
                             <button
@@ -830,79 +587,38 @@ function App() {
                                 {currentUser.username}
                             </button>
                         )}
-
-                        <div className="flex items-center gap-1 rounded-full border border-slate-200 bg-white px-2 py-1 text-[11px] shadow-sm">
-                            <span className="hidden text-slate-500 md:inline">{t.languageLabel}:</span>
-                            <button
-                                className={`px-2 py-0.5 rounded-full transition ${
-                                    lang === "en"
-                                        ? "bg-amber-600 text-white font-semibold"
-                                        : "text-slate-700 hover:text-amber-700"
-                                }`}
-                                onClick={() => setLang("en")}
-                            >
-                                {t.langEn}
-                            </button>
-                            <button
-                                className={`px-2 py-0.5 rounded-full transition ${
-                                    lang === "zh"
-                                        ? "bg-amber-600 text-white font-semibold"
-                                        : "text-slate-700 hover:text-amber-700"
-                                }`}
-                                onClick={() => setLang("zh")}
-                            >
-                                {t.langZh}
-                            </button>
-                        </div>
                     </div>
                 </div>
             </header>
 
-            {/* Mobile Sidebar */}
+            {/* ── MOBILE SIDEBAR ───────────────────────────────────────── */}
             {sidebarOpen && (
                 <div className="fixed inset-0 z-50 flex md:hidden">
-                    {/* Backdrop */}
-                    <div
-                        className="absolute inset-0 bg-black/40"
-                        onClick={() => setSidebarOpen(false)}
-                    />
-                    {/* Drawer */}
+                    <div className="absolute inset-0 bg-black/40" onClick={() => setSidebarOpen(false)} />
                     <div className="relative flex w-72 flex-col bg-white shadow-xl">
                         <div className="flex items-center justify-between border-b border-slate-100 px-5 py-4">
                             <div className="flex items-center gap-2">
                                 <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-amber-600 text-white text-lg font-bold">太</span>
                                 <span className="text-base font-semibold text-slate-900">EastCulture</span>
                             </div>
-                            <button
-                                onClick={() => setSidebarOpen(false)}
-                                className="text-slate-400 hover:text-slate-600 text-xl leading-none"
-                                aria-label="Close menu"
-                            >
-                                ×
-                            </button>
+                            <button onClick={() => setSidebarOpen(false)} className="text-slate-400 hover:text-slate-600 text-xl leading-none" aria-label="Close menu">×</button>
                         </div>
                         <nav className="flex flex-col gap-1 px-4 py-4 text-sm">
                             {[
-                                { label: lang === "en" ? "Courses" : "课程", action: () => { goHome(); setSidebarOpen(false); } },
-                                { label: lang === "en" ? "Program" : "计划", action: () => { setActivePage("program"); setSidebarOpen(false); } },
-                                { label: lang === "en" ? "Shop" : "商店", action: () => { setActivePage("shop"); setSidebarOpen(false); } },
-                                { label: lang === "en" ? "About" : "关于", action: () => { setActivePage("about"); setSidebarOpen(false); } },
-                                { label: lang === "en" ? "Contact" : "联系我们", action: () => { setActivePage("contact"); setSidebarOpen(false); } },
+                                { label: "Home", action: () => { goHome(); setSidebarOpen(false); } },
+                                { label: "Tai Chi", action: () => { setActivePage("qimen"); setSidebarOpen(false); } },
+                                { label: "Wing Chun", action: () => { setActivePage("wingchun"); setSidebarOpen(false); } },
+                                { label: "Acupoint", action: () => { setActivePage("qigong"); setSidebarOpen(false); } },
+                                { label: "About", action: () => { setActivePage("about"); setSidebarOpen(false); } },
+                                { label: "Contact", action: () => { setActivePage("contact"); setSidebarOpen(false); } },
                             ].map(({ label, action }) => (
-                                <button
-                                    key={label}
-                                    onClick={action}
-                                    className="rounded-lg px-3 py-2.5 text-left text-slate-700 hover:bg-amber-50 hover:text-amber-700 transition"
-                                >
+                                <button key={label} onClick={action} className="rounded-lg px-3 py-2.5 text-left text-slate-700 hover:bg-amber-50 hover:text-amber-700 transition">
                                     {label}
                                 </button>
                             ))}
                             {currentUser && (
-                                <button
-                                    onClick={() => { setActivePage("mycourses"); setSidebarOpen(false); }}
-                                    className="rounded-lg px-3 py-2.5 text-left text-slate-700 hover:bg-amber-50 hover:text-amber-700 transition"
-                                >
-                                    {lang === "en" ? "My Courses" : "我的课程"}
+                                <button onClick={() => { setActivePage("mycourses"); setSidebarOpen(false); }} className="rounded-lg px-3 py-2.5 text-left text-slate-700 hover:bg-amber-50 hover:text-amber-700 transition">
+                                    My Courses
                                 </button>
                             )}
                         </nav>
@@ -912,7 +628,7 @@ function App() {
                                     onClick={() => { setActivePage("login"); setSidebarOpen(false); }}
                                     className="w-full rounded-full bg-amber-600 px-4 py-2 text-sm font-semibold text-white hover:bg-amber-500 transition"
                                 >
-                                    {lang === "en" ? "Login" : "登录"}
+                                    Login
                                 </button>
                             ) : (
                                 <button
@@ -936,17 +652,15 @@ function App() {
                         className="mt-4 inline-flex items-center gap-2 text-xs md:text-sm text-slate-600 hover:text-amber-700 transition"
                     >
                         <span className="text-lg">←</span>
-                        {lang === "zh" ? "返回首页" : "Back to home"}
+                        Back to home
                     </button>
                 </div>
             )}
 
             <footer className="border-t border-slate-200 bg-white py-4 text-[11px] text-slate-500">
                 <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-2 px-4 md:flex-row">
-          <span>
-            © {new Date().getFullYear()} EastCulture · Tai Chi · Traditional Arts Online
-          </span>
-                    <span>{t.footerText}</span>
+                    <span>© {new Date().getFullYear()} EastCulture · Tai Chi · Traditional Arts Online</span>
+                    <span>All educational content is provided for wellness and cultural learning. It does not replace medical advice.</span>
                 </div>
             </footer>
         </div>

@@ -35,14 +35,14 @@ const LESSONS = [
         id: 1,
         titleEn: "Head & Face Discomfort Relief",
         titleZh: "头部穴位按摩",
-        subtitleEn: "26 Conditions • 3 Pressure Points Each • Drug-Free Relief at Home",
-        subtitleZh: "26种症状 · 每症3个穴位 · 居家无药缓解",
+        subtitleEn: "23 Conditions • 3 Pressure Points Each • Drug-Free Relief at Home",
+        subtitleZh: "23种症状 · 每症3个穴位 · 居家无药缓解",
         duration: "~60 min",
         s3Key: "acupressure/lesson-01-head.mp4",
         coverImage: "/images/acupressure-lesson-01.png",
         fallbackImage: "/images/tai-chi/acupressure-cover.jpg",
 
-        intro: "Stop reaching for pills every time your head or face plays up. This lesson teaches 3 simple pressure points for each of 26 common head and face conditions — headaches, tinnitus, dry eyes, toothache, nasal congestion, stiff neck, and more. Taught by an experienced TCM practitioner, every technique is 100% natural, requires no tools, and can be done at home in minutes.",
+        intro: "23 Head & Face Issues • No Drugs • No Doctors • Relieve at Home in 3 Steps. Stop reaching for pills every time your head or face plays up. This lesson teaches 3 simple pressure points for each of 23 common head and face conditions — headaches, tinnitus, dry eyes, toothache, nasal congestion, stiff neck, and more. Every technique is 100% natural, requires no tools, and can be done at home in minutes. One course solves 23 head & face problems. Learn once, benefit for life.",
         introZh: "不要每次头脸不舒服就伸手拿药。这节课针对26种常见头面部症状，每种症状教你3个简单穴位——头痛、耳鸣、眼干、牙痛、鼻塞、颈僵等等。由经验丰富的中医师讲授，所有手法100%纯天然，无需任何工具，在家几分钟即可完成。",
 
         conditions: [
@@ -69,9 +69,6 @@ const LESSONS = [
             "Persistent Hiccups (Diaphragm Spasm)",
             "Scalp Folliculitis & Bumps",
             "Dizziness & Poor Blood Circulation to Head",
-            "Facial Nerve Tension & Sensitivity",
-            "Inflammation-Related Head & Face Issues",
-            "Head & Face Stiffness & Discomfort",
         ],
         conditionsZh: [
             "后脑勺头痛（枕骨痛）",
@@ -155,7 +152,7 @@ const LESSONS = [
         coverImage: "/images/acupressure-lesson-02.png",
         fallbackImage: "/images/tai-chi/acupressure-cover.jpg",
 
-        intro: "Seven of the most common private women's health issues — addressed naturally, privately, and effectively at home. No embarrassing hospital visits, no side effects from medication. Using 3–5 targeted pressure points per condition, this lesson covers breast hyperplasia, menstrual cramps, irregular periods, heavy bleeding, popliteal cysts, private area itching, and urine leakage. Safe for all ages including postpartum women.",
+        intro: "7 Most Common Women's Private Issues • No Drugs • No Embarrassment • Relieve at Home in 3 Steps. Seven of the most common private women's health issues — addressed naturally, privately, and effectively at home. No embarrassing hospital visits, no side effects from medication. Using 3–5 targeted pressure points per condition, this lesson covers breast hyperplasia, menstrual cramps, irregular periods, heavy bleeding, popliteal cysts, private area itching, and urine leakage. Safe for all ages including postpartum women. One course solves 7 common women's problems. Learn once, benefit for life — gentle, natural, and completely private.",
         introZh: "七种最常见的女性私密健康问题——在家自然、私密、有效地解决。无需尴尬的就医，无需药物副作用。每种症状运用3-5个精准穴位，本课涵盖：乳腺增生、痛经、月经不调、月经过多、腘窝囊肿、私处瘙痒及漏尿。适合各年龄段女性，包括产后女性。",
 
         conditions: [
@@ -230,7 +227,7 @@ const LESSONS = [
         coverImage: "/images/acupressure-lesson-03.png",
         fallbackImage: "/images/tai-chi/acupressure-cover.jpg",
 
-        intro: "From trigger finger and tennis elbow to plantar fasciitis and restless legs — this lesson covers 28 of the most common hand and foot problems using just 3 pressure points each. Whether you're dealing with work-related strain, sports injuries, or age-related stiffness, every technique is safe, natural and can be done without any tools or medical knowledge.",
+        intro: "25 Common Hand & Foot Pains • No Drugs • No Doctors • Relieve at Home in 3 Steps. From trigger finger and tennis elbow to plantar fasciitis and restless legs — this lesson covers 28 of the most common hand and foot problems using just 3 pressure points each. Whether you're dealing with work-related strain, sports injuries, or age-related stiffness, every technique is safe, natural and can be done without any tools or medical knowledge. One course solves 28 hand & foot problems. Learn once, benefit for life.",
         introZh: "从扳机指、网球肘到足底筋膜炎、不宁腿综合征——这节课用每症仅3个穴位涵盖28种最常见的手脚问题。无论你面对的是职业劳损、运动损伤还是年龄相关的僵硬，所有手法安全自然，无需任何工具或医学知识即可操作。",
 
         conditions: [
@@ -345,7 +342,7 @@ const LESSONS = [
         coverImage: "/images/acupressure-lesson-04.png",
         fallbackImage: "/images/tai-chi/acupressure-cover.jpg",
 
-        intro: "Insomnia, anxiety, carsickness, bloating, palpitations, mouth ulcers, night sweats — these everyday problems quietly wear you down. This lesson addresses 16 common daily health issues using 3 natural pressure points each. Quick relief for acute symptoms, long-term improvement for chronic patterns. No clinic visits, no side effects, suitable for the whole family.",
+        intro: "16 Common Daily Aches & Pains • No Drugs • No Doctors • Relieve at Home in 3 Steps. Insomnia, anxiety, carsickness, bloating, palpitations, mouth ulcers, night sweats — these everyday problems quietly wear you down. This lesson addresses 16 common daily health issues using 3 natural pressure points each. Quick relief for acute symptoms, long-term improvement for chronic patterns. No clinic visits, no side effects, suitable for the whole family. One course solves 16 common daily health problems. Learn once, benefit for life.",
         introZh: "失眠、焦虑、晕车、腹胀、心悸、口腔溃疡、盗汗——这些日常问题悄悄地消耗着你的身体。这节课针对16种常见日常健康问题，每症运用3个天然穴位。急性症状快速缓解，慢性问题长期改善。无需就医，零副作用，全家适用。",
 
         conditions: [
@@ -440,7 +437,7 @@ const LESSONS = [
         coverImage: "/images/acupressure-lesson-05.png",
         fallbackImage: "/images/tai-chi/acupressure-cover.jpg",
 
-        intro: "Chronic shoulder blade pain, morning back stiffness, frozen shoulder, Dowager's hump, intercostal neuralgia — this lesson targets 8 of the most persistent neck and shoulder problems using just 3 key pressure points each. No needles, no drugs, no helper needed. Designed for office workers, drivers, and anyone whose pain keeps coming back.",
+        intro: "8 Common Neck & Shoulder Pains • No Doctor • No Medication • Relieve at Home in 3 Steps. Chronic shoulder blade pain, morning back stiffness, frozen shoulder, Dowager's hump, intercostal neuralgia — this lesson targets 8 of the most persistent neck and shoulder problems using just 3 key pressure points each. No needles, no drugs, no helper needed. Designed for office workers, drivers, and anyone whose pain keeps coming back. One course, solve 8 neck & shoulder problems. Learn once, benefit for life.",
         introZh: "慢性肩胛骨痛、晨起背部僵硬、肩周炎、驼背富贵包、肋间神经痛——这节课针对8种最顽固的肩颈问题，每症仅用3个关键穴位。无需针灸、无需药物、无需他人帮助。专为上班族、司机及疼痛反复发作的人群设计。",
 
         conditions: [
@@ -511,7 +508,7 @@ const LESSONS = [
         coverImage: "/images/acupressure-lesson-06.png",
         fallbackImage: "/images/tai-chi/acupressure-cover.jpg",
 
-        intro: "Sciatica, knee pain, cold legs, calf cramps, tailbone pain, acute lumbar sprains, hemorrhoids — this lesson covers 22 waist and leg problems that affect daily movement and sleep. Every condition is addressed with 3 simple, fixed pressure points. No surgery, no drugs, no side effects. Suitable for seniors, office workers, and anyone who suffers from lower body pain.",
+        intro: "18 Waist & Leg Pains • No Drugs • No Surgery • Relieve at Home in 3 Steps. Sciatica, knee pain, cold legs, calf cramps, tailbone pain, acute lumbar sprains, hemorrhoids — this lesson covers 22 waist and leg problems that affect daily movement and sleep. Every condition is addressed with 3 simple, fixed pressure points. No surgery, no drugs, no side effects. Suitable for seniors, office workers, and anyone who suffers from lower body pain. One course solves 22 waist & leg problems. Learn once, benefit for life.",
         introZh: "坐骨神经痛、膝盖痛、腿部发凉、小腿抽筋、尾骨痛、急性腰扭伤、痔疮——这节课涵盖22种影响日常活动和睡眠的腰腿问题。每种症状运用3个简单固定的穴位。无需手术、无需药物、零副作用。适合老年人、上班族及任何有下肢疼痛的人群。",
 
         conditions: [

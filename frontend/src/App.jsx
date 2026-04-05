@@ -446,21 +446,20 @@ function App() {
             </main>
         );
     } else if (activePage === "faceyoga") {
-        pageContent = <FaceYogaPage lang="en" currentUser={currentUser} authLoading={authLoading} isOwned={hasCourseAccess("faceyoga")} purchases={purchases} onPurchase={handlePurchase} onGoLogin={() => setActivePage("login")} />;
+        pageContent = <FaceYogaPage currentUser={currentUser} authLoading={authLoading} isOwned={hasCourseAccess("faceyoga")} purchases={purchases} onPurchase={handlePurchase} onGoLogin={() => setActivePage("login")} />;
     } else if (activePage === "qimen") {
-        pageContent = <QimenPage lang="en" currentUser={currentUser} authLoading={authLoading} isOwned={hasCourseAccess("taichi")} purchases={purchases} onPurchase={handlePurchase} onGoLogin={() => setActivePage("login")} />;
+        pageContent = <QimenPage currentUser={currentUser} authLoading={authLoading} isOwned={hasCourseAccess("taichi")} purchases={purchases} onPurchase={handlePurchase} onGoLogin={() => setActivePage("login")} />;
     } else if (activePage === "qigong") {
-        pageContent = <QigongPage lang="en" currentUser={currentUser} authLoading={authLoading} isOwned={hasCourseAccess("qigong")} purchases={purchases} onPurchase={handlePurchase} onGoLogin={() => setActivePage("login")} />;
+        pageContent = <QigongPage currentUser={currentUser} authLoading={authLoading} isOwned={hasCourseAccess("qigong")} purchases={purchases} onPurchase={handlePurchase} onGoLogin={() => setActivePage("login")} />;
     } else if (activePage === "wingchun") {
-        pageContent = <WingChunPage lang="en" currentUser={currentUser} authLoading={authLoading} isOwned={hasCourseAccess("wingchun")} purchases={purchases} onPurchase={handlePurchase} onGoLogin={() => setActivePage("login")} />;
+        pageContent = <WingChunPage currentUser={currentUser} authLoading={authLoading} isOwned={hasCourseAccess("wingchun")} purchases={purchases} onPurchase={handlePurchase} onGoLogin={() => setActivePage("login")} />;
     } else if (activePage === "tcm") {
-        pageContent = <TcmPage lang="en" />;
+        pageContent = <TcmPage />;
     } else if (activePage === "fengshui") {
-        pageContent = <FengShuiPage lang="en" />;
+        pageContent = <FengShuiPage />;
     } else if (activePage === "login") {
         pageContent = (
             <LoginPage
-                lang="en"
                 onBackHome={goHome}
                 onGoRegister={() => setActivePage("register")}
                 onLoginSuccess={(user) => {
@@ -476,7 +475,6 @@ function App() {
     } else if (activePage === "register") {
         pageContent = (
             <RegisterPage
-                lang="en"
                 onBackHome={goHome}
                 onGoLogin={() => setActivePage("login")}
                 onRegisterSuccess={(user) => {
@@ -487,17 +485,16 @@ function App() {
             />
         );
     } else if (activePage === "program") {
-        pageContent = <ProgramPage lang="en" onBack={goHome} />;
+        pageContent = <ProgramPage onBack={goHome} />;
     } else if (activePage === "shop") {
-        pageContent = <ShopPage lang="en" onBackHome={goHome} />;
+        pageContent = <ShopPage onBackHome={goHome} />;
     } else if (activePage === "about") {
-        pageContent = <AboutPage lang="en" onBackHome={goHome} />;
+        pageContent = <AboutPage onBackHome={goHome} />;
     } else if (activePage === "contact") {
-        pageContent = <ContactPage lang="en" onBackHome={goHome} />;
+        pageContent = <ContactPage onBackHome={goHome} />;
     } else if (activePage === "mycourses") {
         pageContent = (
             <MyCoursesPage
-                lang="en"
                 purchases={purchases}
                 currentUser={currentUser}
                 onNavigate={setActivePage}
@@ -507,7 +504,6 @@ function App() {
     } else if (activePage === "account") {
         pageContent = (
             <AccountPage
-                lang="en"
                 currentUser={currentUser}
                 purchases={purchases}
                 onLogout={handleLogout}
@@ -526,11 +522,11 @@ function App() {
                 <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
                     <div className="flex items-center gap-2">
                         <button
-                            className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-amber-600 text-white text-lg font-bold shadow-sm md:cursor-default"
+                            className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-amber-600 text-white text-xs font-bold shadow-sm md:cursor-default"
                             onClick={() => setSidebarOpen(true)}
                             aria-label="Open menu"
                         >
-                            太
+                            EC
                         </button>
                         <div
                             className="cursor-pointer"
@@ -580,7 +576,7 @@ function App() {
                     <div className="relative flex w-72 flex-col bg-white shadow-xl">
                         <div className="flex items-center justify-between border-b border-slate-100 px-5 py-4">
                             <div className="flex items-center gap-2">
-                                <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-amber-600 text-white text-lg font-bold">太</span>
+                                <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-amber-600 text-white text-xs font-bold">EC</span>
                                 <span className="text-base font-semibold text-slate-900">EastCulture</span>
                             </div>
                             <button onClick={() => setSidebarOpen(false)} className="text-slate-400 hover:text-slate-600 text-xl leading-none" aria-label="Close menu">×</button>

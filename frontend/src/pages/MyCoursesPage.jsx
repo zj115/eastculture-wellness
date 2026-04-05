@@ -12,9 +12,7 @@ const ALL_COURSES = [
         id: "faceyoga",
         page: "faceyoga",
         titleEn: "Face Yoga & Facial Massage",
-        titleZh: "面部瑜伽与按摩",
         descEn: "Gentle routines to lift, relax and refresh your facial muscles.",
-        descZh: "温和的面部练习，帮助提升紧致、放松表情，恢复光泽。",
         image: "/images/face-yoga-masterclass.jpg",
         lessons: 16,
         tag: "Face Yoga",
@@ -23,9 +21,7 @@ const ALL_COURSES = [
         id: "taichi",
         page: "qimen",
         titleEn: "Tai Chi System Course",
-        titleZh: "太极系统课",
         descEn: "Soft, flowing Tai Chi routines to nourish your joints, balance and inner calm.",
-        descZh: "学习太极基础，从站桩、步法到整套演练，循序渐进打好基础。",
         image: "/images/taiji-mountain.jpg",
         lessons: 4,
         tag: "Tai Chi",
@@ -34,9 +30,7 @@ const ALL_COURSES = [
         id: "qigong",
         page: "qigong",
         titleEn: "Acupressure Therapy",
-        titleZh: "穴位疗程",
         descEn: "Simple acupressure routines to release tension and restore calm.",
-        descZh: "用简单易学的穴位按压，缓解紧张与疲劳，帮助日常自我调理。",
         image: "/images/tai-chi/acupressure-cover.jpg",
         lessons: 6,
         tag: "Acupressure",
@@ -45,9 +39,7 @@ const ALL_COURSES = [
         id: "wingchun",
         page: "wingchun",
         titleEn: "Wing Chun Foundations",
-        titleZh: "咏春基础课",
         descEn: "Health Qigong 10 Forms + Self-Defense 9 Forms. ~7 min each, for all ages.",
-        descZh: "养生十式 + 防卫九式，每节约 7 分钟，零基础友好，老少皆宜。",
         image: "/images/wing-chun-yangsheng-cover.jpg",
         lessons: 2,
         tag: "Wing Chun",
@@ -94,8 +86,7 @@ function hasMembership(purchases) {
     );
 }
 
-export default function MyCoursesPage({ lang, purchases = [], currentUser, onNavigate, onPurchase }) {
-    const t = lang === "zh";
+export default function MyCoursesPage({ purchases = [], currentUser, onNavigate, onPurchase }) {
     const accessibleCourses = getAccessibleCourses(purchases);
     const isMember = hasMembership(purchases);
 
@@ -114,17 +105,15 @@ export default function MyCoursesPage({ lang, purchases = [], currentUser, onNav
                 transition={{ duration: 0.5 }}
             >
                 <h1 className="text-2xl font-semibold text-slate-900 md:text-3xl">
-                    {t ? "我的课程" : "My Courses"}
+                    My Courses
                 </h1>
                 <p className="mt-1 text-sm text-slate-500">
-                    {t
-                        ? `欢迎回来，${currentUser?.username}。这是你已解锁的全部课程。`
-                        : `Welcome back, ${currentUser?.username}. Here are all your unlocked courses.`}
+                    Welcome back, {currentUser?.username}. Here are all your unlocked courses.
                 </p>
                 {isMember && (
                     <div className="mt-3 inline-flex items-center gap-2 rounded-full bg-amber-50 border border-amber-200 px-3 py-1 text-xs text-amber-800 font-medium">
                         <span>★</span>
-                        {t ? "全站会员 · 无限观看所有课程" : "All-Access Member · Unlimited course access"}
+                        All-Access Member · Unlimited course access
                     </div>
                 )}
             </motion.div>
@@ -138,7 +127,7 @@ export default function MyCoursesPage({ lang, purchases = [], currentUser, onNav
                     transition={{ duration: 0.5, delay: 0.1 }}
                 >
                     <h2 className="mb-4 text-sm font-semibold uppercase tracking-widest text-slate-400">
-                        {t ? "已解锁课程" : "Unlocked Courses"}
+                        Unlocked Courses
                     </h2>
                     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                         {accessibleCourses.map((course) => (
@@ -156,7 +145,7 @@ export default function MyCoursesPage({ lang, purchases = [], currentUser, onNav
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                                     <div className="absolute top-2 right-2 rounded-full bg-emerald-500 px-2 py-0.5 text-[10px] text-white font-semibold">
-                                        {t ? "已解锁" : "Unlocked"}
+                                        Unlocked
                                     </div>
                                 </div>
                                 <div className="p-4">
@@ -164,17 +153,17 @@ export default function MyCoursesPage({ lang, purchases = [], currentUser, onNav
                                         {course.tag}
                                     </div>
                                     <h3 className="text-sm font-semibold text-slate-900">
-                                        {t ? course.titleZh : course.titleEn}
+                                        {course.titleEn}
                                     </h3>
                                     <p className="mt-1 text-xs text-slate-500">
-                                        {t ? course.descZh : course.descEn}
+                                        {course.descEn}
                                     </p>
                                     <div className="mt-3 flex items-center justify-between">
                                         <span className="text-xs text-slate-400">
-                                            {course.lessons} {t ? "节课" : "lessons"}
+                                            {course.lessons} lessons
                                         </span>
                                         <span className="text-xs font-medium text-amber-700 group-hover:text-amber-600 transition">
-                                            {t ? "继续学习 →" : "Continue →"}
+                                            Continue →
                                         </span>
                                     </div>
                                 </div>
@@ -192,16 +181,16 @@ export default function MyCoursesPage({ lang, purchases = [], currentUser, onNav
                 >
                     <div className="text-3xl mb-3">📚</div>
                     <p className="text-sm font-medium text-slate-700">
-                        {t ? "你还没有购买任何课程" : "You haven't purchased any courses yet"}
+                        You haven't purchased any courses yet
                     </p>
                     <p className="mt-1 text-xs text-slate-500">
-                        {t ? "浏览课程并开始你的第一堂课吧" : "Browse courses and start your first lesson"}
+                        Browse courses and start your first lesson
                     </p>
                     <button
                         onClick={() => onNavigate("home")}
                         className="mt-4 rounded-full bg-amber-600 px-5 py-2 text-xs font-semibold text-white hover:bg-amber-500 transition"
                     >
-                        {t ? "浏览课程" : "Browse Courses"}
+                        Browse Courses
                     </button>
                 </motion.div>
             )}
@@ -215,7 +204,7 @@ export default function MyCoursesPage({ lang, purchases = [], currentUser, onNav
                     transition={{ duration: 0.5, delay: 0.2 }}
                 >
                     <h2 className="mb-4 text-sm font-semibold uppercase tracking-widest text-slate-400">
-                        {t ? "更多课程" : "More Courses"}
+                        More Courses
                     </h2>
                     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                         {lockedCourses.map((course) => (
@@ -231,7 +220,7 @@ export default function MyCoursesPage({ lang, purchases = [], currentUser, onNav
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                                     <div className="absolute top-2 right-2 rounded-full bg-slate-700 px-2 py-0.5 text-[10px] text-white">
-                                        🔒 {t ? "未购买" : "Locked"}
+                                        🔒 Locked
                                     </div>
                                 </div>
                                 <div className="p-4">
@@ -239,13 +228,13 @@ export default function MyCoursesPage({ lang, purchases = [], currentUser, onNav
                                         {course.tag}
                                     </div>
                                     <h3 className="text-sm font-semibold text-slate-700">
-                                        {t ? course.titleZh : course.titleEn}
+                                        {course.titleEn}
                                     </h3>
                                     <button
                                         onClick={() => onPurchase("course", { courseId: course.id })}
                                         className="mt-3 w-full rounded-full border border-amber-300 px-3 py-1.5 text-xs font-semibold text-amber-700 hover:bg-amber-50 transition"
                                     >
-                                        {t ? "购买解锁" : "Purchase to unlock"}
+                                        Purchase to unlock
                                     </button>
                                 </div>
                             </div>
@@ -256,19 +245,17 @@ export default function MyCoursesPage({ lang, purchases = [], currentUser, onNav
                     <div className="mt-6 rounded-2xl border border-amber-200 bg-amber-50 p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                         <div>
                             <div className="text-sm font-semibold text-slate-900">
-                                {t ? "全站会员 · NZD 30/月起" : "All-Access Membership · from NZD 30/month"}
+                                All-Access Membership · from NZD 30/month
                             </div>
                             <div className="mt-0.5 text-xs text-slate-600">
-                                {t
-                                    ? "一次订阅，解锁全部课程，每月新增内容"
-                                    : "One subscription, unlock all courses, new content monthly"}
+                                One subscription, unlock all courses, new content monthly
                             </div>
                         </div>
                         <button
                             onClick={() => onPurchase("membership_monthly")}
                             className="shrink-0 rounded-full bg-amber-600 px-5 py-2 text-xs font-semibold text-white hover:bg-amber-500 transition"
                         >
-                            {t ? "立即订阅" : "Subscribe Now"}
+                            Subscribe Now
                         </button>
                     </div>
                 </motion.section>

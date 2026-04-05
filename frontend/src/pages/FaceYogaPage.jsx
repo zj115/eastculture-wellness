@@ -1,7 +1,4 @@
 // src/pages/FaceYogaPage.jsx
-// Face Yoga & Facial Massage 二级页面（课程门户页）
-// 需要 App.jsx 传入 lang（zh/en）与 onBack（返回课程列表）
-
 import { motion } from "framer-motion";
 import { useEffect, useMemo, useState } from "react";
 
@@ -18,7 +15,6 @@ const S3_PREFIX = "face-yoga/";
 const LESSONS = [
     {
         id: 1,
-        titleZh: "先导介绍课",
         titleEn: "Intro & Guide",
         duration: "—",
         canPreview: true,
@@ -26,7 +22,6 @@ const LESSONS = [
     },
     {
         id: 2,
-        titleZh: "抬头纹",
         titleEn: "Forehead Wrinkle Relief",
         duration: "—",
         canPreview: true,
@@ -34,7 +29,6 @@ const LESSONS = [
     },
     {
         id: 3,
-        titleZh: "川字纹",
         titleEn: "Frown Line Relief",
         duration: "—",
         canPreview: false,
@@ -42,7 +36,6 @@ const LESSONS = [
     },
     {
         id: 4,
-        titleZh: "眼袋",
         titleEn: "Under-Eye Puffiness Relief",
         duration: "—",
         canPreview: false,
@@ -50,7 +43,6 @@ const LESSONS = [
     },
     {
         id: 5,
-        titleZh: "黑眼圈",
         titleEn: "Dark Circle Improvement",
         duration: "—",
         canPreview: false,
@@ -58,7 +50,6 @@ const LESSONS = [
     },
     {
         id: 6,
-        titleZh: "眼尾纹",
         titleEn: "Crow's Feet Reduction",
         duration: "—",
         canPreview: false,
@@ -66,7 +57,6 @@ const LESSONS = [
     },
     {
         id: 7,
-        titleZh: "泪沟",
         titleEn: "Tear Trough Smoothing",
         duration: "—",
         canPreview: false,
@@ -74,7 +64,6 @@ const LESSONS = [
     },
     {
         id: 8,
-        titleZh: "法令纹",
         titleEn: "Nasolabial Fold Smoothing",
         duration: "—",
         canPreview: false,
@@ -82,7 +71,6 @@ const LESSONS = [
     },
     {
         id: 9,
-        titleZh: "鼻基底凹陷",
         titleEn: "Nasal Base Lifting",
         duration: "—",
         canPreview: false,
@@ -90,7 +78,6 @@ const LESSONS = [
     },
     {
         id: 10,
-        titleZh: "苹果肌下垂",
         titleEn: "Cheek Lifting",
         duration: "—",
         canPreview: false,
@@ -98,7 +85,6 @@ const LESSONS = [
     },
     {
         id: 11,
-        titleZh: "全脸下垂",
         titleEn: "Full Face Lifting",
         duration: "—",
         canPreview: false,
@@ -106,7 +92,6 @@ const LESSONS = [
     },
     {
         id: 12,
-        titleZh: "口周细纹",
         titleEn: "Perioral Fine Line Smoothing",
         duration: "—",
         canPreview: false,
@@ -114,7 +99,6 @@ const LESSONS = [
     },
     {
         id: 13,
-        titleZh: "嘴角下垂",
         titleEn: "Mouth Corner Lifting",
         duration: "—",
         canPreview: false,
@@ -122,7 +106,6 @@ const LESSONS = [
     },
     {
         id: 14,
-        titleZh: "下颌线不清晰",
         titleEn: "Jawline Definition",
         duration: "—",
         canPreview: false,
@@ -130,7 +113,6 @@ const LESSONS = [
     },
     {
         id: 15,
-        titleZh: "色斑痘印",
         titleEn: "Skin Tone Brightening",
         duration: "—",
         canPreview: false,
@@ -138,7 +120,6 @@ const LESSONS = [
     },
     {
         id: 16,
-        titleZh: "面部水肿",
         titleEn: "Facial De-puffing",
         duration: "—",
         canPreview: false,
@@ -148,76 +129,38 @@ const LESSONS = [
 
 const DETAILS = {
     titleEn: "Face Yoga & Facial Massage Masterclass",
-    titleZh: "面部瑜伽与按摩 · 全面抗老课程",
-    categoryEn: "VIDEO COURSE",
-    categoryZh: "视频课程",
     priceNow: "NZD 149",
     priceOld: "NZD 199",
     sale: true,
     introEn:
         "A complete program combining muscle training and traditional techniques. 16 lessons, lifetime access.",
-    introZh:
-        "通过科学的面部肌肉训练与传统东方按压技巧，让面部更紧致、明亮、有神。课程分为 16 节课，支持随时回看。",
     highlights: [
-        {
-            en: "Gentle & beginner-friendly (no tools needed)",
-            zh: "温和零基础（不需要工具）",
-        },
-        {
-            en: "Short lessons for daily consistency",
-            zh: "短课程，适合每天坚持",
-        },
+        "Gentle & beginner-friendly (no tools needed)",
+        "Short lessons for daily consistency",
     ],
-    basedOnTitleEn: "The course is based on",
-    basedOnTitleZh: "课程核心理念",
+    basedOnTitle: "The course is based on",
     basedOn: [
-        {
-            en: "System thinking: treat the body as a whole system, not isolated symptoms.",
-            zh: "系统思维：把身体当成整体系统，不只盯着某一个局部问题。",
-        },
-        {
-            en: "Daily maintenance: consistent practice supports circulation and function.",
-            zh: "日常维护：规律练习帮助循环与功能保持在更好的状态。",
-        },
-        {
-            en: "Prevention first: small daily work is better than fixing problems later.",
-            zh: "预防优先：每天一点点，比出现问题后再补救更省力。",
-        },
-        {
-            en: "Balanced training: avoid overworking one area; restore overall balance.",
-            zh: "均衡训练：避免只练某个部位，强调整体平衡与回正。",
-        },
+        "System thinking: treat the body as a whole system, not isolated symptoms.",
+        "Daily maintenance: consistent practice supports circulation and function.",
+        "Prevention first: small daily work is better than fixing problems later.",
+        "Balanced training: avoid overworking one area; restore overall balance.",
     ],
-    suitableTitleEn: "This course is suitable for",
-    suitableTitleZh: "适合人群",
+    suitableTitle: "This course is suitable for",
     suitable: [
-        {
-            en: "People who feel facial tension, puffiness or tired look",
-            zh: "面部紧张、浮肿、看起来疲惫的人",
-        },
-        {
-            en: "Beginners who want safe, slow, guided routines",
-            zh: "零基础，希望安全、慢节奏跟练的人",
-        },
-        {
-            en: "Anyone who prefers gentle wellness over intense workouts",
-            zh: "更喜欢温和身心调整，而不是高强度训练的人",
-        },
+        "People who feel facial tension, puffiness or tired look",
+        "Beginners who want safe, slow, guided routines",
+        "Anyone who prefers gentle wellness over intense workouts",
     ],
 };
 
-export default function FaceYogaPage({ lang, onBack, currentUser, authLoading = false, isOwned: isOwnedProp, purchases = [], onPurchase, onGoLogin }) {
-    const isZh = lang === "zh";
-
+export default function FaceYogaPage({ onBack, currentUser, authLoading = false, isOwned: isOwnedProp, purchases = [], onPurchase, onGoLogin }) {
     const isLoggedIn = !!currentUser;
     const isOwned = !!isOwnedProp;
 
     const [activeLessonId, setActiveLessonId] = useState(1);
-
     const [videoUrl, setVideoUrl] = useState("");
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
-
     const [qty, setQty] = useState(1);
 
     const activeLesson = useMemo(
@@ -252,30 +195,23 @@ export default function FaceYogaPage({ lang, onBack, currentUser, authLoading = 
             const data = await res.json().catch(() => ({}));
 
             if (!res.ok) {
-                setError(
-                    data?.error ||
-                        (isZh ? "获取视频链接失败" : "Failed to load video URL")
-                );
+                setError(data?.error || "Failed to load video URL");
                 return;
             }
 
             if (!data?.url || typeof data.url !== "string") {
-                setError(isZh ? "后端没有返回可用的 url" : "Backend returned no usable url");
+                setError("Backend returned no usable url");
                 return;
             }
 
             if (!data.url.startsWith("https://")) {
-                setError(
-                    isZh
-                        ? "视频链接不是 https，浏览器可能会拦截"
-                        : "URL is not https (may be blocked)"
-                );
+                setError("URL is not https (may be blocked)");
                 return;
             }
 
             setVideoUrl(data.url);
         } catch (e) {
-            setError(isZh ? "网络错误：无法连接后端" : "Network error: cannot reach backend");
+            setError("Network error: cannot reach backend");
         } finally {
             setLoading(false);
         }
@@ -287,12 +223,11 @@ export default function FaceYogaPage({ lang, onBack, currentUser, authLoading = 
             return p.purchase_type === "video" && p.video_key === lesson.s3Key;
         });
         if (!hasAccess) {
-            if (authLoading) return; // wait for session check
+            if (authLoading) return;
             if (!isLoggedIn) {
                 onGoLogin?.();
             } else {
-                const title = isZh ? lesson.titleZh : lesson.titleEn;
-                onPurchase?.("video", { courseId: "faceyoga", videoKey: lesson.s3Key, videoTitle: title });
+                onPurchase?.("video", { courseId: "faceyoga", videoKey: lesson.s3Key, videoTitle: lesson.titleEn });
             }
             return;
         }
@@ -306,11 +241,10 @@ export default function FaceYogaPage({ lang, onBack, currentUser, authLoading = 
     }
 
     function handleBuyVideo() {
-        const title = isZh ? activeLesson.titleZh : activeLesson.titleEn;
         onPurchase?.("video", {
             courseId: "faceyoga",
             videoKey: activeLesson.s3Key,
-            videoTitle: title,
+            videoTitle: activeLesson.titleEn,
         });
     }
 
@@ -337,7 +271,7 @@ export default function FaceYogaPage({ lang, onBack, currentUser, authLoading = 
                     <div className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
                         <img
                             src="/images/face-yoga-masterclass.jpg"
-                            alt={isZh ? "课程封面" : "Course cover"}
+                            alt="Course cover"
                             className="h-full w-full object-cover"
                         />
                     </div>
@@ -345,21 +279,18 @@ export default function FaceYogaPage({ lang, onBack, currentUser, authLoading = 
                     <div className="space-y-4">
                         <div className="flex items-center justify-between gap-3">
                             <div className="text-[11px] uppercase tracking-[0.18em] text-slate-500">
-                                {DETAILS.categoryEn}
-                                <span className="mx-2 text-slate-300">•</span>
-                                {DETAILS.categoryZh}
+                                VIDEO COURSE
                             </div>
                             {DETAILS.sale && (
                                 <span className="rounded-full bg-slate-900 px-2.5 py-1 text-[11px] font-semibold text-white">
-                                    {isZh ? "优惠中" : "Sale"}
+                                    Sale
                                 </span>
                             )}
                         </div>
 
                         <h1 className="text-2xl font-semibold leading-tight md:text-3xl">
-                            {isZh ? DETAILS.titleZh : DETAILS.titleEn}
+                            {DETAILS.titleEn}
                         </h1>
-                        <p className="text-sm text-slate-600">{isZh ? DETAILS.titleEn : DETAILS.titleZh}</p>
 
                         <div className="flex items-center gap-3">
                             <span className="text-lg font-semibold text-slate-900">{DETAILS.priceNow}</span>
@@ -367,18 +298,18 @@ export default function FaceYogaPage({ lang, onBack, currentUser, authLoading = 
                         </div>
 
                         <div className="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2 text-xs text-slate-700">
-                            <div>• {LESSONS.length} {isZh ? "节课" : "lessons"} · {isZh ? "终身访问" : "lifetime access"}</div>
-                            <div>• {isZh ? DETAILS.introZh : DETAILS.introEn}</div>
+                            <div>• {LESSONS.length} lessons · lifetime access</div>
+                            <div>• {DETAILS.introEn}</div>
                         </div>
 
                         <div className="space-y-1 text-xs text-slate-600">
                             {DETAILS.highlights.map((it, idx) => (
-                                <div key={idx}>• {isZh ? it.zh : it.en}</div>
+                                <div key={idx}>• {it}</div>
                             ))}
                         </div>
 
                         <div className="space-y-3 pt-2">
-                            <div className="text-xs text-slate-500">{isZh ? "数量" : "Quantity"}</div>
+                            <div className="text-xs text-slate-500">Quantity</div>
                             <div className="flex items-center gap-2">
                                 <button
                                     type="button"
@@ -404,12 +335,12 @@ export default function FaceYogaPage({ lang, onBack, currentUser, authLoading = 
                                 onClick={handleBuyVideo}
                                 className="w-full rounded-2xl border border-slate-300 bg-white px-4 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-50 transition"
                             >
-                                {isZh ? `购买本课时 NZD 10` : `Buy This Lesson NZD 10`}
+                                Buy This Lesson NZD 10
                             </button>
 
                             {!isLoggedIn && (
                                 <p className="text-xs text-amber-700">
-                                    {isZh ? "请先登录后购买并观看课程。" : "Please sign in to purchase and watch."}
+                                    Please sign in to purchase and watch.
                                 </p>
                             )}
                         </div>
@@ -431,7 +362,7 @@ export default function FaceYogaPage({ lang, onBack, currentUser, authLoading = 
                                     {loading && (
                                         <div className="absolute inset-0 z-10 flex items-center justify-center bg-black/60">
                                             <div className="rounded-2xl border border-white/10 bg-white/10 px-4 py-2 text-sm text-white">
-                                                {isZh ? "加载中..." : "Loading..."}
+                                                Loading...
                                             </div>
                                         </div>
                                     )}
@@ -439,13 +370,13 @@ export default function FaceYogaPage({ lang, onBack, currentUser, authLoading = 
                                     {error && !loading && (
                                         <div className="flex aspect-video items-center justify-center p-8 text-center text-white">
                                             <div className="max-w-md">
-                                                <p className="text-lg font-semibold">{isZh ? "播放失败" : "Playback error"}</p>
+                                                <p className="text-lg font-semibold">Playback error</p>
                                                 <p className="mt-2 text-sm text-white/80">{error}</p>
                                                 <button
                                                     onClick={() => fetchSignedUrl(activeLesson.s3Key)}
                                                     className="mt-4 rounded-2xl bg-amber-500 px-4 py-2 text-sm font-semibold text-slate-900 hover:bg-amber-400"
                                                 >
-                                                    {isZh ? "重试" : "Retry"}
+                                                    Retry
                                                 </button>
                                             </div>
                                         </div>
@@ -461,16 +392,16 @@ export default function FaceYogaPage({ lang, onBack, currentUser, authLoading = 
                                             className="h-full w-full"
                                         >
                                             <source src={videoUrl} type="video/mp4" />
-                                            {isZh ? "你的浏览器不支持视频播放。" : "Your browser does not support the video tag."}
+                                            Your browser does not support the video tag.
                                         </video>
                                     )}
 
                                     {!error && !loading && !videoUrl && (
                                         <div className="flex aspect-video items-center justify-center p-8 text-center text-white">
                                             <div className="max-w-md">
-                                                <p className="text-lg font-semibold">{isZh ? "准备播放" : "Ready"}</p>
+                                                <p className="text-lg font-semibold">Ready</p>
                                                 <p className="mt-2 text-sm text-white/80">
-                                                    {isZh ? "点击右侧课时开始播放。" : "Select a lesson on the right to start."}
+                                                    Select a lesson on the right to start.
                                                 </p>
                                             </div>
                                         </div>
@@ -479,11 +410,9 @@ export default function FaceYogaPage({ lang, onBack, currentUser, authLoading = 
                             ) : (
                                 <div className="flex aspect-video items-center justify-center p-8 text-center text-white">
                                     <div className="max-w-md">
-                                        <p className="text-lg font-semibold">{isZh ? "内容已锁定" : "Locked"}</p>
+                                        <p className="text-lg font-semibold">Locked</p>
                                         <p className="mt-2 text-sm text-white/80">
-                                            {isZh
-                                                ? "购买后即可观看全部 16 节课程。"
-                                                : "Purchase a lesson or the full course to start watching."}
+                                            Purchase a lesson or the full course to start watching.
                                         </p>
                                     </div>
                                 </div>
@@ -491,51 +420,45 @@ export default function FaceYogaPage({ lang, onBack, currentUser, authLoading = 
                         </div>
 
                         <div className="rounded-3xl border border-slate-200 bg-white p-5">
-                            <p className="text-xs text-slate-500">{isZh ? "正在播放" : "Now playing"}</p>
+                            <p className="text-xs text-slate-500">Now playing</p>
                             <p className="mt-1 text-base font-semibold text-slate-900">
-                                {isZh ? `第 ${activeLesson.id} 课：` : `Lesson ${activeLesson.id}: `}
-                                {isZh ? activeLesson.titleZh : activeLesson.titleEn}
-                            </p>
-                            <p className="mt-1 text-sm text-slate-600">
-                                {isZh ? activeLesson.titleEn : activeLesson.titleZh}
+                                Lesson {activeLesson.id}: {activeLesson.titleEn}
                             </p>
                         </div>
 
                         <div className="rounded-3xl border border-slate-200 bg-white p-6 space-y-3">
                             <h2 className="text-lg font-semibold text-slate-900">
-                                {isZh ? DETAILS.basedOnTitleZh : DETAILS.basedOnTitleEn}
+                                {DETAILS.basedOnTitle}
                             </h2>
                             <ul className="list-disc pl-5 text-sm text-slate-700 space-y-2">
                                 {DETAILS.basedOn.map((it, idx) => (
-                                    <li key={idx}>{isZh ? it.zh : it.en}</li>
+                                    <li key={idx}>{it}</li>
                                 ))}
                             </ul>
                         </div>
 
                         <div className="rounded-3xl border border-slate-200 bg-white p-6 space-y-3">
                             <h2 className="text-lg font-semibold text-slate-900">
-                                {isZh ? DETAILS.suitableTitleZh : DETAILS.suitableTitleEn}
+                                {DETAILS.suitableTitle}
                             </h2>
                             <ul className="list-disc pl-5 text-sm text-slate-700 space-y-2">
                                 {DETAILS.suitable.map((it, idx) => (
-                                    <li key={idx}>{isZh ? it.zh : it.en}</li>
+                                    <li key={idx}>{it}</li>
                                 ))}
                             </ul>
                         </div>
 
                         <div className="rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-[11px] md:text-xs text-amber-900">
-                            {isZh
-                                ? "提醒：本课程不构成医疗建议。如有严重不适，请咨询专业医生。"
-                                : "Disclaimer: This program is for wellness purposes only and is not medical advice."}
+                            Disclaimer: This program is for wellness purposes only and is not medical advice.
                         </div>
                     </div>
 
                     <aside className="space-y-3">
                         <div className="flex items-end justify-between">
                             <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-700">
-                                {isZh ? "课程目录" : "Lessons"}
+                                Lessons
                             </h2>
-                            <p className="text-xs text-slate-500">{LESSONS.length} {isZh ? "节" : "total"}</p>
+                            <p className="text-xs text-slate-500">{LESSONS.length} total</p>
                         </div>
 
                         <div className="max-h-[720px] space-y-2 overflow-auto pr-1">
@@ -561,24 +484,19 @@ export default function FaceYogaPage({ lang, onBack, currentUser, authLoading = 
                                     >
                                         <div className="min-w-0">
                                             <p className="truncate text-sm font-semibold text-slate-900">
-                                                {isZh
-                                                    ? `第 ${lesson.id} 课 · ${lesson.titleZh}`
-                                                    : `Lesson ${lesson.id} · ${lesson.titleEn}`}
-                                            </p>
-                                            <p className="truncate text-xs text-slate-500">
-                                                {isZh ? lesson.titleEn : lesson.titleZh}
+                                                Lesson {lesson.id} · {lesson.titleEn}
                                             </p>
                                         </div>
 
                                         <div className="flex shrink-0 items-center gap-2 text-xs">
                                             {locked && (
                                                 <span className="rounded-full border border-amber-200 bg-amber-50 px-2 py-1 text-[11px] text-amber-700">
-                                                    🔒 {isZh ? "购买解锁" : "Buy NZD 10"}
+                                                    🔒 Buy NZD 10
                                                 </span>
                                             )}
                                             {!locked && (
                                                 <span className="rounded-full border border-slate-200 bg-white px-2 py-1 text-[11px] text-slate-700">
-                                                    {isZh ? "已解锁" : "Unlocked"}
+                                                    Unlocked
                                                 </span>
                                             )}
                                             <span className="text-slate-400">{lesson.duration}</span>

@@ -47,19 +47,23 @@ export async function userHasAccess(
   userId: string,
   courseId: string
 ): Promise<boolean> {
-  // Check active membership first
-  const { data: membership } = await supabaseAdmin
+  // Check active membership (null expires_at = lifetime, otherwise must not be expired)
+  const { data: memberships } = await supabaseAdmin
     .from("user_purchases")
-    .select("id")
+    .select("id, expires_at")
     .eq("user_id", userId)
     .eq("purchase_type", "membership")
-    .eq("status", "active")
-    .gte("expires_at", new Date().toISOString())
-    .maybeSingle();
+    .eq("status", "active");
 
-  if (membership) return true;
+  if (memberships && memberships.length > 0) {
+    const now = new Date();
+    const hasValidMembership = memberships.some(
+      (m) => !m.expires_at || new Date(m.expires_at) >= now
+    );
+    if (hasValidMembership) return true;
+  }
 
-  // Check course series purchase
+  // Check course series purchase (lifetime — no expires_at check needed)
   const { data: seriesPurchase } = await supabaseAdmin
     .from("user_purchases")
     .select("id")

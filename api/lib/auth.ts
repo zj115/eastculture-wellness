@@ -88,7 +88,7 @@ export async function userHasVideoAccess(
   const courseAccess = await userHasAccess(userId, courseId);
   if (courseAccess) return true;
 
-  // Check individual video purchase
+  // Check individual video purchase (exact key match)
   const { data } = await supabaseAdmin
     .from("user_purchases")
     .select("id")
@@ -98,5 +98,28 @@ export async function userHasVideoAccess(
     .eq("status", "active")
     .maybeSingle();
 
-  return !!data;
+  if (data) return true;
+
+  // Also grant access if user has ANY active video purchase from the same course
+  // (handles renamed/reorganized video files — matches frontend hasCourseAccess logic)
+  const COURSE_PREFIXES: Record<string, string> = {
+    faceyoga: "face-yoga/",
+    taichi: "taichi/",
+    qigong: "acupressure/",
+    wingchun: "wingchun/",
+  };
+  const prefix = COURSE_PREFIXES[courseId];
+  if (prefix) {
+    const { data: anyVideoPurchase } = await supabaseAdmin
+      .from("user_purchases")
+      .select("id")
+      .eq("user_id", userId)
+      .eq("purchase_type", "video")
+      .eq("status", "active")
+      .like("video_key", `${prefix}%`)
+      .maybeSingle();
+    if (anyVideoPurchase) return true;
+  }
+
+  return false;
 }

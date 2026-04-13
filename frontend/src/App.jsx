@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 const API_BASE = import.meta?.env?.VITE_API_BASE || "https://eastculture-api.vercel.app";
 
 import FaceYogaPage from "./pages/FaceYogaPage";
+import GuaShaPage from "./pages/GuaShaPage";
 import QimenPage from "./pages/QimenPage";
 import QigongPage from "./pages/QigongPage";
 import WingChunPage from "./pages/WingChunPage";
@@ -50,6 +51,14 @@ const ACUPOINT_LESSONS = [
     { id: 4, titleEn: "Common Daily Discomforts Relief", subtitle: "16 Conditions • Fast Relief at Home", duration: "~70 min", coverImage: "/images/acupressure-lesson-04.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "NZD 99", priceOld: "NZD 149", sale: true, page: "qigong" },
     { id: 5, titleEn: "Neck & Shoulder Pain Relief", subtitle: "8 Conditions • 3 Key Pressure Points", duration: "~40 min", coverImage: "/images/acupressure-lesson-05.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "NZD 99", priceOld: "NZD 149", sale: true, page: "qigong" },
     { id: 6, titleEn: "Waist & Leg Pain Relief", subtitle: "18 Conditions • 3 Pressure Points Each", duration: "~80 min", coverImage: "/images/acupressure-lesson-06.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "NZD 99", priceOld: "NZD 149", sale: true, page: "qigong" },
+];
+
+// ─── Gua Sha lessons ──────────────────────────────────────────────────────────
+const GUASHA_LESSONS = [
+    { id: 1, titleEn: "Beginner Foundation Class", subtitle: "Master core Gua Sha logic, tools & safety", duration: "~5 min", coverImage: "/images/face-yoga-masterclass.jpg", fallbackImage: "/images/face-yoga-before-after.jpg", priceNow: "NZD 99", priceOld: "NZD 149", sale: true, page: "guasha" },
+    { id: 2, titleEn: "Forehead Lines", subtitle: "（02：34）", duration: "~5 min", coverImage: "/images/face-yoga-masterclass.jpg", fallbackImage: "/images/face-yoga-before-after.jpg", priceNow: "NZD 99", priceOld: "NZD 149", sale: true, page: "guasha" },
+    { id: 3, titleEn: "11s / Glabellar Lines", subtitle: "（16：00）", duration: "~5 min", coverImage: "/images/face-yoga-masterclass.jpg", fallbackImage: "/images/face-yoga-before-after.jpg", priceNow: "NZD 99", priceOld: "NZD 149", sale: true, page: "guasha" },
+    { id: 4, titleEn: "Under-Eye Bags", subtitle: "（26：40）", duration: "~5 min", coverImage: "/images/face-yoga-masterclass.jpg", fallbackImage: "/images/face-yoga-before-after.jpg", priceNow: "NZD 99", priceOld: "NZD 149", sale: true, page: "guasha" },
 ];
 
 // ─── Card component ───────────────────────────────────────────────────────────
@@ -181,6 +190,7 @@ function App() {
         qigong: "acupressure/",
         wingchun: "wingchun/",
         faceyoga: "face-yoga/",
+        guasha: "FacialGuaSha/",
     };
 
     function hasCourseAccess(courseId) {
@@ -268,185 +278,111 @@ function App() {
                     />
                 </section>
 
-                {/* ── WHAT YOU CAN LEARN ───────────────────────────────────── */}
-                <motion.section
-                    className="mx-auto max-w-6xl px-4 pt-16"
-                    initial="hidden"
-                    whileInView="show"
-                    viewport={{ once: true, amount: 0.3 }}
-                    transition={{ duration: 0.7, ease: "easeOut" }}
-                    variants={fadeInUp}
-                >
-                    <div className="text-center mb-10">
-                        <h2 className="text-2xl md:text-3xl font-semibold text-slate-900">What You Can Learn Here</h2>
-                        <p className="mt-2 text-sm text-slate-500 max-w-xl mx-auto">
-                            Ancient Eastern practices for modern health — rooted in tradition, made simple for everyday life.
-                        </p>
-                    </div>
-                    <div className="grid gap-4 md:grid-cols-3">
-                        {[
-                            {
-                                title: "Tai Chi Practice",
-                                desc: "Soft, flowing Tai Chi routines to nourish your joints, restore balance, and calm the nervous system.",
-                                img: "/images/taiji-mountain.jpg",
-                                page: "qimen",
-                            },
-                            {
-                                title: "Wing Chun Foundations",
-                                desc: "Body coordination, centerline structure, and gentle movement — from authentic Wing Chun lineage.",
-                                img: "/images/martial-staff-demo.jpg",
-                                page: "wingchun",
-                            },
-                            {
-                                title: "Acupoint Self-Care",
-                                desc: "Simple pressure-point routines for pain relief, internal wellness, and daily self-healing at home.",
-                                img: "/images/tai-chi/acupressure-cover.jpg",
-                                page: "qigong",
-                            },
-                        ].map((item) => (
-                            <div
-                                key={item.title}
-                                className="group relative overflow-hidden rounded-2xl cursor-pointer"
-                                onClick={() => setActivePage(item.page)}
-                            >
-                                <div className="relative h-48 overflow-hidden">
-                                    <img
-                                        src={item.img}
-                                        alt={item.title}
-                                        className="w-full h-full object-cover transition duration-500 group-hover:scale-105"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-                                    <div className="absolute bottom-3 left-4 right-4">
-                                        <h3 className="text-white font-semibold text-base">{item.title}</h3>
-                                    </div>
-                                </div>
-                                <div className="bg-white border border-t-0 border-slate-200 rounded-b-2xl px-4 py-3">
-                                    <p className="text-xs text-slate-600 leading-relaxed">{item.desc}</p>
-                                    <p className="mt-2 text-xs text-amber-700 font-medium">View lessons →</p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </motion.section>
+                {/* ── COURSE SECTIONS ───────────────────────────────────────
+                    Desktop layout:  Gua Sha (C-pos) | Acupoint | Tai Chi | Wing Chun
+                    Mobile CSS order: Acupoint(1) → Tai Chi(2) → Gua Sha(3) → Wing Chun(4)
+                ─────────────────────────────────────────────────────────────── */}
+                <div className="mx-auto max-w-6xl px-4 pt-16 flex flex-col gap-16 md:block md:space-y-16">
 
-                {/* ── TAI CHI SECTION ──────────────────────────────────────── */}
-                <motion.section
-                    className="mx-auto max-w-6xl px-4 pt-16"
-                    initial="hidden"
-                    whileInView="show"
-                    viewport={{ once: true, amount: 0.2 }}
-                    transition={{ duration: 0.7, ease: "easeOut" }}
-                    variants={fadeInUp}
-                >
-                    <SectionHeading
-                        title="Tai Chi"
-                        subtitle="Wudang Sanfeng series — gentle movement for joints, organs, sleep, and inner calm."
-                        onViewAll
-                        viewAllPage="qimen"
-                        onNavigate={setActivePage}
-                    />
-                    <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-                        {TAICHI_LESSONS.map((lesson) => (
-                            <LessonCard key={lesson.id} lesson={lesson} onNavigate={setActivePage} />
-                        ))}
-                    </div>
-                </motion.section>
+                    {/* GUA SHA — desktop: first / mobile: order-3 */}
+                    <motion.section
+                        className="order-3 md:order-1"
+                        initial="hidden"
+                        whileInView="show"
+                        viewport={{ once: true, amount: 0.2 }}
+                        transition={{ duration: 0.7, ease: "easeOut" }}
+                        variants={fadeInUp}
+                    >
+                        <SectionHeading
+                            title="16 Facial Anti-Aging Gua Sha"
+                            subtitle="No Surgery • No Needles • No Skincare Scams • Just 5 Minutes a Day — Fades Wrinkles, Lifts Sagging, Brightens Skin AT HOME."
+                            onViewAll
+                            viewAllPage="guasha"
+                            onNavigate={setActivePage}
+                        />
+                        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+                            {GUASHA_LESSONS.map((lesson) => (
+                                <LessonCard key={lesson.id} lesson={lesson} onNavigate={setActivePage} />
+                            ))}
+                        </div>
+                    </motion.section>
 
-                {/* ── WING CHUN SECTION ────────────────────────────────────── */}
-                <motion.section
-                    className="mx-auto max-w-6xl px-4 pt-16"
-                    initial="hidden"
-                    whileInView="show"
-                    viewport={{ once: true, amount: 0.2 }}
-                    transition={{ duration: 0.7, ease: "easeOut" }}
-                    variants={fadeInUp}
-                >
-                    <SectionHeading
-                        title="Wing Chun"
-                        subtitle="Authentic Wing Chun fundamentals — body coordination, structure, and self-care routines."
-                        onViewAll
-                        viewAllPage="wingchun"
-                        onNavigate={setActivePage}
-                    />
-                    <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-                        {WINGCHUN_LESSONS.map((lesson) => (
-                            <LessonCard key={lesson.id} lesson={lesson} onNavigate={setActivePage} />
-                        ))}
-                    </div>
-                </motion.section>
+                    {/* ACUPOINT — desktop: second / mobile: order-1 */}
+                    <motion.section
+                        className="order-1 md:order-2"
+                        initial="hidden"
+                        whileInView="show"
+                        viewport={{ once: true, amount: 0.2 }}
+                        transition={{ duration: 0.7, ease: "easeOut" }}
+                        variants={fadeInUp}
+                    >
+                        <SectionHeading
+                            title="Acupoint Self-Care"
+                            subtitle="Drug-free, at-home pressure point routines — 3 simple points for each condition."
+                            onViewAll
+                            viewAllPage="qigong"
+                            onNavigate={setActivePage}
+                        />
+                        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+                            {ACUPOINT_LESSONS.map((lesson) => (
+                                <LessonCard key={lesson.id} lesson={lesson} onNavigate={setActivePage} />
+                            ))}
+                        </div>
+                    </motion.section>
 
-                {/* ── ACUPOINT SECTION ─────────────────────────────────────── */}
-                <motion.section
-                    className="mx-auto max-w-6xl px-4 pt-16"
-                    initial="hidden"
-                    whileInView="show"
-                    viewport={{ once: true, amount: 0.2 }}
-                    transition={{ duration: 0.7, ease: "easeOut" }}
-                    variants={fadeInUp}
-                >
-                    <SectionHeading
-                        title="Acupoint Self-Care"
-                        subtitle="Drug-free, at-home pressure point routines — 3 simple points for each condition."
-                        onViewAll
-                        viewAllPage="qigong"
-                        onNavigate={setActivePage}
-                    />
-                    <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-                        {ACUPOINT_LESSONS.map((lesson) => (
-                            <LessonCard key={lesson.id} lesson={lesson} onNavigate={setActivePage} />
-                        ))}
-                    </div>
-                </motion.section>
+                    {/* TAI CHI — desktop: third / mobile: order-2 */}
+                    <motion.section
+                        className="order-2 md:order-3"
+                        initial="hidden"
+                        whileInView="show"
+                        viewport={{ once: true, amount: 0.2 }}
+                        transition={{ duration: 0.7, ease: "easeOut" }}
+                        variants={fadeInUp}
+                    >
+                        <SectionHeading
+                            title="Tai Chi — Wudang Sanfeng"
+                            subtitle="Relieve joint pain, reduce stress & improve sleep — authentic Wudang Tai Chi taught by a 15th-generation lineage master. No experience needed, 10–30 min per session."
+                            onViewAll
+                            viewAllPage="qimen"
+                            onNavigate={setActivePage}
+                        />
+                        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+                            {TAICHI_LESSONS.map((lesson) => (
+                                <LessonCard key={lesson.id} lesson={lesson} onNavigate={setActivePage} />
+                            ))}
+                        </div>
+                    </motion.section>
 
-                {/* ── MEMBERSHIP ───────────────────────────────────────────── */}
-                <motion.section
-                    className="mx-auto max-w-6xl px-4 pt-16"
-                    initial="hidden"
-                    whileInView="show"
-                    viewport={{ once: true, amount: 0.2 }}
-                    transition={{ duration: 0.7, ease: "easeOut" }}
-                    variants={fadeInUp}
-                >
-                    <div className="text-center mb-8">
-                        <h2 className="text-2xl md:text-3xl font-semibold text-slate-900">Choose Your Membership</h2>
-                        <p className="mt-2 text-sm text-slate-500">Unlock all courses with one simple plan.</p>
-                    </div>
-                    <div className="grid gap-4 md:grid-cols-3">
-                        {[
-                            { name: "Monthly", price: "NZD 30", per: "/ month", desc: "Flexible month-to-month access.", purchaseType: "membership_monthly", highlight: false, items: ["Unlimited access to all video courses", "New lessons added monthly", "Watch on any device", "Cancel anytime"] },
-                            { name: "Quarterly", price: "NZD 100", per: "/ 3 months", desc: "Save NZD 10 vs monthly.", purchaseType: "membership_quarterly", highlight: true, items: ["Unlimited access to all video courses", "New lessons added monthly", "Watch on any device", "Best for consistent practice"] },
-                            { name: "Annual", price: "NZD 168", per: "/ year", desc: "Best value — save NZD 192 vs monthly.", purchaseType: "membership_annual", highlight: false, items: ["Unlimited access to all video courses", "New lessons added monthly", "Watch on any device", "Lowest price per month"] },
-                        ].map((plan) => (
-                            <div
-                                key={plan.name}
-                                className={`flex flex-col rounded-2xl border p-5 shadow-sm ${plan.highlight ? "border-amber-300 bg-white shadow-amber-100" : "border-slate-200 bg-white"}`}
-                            >
-                                {plan.highlight && (
-                                    <span className="self-start mb-2 rounded-full bg-amber-100 px-2.5 py-0.5 text-[10px] font-semibold text-amber-800">Most Popular</span>
-                                )}
-                                <h3 className="text-base font-semibold text-slate-900">{plan.name}</h3>
-                                <div className="mt-1">
-                                    <span className="text-2xl font-bold text-amber-700">{plan.price}</span>
-                                    <span className="text-sm text-slate-500 ml-1">{plan.per}</span>
-                                </div>
-                                <p className="mt-1 text-xs text-slate-500">{plan.desc}</p>
-                                <ul className="mt-4 flex-1 space-y-2 text-xs text-slate-700">
-                                    {plan.items.map((it, i) => <li key={i} className="flex gap-2"><span className="text-emerald-500 shrink-0">✓</span>{it}</li>)}
-                                </ul>
-                                <button
-                                    className={`mt-5 rounded-full px-4 py-2 text-sm font-semibold transition ${plan.highlight ? "bg-amber-600 text-white hover:bg-amber-500" : "border border-slate-300 bg-white text-slate-900 hover:border-amber-300 hover:text-amber-700"}`}
-                                    onClick={() => handlePurchase(plan.purchaseType)}
-                                >
-                                    Choose Plan
-                                </button>
-                            </div>
-                        ))}
-                    </div>
-                </motion.section>
+                    {/* WING CHUN — desktop: fourth / mobile: order-4 */}
+                    <motion.section
+                        className="order-4"
+                        initial="hidden"
+                        whileInView="show"
+                        viewport={{ once: true, amount: 0.2 }}
+                        transition={{ duration: 0.7, ease: "easeOut" }}
+                        variants={fadeInUp}
+                    >
+                        <SectionHeading
+                            title="Wing Chun"
+                            subtitle="Authentic Wing Chun fundamentals — body coordination, structure, and self-care routines."
+                            onViewAll
+                            viewAllPage="wingchun"
+                            onNavigate={setActivePage}
+                        />
+                        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+                            {WINGCHUN_LESSONS.map((lesson) => (
+                                <LessonCard key={lesson.id} lesson={lesson} onNavigate={setActivePage} />
+                            ))}
+                        </div>
+                    </motion.section>
+
+                </div>
             </main>
         );
     } else if (activePage === "faceyoga") {
         pageContent = <FaceYogaPage currentUser={currentUser} authLoading={authLoading} isOwned={hasCourseAccess("faceyoga")} purchases={purchases} onPurchase={handlePurchase} onGoLogin={() => setActivePage("login")} />;
+    } else if (activePage === "guasha") {
+        pageContent = <GuaShaPage currentUser={currentUser} authLoading={authLoading} isOwned={hasCourseAccess("guasha")} purchases={purchases} onPurchase={handlePurchase} onGoLogin={() => setActivePage("login")} />;
     } else if (activePage === "qimen") {
         pageContent = <QimenPage currentUser={currentUser} authLoading={authLoading} isOwned={hasCourseAccess("taichi")} purchases={purchases} onPurchase={handlePurchase} onGoLogin={() => setActivePage("login")} />;
     } else if (activePage === "qigong") {
@@ -539,9 +475,10 @@ function App() {
 
                     <nav className="hidden items-center gap-6 text-sm md:flex">
                         <button className="text-slate-700 hover:text-amber-700 transition" onClick={goHome}>Home</button>
+                        <button className="text-slate-700 hover:text-amber-700 transition" onClick={() => setActivePage("guasha")}>Gua Sha</button>
+                        <button className="text-slate-700 hover:text-amber-700 transition" onClick={() => setActivePage("qigong")}>Acupoint</button>
                         <button className="text-slate-700 hover:text-amber-700 transition" onClick={() => setActivePage("qimen")}>Tai Chi</button>
                         <button className="text-slate-700 hover:text-amber-700 transition" onClick={() => setActivePage("wingchun")}>Wing Chun</button>
-                        <button className="text-slate-700 hover:text-amber-700 transition" onClick={() => setActivePage("qigong")}>Acupoint</button>
                         <button className="text-slate-700 hover:text-amber-700 transition" onClick={() => setActivePage("about")}>About</button>
                         <button className="text-slate-700 hover:text-amber-700 transition" onClick={() => setActivePage("contact")}>Contact</button>
                         {currentUser && (
@@ -584,9 +521,10 @@ function App() {
                         <nav className="flex flex-col gap-1 px-4 py-4 text-sm">
                             {[
                                 { label: "Home", action: () => { goHome(); setSidebarOpen(false); } },
+                                { label: "Gua Sha", action: () => { setActivePage("guasha"); setSidebarOpen(false); } },
+                                { label: "Acupoint", action: () => { setActivePage("qigong"); setSidebarOpen(false); } },
                                 { label: "Tai Chi", action: () => { setActivePage("qimen"); setSidebarOpen(false); } },
                                 { label: "Wing Chun", action: () => { setActivePage("wingchun"); setSidebarOpen(false); } },
-                                { label: "Acupoint", action: () => { setActivePage("qigong"); setSidebarOpen(false); } },
                                 { label: "About", action: () => { setActivePage("about"); setSidebarOpen(false); } },
                                 { label: "Contact", action: () => { setActivePage("contact"); setSidebarOpen(false); } },
                             ].map(({ label, action }) => (

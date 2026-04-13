@@ -107,6 +107,7 @@ export async function userHasVideoAccess(
     taichi: "taichi/",
     qigong: "acupressure/",
     wingchun: "wingchun/",
+    guasha: "FacialGuaSha/",
   };
   const prefix = COURSE_PREFIXES[courseId];
   if (prefix) {

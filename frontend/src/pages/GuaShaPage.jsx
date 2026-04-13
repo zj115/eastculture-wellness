@@ -265,7 +265,7 @@ export default function GuaShaPage({
                     className="pt-8 md:pt-14"
                 >
                     <div className="grid gap-8 md:grid-cols-[1.5fr_1fr] items-start">
-                        {/* Left: cover image / video */}
+                        {/* Left: locked video block or live player */}
                         <div className="overflow-hidden rounded-3xl border border-slate-200 bg-black shadow-sm">
                             {canPlay ? (
                                 <div className="relative">
@@ -309,12 +309,21 @@ export default function GuaShaPage({
                                     )}
                                 </div>
                             ) : (
-                                <img
-                                    src="/images/face-yoga-masterclass.jpg"
-                                    alt="16 Facial Anti-Aging Gua Sha Course"
-                                    className="h-full w-full object-cover"
-                                    onError={(e) => { e.target.style.display = "none"; }}
-                                />
+                                <div className="flex aspect-video items-center justify-center p-8 text-center text-white">
+                                    <div className="max-w-sm space-y-3">
+                                        <p className="text-3xl">🔒</p>
+                                        <p className="text-lg font-semibold">Course Locked</p>
+                                        <p className="text-sm text-white/70">
+                                            Purchase the full course to unlock this video.
+                                        </p>
+                                        <button
+                                            onClick={handleUnlockCourse}
+                                            className="mt-2 rounded-2xl bg-amber-500 px-5 py-2.5 text-sm font-semibold text-slate-900 hover:bg-amber-400 transition"
+                                        >
+                                            Get Full Course — {PRICE_NOW}
+                                        </button>
+                                    </div>
+                                </div>
                             )}
                         </div>
 
@@ -357,7 +366,7 @@ export default function GuaShaPage({
 
                             {isOwned ? (
                                 <div className="rounded-2xl border border-emerald-300 bg-emerald-50 px-4 py-3 text-sm font-semibold text-emerald-800">
-                                    ✓ Full Course Unlocked — scroll down to watch
+                                    ✓ Full Course Unlocked — video is playing above
                                 </div>
                             ) : (
                                 <button

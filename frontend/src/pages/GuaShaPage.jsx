@@ -11,7 +11,7 @@ const API_BASE =
     import.meta?.env?.VITE_API_BASE || "https://eastculture-api.vercel.app";
 
 // The full course is one single video file
-const FULL_VIDEO_KEY = "FacialGuaSha/4月10日_x264.mp4";
+const FULL_VIDEO_KEY = "FacialGuaSha/guasha-course.mp4";
 
 const LESSONS = [
     {

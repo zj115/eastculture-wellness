@@ -53,13 +53,17 @@ const ACUPOINT_LESSONS = [
     { id: 6, titleEn: "Waist & Leg Pain Relief", subtitle: "18 Conditions • 3 Pressure Points Each", duration: "~80 min", coverImage: "/images/acupressure-lesson-06.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "NZD 99", priceOld: "NZD 149", sale: true, page: "qigong" },
 ];
 
-// ─── Gua Sha lessons ──────────────────────────────────────────────────────────
-const GUASHA_LESSONS = [
-    { id: 1, titleEn: "Beginner Foundation Class", subtitle: "Master core Gua Sha logic, tools & safety", duration: "~5 min", coverImage: "/images/face-yoga-masterclass.jpg", fallbackImage: "/images/face-yoga-before-after.jpg", priceNow: "NZD 99", priceOld: "NZD 149", sale: true, page: "guasha" },
-    { id: 2, titleEn: "Forehead Lines", subtitle: "（02：34）", duration: "~5 min", coverImage: "/images/face-yoga-masterclass.jpg", fallbackImage: "/images/face-yoga-before-after.jpg", priceNow: "NZD 99", priceOld: "NZD 149", sale: true, page: "guasha" },
-    { id: 3, titleEn: "11s / Glabellar Lines", subtitle: "（16：00）", duration: "~5 min", coverImage: "/images/face-yoga-masterclass.jpg", fallbackImage: "/images/face-yoga-before-after.jpg", priceNow: "NZD 99", priceOld: "NZD 149", sale: true, page: "guasha" },
-    { id: 4, titleEn: "Under-Eye Bags", subtitle: "（26：40）", duration: "~5 min", coverImage: "/images/face-yoga-masterclass.jpg", fallbackImage: "/images/face-yoga-before-after.jpg", priceNow: "NZD 99", priceOld: "NZD 149", sale: true, page: "guasha" },
-];
+// ─── Gua Sha course (single product card) ────────────────────────────────────
+const GUASHA_COURSE = {
+    titleEn: "16 Facial Anti-Aging Gua Sha",
+    subtitle: "16 Chapters · 1 Full Course · 2h 34min total",
+    coverImage: "/images/face-yoga-masterclass.jpg",
+    fallbackImage: "/images/face-yoga-before-after.jpg",
+    priceNow: "NZD 99",
+    priceOld: "NZD 149",
+    sale: true,
+    page: "guasha",
+};
 
 // ─── Card component ───────────────────────────────────────────────────────────
 function LessonCard({ lesson, onNavigate }) {
@@ -300,10 +304,9 @@ function App() {
                             viewAllPage="guasha"
                             onNavigate={setActivePage}
                         />
+                        {/* Single course card — not a per-lesson grid */}
                         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-                            {GUASHA_LESSONS.map((lesson) => (
-                                <LessonCard key={lesson.id} lesson={lesson} onNavigate={setActivePage} />
-                            ))}
+                            <LessonCard key="guasha" lesson={GUASHA_COURSE} onNavigate={setActivePage} />
                         </div>
                     </motion.section>
 

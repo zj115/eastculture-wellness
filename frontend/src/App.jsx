@@ -81,23 +81,25 @@ function LessonCard({ lesson, onNavigate }) {
                     className="w-full h-full object-cover transition duration-500 group-hover:scale-105"
                 />
                 {lesson.sale && (
-                    <span className="absolute bottom-2 left-2 bg-blue-600 text-white text-[10px] font-semibold px-2.5 py-1 rounded-full">
+                    <span className="absolute bottom-2 left-2 bg-amber-600 text-white text-[10px] font-semibold px-2.5 py-1 rounded-full">
                         Sale
                     </span>
                 )}
             </div>
             <div className="p-3">
-                <p className="text-sm font-medium text-slate-900 leading-snug mb-1 line-clamp-2">
+                <p className="text-xs font-semibold text-slate-900 leading-snug mb-1 line-clamp-2">
                     {lesson.titleEn}
                 </p>
                 {lesson.subtitle && (
-                    <p className="text-[11px] text-slate-500 mb-2 leading-snug">{lesson.subtitle}</p>
+                    <p className="text-[11px] text-slate-500 mb-2 leading-snug line-clamp-2">{lesson.subtitle}</p>
                 )}
-                <p className="text-[11px] text-slate-400 mb-2">{lesson.duration}</p>
+                {lesson.duration && (
+                    <p className="text-[11px] text-slate-400 mb-2">{lesson.duration}</p>
+                )}
                 {lesson.priceOld && (
                     <div className="flex items-center gap-1.5 flex-wrap">
-                        <span className="text-[11px] text-slate-400 line-through">{lesson.priceOld} USD</span>
-                        <span className="text-sm font-semibold text-slate-900">{lesson.priceNow} USD</span>
+                        <span className="text-[11px] text-slate-400 line-through">{lesson.priceOld}</span>
+                        <span className="text-sm font-bold text-slate-900">{lesson.priceNow}</span>
                     </div>
                 )}
             </div>
@@ -108,15 +110,15 @@ function LessonCard({ lesson, onNavigate }) {
 // ─── Section heading ──────────────────────────────────────────────────────────
 function SectionHeading({ title, subtitle, onViewAll, viewAllPage, onNavigate }) {
     return (
-        <div className="flex items-end justify-between mb-6">
-            <div>
-                <h2 className="text-2xl md:text-3xl font-semibold text-slate-900">{title}</h2>
-                {subtitle && <p className="mt-1 text-sm text-slate-500 max-w-xl">{subtitle}</p>}
+        <div className="flex items-start justify-between mb-4 gap-3">
+            <div className="min-w-0">
+                <h2 className="text-lg md:text-2xl font-bold text-slate-900 leading-snug">{title}</h2>
+                {subtitle && <p className="mt-1 text-xs md:text-sm text-slate-500">{subtitle}</p>}
             </div>
             {onViewAll && (
                 <button
                     onClick={() => onNavigate(viewAllPage)}
-                    className="text-xs text-amber-700 hover:text-amber-600 transition shrink-0 ml-4"
+                    className="text-xs text-amber-700 hover:text-amber-600 transition shrink-0 mt-1"
                 >
                     View all →
                 </button>
@@ -282,41 +284,63 @@ function App() {
                     />
                 </section>
 
-                {/* ── COURSE SECTIONS ───────────────────────────────────────
-                    Desktop layout:  Gua Sha (C-pos) | Acupoint | Tai Chi | Wing Chun
-                    Mobile CSS order: Acupoint(1) → Tai Chi(2) → Gua Sha(3) → Wing Chun(4)
+                {/* ── COURSE SECTIONS ────────────────────────────────────────
+                    Both mobile and desktop use flex-col + order classes.
+                    Mobile order:  Acupoint(1) → Tai Chi(2) → Gua Sha(3) → Wing Chun(4)
+                    Desktop order: Gua Sha(1)  → Acupoint(2) → Tai Chi(3) → Wing Chun(4)
                 ─────────────────────────────────────────────────────────────── */}
-                <div className="mx-auto max-w-6xl px-4 pt-16 flex flex-col gap-16 md:block md:space-y-16">
+                <div className="mx-auto max-w-6xl px-4 pt-10 flex flex-col gap-12">
 
-                    {/* GUA SHA — desktop: first / mobile: order-3 */}
+                    {/* GUA SHA — mobile: 3rd / desktop: 1st */}
                     <motion.section
                         className="order-3 md:order-1"
                         initial="hidden"
                         whileInView="show"
-                        viewport={{ once: true, amount: 0.2 }}
-                        transition={{ duration: 0.7, ease: "easeOut" }}
+                        viewport={{ once: true, amount: 0.15 }}
+                        transition={{ duration: 0.6, ease: "easeOut" }}
                         variants={fadeInUp}
                     >
                         <SectionHeading
                             title="16 Facial Anti-Aging Gua Sha"
-                            subtitle="No Surgery • No Needles • No Skincare Scams • Just 5 Minutes a Day — Fades Wrinkles, Lifts Sagging, Brightens Skin AT HOME."
+                            subtitle="No Surgery • No Needles • Just 5 Min a Day — Fades Wrinkles, Lifts Sagging, Brightens Skin AT HOME."
                             onViewAll
                             viewAllPage="guasha"
                             onNavigate={setActivePage}
                         />
-                        {/* Single course card — not a per-lesson grid */}
-                        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-                            <LessonCard key="guasha" lesson={GUASHA_COURSE} onNavigate={setActivePage} />
+                        {/* Single course card — full width on mobile, quarter-width on lg */}
+                        <div
+                            className="cursor-pointer bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden md:max-w-xs"
+                            onClick={() => setActivePage("guasha")}
+                        >
+                            <div className="relative overflow-hidden aspect-[16/9] md:aspect-[4/3]">
+                                <img
+                                    src={GUASHA_COURSE.coverImage}
+                                    alt={GUASHA_COURSE.titleEn}
+                                    className="w-full h-full object-cover"
+                                    onError={(e) => { e.target.src = GUASHA_COURSE.fallbackImage; }}
+                                />
+                                <span className="absolute bottom-2 left-2 bg-amber-600 text-white text-[10px] font-semibold px-2.5 py-1 rounded-full">
+                                    Sale
+                                </span>
+                            </div>
+                            <div className="p-3">
+                                <p className="text-xs font-semibold text-slate-900 leading-snug mb-1">{GUASHA_COURSE.titleEn}</p>
+                                <p className="text-[11px] text-slate-500 mb-2">{GUASHA_COURSE.subtitle}</p>
+                                <div className="flex items-center gap-1.5">
+                                    <span className="text-[11px] text-slate-400 line-through">{GUASHA_COURSE.priceOld}</span>
+                                    <span className="text-sm font-bold text-slate-900">{GUASHA_COURSE.priceNow}</span>
+                                </div>
+                            </div>
                         </div>
                     </motion.section>
 
-                    {/* ACUPOINT — desktop: second / mobile: order-1 */}
+                    {/* ACUPOINT — mobile: 1st / desktop: 2nd */}
                     <motion.section
                         className="order-1 md:order-2"
                         initial="hidden"
                         whileInView="show"
-                        viewport={{ once: true, amount: 0.2 }}
-                        transition={{ duration: 0.7, ease: "easeOut" }}
+                        viewport={{ once: true, amount: 0.15 }}
+                        transition={{ duration: 0.6, ease: "easeOut" }}
                         variants={fadeInUp}
                     >
                         <SectionHeading
@@ -333,18 +357,18 @@ function App() {
                         </div>
                     </motion.section>
 
-                    {/* TAI CHI — desktop: third / mobile: order-2 */}
+                    {/* TAI CHI — mobile: 2nd / desktop: 3rd */}
                     <motion.section
                         className="order-2 md:order-3"
                         initial="hidden"
                         whileInView="show"
-                        viewport={{ once: true, amount: 0.2 }}
-                        transition={{ duration: 0.7, ease: "easeOut" }}
+                        viewport={{ once: true, amount: 0.15 }}
+                        transition={{ duration: 0.6, ease: "easeOut" }}
                         variants={fadeInUp}
                     >
                         <SectionHeading
                             title="Tai Chi — Wudang Sanfeng"
-                            subtitle="Relieve joint pain, reduce stress & improve sleep — authentic Wudang Tai Chi taught by a 15th-generation lineage master. No experience needed, 10–30 min per session."
+                            subtitle="Relieve joint pain, reduce stress & improve sleep — authentic Wudang Tai Chi, 10–30 min per session."
                             onViewAll
                             viewAllPage="qimen"
                             onNavigate={setActivePage}
@@ -356,13 +380,13 @@ function App() {
                         </div>
                     </motion.section>
 
-                    {/* WING CHUN — desktop: fourth / mobile: order-4 */}
+                    {/* WING CHUN — mobile: 4th / desktop: 4th */}
                     <motion.section
-                        className="order-4"
+                        className="order-4 mb-8"
                         initial="hidden"
                         whileInView="show"
-                        viewport={{ once: true, amount: 0.2 }}
-                        transition={{ duration: 0.7, ease: "easeOut" }}
+                        viewport={{ once: true, amount: 0.15 }}
+                        transition={{ duration: 0.6, ease: "easeOut" }}
                         variants={fadeInUp}
                     >
                         <SectionHeading

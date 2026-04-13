@@ -39,18 +39,18 @@ const TAICHI_LESSONS = [
 
 // ─── Wing Chun lessons ────────────────────────────────────────────────────────
 const WINGCHUN_LESSONS = [
-    { id: 1, titleEn: "Wing Chun Health Qigong – 10 Forms", duration: "~7 min", coverImage: "/images/wing-chun-yangsheng-cover.jpg", fallbackImage: "/images/martial-staff-demo.jpg", priceNow: "NZD 39", priceOld: "NZD 69", sale: true, page: "wingchun" },
-    { id: 2, titleEn: "Wing Chun Fang Wei Self-Defense", duration: "~12 min", coverImage: "/images/wing-chun-fangwei-cover.png", fallbackImage: "/images/martial-staff-demo.jpg", priceNow: "NZD 39", priceOld: "NZD 69", sale: true, page: "wingchun" },
+    { id: 1, titleEn: "Wing Chun Health Qigong – 10 Forms", duration: "~7 min", coverImage: "/images/wingchun-yangsheng.png", fallbackImage: "/images/wingchun-hero.png", priceNow: "NZD 39", priceOld: "NZD 69", sale: true, page: "wingchun" },
+    { id: 2, titleEn: "Wing Chun Fang Wei Self-Defense", duration: "~12 min", coverImage: "/images/wingchun-fangwei.png", fallbackImage: "/images/wingchun-hero.png", priceNow: "NZD 39", priceOld: "NZD 69", sale: true, page: "wingchun" },
 ];
 
 // ─── Acupoint lessons ─────────────────────────────────────────────────────────
 const ACUPOINT_LESSONS = [
-    { id: 1, titleEn: "Head & Face Discomfort Relief", subtitle: "23 Conditions • 3 Pressure Points Each", duration: "~60 min", coverImage: "/images/acupressure-lesson-01.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "NZD 99", priceOld: "NZD 149", sale: true, page: "qigong" },
-    { id: 2, titleEn: "Women's Private Wellness", subtitle: "7 Conditions • Natural Relief at Home", duration: "~45 min", coverImage: "/images/acupressure-lesson-02.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "NZD 99", priceOld: "NZD 149", sale: true, page: "qigong" },
-    { id: 3, titleEn: "Hand & Foot Pain Relief", subtitle: "28 Conditions • 3 Pressure Points Each", duration: "~90 min", coverImage: "/images/acupressure-lesson-03.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "NZD 99", priceOld: "NZD 149", sale: true, page: "qigong" },
-    { id: 4, titleEn: "Common Daily Discomforts Relief", subtitle: "16 Conditions • Fast Relief at Home", duration: "~70 min", coverImage: "/images/acupressure-lesson-04.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "NZD 99", priceOld: "NZD 149", sale: true, page: "qigong" },
-    { id: 5, titleEn: "Neck & Shoulder Pain Relief", subtitle: "8 Conditions • 3 Key Pressure Points", duration: "~40 min", coverImage: "/images/acupressure-lesson-05.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "NZD 99", priceOld: "NZD 149", sale: true, page: "qigong" },
-    { id: 6, titleEn: "Waist & Leg Pain Relief", subtitle: "18 Conditions • 3 Pressure Points Each", duration: "~80 min", coverImage: "/images/acupressure-lesson-06.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "NZD 99", priceOld: "NZD 149", sale: true, page: "qigong" },
+    { id: 1, titleEn: "Head & Face Discomfort Relief", subtitle: "23 Conditions • 3 Pressure Points Each", duration: "~60 min", coverImage: "/images/acupoint-head.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "NZD 99", priceOld: "NZD 149", sale: true, page: "qigong" },
+    { id: 2, titleEn: "Women's Private Wellness", subtitle: "7 Conditions • Natural Relief at Home", duration: "~45 min", coverImage: "/images/acupoint-womens.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "NZD 99", priceOld: "NZD 149", sale: true, page: "qigong" },
+    { id: 3, titleEn: "Hand & Foot Pain Relief", subtitle: "28 Conditions • 3 Pressure Points Each", duration: "~90 min", coverImage: "/images/acupoint-hands-feet.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "NZD 99", priceOld: "NZD 149", sale: true, page: "qigong" },
+    { id: 4, titleEn: "Common Daily Discomforts Relief", subtitle: "16 Conditions • Fast Relief at Home", duration: "~70 min", coverImage: "/images/acupoint-daily.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "NZD 99", priceOld: "NZD 149", sale: true, page: "qigong" },
+    { id: 5, titleEn: "Neck & Shoulder Pain Relief", subtitle: "8 Conditions • 3 Key Pressure Points", duration: "~40 min", coverImage: "/images/acupoint-neck-shoulder.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "NZD 99", priceOld: "NZD 149", sale: true, page: "qigong" },
+    { id: 6, titleEn: "Waist & Leg Pain Relief", subtitle: "18 Conditions • 3 Pressure Points Each", duration: "~80 min", coverImage: "/images/acupoint-waist-legs.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "NZD 99", priceOld: "NZD 149", sale: true, page: "qigong" },
 ];
 
 // ─── Gua Sha course (single product card) ────────────────────────────────────

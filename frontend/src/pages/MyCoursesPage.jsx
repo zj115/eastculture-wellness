@@ -40,7 +40,7 @@ const ALL_COURSES = [
         page: "wingchun",
         titleEn: "Wing Chun Foundations",
         descEn: "Health Qigong 10 Forms + Self-Defense 9 Forms. ~7 min each, for all ages.",
-        image: "/images/wing-chun-yangsheng-cover.jpg",
+        image: "/images/wingchun-hero.png",
         lessons: 2,
         tag: "Wing Chun",
     },

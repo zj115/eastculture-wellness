@@ -22,8 +22,8 @@ const LESSONS = [
         subtitleEn: "Only 7 Minutes a Day | Safe, Gentle, for All Ages",
         duration: "~7 min",
         s3Key: "wingchun/lesson-01-yangsheng-ten-styles.mp4",
-        coverImage: "/images/wing-chun-yangsheng-cover.jpg",
-        fallbackImage: "/images/martial-staff-demo.jpg",
+        coverImage: "/images/wingchun-yangsheng.png",
+        fallbackImage: "/images/wingchun-hero.png",
         tagEn: "Wellness · Full-body care",
 
         introEn: "You don't need long workouts or difficult moves. This Wing Chun Health Qigong – 10 Forms comes from authentic Wing Chun stances, breathing and meridian principles. No fighting, no jumping, no intense effort, zero injury. The full routine is only about 7 minutes, perfect for busy modern life. It relaxes your body, improves blood circulation, calms your mind, and helps you sleep better.",
@@ -91,8 +91,8 @@ const LESSONS = [
         subtitleEn: "Real-Street & Elevator Survival | No Strength Needed · For Everyone",
         duration: "~7 min",
         s3Key: "wingchun/lesson-02-fangwei-nine-styles.mp4",
-        coverImage: "/images/wing-chun-fangwei-cover.png",
-        fallbackImage: "/images/martial-staff-demo.jpg",
+        coverImage: "/images/wingchun-fangwei.png",
+        fallbackImage: "/images/wingchun-hero.png",
         tagEn: "Self-defense · Real situations",
 
         introEn: "You don't need strength, height, or long-term training. This Wing Chun Self-Defense 9 Forms comes from real combat principles. It uses skill over strength, controls angles, neutralizes attacks instantly, and works in real dangerous situations: street attacks, elevator traps, wrist grabs, bear hugs, front punches, and more. Simple, safe, highly effective — beginners can learn in minutes.",

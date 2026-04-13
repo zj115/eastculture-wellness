@@ -35,7 +35,7 @@ const LESSONS = [
         subtitleEn: "23 Conditions • 3 Simple Pressure Points • Fast Relief at Home",
         duration: "~60 min",
         s3Key: "acupressure/lesson-01-head.mp4",
-        coverImage: "/images/acupressure-lesson-01.png",
+        coverImage: "/images/acupoint-head.png",
         fallbackImage: "/images/tai-chi/acupressure-cover.jpg",
 
         intro: "23 Head & Face Issues • No Drugs • No Doctors • Relieve at Home in 3 Steps\n\nPain points you're suffering from:\nOccipital headache (back of head pain), worse with bad pillow or stress\nTop of head pain & tightness from liver fire, stomach fire or heart issues\nMiddle ear discharge & pus, ear infection, pain, hearing loss\nTinnitus (ringing, buzzing, chirping in ears), worse at night\nUpper & lower toothache, radiating pain, multiple teeth hurting\nGum swelling, facial puffiness, severe oral discomfort\nExcessive tearing when wind blows, watery eyes\nDry eyes, itchy eyes, eye strain, blurred vision\nSore throat, dry throat, pain when swallowing\nPersistent hiccups, diaphragm spasms, embarrassing attacks\nStyes (blepharitis), swollen eyelids, painful bumps\nNasal congestion, stuffy nose, blocked sinuses\nStiff neck / crick neck (cannot turn, lower or raise head)\nEye bags, puffiness, saggy eyelids, tired-looking eyes\nScalp pain, tight fascia, cold & dampness discomfort\nFolliculitis on scalp, bumps, inflammation, itching\nEye bulging, pressure behind eyeballs, nerve discomfort\nFrontal headache, tightness like wearing a tight hat\nMigraine (temple pain), anger or cold-induced headaches\nFacial tension, nerve sensitivity, recurring discomforts",
@@ -96,7 +96,7 @@ const LESSONS = [
         subtitleEn: "7 Common Women's Issues • 3–5 Pressure Points for Natural Relief at Home",
         duration: "~40 min",
         s3Key: "acupressure/lesson-02-women.mp4",
-        coverImage: "/images/acupressure-lesson-02.png",
+        coverImage: "/images/acupoint-womens.png",
         fallbackImage: "/images/tai-chi/acupressure-cover.jpg",
 
         intro: "7 Most Common Women's Private Issues • No Drugs • No Embarrassment • Relieve at Home in 3 Steps\n\nPain points you're suffering from:\nBreast hyperplasia with lumps and severe pain during menstruation, worse when angry or tired\nPopliteal cyst (lump behind knee), pain when squatting or walking, difficulty bending legs\nPrivate area itching that comes and goes, unbearable and embarrassing, affecting work and life\nSevere menstrual cramps: stabbing abdominal pain, cold sweats, unable to get out of bed\nUrine leakage when coughing, laughing, or lifting; common after childbirth, causing social anxiety\nIrregular periods, delayed or missed for months, worrying about early ovarian aging\nHeavy menstrual bleeding (flooding), weakness and dizziness, uncontrollable flow\nExpensive hospital visits, long waiting times, and embarrassing private exams\nMedications with side effects, temporary relief from creams, no real solution\nLong-term physical and mental stress, affecting sleep, mood, and confidence",
@@ -142,7 +142,7 @@ const LESSONS = [
         subtitleEn: "25 Common Hand & Foot Pains • 3 Simple Pressure Points • Fast Relief at Home",
         duration: "~90 min",
         s3Key: "acupressure/lesson-03-hands-feet.mp4",
-        coverImage: "/images/acupressure-lesson-03.png",
+        coverImage: "/images/acupoint-hands-feet.png",
         fallbackImage: "/images/tai-chi/acupressure-cover.jpg",
 
         intro: "25 Common Hand & Foot Pains • No Drugs • No Doctors • Relieve at Home in 3 Steps\n\nPain points you're suffering from:\nTrigger finger (middle finger locks, can't straighten or bend)\nGolfer's elbow (inner elbow pain when sweeping, cooking)\nHeel pain (worse with walking, can't stand long)\nChronic athlete's foot (itching, blisters, peeling, recurring)\nMorning hand stiffness, can't make a fist, weak grip\nPinky & ring finger numbness (wake up numb at night)\nSprained ankle (inversion & eversion, swelling, pain)\nTinea manuum (itchy blisters on palms, seasonal)\nTennis elbow (pain when twisting towels, sweeping)\nWeak walking (fatigue, low energy, weak legs)\nThumb tenosynovitis & mom's wrist (pain from holding baby, phone use)\nFingertip numbness (cervical-related, tingling)\nWrist pain when turning\nRestless legs (uncomfortable, can't sleep, no place to put legs)\nArm can't reach back (shoulder pain, limited movement)\nPlantar fasciitis (sharp pain first step in morning)\nNight arm pain (worse at night, radiating pain)\nForearm outer stabbing pain (severe, untouchable)\nArmpit cyst (lump, lymphatic congestion)\nPalm pain when gripping (throttle, grip pain)\nFront shin pain (pain when lifting foot, stepping on gas)\nArch pain (sore when standing or walking)\nBunion (big toe deformity, rubbing pain, walking discomfort)\nVarious hand & foot stiffness, numbness, soreness, weakness\nWasting time and money at clinics, medicines with side effects",
@@ -204,7 +204,7 @@ const LESSONS = [
         subtitleEn: "16 Common Daily Discomforts • 3 Simple Pressure Points • Fast Relief at Home",
         duration: "~60 min",
         s3Key: "acupressure/lesson-04-daily-issues.mp4",
-        coverImage: "/images/acupressure-lesson-04.png",
+        coverImage: "/images/acupoint-daily.png",
         fallbackImage: "/images/tai-chi/acupressure-cover.jpg",
 
         intro: "16 Common Daily Aches & Pains • No Drugs • No Doctors • Relieve at Home in 3 Steps\n\nPain points you're suffering from:\nSharp tongue tip pain that makes eating and talking uncomfortable\nSevere carsickness: nausea, vomiting, dizziness every time you travel\nVisceral ptosis, protruding lower belly, loose postpartum abdomen\nBloating, fullness, slow digestion, food sits in your stomach for hours\nChest tightness, pressure, anxiety, but no problems found in hospital checks\nUncontrolled mouth twitching, embarrassing facial spasms\nExtreme restlessness, anxiety, irritability, especially early in the morning\nNight sweats, waking up wet, poor sleep, body weakness\nSudden rapid heartbeat, heart palpitations, panic for no reason\nInsomnia: lying awake for hours, overactive nerves, poor sleep quality\nNo appetite, don't feel like eating, low energy, weight loss\nBurning pain when urinating, urgent and frequent trips to the bathroom\nSudden side stitch (rib pain), sharp pain when breathing or moving\nTeeth grinding at night, worn teeth, sore jaw, disturbing family\nRecurrent mouth ulcers, severe pain, slow healing\nThyroid nodules or cysts, neck tightness, discomfort\nFrequent nighttime urination, waking up 4-6 times a night, no good sleep\nSudden diarrhea, stomach cramps, loose bowels after eating bad food\nWasting time and money on clinics, medicines with side effects, repeated problems",
@@ -259,7 +259,7 @@ const LESSONS = [
         subtitleEn: "8 Common Neck & Shoulder Pains • 3 Key Pressure Points to Relieve Pain at Home",
         duration: "~45 min",
         s3Key: "acupressure/lesson-05-neck-shoulders.mp4",
-        coverImage: "/images/acupressure-lesson-05.png",
+        coverImage: "/images/acupoint-neck-shoulder.png",
         fallbackImage: "/images/tai-chi/acupressure-cover.jpg",
 
         intro: "8 Common Neck & Shoulder Pains • No Doctor • No Medication • Relieve at Home in 3 Steps\n\nPain points you're suffering from:\nChronic shoulder blade pain that hurts even when you're not moving\nMorning back stiffness that makes it hard to get out of bed\nShoulder pain and coldness that gets worse in air conditioning\nFrozen shoulder: can't lift your arm, can't reach back, sharp pulling pain\nNeck pain, stiff neck and Dowager's hump (fat pad on neck)\nIntercostal neuralgia: stabbing pain between ribs when breathing\nPain that lasts for months or years and keeps coming back\nExpensive clinic visits, massages and treatments that waste time and money\nMedication with side effects, patches that only mask pain temporarily\nPain that ruins sleep, work and daily life",
@@ -301,7 +301,7 @@ const LESSONS = [
         subtitleEn: "18 Waist & Leg Pain Relief Course • 3 Pressure Points • Fast Relief at Home",
         duration: "~75 min",
         s3Key: "acupressure/lesson-06-waist-legs-description.mp4",
-        coverImage: "/images/acupressure-lesson-06.png",
+        coverImage: "/images/acupoint-waist-legs.png",
         fallbackImage: "/images/tai-chi/acupressure-cover.jpg",
 
         intro: "18 Waist & Leg Pains • No Drugs • No Surgery • Relieve at Home in 3 Steps\n\nPain points you're suffering from:\nCrawling sensation, numbness & tingling on outer lower leg\nChronically cold lower legs, poor circulation, cold to the touch\nSevere calf cramps at night, sudden muscle spasms, pain from cold\nNumbness & loss of feeling on outer thigh\nCold kneecaps, icy joint pain, stiffness\nCannot squat or bend knees, joint stiffness\nKnee pain going upstairs & downstairs\nSwollen knees with fluid buildup (effusion)\nPain in the back of knee (hamstring/popliteal area)\nSciatica: radiating pain from buttock down to leg\nTailbone (coccyx) pain, cannot sit long, sore when seated\nLower back pain when bending forward while sitting\nAcute lumbar sprain: locked back, cannot stand straight\nSacroiliac joint pain, pain walking & sleeping\nAching & tightness on back of thighs from prolonged sitting\nLower back pain triggered by sneezing or coughing\nWeak legs, fatigue, difficulty walking long distances\nAcute hemorrhoids: pain, burning, discomfort sitting & walking\nChronic waist & leg strain, stiffness, limited movement",

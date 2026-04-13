@@ -275,11 +275,11 @@ function App() {
         pageContent = (
             <main className="pb-20">
                 {/* ── HERO ─────────────────────────────────────────────────── */}
-                <section className="w-full md:max-h-[520px] overflow-hidden">
+                <section className="w-full">
                     <img
                         src="/images/hero-eastculture.jpg"
                         alt="Ancient Eastern mountain temple"
-                        className="w-full h-auto block md:h-[520px] md:object-cover md:object-top"
+                        className="w-full h-auto block"
                         style={{ display: "block" }}
                     />
                 </section>

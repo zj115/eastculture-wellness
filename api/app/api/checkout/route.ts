@@ -33,6 +33,11 @@ const PRODUCTS = {
       name: "Wing Chun Foundations – Health & Self-Defense",
       nameZh: "咏春基础课：养生十式 + 防卫九式",
     },
+    guasha: {
+      price: 9900, // 99 NZD
+      name: "16 Facial Anti-Aging Gua Sha Course",
+      nameZh: "16 节面部抗衰刮痧课程",
+    },
   },
   // Membership plans
   membership_monthly: {

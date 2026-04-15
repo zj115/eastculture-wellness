@@ -17,7 +17,8 @@ app.use(
         origin: [
             "http://localhost:5173",
             "http://127.0.0.1:5173",
-            "https://eastculture.vercel.app", // ✅ 你的 Vercel 前端域名
+            "https://eastculture.vercel.app", // ✅ old domain (keep for backward compat)
+            "https://wellnesseastern.com", // ✅ new domain
         ],
         methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
         allowedHeaders: ["Content-Type", "Authorization"],

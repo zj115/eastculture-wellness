@@ -71,7 +71,7 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     const { type, courseId, videoKey, videoTitle, lang } = body;
 
-    const origin = req.headers.get("origin") || process.env.NEXT_PUBLIC_FRONTEND_URL || "https://eastculture.vercel.app";
+    const origin = req.headers.get("origin") || process.env.NEXT_PUBLIC_FRONTEND_URL || "https://wellnesseastern.com";
 
     let lineItems: Stripe.Checkout.SessionCreateParams.LineItem[] = [];
     let metadata: Record<string, string> = {

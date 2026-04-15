@@ -307,12 +307,13 @@ function App() {
                             viewAllPage="guasha"
                             onNavigate={setActivePage}
                         />
-                        {/* Single course card — full width on mobile, quarter-width on lg */}
+                        {/* Single course card — half-width on mobile (matches 2-col grid), quarter-width on lg */}
+                        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
                         <div
-                            className="cursor-pointer bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden md:max-w-xs"
+                            className="cursor-pointer bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden"
                             onClick={() => setActivePage("guasha")}
                         >
-                            <div className="relative overflow-hidden aspect-[16/9] md:aspect-[4/3]">
+                            <div className="relative overflow-hidden aspect-[4/3]">
                                 <img
                                     src={GUASHA_COURSE.coverImage}
                                     alt={GUASHA_COURSE.titleEn}
@@ -331,6 +332,7 @@ function App() {
                                     <span className="text-sm font-bold text-slate-900">{GUASHA_COURSE.priceNow}</span>
                                 </div>
                             </div>
+                        </div>
                         </div>
                     </motion.section>
 

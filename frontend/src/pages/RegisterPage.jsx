@@ -22,14 +22,12 @@ export default function RegisterPage({
       setError("Password must be at least 6 characters.");
       return;
     }
-
     if (password !== confirm) {
       setError("Passwords do not match.");
       return;
     }
 
     setLoading(true);
-
     try {
       const res = await fetch(`${API_BASE}/api/auth/register`, {
         method: "POST",
@@ -45,7 +43,6 @@ export default function RegisterPage({
         return;
       }
 
-      // Store token in localStorage for cross-site requests (iOS Safari cookie fix)
       if (data.token) {
         localStorage.setItem("ec_token", data.token);
       }
@@ -59,27 +56,33 @@ export default function RegisterPage({
   }
 
   return (
-    <main className="mx-auto max-w-5xl px-4 pb-16 pt-8 md:pt-12">
+    <main className="mx-auto max-w-5xl px-4 pb-20 pt-10 md:pt-14">
       <button
         onClick={onBackHome}
-        className="mb-6 inline-flex items-center gap-2 text-xs text-slate-300/80 hover:text-amber-300 transition"
+        className="mb-8 inline-flex items-center gap-2 text-xs text-slate-500 hover:text-slate-700 transition"
       >
         <span className="text-lg">←</span>
         Back to home
       </button>
 
-      <div className="grid gap-10 md:grid-cols-[minmax(0,420px),1fr] items-start">
-        <section className="rounded-3xl border border-white/10 bg-slate-950/80 p-6 md:p-8 shadow-2xl shadow-black/60">
-          <h1 className="text-2xl md:text-3xl font-semibold tracking-tight mb-2">
-            Create Your Account
-          </h1>
-          <p className="text-sm text-slate-300/80 mb-6">
-            Sign up to save your course progress and access purchased content.
-          </p>
+      <div className="grid gap-12 md:grid-cols-[minmax(0,420px),1fr] items-start">
+        <section className="rounded-3xl border border-slate-200 bg-white p-6 md:p-8 shadow-sm">
+          <div className="mb-6">
+            <div className="mb-2 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs text-slate-600">
+              <span className="h-2 w-2 rounded-full bg-amber-500" />
+              Free account
+            </div>
+            <h1 className="text-2xl font-semibold text-slate-900 md:text-3xl">
+              Create Your Account
+            </h1>
+            <p className="mt-2 text-sm text-slate-600">
+              Sign up to access purchased courses and track your progress.
+            </p>
+          </div>
 
           <form className="space-y-4" onSubmit={handleSubmit}>
-            <div className="space-y-2">
-              <label className="text-xs font-medium text-slate-200/90">
+            <div className="space-y-1.5">
+              <label className="text-xs font-medium text-slate-700">
                 Username
               </label>
               <input
@@ -87,13 +90,13 @@ export default function RegisterPage({
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 placeholder="Name shown inside the site"
-                className="w-full rounded-xl border border-slate-700 bg-slate-900/80 px-3 py-2 text-sm text-slate-50 outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400/70 transition"
+                className="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 placeholder-slate-400 focus:border-amber-500 focus:ring-1 focus:ring-amber-500 outline-none transition"
                 required
               />
             </div>
 
-            <div className="space-y-2">
-              <label className="text-xs font-medium text-slate-200/90">
+            <div className="space-y-1.5">
+              <label className="text-xs font-medium text-slate-700">
                 Email
               </label>
               <input
@@ -101,13 +104,13 @@ export default function RegisterPage({
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Used for login and updates"
-                className="w-full rounded-xl border border-slate-700 bg-slate-900/80 px-3 py-2 text-sm text-slate-50 outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400/70 transition"
+                className="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 placeholder-slate-400 focus:border-amber-500 focus:ring-1 focus:ring-amber-500 outline-none transition"
                 required
               />
             </div>
 
-            <div className="space-y-2">
-              <label className="text-xs font-medium text-slate-200/90">
+            <div className="space-y-1.5">
+              <label className="text-xs font-medium text-slate-700">
                 Password
               </label>
               <input
@@ -115,13 +118,13 @@ export default function RegisterPage({
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="At least 6 characters"
-                className="w-full rounded-xl border border-slate-700 bg-slate-900/80 px-3 py-2 text-sm text-slate-50 outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400/70 transition"
+                className="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 placeholder-slate-400 focus:border-amber-500 focus:ring-1 focus:ring-amber-500 outline-none transition"
                 required
               />
             </div>
 
-            <div className="space-y-2">
-              <label className="text-xs font-medium text-slate-200/90">
+            <div className="space-y-1.5">
+              <label className="text-xs font-medium text-slate-700">
                 Confirm password
               </label>
               <input
@@ -129,13 +132,13 @@ export default function RegisterPage({
                 value={confirm}
                 onChange={(e) => setConfirm(e.target.value)}
                 placeholder="Enter password again"
-                className="w-full rounded-xl border border-slate-700 bg-slate-900/80 px-3 py-2 text-sm text-slate-50 outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400/70 transition"
+                className="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 placeholder-slate-400 focus:border-amber-500 focus:ring-1 focus:ring-amber-500 outline-none transition"
                 required
               />
             </div>
 
             {error && (
-              <div className="rounded-xl border border-red-500/40 bg-red-500/10 px-3 py-2 text-xs text-red-200">
+              <div className="rounded-xl border border-red-200 bg-red-50 px-3 py-2 text-xs text-red-700">
                 {error}
               </div>
             )}
@@ -143,31 +146,31 @@ export default function RegisterPage({
             <button
               type="submit"
               disabled={loading}
-              className="mt-2 w-full rounded-2xl bg-amber-500 px-4 py-2.5 text-sm font-semibold text-black shadow-[0_18px_40px_rgba(245,158,11,0.55)] hover:bg-amber-400 transition disabled:opacity-50"
+              className="mt-2 w-full rounded-2xl bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white hover:bg-slate-800 transition disabled:opacity-50"
             >
-              {loading ? "Creating account..." : "Sign up and log in"}
+              {loading ? "Creating account…" : "Create account"}
             </button>
           </form>
 
-          <div className="mt-4 flex flex-wrap items-center justify-between gap-2 text-[11px] text-slate-400/90">
+          <div className="mt-4 text-[11px] text-slate-500">
             <button
               type="button"
               onClick={onGoLogin}
-              className="text-amber-300 hover:text-amber-200 underline-offset-2 hover:underline"
+              className="underline hover:text-slate-700"
             >
               Already have an account? Log in
             </button>
           </div>
         </section>
 
-        <section className="hidden md:block text-sm text-slate-300/85 space-y-3">
-          <h2 className="text-lg font-semibold">
+        <section className="hidden md:block space-y-4 text-sm text-slate-600">
+          <h2 className="text-lg font-semibold text-slate-900">
             What you get with an account
           </h2>
-          <ul className="space-y-2 text-xs text-slate-300/90">
-            <li>• Save & sync your practice progress.</li>
-            <li>• Track course and consultation orders.</li>
-            <li>• Receive course updates (opt-out anytime).</li>
+          <ul className="space-y-2 text-xs leading-6 text-slate-600">
+            <li>• Access all your purchased courses anytime.</li>
+            <li>• Save and sync your practice progress.</li>
+            <li>• Receive course updates and new content.</li>
           </ul>
         </section>
       </div>

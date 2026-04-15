@@ -25,7 +25,7 @@ interface Order {
 export default function AdminPage() {
   const [adminKey, setAdminKey] = useState("");
   const [loggedIn, setLoggedIn] = useState(false);
-  const [tab, setTab] = useState<"orders" | "users">("orders");
+  const [tab, setTab] = useState<"orders" | "users" | "summary">("summary");
   const [users, setUsers] = useState<User[]>([]);
   const [orders, setOrders] = useState<Order[]>([]);
   const [loading, setLoading] = useState(false);
@@ -66,6 +66,31 @@ export default function AdminPage() {
   const totalRevenue = orders
     .filter((o) => o.status === "paid")
     .reduce((sum, o) => sum + Number(o.amount_nzd), 0);
+
+  // Sales summary grouped by course/type
+  const COURSE_NAMES: Record<string, string> = {
+    faceyoga: "Face Yoga Masterclass",
+    taichi: "Tai Chi System",
+    qigong: "Acupressure Masterclass",
+    wingchun: "Wing Chun Foundations",
+    guasha: "16 Facial Gua Sha",
+    membership_monthly: "Monthly Membership",
+    membership_quarterly: "Quarterly Membership",
+    membership_annual: "Annual Membership",
+  };
+
+  const summaryMap: Record<string, { name: string; count: number; revenue: number }> = {};
+  orders
+    .filter((o) => o.status === "paid")
+    .forEach((o) => {
+      const key = o.course_id ?? o.purchase_type;
+      if (!summaryMap[key]) {
+        summaryMap[key] = { name: COURSE_NAMES[key] ?? key, count: 0, revenue: 0 };
+      }
+      summaryMap[key].count += 1;
+      summaryMap[key].revenue += Number(o.amount_nzd);
+    });
+  const summary = Object.values(summaryMap).sort((a, b) => b.revenue - a.revenue);
 
   if (!loggedIn) {
     return (
@@ -134,6 +159,16 @@ export default function AdminPage() {
         {/* Tab switcher */}
         <div className="flex gap-2">
           <button
+            onClick={() => setTab("summary")}
+            className={`rounded-full px-4 py-1.5 text-sm font-medium transition ${
+              tab === "summary"
+                ? "bg-slate-900 text-white"
+                : "border border-slate-200 bg-white text-slate-700 hover:border-slate-300"
+            }`}
+          >
+            Sales Summary
+          </button>
+          <button
             onClick={() => setTab("orders")}
             className={`rounded-full px-4 py-1.5 text-sm font-medium transition ${
               tab === "orders"
@@ -154,6 +189,42 @@ export default function AdminPage() {
             Users ({users.length})
           </button>
         </div>
+
+        {/* Sales summary */}
+        {tab === "summary" && (
+          <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+            <div className="px-4 py-3 border-b border-slate-100">
+              <p className="text-sm font-semibold text-slate-700">Revenue by Course (paid orders only)</p>
+            </div>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead className="bg-slate-50 border-b border-slate-200">
+                  <tr>
+                    <th className="text-left px-4 py-3 text-xs font-semibold text-slate-600">Course / Product</th>
+                    <th className="text-left px-4 py-3 text-xs font-semibold text-slate-600">Times Sold</th>
+                    <th className="text-left px-4 py-3 text-xs font-semibold text-slate-600">Total Revenue (NZD)</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-100">
+                  {summary.map((s) => (
+                    <tr key={s.name} className="hover:bg-slate-50">
+                      <td className="px-4 py-3 font-medium text-slate-900">{s.name}</td>
+                      <td className="px-4 py-3 text-slate-700">{s.count}</td>
+                      <td className="px-4 py-3 font-semibold text-amber-700">${s.revenue.toFixed(2)}</td>
+                    </tr>
+                  ))}
+                  {summary.length === 0 && (
+                    <tr>
+                      <td colSpan={3} className="px-4 py-8 text-center text-xs text-slate-400">
+                        No paid orders yet
+                      </td>
+                    </tr>
+                  )}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
 
         {/* Orders table */}
         {tab === "orders" && (

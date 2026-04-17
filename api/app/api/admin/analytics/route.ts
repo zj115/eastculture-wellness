@@ -18,11 +18,13 @@ export async function GET(req: NextRequest) {
 
   // Views in last 7 days (daily breakdown)
   const sevenDaysAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString();
-  const { data: recent } = await supabaseAdmin
+  const { data: recentRaw } = await supabaseAdmin
     .from("page_views")
     .select("viewed_at")
     .gte("viewed_at", sevenDaysAgo)
     .order("viewed_at", { ascending: true });
+
+  const recent = recentRaw as Array<{ viewed_at: string }> | null;
 
   // Build daily counts for last 7 days
   const dailyMap: Record<string, number> = {};
@@ -32,20 +34,22 @@ export async function GET(req: NextRequest) {
     dailyMap[key] = 0;
   }
   (recent ?? []).forEach((row) => {
-    const key = (row.viewed_at as string).slice(0, 10);
+    const key = row.viewed_at.slice(0, 10);
     if (key in dailyMap) dailyMap[key]++;
   });
 
   const daily = Object.entries(dailyMap).map(([date, views]) => ({ date, views }));
 
   // Top pages
-  const { data: allViews } = await supabaseAdmin
+  const { data: allViewsRaw } = await supabaseAdmin
     .from("page_views")
     .select("path");
 
+  const allViews = allViewsRaw as Array<{ path: string }> | null;
+
   const pathMap: Record<string, number> = {};
   (allViews ?? []).forEach((row) => {
-    const p = row.path as string;
+    const p = row.path;
     pathMap[p] = (pathMap[p] ?? 0) + 1;
   });
   const topPages = Object.entries(pathMap)

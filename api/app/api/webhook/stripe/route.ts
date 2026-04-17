@@ -3,9 +3,6 @@ import Stripe from "stripe";
 import { stripe } from "@/lib/stripe";
 import { supabaseAdmin } from "@/lib/supabase";
 
-export const config = {
-  api: { bodyParser: false },
-};
 
 const MS_PER_DAY = 24 * 60 * 60 * 1000;
 

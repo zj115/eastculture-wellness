@@ -177,6 +177,18 @@ function App() {
         }
     }, []);
 
+    // Page view tracking — fires on every page navigation
+    useEffect(() => {
+        fetch("https://eastculture-api.vercel.app/api/track", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                path: "/" + activePage,
+                referrer: document.referrer || null,
+            }),
+        }).catch(() => {}); // silently ignore errors
+    }, [activePage]);
+
     async function handleLogout() {
         try {
             await fetch(`${API_BASE}/api/auth/logout`, {

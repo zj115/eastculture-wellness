@@ -7,7 +7,8 @@ export async function POST(req: NextRequest) {
     const path = typeof body.path === "string" ? body.path.slice(0, 255) : "/";
     const referrer = typeof body.referrer === "string" ? body.referrer.slice(0, 255) : null;
 
-    await supabaseAdmin.from("page_views").insert({ path, referrer });
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    await (supabaseAdmin as any).from("page_views").insert({ path, referrer });
   } catch {
     // silently ignore — tracking must never break the page
   }

@@ -24,8 +24,8 @@ const COURSE = {
     courseId: "guasha",
     // Single video — 16 chapters are timestamps within this one file
     s3Key: "FacialGuaSha/guasha-course.mp4",
-    coverImage: "/images/face-yoga-masterclass.jpg",
-    fallbackImage: "/images/face-yoga-before-after.jpg",
+    coverImage: "/images/guasha-face.jpg",
+    fallbackImage: "/images/face-yoga-masterclass.jpg",
 };
 
 // ─────────────────────────────────────────────
@@ -204,10 +204,10 @@ export default function GuaShaPage({
                         {COURSE.tagline}
                     </p>
                     <h1 className="text-2xl font-bold leading-tight text-slate-900 md:text-3xl">
-                        16 Facial Aging Issues SOLVED! Expensive Facials &amp; Injections Not Working?
+                        Youthful Glow Without The Effort
                     </h1>
                     <p className="mt-1 text-base text-slate-700 font-medium">
-                        Gua Sha Naturally Fades Wrinkles, Lifts Sagging, Brightens Skin — AT HOME.
+                        Beginner-Friendly Gua Sha Massage. No Tools Expertise, No Pain, Just Natural Anti-Aging Results.
                     </p>
                     <div className="mt-4 flex flex-wrap items-center gap-3">
                         <span className="text-2xl font-bold text-slate-900">{COURSE.priceNow}</span>

@@ -17,7 +17,7 @@ const API_BASE =
 // COURSE META
 // ─────────────────────────────────────────────
 const COURSE = {
-    titleEn: "Acupressure Masterclass",
+    titleEn: "Natural Pain & Stress Relief Acupressure Care",
     priceNow: "NZD 99",
     priceOld: "NZD 149",
     sale: true,
@@ -31,8 +31,8 @@ const COURSE = {
 const LESSONS = [
     {
         id: 1,
-        titleEn: "Head & Face Discomfort Relief",
-        subtitleEn: "23 Conditions • 3 Simple Pressure Points • Fast Relief at Home",
+        titleEn: "Stop Head Pain & Tension",
+        subtitleEn: "Fix 23 Types of Aches | 3 Easy Moves, Instant Calm At Home",
         duration: "~60 min",
         s3Key: "acupressure/lesson-01-head.mp4",
         coverImage: "/images/acupoint-head.png",
@@ -92,8 +92,8 @@ const LESSONS = [
 
     {
         id: 2,
-        titleEn: "Women's Private Wellness",
-        subtitleEn: "7 Common Women's Issues • 3–5 Pressure Points for Natural Relief at Home",
+        titleEn: "Women's Body Comfort & Relief",
+        subtitleEn: "Ease 7 Common Female Issues | Gentle, Private Home Care",
         duration: "~40 min",
         s3Key: "acupressure/lesson-02-women.mp4",
         coverImage: "/images/acupoint-womens.png",
@@ -138,8 +138,8 @@ const LESSONS = [
 
     {
         id: 3,
-        titleEn: "Hand & Foot Pain Relief",
-        subtitleEn: "25 Common Hand & Foot Pains • 3 Simple Pressure Points • Fast Relief at Home",
+        titleEn: "Hand & Foot Aches Gone Fast",
+        subtitleEn: "Relieve 28 Kinds Of Stiff Pain | Simple Daily Self Care",
         duration: "~90 min",
         s3Key: "acupressure/lesson-03-hands-feet.mp4",
         coverImage: "/images/acupoint-hands-feet.png",
@@ -200,8 +200,8 @@ const LESSONS = [
 
     {
         id: 4,
-        titleEn: "Common Daily Discomforts Relief",
-        subtitleEn: "16 Common Daily Discomforts • 3 Simple Pressure Points • Fast Relief at Home",
+        titleEn: "Fix All Daily Body Aches",
+        subtitleEn: "Fast Relief For 16 Everyday Pains | No Pills Needed",
         duration: "~60 min",
         s3Key: "acupressure/lesson-04-daily-issues.mp4",
         coverImage: "/images/acupoint-daily.png",
@@ -255,8 +255,8 @@ const LESSONS = [
 
     {
         id: 5,
-        titleEn: "Neck & Shoulder Pain Relief",
-        subtitleEn: "8 Common Neck & Shoulder Pains • 3 Key Pressure Points to Relieve Pain at Home",
+        titleEn: "Fix Stiff Neck & Shoulder Pain",
+        subtitleEn: "Release 8 Types Of Tight Soreness | Quick 5-Min Routine",
         duration: "~45 min",
         s3Key: "acupressure/lesson-05-neck-shoulders.mp4",
         coverImage: "/images/acupoint-neck-shoulder.png",
@@ -297,8 +297,8 @@ const LESSONS = [
 
     {
         id: 6,
-        titleEn: "Waist & Leg Pain Relief",
-        subtitleEn: "18 Waist & Leg Pain Relief Course • 3 Pressure Points • Fast Relief at Home",
+        titleEn: "Back & Leg Pain Relief",
+        subtitleEn: "Ease 18 Kinds Of Body Discomfort | Simple All-Natural Method",
         duration: "~75 min",
         s3Key: "acupressure/lesson-06-waist-legs-description.mp4",
         coverImage: "/images/acupoint-waist-legs.png",

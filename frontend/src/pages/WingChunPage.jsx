@@ -18,8 +18,8 @@ const API_BASE =
 const LESSONS = [
     {
         id: 1,
-        titleEn: "Wing Chun Health Qigong – 10 Forms",
-        subtitleEn: "Only 7 Minutes a Day | Safe, Gentle, for All Ages",
+        titleEn: "Wing Chun 10 Health Qigong Forms",
+        subtitleEn: "Gentle Daily Practice, Build Strength, Fix Posture & Boost All-Day Energy",
         duration: "~7 min",
         s3Key: "wingchun/lesson-01-yangsheng-ten-styles.mp4",
         coverImage: "/images/wingchun-yangsheng.png",
@@ -87,8 +87,8 @@ const LESSONS = [
     },
     {
         id: 2,
-        titleEn: "Wing Chun Self-Defense – 9 Forms",
-        subtitleEn: "Real-Street & Elevator Survival | No Strength Needed · For Everyone",
+        titleEn: "Wing Chun Practical Self-Defense",
+        subtitleEn: "Simple Everyday Protection Skills, Gain Confidence & Feel Safe Anywhere",
         duration: "~7 min",
         s3Key: "wingchun/lesson-02-fangwei-nine-styles.mp4",
         coverImage: "/images/wingchun-fangwei.png",
@@ -482,7 +482,7 @@ export default function WingChunPage({
                         )}
                     </div>
                     <h1 className="text-2xl font-bold leading-tight text-slate-900 md:text-3xl">
-                        Wing Chun Foundations
+                        Wing Chun Practical Self-Defense Mastery
                     </h1>
 
                     <div className="mt-4 flex flex-wrap items-center gap-3">

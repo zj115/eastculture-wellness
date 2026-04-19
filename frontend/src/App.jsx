@@ -28,37 +28,37 @@ const fadeInUp = {
 
 // ─── Tai Chi lessons (from QimenPage data) ───────────────────────────────────
 const TAICHI_LESSONS = [
-    { id: 1, titleEn: "Bone-Invigorating Health Qigong", duration: "~11 min", coverImage: "/images/tai-chi/lesson-07-huogu-yangsheng.png", fallbackImage: "/images/taiji-mountain.jpg", priceNow: "NZD 49", priceOld: "NZD 79", sale: true, page: "qimen" },
-    { id: 2, titleEn: "Hunyuan Wuji Stance", duration: "~10 min", coverImage: "/images/tai-chi/lesson-06-hunyuan-zhuang.png", fallbackImage: "/images/taiji-mountain.jpg", priceNow: "NZD 49", priceOld: "NZD 79", sale: true, page: "qimen" },
-    { id: 3, titleEn: "Wudang Taoist Baduanjin", duration: "~17 min", coverImage: "/images/tai-chi/lesson-05-baduanjin.png", fallbackImage: "/images/taiji-mountain.jpg", priceNow: "NZD 49", priceOld: "NZD 79", sale: true, page: "qimen" },
-    { id: 4, titleEn: "Tai Chi for Heart Calming", duration: "~11 min", coverImage: "/images/tai-chi/lesson-03-wudang-18forms.png", fallbackImage: "/images/taiji-mountain.jpg", priceNow: "NZD 49", priceOld: "NZD 79", sale: true, page: "qimen" },
-    { id: 5, titleEn: "Tai Chi for Soothing the Liver", duration: "~11 min", coverImage: "/images/tai-chi/lesson-02-wudang-13forms.png", fallbackImage: "/images/taiji-mountain.jpg", priceNow: "NZD 49", priceOld: "NZD 79", sale: true, page: "qimen" },
-    { id: 6, titleEn: "Tai Chi for Nourishing the Lungs", duration: "~28 min", coverImage: "/images/tai-chi/lesson-01-wudang-28forms.png", fallbackImage: "/images/taiji-mountain.jpg", priceNow: "NZD 49", priceOld: "NZD 79", sale: true, page: "qimen" },
-    { id: 7, titleEn: "Tai Chi for Qi and Blood Regulation", duration: "~30 min", coverImage: "/images/tai-chi/lesson-04-wudang-108forms.png", fallbackImage: "/images/taiji-mountain.jpg", priceNow: "NZD 49", priceOld: "NZD 79", sale: true, page: "qimen" },
+    { id: 1, titleEn: "Bone & Joint Strength Qigong", subtitle: "Ease body stiffness, boost mobility & build deep physical strength", duration: "~11 min", coverImage: "/images/tai-chi/lesson-07-huogu-yangsheng.png", fallbackImage: "/images/taiji-mountain.jpg", priceNow: "NZD 49", priceOld: "NZD 79", sale: true, page: "qimen" },
+    { id: 2, titleEn: "Hunyuan Wuji Stance for Inner Calm", subtitle: "Build stability, steady your mind & center your body's energy", duration: "~10 min", coverImage: "/images/tai-chi/lesson-06-hunyuan-zhuang.png", fallbackImage: "/images/taiji-mountain.jpg", priceNow: "NZD 49", priceOld: "NZD 79", sale: true, page: "qimen" },
+    { id: 3, titleEn: "Wudang Baduanjin for Full-Body Balance", subtitle: "Gentle daily movement to relax, refresh & restore whole-body wellness", duration: "~17 min", coverImage: "/images/tai-chi/lesson-05-baduanjin.png", fallbackImage: "/images/taiji-mountain.jpg", priceNow: "NZD 49", priceOld: "NZD 79", sale: true, page: "qimen" },
+    { id: 4, titleEn: "Calm Mind & Relieve Restlessness", subtitle: "Soothe unease, steady mood & help you sleep more peacefully", duration: "~11 min", coverImage: "/images/tai-chi/lesson-03-wudang-18forms.png", fallbackImage: "/images/taiji-mountain.jpg", priceNow: "NZD 49", priceOld: "NZD 79", sale: true, page: "qimen" },
+    { id: 5, titleEn: "Release Stress & Ease Irritability", subtitle: "Melt tension, clear frustration & relax tight body & mind", duration: "~11 min", coverImage: "/images/tai-chi/lesson-02-wudang-13forms.png", fallbackImage: "/images/taiji-mountain.jpg", priceNow: "NZD 49", priceOld: "NZD 79", sale: true, page: "qimen" },
+    { id: 6, titleEn: "Deep Breathing & Vitality Boost", subtitle: "Breathe easier, build stamina & refresh your whole body", duration: "~28 min", coverImage: "/images/tai-chi/lesson-01-wudang-28forms.png", fallbackImage: "/images/taiji-mountain.jpg", priceNow: "NZD 49", priceOld: "NZD 79", sale: true, page: "qimen" },
+    { id: 7, titleEn: "Balance Qi & Blood for Full-Body Relaxation", subtitle: "Improve flow, ease stiffness & restore natural daily energy", duration: "~30 min", coverImage: "/images/tai-chi/lesson-04-wudang-108forms.png", fallbackImage: "/images/taiji-mountain.jpg", priceNow: "NZD 49", priceOld: "NZD 79", sale: true, page: "qimen" },
 ];
 
 // ─── Wing Chun lessons ────────────────────────────────────────────────────────
 const WINGCHUN_LESSONS = [
-    { id: 1, titleEn: "Wing Chun Health Qigong – 10 Forms", duration: "~7 min", coverImage: "/images/wingchun-yangsheng.png", fallbackImage: "/images/wingchun-hero.png", priceNow: "NZD 39", priceOld: "NZD 69", sale: true, page: "wingchun" },
-    { id: 2, titleEn: "Wing Chun Fang Wei Self-Defense", duration: "~12 min", coverImage: "/images/wingchun-fangwei.png", fallbackImage: "/images/wingchun-hero.png", priceNow: "NZD 39", priceOld: "NZD 69", sale: true, page: "wingchun" },
+    { id: 1, titleEn: "Wing Chun 10 Health Qigong Forms", subtitle: "Gentle Daily Practice, Build Strength, Fix Posture & Boost All-Day Energy", duration: "~7 min", coverImage: "/images/wingchun-yangsheng.png", fallbackImage: "/images/wingchun-hero.png", priceNow: "NZD 39", priceOld: "NZD 69", sale: true, page: "wingchun" },
+    { id: 2, titleEn: "Wing Chun Practical Self-Defense", subtitle: "Simple Everyday Protection Skills, Gain Confidence & Feel Safe Anywhere", duration: "~12 min", coverImage: "/images/wingchun-fangwei.png", fallbackImage: "/images/wingchun-hero.png", priceNow: "NZD 39", priceOld: "NZD 69", sale: true, page: "wingchun" },
 ];
 
 // ─── Acupoint lessons ─────────────────────────────────────────────────────────
 const ACUPOINT_LESSONS = [
-    { id: 1, titleEn: "Head & Face Discomfort Relief", subtitle: "23 Conditions • 3 Pressure Points Each", duration: "~60 min", coverImage: "/images/acupoint-head.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "NZD 99", priceOld: "NZD 149", sale: true, page: "qigong" },
-    { id: 2, titleEn: "Women's Private Wellness", subtitle: "7 Conditions • Natural Relief at Home", duration: "~45 min", coverImage: "/images/acupoint-womens.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "NZD 99", priceOld: "NZD 149", sale: true, page: "qigong" },
-    { id: 3, titleEn: "Hand & Foot Pain Relief", subtitle: "28 Conditions • 3 Pressure Points Each", duration: "~90 min", coverImage: "/images/acupoint-hands-feet.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "NZD 99", priceOld: "NZD 149", sale: true, page: "qigong" },
-    { id: 4, titleEn: "Common Daily Discomforts Relief", subtitle: "16 Conditions • Fast Relief at Home", duration: "~70 min", coverImage: "/images/acupoint-daily.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "NZD 99", priceOld: "NZD 149", sale: true, page: "qigong" },
-    { id: 5, titleEn: "Neck & Shoulder Pain Relief", subtitle: "8 Conditions • 3 Key Pressure Points", duration: "~40 min", coverImage: "/images/acupoint-neck-shoulder.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "NZD 99", priceOld: "NZD 149", sale: true, page: "qigong" },
-    { id: 6, titleEn: "Waist & Leg Pain Relief", subtitle: "18 Conditions • 3 Pressure Points Each", duration: "~80 min", coverImage: "/images/acupoint-waist-legs.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "NZD 99", priceOld: "NZD 149", sale: true, page: "qigong" },
+    { id: 1, titleEn: "Stop Head Pain & Tension", subtitle: "Fix 23 Types of Aches | 3 Easy Moves, Instant Calm At Home", duration: "~60 min", coverImage: "/images/acupoint-head.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "NZD 99", priceOld: "NZD 149", sale: true, page: "qigong" },
+    { id: 2, titleEn: "Women's Body Comfort & Relief", subtitle: "Ease 7 Common Female Issues | Gentle, Private Home Care", duration: "~45 min", coverImage: "/images/acupoint-womens.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "NZD 99", priceOld: "NZD 149", sale: true, page: "qigong" },
+    { id: 3, titleEn: "Hand & Foot Aches Gone Fast", subtitle: "Relieve 28 Kinds Of Stiff Pain | Simple Daily Self Care", duration: "~90 min", coverImage: "/images/acupoint-hands-feet.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "NZD 99", priceOld: "NZD 149", sale: true, page: "qigong" },
+    { id: 4, titleEn: "Fix All Daily Body Aches", subtitle: "Fast Relief For 16 Everyday Pains | No Pills Needed", duration: "~70 min", coverImage: "/images/acupoint-daily.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "NZD 99", priceOld: "NZD 149", sale: true, page: "qigong" },
+    { id: 5, titleEn: "Fix Stiff Neck & Shoulder Pain", subtitle: "Release 8 Types Of Tight Soreness | Quick 5-Min Routine", duration: "~40 min", coverImage: "/images/acupoint-neck-shoulder.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "NZD 99", priceOld: "NZD 149", sale: true, page: "qigong" },
+    { id: 6, titleEn: "Back & Leg Pain Relief", subtitle: "Ease 18 Kinds Of Body Discomfort | Simple All-Natural Method", duration: "~80 min", coverImage: "/images/acupoint-waist-legs.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "NZD 99", priceOld: "NZD 149", sale: true, page: "qigong" },
 ];
 
 // ─── Gua Sha course (single product card) ────────────────────────────────────
 const GUASHA_COURSE = {
     titleEn: "16 Facial Anti-Aging Gua Sha",
     subtitle: "16 Chapters · 1 Full Course · 2h 34min total",
-    coverImage: "/images/face-yoga-masterclass.jpg",
-    fallbackImage: "/images/face-yoga-before-after.jpg",
+    coverImage: "/images/guasha-face.jpg",
+    fallbackImage: "/images/face-yoga-masterclass.jpg",
     priceNow: "NZD 99",
     priceOld: "NZD 149",
     sale: true,
@@ -313,8 +313,8 @@ function App() {
                         variants={fadeInUp}
                     >
                         <SectionHeading
-                            title="16 Facial Anti-Aging Gua Sha"
-                            subtitle="No Surgery • No Needles • Just 5 Min a Day — Fades Wrinkles, Lifts Sagging, Brightens Skin AT HOME."
+                            title="Reverse Aging Without Surgery"
+                            subtitle="5-Min Daily Gua Sha | Lift, Tighten & Brighten Your Face. No Needles, No Expensive Salon Visits."
                             onViewAll
                             viewAllPage="guasha"
                             onNavigate={setActivePage}
@@ -358,8 +358,8 @@ function App() {
                         variants={fadeInUp}
                     >
                         <SectionHeading
-                            title="Acupoint Self-Care"
-                            subtitle="Drug-free, at-home pressure point routines — 3 simple points for each condition."
+                            title="Natural Pain & Stress Relief Acupressure Care"
+                            subtitle="No Pills, No Therapists. Instant relief for headaches, body aches, anxiety & fatigue with 3 easy home points."
                             onViewAll
                             viewAllPage="qigong"
                             onNavigate={setActivePage}
@@ -381,8 +381,8 @@ function App() {
                         variants={fadeInUp}
                     >
                         <SectionHeading
-                            title="Tai Chi — Wudang Sanfeng"
-                            subtitle="Relieve joint pain, reduce stress & improve sleep — authentic Wudang Tai Chi, 10–30 min per session."
+                            title="Fix Aches, Calm Anxiety & Sleep Deeply"
+                            subtitle="Traditional Wudang Tai Chi. Gentle Daily Routine For All Ages & Fitness Levels."
                             onViewAll
                             viewAllPage="qimen"
                             onNavigate={setActivePage}
@@ -404,8 +404,8 @@ function App() {
                         variants={fadeInUp}
                     >
                         <SectionHeading
-                            title="Wing Chun"
-                            subtitle="Authentic Wing Chun fundamentals — body coordination, structure, and self-care routines."
+                            title="Wing Chun Practical Self-Defense Mastery"
+                            subtitle="Learn simple, effective personal protection. Build confidence, strength & awareness daily."
                             onViewAll
                             viewAllPage="wingchun"
                             onNavigate={setActivePage}

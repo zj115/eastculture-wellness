@@ -16,7 +16,7 @@ const API_BASE =
 // COURSE META
 // ─────────────────────────────────────────────
 const COURSE = {
-    titleEn: "Wudang Sanfeng Tai Chi",
+    titleEn: "Fix Aches, Calm Anxiety & Sleep Deeply",
     priceNow: "NZD 49",
     priceOld: "NZD 79",
     sale: true,
@@ -29,8 +29,8 @@ const COURSE = {
 const LESSONS = [
     {
         id: 1,
-        titleEn: "Bone-Invigorating Health Qigong",
-        subtitleEn: "11 Minutes | Unblock Joints, Relieve Stiffness, Ease Bone Pain, Strengthen Tendons and Bones",
+        titleEn: "Bone & Joint Strength Qigong",
+        subtitleEn: "Ease body stiffness, boost mobility & build deep physical strength",
         duration: "~11 min",
         s3Key: "taichi/lesson-07-huogu-yangsheng-gong.mp4",
         coverImage: "/images/tai-chi/lesson-07-huogu-yangsheng.png",
@@ -68,8 +68,8 @@ const LESSONS = [
 
     {
         id: 2,
-        titleEn: "Hunyuan Wuji Stance",
-        subtitleEn: "10 Minutes | Strengthen Kidney Qi, Secure Primordial Qi, Warm Waist and Knees, Boost Energy",
+        titleEn: "Hunyuan Wuji Stance for Inner Calm",
+        subtitleEn: "Build stability, steady your mind & center your body's energy",
         duration: "~10 min",
         s3Key: "taichi/lesson-06-wuji-hunyuan-zhuang.mp4",
         coverImage: "/images/tai-chi/lesson-06-hunyuan-zhuang.png",
@@ -108,8 +108,8 @@ const LESSONS = [
 
     {
         id: 3,
-        titleEn: "Wudang Taoist Baduanjin",
-        subtitleEn: "17 Minutes | Strengthen Spleen and Stomach, Improve Digestion, Regulate Metabolism, Reduce Bloating",
+        titleEn: "Wudang Baduanjin for Full-Body Balance",
+        subtitleEn: "Gentle daily movement to relax, refresh & restore whole-body wellness",
         duration: "~17 min",
         s3Key: "taichi/lesson-05-wudang-daomen-baduanjin.mp4",
         coverImage: "/images/tai-chi/lesson-05-baduanjin.png",
@@ -148,8 +148,8 @@ const LESSONS = [
 
     {
         id: 4,
-        titleEn: "Tai Chi for Heart Calming",
-        subtitleEn: "11 Minutes | Calm the Mind, Improve Sleep, Stabilize Emotions, Relieve Anxiety",
+        titleEn: "Calm Mind & Relieve Restlessness",
+        subtitleEn: "Soothe unease, steady mood & help you sleep more peacefully",
         duration: "~11 min",
         s3Key: "taichi/lesson-03-wudang-sanfeng-taichi-18-forms.mp4",
         coverImage: "/images/tai-chi/lesson-03-wudang-18forms.png",
@@ -188,8 +188,8 @@ const LESSONS = [
 
     {
         id: 5,
-        titleEn: "Tai Chi for Soothing the Liver",
-        subtitleEn: "11 Minutes | Release Liver Stagnation, Clear Liver Fire, Relieve Chest Tightness, Smooth Qi Flow",
+        titleEn: "Release Stress & Ease Irritability",
+        subtitleEn: "Melt tension, clear frustration & relax tight body & mind",
         duration: "~11 min",
         s3Key: "taichi/lesson-02-wudang-sanfeng-taichi-13-forms.mp4",
         coverImage: "/images/tai-chi/lesson-02-wudang-13forms.png",
@@ -228,8 +228,8 @@ const LESSONS = [
 
     {
         id: 6,
-        titleEn: "Tai Chi for Nourishing the Lungs",
-        subtitleEn: "28 Minutes | Moisten Lung Qi, Boost Immunity, Relieve Coughing, Soothe Throat and Nose",
+        titleEn: "Deep Breathing & Vitality Boost",
+        subtitleEn: "Breathe easier, build stamina & refresh your whole body",
         duration: "~28 min",
         s3Key: "taichi/lesson-01-wudang-sanfeng-taichi-28-forms.mp4",
         coverImage: "/images/tai-chi/lesson-01-wudang-28forms.png",
@@ -268,8 +268,8 @@ const LESSONS = [
 
     {
         id: 7,
-        titleEn: "Tai Chi for Qi and Blood Regulation",
-        subtitleEn: "30 Minutes | Balance Qi and Blood, Nourish Five Organs, Unblock the Whole Body, Strengthen the Foundation",
+        titleEn: "Balance Qi & Blood for Full-Body Relaxation",
+        subtitleEn: "Improve flow, ease stiffness & restore natural daily energy",
         duration: "~30 min",
         s3Key: "taichi/lesson-04-wudang-sanfeng-taichi-108-forms.mp4",
         coverImage: "/images/tai-chi/lesson-04-wudang-108forms.png",

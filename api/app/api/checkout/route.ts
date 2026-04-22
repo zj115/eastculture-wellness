@@ -4,57 +4,57 @@ import { stripe } from "@/lib/stripe";
 import { getUserFromRequest } from "@/lib/auth";
 import { supabaseAdmin } from "@/lib/supabase";
 
-// Course/product definitions - prices in NZD cents
+// Course/product definitions - prices in USD cents
 const PRODUCTS = {
-  // Individual video - 10 NZD each
+  // Individual video - 10 USD each
   video: {
-    price: 1000, // 10.00 NZD
+    price: 1000, // 10.00 USD
     name: (videoTitle: string) => `EastCulture - ${videoTitle}`,
   },
   // Course series
   courses: {
     faceyoga: {
-      price: 14900, // 149 NZD
+      price: 5999, // 59.99 USD
       name: "Face Yoga & Facial Massage Masterclass",
       nameZh: "面部瑜伽与按摩大师课",
     },
     taichi: {
-      price: 3000, // 30 NZD
+      price: 2999, // 29.99 USD
       name: "Tai Chi System Course Series",
       nameZh: "太极系统课程",
     },
     qigong: {
-      price: 9900, // 99 NZD
+      price: 5999, // 59.99 USD
       name: "Acupressure Masterclass",
       nameZh: "穴位疗程大师课",
     },
     wingchun: {
-      price: 2900, // 29 NZD
+      price: 2499, // 24.99 USD
       name: "Wing Chun Foundations – Health & Self-Defense",
       nameZh: "咏春基础课：养生十式 + 防卫九式",
     },
     guasha: {
-      price: 9900, // 99 NZD
+      price: 5999, // 59.99 USD
       name: "16 Facial Anti-Aging Gua Sha Course",
       nameZh: "16 节面部抗衰刮痧课程",
     },
   },
   // Membership plans
   membership_monthly: {
-    price: 3000, // 30 NZD per month
+    price: 3000, // 30 USD per month
     interval: "month" as const,
     name: "EastCulture Monthly Membership",
     nameZh: "月卡会员",
   },
   membership_quarterly: {
-    price: 10000, // 100 NZD per quarter (3 months)
+    price: 10000, // 100 USD per quarter (3 months)
     interval: "month" as const,
     interval_count: 3,
     name: "EastCulture Quarterly Membership",
     nameZh: "季卡会员",
   },
   membership_annual: {
-    price: 16800, // 168 NZD per year
+    price: 16800, // 168 USD per year
     interval: "year" as const,
     name: "EastCulture Annual Membership",
     nameZh: "年卡会员",
@@ -86,7 +86,7 @@ export async function POST(req: NextRequest) {
       lineItems = [
         {
           price_data: {
-            currency: "nzd",
+            currency: "usd",
             product_data: { name: PRODUCTS.video.name(videoTitle) },
             unit_amount: PRODUCTS.video.price,
           },
@@ -105,7 +105,7 @@ export async function POST(req: NextRequest) {
       lineItems = [
         {
           price_data: {
-            currency: "nzd",
+            currency: "usd",
             product_data: { name: productName },
             unit_amount: course.price,
           },
@@ -122,7 +122,7 @@ export async function POST(req: NextRequest) {
       lineItems = [
         {
           price_data: {
-            currency: "nzd",
+            currency: "usd",
             product_data: { name: productName },
             unit_amount: plan.price,
             recurring: recurringInterval as Stripe.Checkout.SessionCreateParams.LineItem.PriceData.Recurring,
@@ -157,7 +157,7 @@ export async function POST(req: NextRequest) {
       membership_quarterly: 100,
       membership_annual: 168,
     };
-    const amountNzd =
+    const amountUsd =
       type === "video"
         ? 10
         : type === "course"
@@ -167,8 +167,8 @@ export async function POST(req: NextRequest) {
     await supabaseAdmin.from("orders").insert({
       user_id: user.id,
       stripe_session_id: session.id,
-      amount_nzd: amountNzd,
-      currency: "nzd",
+      amount_nzd: amountUsd,
+      currency: "usd",
       purchase_type: isMembershipType ? "membership" : type,
       course_id: metadata.courseId || null,
       video_key: metadata.videoKey || null,

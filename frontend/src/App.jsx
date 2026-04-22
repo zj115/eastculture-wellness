@@ -26,31 +26,25 @@ const fadeInUp = {
     show: { opacity: 1, y: 0 },
 };
 
-// ─── Tai Chi lessons (from QimenPage data) ───────────────────────────────────
-const TAICHI_LESSONS = [
-    { id: 1, titleEn: "Bone & Joint Strength Qigong", subtitle: "Ease body stiffness, boost mobility & build deep physical strength", duration: "~11 min", coverImage: "/images/tai-chi/lesson-07-huogu-yangsheng.png", fallbackImage: "/images/taiji-mountain.jpg", priceNow: "NZD 49", priceOld: "NZD 79", sale: true, page: "qimen" },
-    { id: 2, titleEn: "Hunyuan Wuji Stance for Inner Calm", subtitle: "Build stability, steady your mind & center your body's energy", duration: "~10 min", coverImage: "/images/tai-chi/lesson-06-hunyuan-zhuang.png", fallbackImage: "/images/taiji-mountain.jpg", priceNow: "NZD 49", priceOld: "NZD 79", sale: true, page: "qimen" },
-    { id: 3, titleEn: "Wudang Baduanjin for Full-Body Balance", subtitle: "Gentle daily movement to relax, refresh & restore whole-body wellness", duration: "~17 min", coverImage: "/images/tai-chi/lesson-05-baduanjin.png", fallbackImage: "/images/taiji-mountain.jpg", priceNow: "NZD 49", priceOld: "NZD 79", sale: true, page: "qimen" },
-    { id: 4, titleEn: "Calm Mind & Relieve Restlessness", subtitle: "Soothe unease, steady mood & help you sleep more peacefully", duration: "~11 min", coverImage: "/images/tai-chi/lesson-03-wudang-18forms.png", fallbackImage: "/images/taiji-mountain.jpg", priceNow: "NZD 49", priceOld: "NZD 79", sale: true, page: "qimen" },
-    { id: 5, titleEn: "Release Stress & Ease Irritability", subtitle: "Melt tension, clear frustration & relax tight body & mind", duration: "~11 min", coverImage: "/images/tai-chi/lesson-02-wudang-13forms.png", fallbackImage: "/images/taiji-mountain.jpg", priceNow: "NZD 49", priceOld: "NZD 79", sale: true, page: "qimen" },
-    { id: 6, titleEn: "Deep Breathing & Vitality Boost", subtitle: "Breathe easier, build stamina & refresh your whole body", duration: "~28 min", coverImage: "/images/tai-chi/lesson-01-wudang-28forms.png", fallbackImage: "/images/taiji-mountain.jpg", priceNow: "NZD 49", priceOld: "NZD 79", sale: true, page: "qimen" },
-    { id: 7, titleEn: "Balance Qi & Blood for Full-Body Relaxation", subtitle: "Improve flow, ease stiffness & restore natural daily energy", duration: "~30 min", coverImage: "/images/tai-chi/lesson-04-wudang-108forms.png", fallbackImage: "/images/taiji-mountain.jpg", priceNow: "NZD 49", priceOld: "NZD 79", sale: true, page: "qimen" },
-];
-
-// ─── Wing Chun lessons ────────────────────────────────────────────────────────
-const WINGCHUN_LESSONS = [
-    { id: 1, titleEn: "Wing Chun 10 Health Qigong Forms", subtitle: "Gentle Daily Practice, Build Strength, Fix Posture & Boost All-Day Energy", duration: "~7 min", coverImage: "/images/wingchun-yangsheng.png", fallbackImage: "/images/wingchun-hero.png", priceNow: "NZD 39", priceOld: "NZD 69", sale: true, page: "wingchun" },
-    { id: 2, titleEn: "Wing Chun Practical Self-Defense", subtitle: "Simple Everyday Protection Skills, Gain Confidence & Feel Safe Anywhere", duration: "~12 min", coverImage: "/images/wingchun-fangwei.png", fallbackImage: "/images/wingchun-hero.png", priceNow: "NZD 39", priceOld: "NZD 69", sale: true, page: "wingchun" },
-];
-
 // ─── Acupoint lessons ─────────────────────────────────────────────────────────
 const ACUPOINT_LESSONS = [
-    { id: 1, titleEn: "Stop Head Pain & Tension", subtitle: "Fix 23 Types of Aches | 3 Easy Moves, Instant Calm At Home", duration: "~60 min", coverImage: "/images/acupoint-head.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "NZD 99", priceOld: "NZD 149", sale: true, page: "qigong" },
-    { id: 2, titleEn: "Women's Body Comfort & Relief", subtitle: "Ease 7 Common Female Issues | Gentle, Private Home Care", duration: "~45 min", coverImage: "/images/acupoint-womens.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "NZD 99", priceOld: "NZD 149", sale: true, page: "qigong" },
-    { id: 3, titleEn: "Hand & Foot Aches Gone Fast", subtitle: "Relieve 28 Kinds Of Stiff Pain | Simple Daily Self Care", duration: "~90 min", coverImage: "/images/acupoint-hands-feet.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "NZD 99", priceOld: "NZD 149", sale: true, page: "qigong" },
-    { id: 4, titleEn: "Fix All Daily Body Aches", subtitle: "Fast Relief For 16 Everyday Pains | No Pills Needed", duration: "~70 min", coverImage: "/images/acupoint-daily.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "NZD 99", priceOld: "NZD 149", sale: true, page: "qigong" },
-    { id: 5, titleEn: "Fix Stiff Neck & Shoulder Pain", subtitle: "Release 8 Types Of Tight Soreness | Quick 5-Min Routine", duration: "~40 min", coverImage: "/images/acupoint-neck-shoulder.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "NZD 99", priceOld: "NZD 149", sale: true, page: "qigong" },
-    { id: 6, titleEn: "Back & Leg Pain Relief", subtitle: "Ease 18 Kinds Of Body Discomfort | Simple All-Natural Method", duration: "~80 min", coverImage: "/images/acupoint-waist-legs.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "NZD 99", priceOld: "NZD 149", sale: true, page: "qigong" },
+    { id: 1, titleEn: "Stop Head Pain & Tension", subtitle: "Fix 23 Types of Aches | 3 Easy Moves, Instant Calm At Home", duration: "~60 min", coverImage: "/images/acupoint-head.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "$59.99", priceOld: "$99.99", sale: true, page: "qigong" },
+    { id: 2, titleEn: "Women's Body Comfort & Relief", subtitle: "Ease 7 Common Female Issues | Gentle, Private Home Care", duration: "~45 min", coverImage: "/images/acupoint-womens.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "$59.99", priceOld: "$99.99", sale: true, page: "qigong" },
+    { id: 3, titleEn: "Hand & Foot Aches Gone Fast", subtitle: "Relieve 28 Kinds Of Stiff Pain | Simple Daily Self Care", duration: "~90 min", coverImage: "/images/acupoint-hands-feet.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "$59.99", priceOld: "$99.99", sale: true, page: "qigong" },
+    { id: 4, titleEn: "Fix All Daily Body Aches", subtitle: "Fast Relief For 16 Everyday Pains | No Pills Needed", duration: "~70 min", coverImage: "/images/acupoint-daily.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "$59.99", priceOld: "$99.99", sale: true, page: "qigong" },
+    { id: 5, titleEn: "Fix Stiff Neck & Shoulder Pain", subtitle: "Release 8 Types Of Tight Soreness | Quick 5-Min Routine", duration: "~40 min", coverImage: "/images/acupoint-neck-shoulder.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "$59.99", priceOld: "$99.99", sale: true, page: "qigong" },
+    { id: 6, titleEn: "Back & Leg Pain Relief", subtitle: "Ease 18 Kinds Of Body Discomfort | Simple All-Natural Method", duration: "~80 min", coverImage: "/images/acupoint-waist-legs.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "$59.99", priceOld: "$99.99", sale: true, page: "qigong" },
+];
+
+// ─── Tai Chi lessons (from QimenPage data) ───────────────────────────────────
+const TAICHI_LESSONS = [
+    { id: 1, titleEn: "Bone & Joint Strength Qigong", subtitle: "Ease body stiffness, boost mobility & build deep physical strength", duration: "~11 min", coverImage: "/images/tai-chi/lesson-07-huogu-yangsheng.png", fallbackImage: "/images/taiji-mountain.jpg", priceNow: "$29.99", priceOld: "$59.99", sale: true, page: "qimen" },
+    { id: 2, titleEn: "Hunyuan Wuji Stance for Inner Calm", subtitle: "Build stability, steady your mind & center your body's energy", duration: "~10 min", coverImage: "/images/tai-chi/lesson-06-hunyuan-zhuang.png", fallbackImage: "/images/taiji-mountain.jpg", priceNow: "$29.99", priceOld: "$59.99", sale: true, page: "qimen" },
+    { id: 3, titleEn: "Wudang Baduanjin for Full-Body Balance", subtitle: "Gentle daily movement to relax, refresh & restore whole-body wellness", duration: "~17 min", coverImage: "/images/tai-chi/lesson-05-baduanjin.png", fallbackImage: "/images/taiji-mountain.jpg", priceNow: "$29.99", priceOld: "$59.99", sale: true, page: "qimen" },
+    { id: 4, titleEn: "Calm Mind & Relieve Restlessness", subtitle: "Soothe unease, steady mood & help you sleep more peacefully", duration: "~11 min", coverImage: "/images/tai-chi/lesson-03-wudang-18forms.png", fallbackImage: "/images/taiji-mountain.jpg", priceNow: "$29.99", priceOld: "$59.99", sale: true, page: "qimen" },
+    { id: 5, titleEn: "Release Stress & Ease Irritability", subtitle: "Melt tension, clear frustration & relax tight body & mind", duration: "~11 min", coverImage: "/images/tai-chi/lesson-02-wudang-13forms.png", fallbackImage: "/images/taiji-mountain.jpg", priceNow: "$29.99", priceOld: "$59.99", sale: true, page: "qimen" },
+    { id: 6, titleEn: "Deep Breathing & Vitality Boost", subtitle: "Breathe easier, build stamina & refresh your whole body", duration: "~28 min", coverImage: "/images/tai-chi/lesson-01-wudang-28forms.png", fallbackImage: "/images/taiji-mountain.jpg", priceNow: "$29.99", priceOld: "$59.99", sale: true, page: "qimen" },
+    { id: 7, titleEn: "Balance Qi & Blood for Full-Body Relaxation", subtitle: "Improve flow, ease stiffness & restore natural daily energy", duration: "~30 min", coverImage: "/images/tai-chi/lesson-04-wudang-108forms.png", fallbackImage: "/images/taiji-mountain.jpg", priceNow: "$29.99", priceOld: "$59.99", sale: true, page: "qimen" },
 ];
 
 // ─── Gua Sha course (single product card) ────────────────────────────────────
@@ -59,11 +53,17 @@ const GUASHA_COURSE = {
     subtitle: "16 Chapters · 1 Full Course · 2h 34min total",
     coverImage: "/images/guasha-face.jpg",
     fallbackImage: "/images/face-yoga-masterclass.jpg",
-    priceNow: "NZD 99",
-    priceOld: "NZD 149",
+    priceNow: "$59.99",
+    priceOld: "$99.99",
     sale: true,
     page: "guasha",
 };
+
+// ─── Wing Chun lessons ────────────────────────────────────────────────────────
+const WINGCHUN_LESSONS = [
+    { id: 1, titleEn: "Wing Chun 10 Health Qigong Forms", subtitle: "Gentle Daily Practice, Build Strength, Fix Posture & Boost All-Day Energy", duration: "~7 min", coverImage: "/images/wingchun-yangsheng.png", fallbackImage: "/images/wingchun-hero.png", priceNow: "$24.99", priceOld: "$49.99", sale: true, page: "wingchun" },
+    { id: 2, titleEn: "Wing Chun Practical Self-Defense", subtitle: "Simple Everyday Protection Skills, Gain Confidence & Feel Safe Anywhere", duration: "~12 min", coverImage: "/images/wingchun-fangwei.png", fallbackImage: "/images/wingchun-hero.png", priceNow: "$24.99", priceOld: "$49.99", sale: true, page: "wingchun" },
+];
 
 // ─── Card component ───────────────────────────────────────────────────────────
 function LessonCard({ lesson, onNavigate }) {
@@ -97,9 +97,9 @@ function LessonCard({ lesson, onNavigate }) {
                     <p className="text-[11px] text-slate-400 mb-2">{lesson.duration}</p>
                 )}
                 {lesson.priceOld && (
-                    <div className="flex items-center gap-1.5 flex-wrap">
-                        <span className="text-[11px] text-slate-400 line-through">{lesson.priceOld}</span>
-                        <span className="text-sm font-bold text-slate-900">{lesson.priceNow}</span>
+                    <div className="flex items-center gap-2 flex-wrap">
+                        <span className="text-xl font-bold text-slate-900">{lesson.priceNow}</span>
+                        <span className="text-xs text-slate-400 line-through">{lesson.priceOld}</span>
                     </div>
                 )}
             </div>
@@ -297,15 +297,59 @@ function App() {
                 </section>
 
                 {/* ── COURSE SECTIONS ────────────────────────────────────────
-                    Both mobile and desktop use flex-col + order classes.
-                    Mobile order:  Acupoint(1) → Tai Chi(2) → Gua Sha(3) → Wing Chun(4)
-                    Desktop order: Gua Sha(1)  → Acupoint(2) → Tai Chi(3) → Wing Chun(4)
+                    Fixed order: Acupoint(1) → Tai Chi(2) → Gua Sha(3) → Wing Chun(4)
                 ─────────────────────────────────────────────────────────────── */}
                 <div className="mx-auto max-w-6xl px-4 pt-10 flex flex-col gap-12">
 
-                    {/* GUA SHA — mobile: 3rd / desktop: 1st */}
+                    {/* ACUPOINT — 1st */}
                     <motion.section
-                        className="order-3 md:order-1"
+                        className="order-1"
+                        initial="hidden"
+                        whileInView="show"
+                        viewport={{ once: true, amount: 0.15 }}
+                        transition={{ duration: 0.6, ease: "easeOut" }}
+                        variants={fadeInUp}
+                    >
+                        <SectionHeading
+                            title="Natural Pain & Stress Relief Acupressure Care"
+                            subtitle="No Pills, No Therapists. Instant relief for headaches, body aches, anxiety & fatigue with 3 easy home points."
+                            onViewAll
+                            viewAllPage="qigong"
+                            onNavigate={setActivePage}
+                        />
+                        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+                            {ACUPOINT_LESSONS.map((lesson) => (
+                                <LessonCard key={lesson.id} lesson={lesson} onNavigate={setActivePage} />
+                            ))}
+                        </div>
+                    </motion.section>
+
+                    {/* TAI CHI — 2nd */}
+                    <motion.section
+                        className="order-2"
+                        initial="hidden"
+                        whileInView="show"
+                        viewport={{ once: true, amount: 0.15 }}
+                        transition={{ duration: 0.6, ease: "easeOut" }}
+                        variants={fadeInUp}
+                    >
+                        <SectionHeading
+                            title="Fix Aches, Calm Anxiety & Sleep Deeply"
+                            subtitle="Traditional Wudang Tai Chi. Gentle Daily Routine For All Ages & Fitness Levels."
+                            onViewAll
+                            viewAllPage="qimen"
+                            onNavigate={setActivePage}
+                        />
+                        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+                            {TAICHI_LESSONS.map((lesson) => (
+                                <LessonCard key={lesson.id} lesson={lesson} onNavigate={setActivePage} />
+                            ))}
+                        </div>
+                    </motion.section>
+
+                    {/* GUA SHA — 3rd */}
+                    <motion.section
+                        className="order-3"
                         initial="hidden"
                         whileInView="show"
                         viewport={{ once: true, amount: 0.15 }}
@@ -339,62 +383,16 @@ function App() {
                             <div className="p-3">
                                 <p className="text-xs font-semibold text-slate-900 leading-snug mb-1">{GUASHA_COURSE.titleEn}</p>
                                 <p className="text-[11px] text-slate-500 mb-2">{GUASHA_COURSE.subtitle}</p>
-                                <div className="flex items-center gap-1.5">
-                                    <span className="text-[11px] text-slate-400 line-through">{GUASHA_COURSE.priceOld}</span>
-                                    <span className="text-sm font-bold text-slate-900">{GUASHA_COURSE.priceNow}</span>
+                                <div className="flex items-center gap-2">
+                                    <span className="text-xl font-bold text-slate-900">{GUASHA_COURSE.priceNow}</span>
+                                    <span className="text-xs text-slate-400 line-through">{GUASHA_COURSE.priceOld}</span>
                                 </div>
                             </div>
                         </div>
                         </div>
                     </motion.section>
 
-                    {/* ACUPOINT — mobile: 1st / desktop: 2nd */}
-                    <motion.section
-                        className="order-1 md:order-2"
-                        initial="hidden"
-                        whileInView="show"
-                        viewport={{ once: true, amount: 0.15 }}
-                        transition={{ duration: 0.6, ease: "easeOut" }}
-                        variants={fadeInUp}
-                    >
-                        <SectionHeading
-                            title="Natural Pain & Stress Relief Acupressure Care"
-                            subtitle="No Pills, No Therapists. Instant relief for headaches, body aches, anxiety & fatigue with 3 easy home points."
-                            onViewAll
-                            viewAllPage="qigong"
-                            onNavigate={setActivePage}
-                        />
-                        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-                            {ACUPOINT_LESSONS.map((lesson) => (
-                                <LessonCard key={lesson.id} lesson={lesson} onNavigate={setActivePage} />
-                            ))}
-                        </div>
-                    </motion.section>
-
-                    {/* TAI CHI — mobile: 2nd / desktop: 3rd */}
-                    <motion.section
-                        className="order-2 md:order-3"
-                        initial="hidden"
-                        whileInView="show"
-                        viewport={{ once: true, amount: 0.15 }}
-                        transition={{ duration: 0.6, ease: "easeOut" }}
-                        variants={fadeInUp}
-                    >
-                        <SectionHeading
-                            title="Fix Aches, Calm Anxiety & Sleep Deeply"
-                            subtitle="Traditional Wudang Tai Chi. Gentle Daily Routine For All Ages & Fitness Levels."
-                            onViewAll
-                            viewAllPage="qimen"
-                            onNavigate={setActivePage}
-                        />
-                        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-                            {TAICHI_LESSONS.map((lesson) => (
-                                <LessonCard key={lesson.id} lesson={lesson} onNavigate={setActivePage} />
-                            ))}
-                        </div>
-                    </motion.section>
-
-                    {/* WING CHUN — mobile: 4th / desktop: 4th */}
+                    {/* WING CHUN — 4th */}
                     <motion.section
                         className="order-4 mb-8"
                         initial="hidden"

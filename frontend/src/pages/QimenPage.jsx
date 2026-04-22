@@ -17,8 +17,8 @@ const API_BASE =
 // ─────────────────────────────────────────────
 const COURSE = {
     titleEn: "Fix Aches, Calm Anxiety & Sleep Deeply",
-    priceNow: "NZD 49",
-    priceOld: "NZD 79",
+    priceNow: "$29.99",
+    priceOld: "$59.99",
     sale: true,
     lessonCount: 7,
 };
@@ -571,8 +571,8 @@ export default function QimenPage({
                         {COURSE.titleEn}
                     </h1>
                     <div className="mt-4 flex flex-wrap items-center gap-3">
-                        <span className="text-2xl font-bold text-slate-900">{COURSE.priceNow}</span>
-                        <span className="text-sm text-slate-400 line-through">{COURSE.priceOld}</span>
+                        <span className="text-3xl font-extrabold text-slate-900">{COURSE.priceNow}</span>
+                        <span className="text-base text-slate-400 line-through">{COURSE.priceOld}</span>
                         <span className="rounded-full border border-amber-200 bg-amber-50 px-2.5 py-0.5 text-xs text-amber-700">
                             {COURSE.lessonCount} lessons · lifetime access
                         </span>

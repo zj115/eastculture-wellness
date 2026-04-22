@@ -18,8 +18,8 @@ const API_BASE =
 // ─────────────────────────────────────────────
 const COURSE = {
     titleEn: "Natural Pain & Stress Relief Acupressure Care",
-    priceNow: "NZD 99",
-    priceOld: "NZD 149",
+    priceNow: "$59.99",
+    priceOld: "$99.99",
     sale: true,
     lessonCount: 6,
     courseId: "qigong",   // keep existing courseId so purchases still match
@@ -609,8 +609,8 @@ export default function QigongPage({
                         {COURSE.titleEn}
                     </h1>
                     <div className="mt-4 flex flex-wrap items-center gap-3">
-                        <span className="text-2xl font-bold text-slate-900">{COURSE.priceNow}</span>
-                        <span className="text-sm text-slate-400 line-through">{COURSE.priceOld}</span>
+                        <span className="text-3xl font-extrabold text-slate-900">{COURSE.priceNow}</span>
+                        <span className="text-base text-slate-400 line-through">{COURSE.priceOld}</span>
                         <span className="rounded-full border border-amber-200 bg-amber-50 px-2.5 py-0.5 text-xs text-amber-700">
                             {COURSE.lessonCount} lessons · lifetime access
                         </span>

@@ -70,7 +70,7 @@ function LessonCard({ lesson, onNavigate }) {
     const [imgErr, setImgErr] = useState(false);
     return (
         <div
-            className="group cursor-pointer bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden"
+            className="group cursor-pointer bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden flex flex-col"
             onClick={() => onNavigate(lesson.page)}
         >
             <div className="relative overflow-hidden aspect-[4/3]">
@@ -81,12 +81,12 @@ function LessonCard({ lesson, onNavigate }) {
                     className="w-full h-full object-cover transition duration-500 group-hover:scale-105"
                 />
                 {lesson.sale && (
-                    <span className="absolute bottom-2 left-2 bg-amber-600 text-white text-[10px] font-semibold px-2.5 py-1 rounded-full">
+                    <span className="absolute top-2 left-2 bg-amber-600 text-white text-[10px] font-semibold px-2.5 py-1 rounded-full">
                         Sale
                     </span>
                 )}
             </div>
-            <div className="p-3">
+            <div className="p-3 flex flex-col flex-1">
                 <p className="text-xs font-semibold text-slate-900 leading-snug mb-1 line-clamp-2">
                     {lesson.titleEn}
                 </p>
@@ -96,12 +96,14 @@ function LessonCard({ lesson, onNavigate }) {
                 {lesson.duration && (
                     <p className="text-[11px] text-slate-400 mb-2">{lesson.duration}</p>
                 )}
-                {lesson.priceOld && (
-                    <div className="flex items-center gap-2 flex-wrap">
-                        <span className="text-xl font-bold text-slate-900">{lesson.priceNow}</span>
-                        <span className="text-xs text-slate-400 line-through">{lesson.priceOld}</span>
-                    </div>
-                )}
+                <div className="mt-auto pt-2">
+                    {lesson.priceOld && (
+                        <div className="flex items-center gap-2 flex-wrap">
+                            <span className="text-xl font-bold text-slate-900">{lesson.priceNow}</span>
+                            <span className="text-xs text-slate-400 line-through">{lesson.priceOld}</span>
+                        </div>
+                    )}
+                </div>
             </div>
         </div>
     );
@@ -366,7 +368,7 @@ function App() {
                         {/* Single course card — half-width on mobile (matches 2-col grid), quarter-width on lg */}
                         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
                         <div
-                            className="cursor-pointer bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden"
+                            className="cursor-pointer bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden flex flex-col"
                             onClick={() => setActivePage("guasha")}
                         >
                             <div className="relative overflow-hidden aspect-[4/3]">
@@ -376,16 +378,18 @@ function App() {
                                     className="w-full h-full object-cover"
                                     onError={(e) => { e.target.src = GUASHA_COURSE.fallbackImage; }}
                                 />
-                                <span className="absolute bottom-2 left-2 bg-amber-600 text-white text-[10px] font-semibold px-2.5 py-1 rounded-full">
+                                <span className="absolute top-2 left-2 bg-amber-600 text-white text-[10px] font-semibold px-2.5 py-1 rounded-full">
                                     Sale
                                 </span>
                             </div>
-                            <div className="p-3">
+                            <div className="p-3 flex flex-col flex-1">
                                 <p className="text-xs font-semibold text-slate-900 leading-snug mb-1">{GUASHA_COURSE.titleEn}</p>
                                 <p className="text-[11px] text-slate-500 mb-2">{GUASHA_COURSE.subtitle}</p>
-                                <div className="flex items-center gap-2">
-                                    <span className="text-xl font-bold text-slate-900">{GUASHA_COURSE.priceNow}</span>
-                                    <span className="text-xs text-slate-400 line-through">{GUASHA_COURSE.priceOld}</span>
+                                <div className="mt-auto pt-2">
+                                    <div className="flex items-center gap-2">
+                                        <span className="text-xl font-bold text-slate-900">{GUASHA_COURSE.priceNow}</span>
+                                        <span className="text-xs text-slate-400 line-through">{GUASHA_COURSE.priceOld}</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>

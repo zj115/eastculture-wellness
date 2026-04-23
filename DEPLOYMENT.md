@@ -24,7 +24,7 @@ EastCulture/
 
 ## 第二步：Stripe 支付设置
 
-1. 注册 https://stripe.com（选择新西兰 NZD）
+1. 注册 https://stripe.com（选择美国 USD）
 2. 进入 Dashboard → **Developers → API Keys**：
    - 复制 `Secret key` → `STRIPE_SECRET_KEY`
 3. 进入 **Webhooks → Add endpoint**：
@@ -124,11 +124,11 @@ Stripe 测试卡号：`4242 4242 4242 4242`，任意有效期和 CVV
 
 ## 价格说明
 
-- 单个视频：NZD 10
-- Face Yoga 完整课程：NZD 149
-- 太极系统课：NZD 30
-- Qigong/穴位课：NZD 99
-- 会员（月付）：NZD 29/月（英文版显示 $29/month）
+- 单个视频：$10 USD
+- Face Yoga 完整课程：$149 USD
+- 太极系统课：$30 USD
+- Qigong/穴位课：$99 USD
+- 会员（月付）：$29 USD/月（英文版显示 $29/month）
 
 ---
 

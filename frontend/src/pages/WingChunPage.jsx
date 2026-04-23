@@ -516,7 +516,7 @@ export default function WingChunPage({
                                 onClick={handleBuyActiveVideo}
                                 className="w-full rounded-2xl border border-slate-300 bg-white px-4 py-3.5 text-sm font-semibold text-slate-900 hover:bg-slate-50 transition active:scale-[0.98]"
                             >
-                                Buy Lesson {activeLesson.id} Only · NZD 10
+                                Buy Lesson {activeLesson.id} Only · $10 USD
                             </button>
                             {!isLoggedIn && (
                                 <p className="text-center text-xs text-amber-700 pt-1">
@@ -577,7 +577,7 @@ export default function WingChunPage({
                                         </span>
                                     ) : (
                                         <span className="mt-0.5 rounded-full border border-amber-200 bg-white px-2 py-0.5 text-[10px] text-amber-700">
-                                            NZD 10 per lesson
+                                            $10 USD per lesson
                                         </span>
                                     )}
                                 </button>

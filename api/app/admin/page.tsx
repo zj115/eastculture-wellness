@@ -41,7 +41,7 @@ const COURSE_NAMES: Record<string, string> = {
 };
 
 function fmt(amount: number) {
-  return `NZD $${amount.toFixed(2)}`;
+  return `$${amount.toFixed(2)} USD`;
 }
 
 function fmtDate(iso: string) {

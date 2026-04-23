@@ -245,7 +245,7 @@ export default function MyCoursesPage({ purchases = [], currentUser, onNavigate,
                     <div className="mt-6 rounded-2xl border border-amber-200 bg-amber-50 p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                         <div>
                             <div className="text-sm font-semibold text-slate-900">
-                                All-Access Membership · from NZD 30/month
+                                All-Access Membership · from $30 USD/month
                             </div>
                             <div className="mt-0.5 text-xs text-slate-600">
                                 One subscription, unlock all courses, new content monthly

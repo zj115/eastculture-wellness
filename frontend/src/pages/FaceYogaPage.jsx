@@ -129,8 +129,8 @@ const LESSONS = [
 
 const DETAILS = {
     titleEn: "Face Yoga & Facial Massage Masterclass",
-    priceNow: "NZD 149",
-    priceOld: "NZD 199",
+    priceNow: "$149 USD",
+    priceOld: "$199 USD",
     sale: true,
     introEn:
         "A complete program combining muscle training and traditional techniques. 16 lessons, lifetime access.",
@@ -335,7 +335,7 @@ export default function FaceYogaPage({ onBack, currentUser, authLoading = false,
                                 onClick={handleBuyVideo}
                                 className="w-full rounded-2xl border border-slate-300 bg-white px-4 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-50 transition"
                             >
-                                Buy This Lesson NZD 10
+                                Buy This Lesson $10 USD
                             </button>
 
                             {!isLoggedIn && (
@@ -491,7 +491,7 @@ export default function FaceYogaPage({ onBack, currentUser, authLoading = false,
                                         <div className="flex shrink-0 items-center gap-2 text-xs">
                                             {locked && (
                                                 <span className="rounded-full border border-amber-200 bg-amber-50 px-2 py-1 text-[11px] text-amber-700">
-                                                    🔒 Buy NZD 10
+                                                    🔒 Buy $10 USD
                                                 </span>
                                             )}
                                             {!locked && (

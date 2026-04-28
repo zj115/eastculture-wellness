@@ -63,8 +63,8 @@ const GUASHA_COURSE = {
 
 // ─── Wing Chun lessons ────────────────────────────────────────────────────────
 const WINGCHUN_LESSONS = [
-    { id: 1, titleEn: "Wing Chun 10 Health Qigong Full Course", subtitle: "Structured Daily Gentle Training. Correct Bad Posture, Build Solid Core Strength & Boost All-Day Consistent Energy", duration: "Full Step-by-Step Lessons | ~7 Min Per Routine", coverImage: "/images/wingchun-yangsheng.png", fallbackImage: "/images/wingchun-hero.png", priceNow: "$24.99", priceOld: "$49.99", sale: true, page: "wingchun" },
-    { id: 2, titleEn: "Wing Chun Practical Self-Defense Full Course", subtitle: "Easy Real-Life Protection Techniques. Gain Solid Confidence, Stay Calm & Feel Safe In Any Situation", duration: "Beginner Friendly Guide | ~12 Min Per Lesson", coverImage: "/images/wingchun-fangwei.png", fallbackImage: "/images/wingchun-hero.png", priceNow: "$24.99", priceOld: "$49.99", sale: true, page: "wingchun" },
+    { id: 1, titleEn: "Wing Chun 10 Health Qigong Full Course", subtitle: "Structured Daily Gentle Training. Correct Bad Posture, Build Solid Core Strength & Boost All-Day Consistent Energy", duration: "Full Step-by-Step Lessons | ~7 Min Per Routine", coverImage: "/images/wingchun-yangsheng.png", fallbackImage: "/images/wingchun-hero.png", priceNow: "$49.98", priceOld: "$99.98", sale: true, page: "wingchun" },
+    { id: 2, titleEn: "Wing Chun Practical Self-Defense Full Course", subtitle: "Easy Real-Life Protection Techniques. Gain Solid Confidence, Stay Calm & Feel Safe In Any Situation", duration: "Beginner Friendly Guide | ~12 Min Per Lesson", coverImage: "/images/wingchun-fangwei.png", fallbackImage: "/images/wingchun-hero.png", priceNow: "$49.98", priceOld: "$99.98", sale: true, page: "wingchun" },
 ];
 
 // ─── Card component ───────────────────────────────────────────────────────────

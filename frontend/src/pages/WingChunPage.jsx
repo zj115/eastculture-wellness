@@ -156,8 +156,8 @@ const LESSONS = [
 // COURSE META
 // ─────────────────────────────────────────────
 const COURSE = {
-    priceNow: "$24.99",
-    priceOld: "$49.99",
+    priceNow: "$49.98",
+    priceOld: "$99.98",
     sale: true,
 };
 

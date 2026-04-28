@@ -18,8 +18,8 @@ const API_BASE =
 const COURSE = {
     titleEn: "Nourish Five Internal Organs, Calm Deep Inner Imbalance & Restore Long-Term Masculine Vitality",
     subtitleEn: "Ancient Wudang Tai Chi Full Course. Seven Major Viscera Systematic Deep Nourishment, Step-by-Step Guided Practice, Eliminate Root Fatigue & Rebalance Full-Body Natural Wellness.",
-    priceNow: "$39",
-    priceOld: "$59.99",
+    priceNow: "$273",
+    priceOld: "$419.99",
     sale: true,
     lessonCount: 7,
 };

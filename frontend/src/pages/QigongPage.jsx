@@ -19,8 +19,8 @@ const API_BASE =
 const COURSE = {
     titleEn: "Quick Relief Acupressure Self-Care Master Course",
     subtitleEn: "Full Step-by-Step Acupressure Course. No Medication, No Professional Help Needed. Easy Guided Home Routines, Fast Gentle Body Comfort & Build Long-Lasting Natural Daily Wellness.",
-    priceNow: "$29",
-    priceOld: "$99.99",
+    priceNow: "$174",
+    priceOld: "$299.99",
     sale: true,
     lessonCount: 6,
     courseId: "qigong",   // keep existing courseId so purchases still match

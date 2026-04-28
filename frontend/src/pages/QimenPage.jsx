@@ -653,7 +653,7 @@ export default function QimenPage({
                                         </span>
                                     ) : (
                                         <span className="mt-0.5 rounded-full border border-amber-200 bg-white px-2 py-0.5 text-[9px] text-amber-700">
-                                            🔒 $10 USD
+                                            🔒 $39 USD
                                         </span>
                                     )}
                                 </button>

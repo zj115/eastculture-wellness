@@ -691,7 +691,7 @@ export default function QigongPage({
                                         </span>
                                     ) : (
                                         <span className="mt-0.5 rounded-full border border-amber-200 bg-white px-2 py-0.5 text-[9px] text-amber-700">
-                                            🔒 $19 USD
+                                            🔒 $29 USD
                                         </span>
                                     )}
                                 </button>

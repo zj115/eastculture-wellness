@@ -580,7 +580,7 @@ export default function WingChunPage({
                                         </span>
                                     ) : (
                                         <span className="mt-0.5 rounded-full border border-amber-200 bg-white px-2 py-0.5 text-[10px] text-amber-700">
-                                            $10 USD per lesson
+                                            $24.99 USD per lesson
                                         </span>
                                     )}
                                 </button>

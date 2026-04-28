@@ -16,8 +16,9 @@ const API_BASE =
 // COURSE META
 // ─────────────────────────────────────────────
 const COURSE = {
-    titleEn: "Fix Aches, Calm Anxiety & Sleep Deeply",
-    priceNow: "$29.99",
+    titleEn: "Nourish Five Internal Organs, Calm Deep Inner Imbalance & Restore Long-Term Masculine Vitality",
+    subtitleEn: "Ancient Wudang Tai Chi Full Course. Seven Major Viscera Systematic Deep Nourishment, Step-by-Step Guided Practice, Eliminate Root Fatigue & Rebalance Full-Body Natural Wellness.",
+    priceNow: "$39",
     priceOld: "$59.99",
     sale: true,
     lessonCount: 7,
@@ -29,8 +30,8 @@ const COURSE = {
 const LESSONS = [
     {
         id: 1,
-        titleEn: "Bone & Joint Strength Qigong",
-        subtitleEn: "Ease body stiffness, boost mobility & build deep physical strength",
+        titleEn: "Kidney Essence & Masculine Vitality",
+        subtitleEn: "Deep core energy restoration, support lasting inner strength, ease body weariness & maintain peak daily male performance",
         duration: "~11 min",
         s3Key: "taichi/lesson-07-huogu-yangsheng-gong.mp4",
         coverImage: "/images/tai-chi/lesson-07-huogu-yangsheng.png",
@@ -68,8 +69,8 @@ const LESSONS = [
 
     {
         id: 2,
-        titleEn: "Hunyuan Wuji Stance for Inner Calm",
-        subtitleEn: "Build stability, steady your mind & center your body's energy",
+        titleEn: "Liver & Mood Stability Care",
+        subtitleEn: "Clear internal stagnation, soothe irritability, release daily pressure & keep steady calm mindset",
         duration: "~10 min",
         s3Key: "taichi/lesson-06-wuji-hunyuan-zhuang.mp4",
         coverImage: "/images/tai-chi/lesson-06-hunyuan-zhuang.png",
@@ -108,8 +109,8 @@ const LESSONS = [
 
     {
         id: 3,
-        titleEn: "Wudang Baduanjin for Full-Body Balance",
-        subtitleEn: "Gentle daily movement to relax, refresh & restore whole-body wellness",
+        titleEn: "Spleen & All-Day Energy Boost",
+        subtitleEn: "Optimize internal energy absorption, banish constant sluggishness & maintain consistent high vitality",
         duration: "~17 min",
         s3Key: "taichi/lesson-05-wudang-daomen-baduanjin.mp4",
         coverImage: "/images/tai-chi/lesson-05-baduanjin.png",
@@ -148,8 +149,8 @@ const LESSONS = [
 
     {
         id: 4,
-        titleEn: "Calm Mind & Relieve Restlessness",
-        subtitleEn: "Soothe unease, steady mood & help you sleep more peacefully",
+        titleEn: "Lung Power & Physical Stamina",
+        subtitleEn: "Deep breath regulation, expand lung capacity, build natural endurance & anti-fatigue reserve",
         duration: "~11 min",
         s3Key: "taichi/lesson-03-wudang-sanfeng-taichi-18-forms.mp4",
         coverImage: "/images/tai-chi/lesson-03-wudang-18forms.png",
@@ -188,8 +189,8 @@ const LESSONS = [
 
     {
         id: 5,
-        titleEn: "Release Stress & Ease Irritability",
-        subtitleEn: "Melt tension, clear frustration & relax tight body & mind",
+        titleEn: "Heart Calm & Mental Focus",
+        subtitleEn: "Nourish heart spirit, calm overthinking, relieve inner anxiety & restore sharp clear mind",
         duration: "~11 min",
         s3Key: "taichi/lesson-02-wudang-sanfeng-taichi-13-forms.mp4",
         coverImage: "/images/tai-chi/lesson-02-wudang-13forms.png",
@@ -228,8 +229,8 @@ const LESSONS = [
 
     {
         id: 6,
-        titleEn: "Deep Breathing & Vitality Boost",
-        subtitleEn: "Breathe easier, build stamina & refresh your whole body",
+        titleEn: "Deep Night Recovery & Quality Sleep",
+        subtitleEn: "Calm nightly restlessness, ease frequent waking, enjoy deep uninterrupted sleep & fully refreshed mornings",
         duration: "~28 min",
         s3Key: "taichi/lesson-01-wudang-sanfeng-taichi-28-forms.mp4",
         coverImage: "/images/tai-chi/lesson-01-wudang-28forms.png",
@@ -268,8 +269,8 @@ const LESSONS = [
 
     {
         id: 7,
-        titleEn: "Balance Qi & Blood for Full-Body Relaxation",
-        subtitleEn: "Improve flow, ease stiffness & restore natural daily energy",
+        titleEn: "Five Organs Full System Deep Conditioning",
+        subtitleEn: "Comprehensive heart/liver/spleen/lung/kidney balance, full body deep maintenance for long term prime wellness",
         duration: "~30 min",
         s3Key: "taichi/lesson-04-wudang-sanfeng-taichi-108-forms.mp4",
         coverImage: "/images/tai-chi/lesson-04-wudang-108forms.png",

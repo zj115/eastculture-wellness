@@ -18,9 +18,9 @@ const API_BASE =
 const LESSONS = [
     {
         id: 1,
-        titleEn: "Wing Chun 10 Health Qigong Forms",
-        subtitleEn: "Gentle Daily Practice, Build Strength, Fix Posture & Boost All-Day Energy",
-        duration: "~7 min",
+        titleEn: "Wing Chun 10 Health Qigong Full Course",
+        subtitleEn: "Structured Daily Gentle Training. Correct Bad Posture, Build Solid Core Strength & Boost All-Day Consistent Energy",
+        duration: "Full Step-by-Step Lessons | ~7 Min Per Routine",
         s3Key: "wingchun/lesson-01-yangsheng-ten-styles.mp4",
         coverImage: "/images/wingchun-yangsheng.png",
         fallbackImage: "/images/wingchun-hero.png",
@@ -87,9 +87,9 @@ const LESSONS = [
     },
     {
         id: 2,
-        titleEn: "Wing Chun Practical Self-Defense",
-        subtitleEn: "Simple Everyday Protection Skills, Gain Confidence & Feel Safe Anywhere",
-        duration: "~7 min",
+        titleEn: "Wing Chun Practical Self-Defense Full Course",
+        subtitleEn: "Structured Real-World Protection Training. Master Easy Effective Defense, Build Instant Reaction Confidence & Feel Safe Anywhere",
+        duration: "Full Step-by-Step Lessons | ~7 Min Per Routine",
         s3Key: "wingchun/lesson-02-fangwei-nine-styles.mp4",
         coverImage: "/images/wingchun-fangwei.png",
         fallbackImage: "/images/wingchun-hero.png",
@@ -482,8 +482,11 @@ export default function WingChunPage({
                         )}
                     </div>
                     <h1 className="text-2xl font-bold leading-tight text-slate-900 md:text-3xl">
-                        Wing Chun Practical Self-Defense Mastery
+                        Wing Chun Complete Self-Defense & Vitality Master Course
                     </h1>
+                    <p className="mt-2 text-sm text-slate-600 leading-relaxed">
+                        Systematic Practical Wing Chun Training. Master Easy Real-World Protection, Fix Posture, Build Core Strength & Unshakable Inner Confidence.
+                    </p>
 
                     <div className="mt-4 flex flex-wrap items-center gap-3">
                         <span className="text-3xl font-extrabold text-slate-900">{COURSE.priceNow}</span>

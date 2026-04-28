@@ -17,8 +17,9 @@ const API_BASE =
 // COURSE META
 // ─────────────────────────────────────────────
 const COURSE = {
-    titleEn: "Natural Pain & Stress Relief Acupressure Care",
-    priceNow: "$59.99",
+    titleEn: "Quick Relief Acupressure Self-Care Master Course",
+    subtitleEn: "Full Step-by-Step Acupressure Course. No Medication, No Professional Help Needed. Easy Guided Home Routines, Fast Gentle Body Comfort & Build Long-Lasting Natural Daily Wellness.",
+    priceNow: "$29",
     priceOld: "$99.99",
     sale: true,
     lessonCount: 6,
@@ -31,8 +32,8 @@ const COURSE = {
 const LESSONS = [
     {
         id: 1,
-        titleEn: "Stop Head Pain & Tension",
-        subtitleEn: "Fix 23 Types of Aches | 3 Easy Moves, Instant Calm At Home",
+        titleEn: "Head Tension & Heavy Discomfort Release",
+        subtitleEn: "Ease 23 Types Of Head & Neck Tightness | 3 Simple Moves For Instant Calm At Home",
         duration: "~60 min",
         s3Key: "acupressure/lesson-01-head.mp4",
         coverImage: "/images/acupoint-head.png",
@@ -91,9 +92,9 @@ const LESSONS = [
     },
 
     {
-        id: 2,
-        titleEn: "Women's Body Comfort & Relief",
-        subtitleEn: "Ease 7 Common Female Issues | Gentle, Private Home Care",
+        id: 6,
+        titleEn: "Women's Private Body Comfort Care",
+        subtitleEn: "Soothe 7 Common Female Daily Discomforts | Gentle, Private At-Home Wellness",
         duration: "~40 min",
         s3Key: "acupressure/lesson-02-women.mp4",
         coverImage: "/images/acupoint-womens.png",
@@ -137,9 +138,9 @@ const LESSONS = [
     },
 
     {
-        id: 3,
-        titleEn: "Hand & Foot Aches Gone Fast",
-        subtitleEn: "Relieve 28 Kinds Of Stiff Pain | Simple Daily Self Care",
+        id: 2,
+        titleEn: "Hand & Foot Stiff & Tired Recovery",
+        subtitleEn: "Relax 28 Kinds Of Limb Stiffness & Discomfort | Easy Daily Self Care",
         duration: "~90 min",
         s3Key: "acupressure/lesson-03-hands-feet.mp4",
         coverImage: "/images/acupoint-hands-feet.png",
@@ -199,9 +200,9 @@ const LESSONS = [
     },
 
     {
-        id: 4,
-        titleEn: "Fix All Daily Body Aches",
-        subtitleEn: "Fast Relief For 16 Everyday Pains | No Pills Needed",
+        id: 3,
+        titleEn: "Full Body Daily Fatigue & Tension Care",
+        subtitleEn: "Ease 16 Common Everyday Body Stiffness | No Extra Tools Needed",
         duration: "~60 min",
         s3Key: "acupressure/lesson-04-daily-issues.mp4",
         coverImage: "/images/acupoint-daily.png",
@@ -254,9 +255,9 @@ const LESSONS = [
     },
 
     {
-        id: 5,
-        titleEn: "Fix Stiff Neck & Shoulder Pain",
-        subtitleEn: "Release 8 Types Of Tight Soreness | Quick 5-Min Routine",
+        id: 4,
+        titleEn: "Neck & Shoulder Tightness Relief",
+        subtitleEn: "Release 8 Types Of Upper Body Soreness | Quick 5-Minute Daily Routine",
         duration: "~45 min",
         s3Key: "acupressure/lesson-05-neck-shoulders.mp4",
         coverImage: "/images/acupoint-neck-shoulder.png",
@@ -296,9 +297,9 @@ const LESSONS = [
     },
 
     {
-        id: 6,
-        titleEn: "Back & Leg Pain Relief",
-        subtitleEn: "Ease 18 Kinds Of Body Discomfort | Simple All-Natural Method",
+        id: 5,
+        titleEn: "Back & Leg Stiffness & Weariness Care",
+        subtitleEn: "Ease 18 Kinds Of Lower Body Discomfort | Natural Gentle Daily Practices",
         duration: "~75 min",
         s3Key: "acupressure/lesson-06-waist-legs-description.mp4",
         coverImage: "/images/acupoint-waist-legs.png",

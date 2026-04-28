@@ -28,32 +28,34 @@ const fadeInUp = {
 
 // ─── Acupoint lessons ─────────────────────────────────────────────────────────
 const ACUPOINT_LESSONS = [
-    { id: 1, titleEn: "Stop Head Pain & Tension", subtitle: "Fix 23 Types of Aches | 3 Easy Moves, Instant Calm At Home", duration: "~60 min", coverImage: "/images/acupoint-head.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "$59.99", priceOld: "$99.99", sale: true, page: "qigong" },
-    { id: 2, titleEn: "Women's Body Comfort & Relief", subtitle: "Ease 7 Common Female Issues | Gentle, Private Home Care", duration: "~45 min", coverImage: "/images/acupoint-womens.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "$59.99", priceOld: "$99.99", sale: true, page: "qigong" },
-    { id: 3, titleEn: "Hand & Foot Aches Gone Fast", subtitle: "Relieve 28 Kinds Of Stiff Pain | Simple Daily Self Care", duration: "~90 min", coverImage: "/images/acupoint-hands-feet.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "$59.99", priceOld: "$99.99", sale: true, page: "qigong" },
-    { id: 4, titleEn: "Fix All Daily Body Aches", subtitle: "Fast Relief For 16 Everyday Pains | No Pills Needed", duration: "~70 min", coverImage: "/images/acupoint-daily.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "$59.99", priceOld: "$99.99", sale: true, page: "qigong" },
-    { id: 5, titleEn: "Fix Stiff Neck & Shoulder Pain", subtitle: "Release 8 Types Of Tight Soreness | Quick 5-Min Routine", duration: "~40 min", coverImage: "/images/acupoint-neck-shoulder.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "$59.99", priceOld: "$99.99", sale: true, page: "qigong" },
-    { id: 6, titleEn: "Back & Leg Pain Relief", subtitle: "Ease 18 Kinds Of Body Discomfort | Simple All-Natural Method", duration: "~80 min", coverImage: "/images/acupoint-waist-legs.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "$59.99", priceOld: "$99.99", sale: true, page: "qigong" },
+    { id: 1, titleEn: "Head Tension & Heavy Discomfort Release", subtitle: "Ease 23 Types Of Head & Neck Tightness | 3 Simple Moves For Instant Calm At Home", duration: "~60 min", coverImage: "/images/acupoint-head.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "$29", priceOld: "$99.99", sale: true, page: "qigong" },
+    { id: 2, titleEn: "Hand & Foot Stiff & Tired Recovery", subtitle: "Relax 28 Kinds Of Limb Stiffness & Discomfort | Easy Daily Self Care", duration: "~90 min", coverImage: "/images/acupoint-hands-feet.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "$29", priceOld: "$99.99", sale: true, page: "qigong" },
+    { id: 3, titleEn: "Full Body Daily Fatigue & Tension Care", subtitle: "Ease 16 Common Everyday Body Stiffness | No Extra Tools Needed", duration: "~70 min", coverImage: "/images/acupoint-daily.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "$29", priceOld: "$99.99", sale: true, page: "qigong" },
+    { id: 4, titleEn: "Neck & Shoulder Tightness Relief", subtitle: "Release 8 Types Of Upper Body Soreness | Quick 5-Minute Daily Routine", duration: "~40 min", coverImage: "/images/acupoint-neck-shoulder.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "$29", priceOld: "$99.99", sale: true, page: "qigong" },
+    { id: 5, titleEn: "Back & Leg Stiffness & Weariness Care", subtitle: "Ease 18 Kinds Of Lower Body Discomfort | Natural Gentle Daily Practices", duration: "~80 min", coverImage: "/images/acupoint-waist-legs.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "$29", priceOld: "$99.99", sale: true, page: "qigong" },
+    { id: 6, titleEn: "Women's Private Body Comfort Care", subtitle: "Soothe 7 Common Female Daily Discomforts | Gentle, Private At-Home Wellness", duration: "~45 min", coverImage: "/images/acupoint-womens.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "$29", priceOld: "$99.99", sale: true, page: "qigong" },
 ];
 
 // ─── Tai Chi lessons (from QimenPage data) ───────────────────────────────────
 const TAICHI_LESSONS = [
-    { id: 1, titleEn: "Bone & Joint Strength Qigong", subtitle: "Ease body stiffness, boost mobility & build deep physical strength", duration: "~11 min", coverImage: "/images/tai-chi/lesson-07-huogu-yangsheng.png", fallbackImage: "/images/taiji-mountain.jpg", priceNow: "$29.99", priceOld: "$59.99", sale: true, page: "qimen" },
-    { id: 2, titleEn: "Hunyuan Wuji Stance for Inner Calm", subtitle: "Build stability, steady your mind & center your body's energy", duration: "~10 min", coverImage: "/images/tai-chi/lesson-06-hunyuan-zhuang.png", fallbackImage: "/images/taiji-mountain.jpg", priceNow: "$29.99", priceOld: "$59.99", sale: true, page: "qimen" },
-    { id: 3, titleEn: "Wudang Baduanjin for Full-Body Balance", subtitle: "Gentle daily movement to relax, refresh & restore whole-body wellness", duration: "~17 min", coverImage: "/images/tai-chi/lesson-05-baduanjin.png", fallbackImage: "/images/taiji-mountain.jpg", priceNow: "$29.99", priceOld: "$59.99", sale: true, page: "qimen" },
-    { id: 4, titleEn: "Calm Mind & Relieve Restlessness", subtitle: "Soothe unease, steady mood & help you sleep more peacefully", duration: "~11 min", coverImage: "/images/tai-chi/lesson-03-wudang-18forms.png", fallbackImage: "/images/taiji-mountain.jpg", priceNow: "$29.99", priceOld: "$59.99", sale: true, page: "qimen" },
-    { id: 5, titleEn: "Release Stress & Ease Irritability", subtitle: "Melt tension, clear frustration & relax tight body & mind", duration: "~11 min", coverImage: "/images/tai-chi/lesson-02-wudang-13forms.png", fallbackImage: "/images/taiji-mountain.jpg", priceNow: "$29.99", priceOld: "$59.99", sale: true, page: "qimen" },
-    { id: 6, titleEn: "Deep Breathing & Vitality Boost", subtitle: "Breathe easier, build stamina & refresh your whole body", duration: "~28 min", coverImage: "/images/tai-chi/lesson-01-wudang-28forms.png", fallbackImage: "/images/taiji-mountain.jpg", priceNow: "$29.99", priceOld: "$59.99", sale: true, page: "qimen" },
-    { id: 7, titleEn: "Balance Qi & Blood for Full-Body Relaxation", subtitle: "Improve flow, ease stiffness & restore natural daily energy", duration: "~30 min", coverImage: "/images/tai-chi/lesson-04-wudang-108forms.png", fallbackImage: "/images/taiji-mountain.jpg", priceNow: "$29.99", priceOld: "$59.99", sale: true, page: "qimen" },
+    { id: 1, titleEn: "Kidney Essence & Masculine Vitality", subtitle: "Deep core energy restoration, support lasting inner strength, ease body weariness & maintain peak daily male performance", duration: "~11 min", coverImage: "/images/tai-chi/lesson-07-huogu-yangsheng.png", fallbackImage: "/images/taiji-mountain.jpg", priceNow: "$39", priceOld: "$59.99", sale: true, page: "qimen" },
+    { id: 2, titleEn: "Liver & Mood Stability Care", subtitle: "Clear internal stagnation, soothe irritability, release daily pressure & keep steady calm mindset", duration: "~10 min", coverImage: "/images/tai-chi/lesson-06-hunyuan-zhuang.png", fallbackImage: "/images/taiji-mountain.jpg", priceNow: "$39", priceOld: "$59.99", sale: true, page: "qimen" },
+    { id: 3, titleEn: "Spleen & All-Day Energy Boost", subtitle: "Optimize internal energy absorption, banish constant sluggishness & maintain consistent high vitality", duration: "~17 min", coverImage: "/images/tai-chi/lesson-05-baduanjin.png", fallbackImage: "/images/taiji-mountain.jpg", priceNow: "$39", priceOld: "$59.99", sale: true, page: "qimen" },
+    { id: 4, titleEn: "Lung Power & Physical Stamina", subtitle: "Deep breath regulation, expand lung capacity, build natural endurance & anti-fatigue reserve", duration: "~11 min", coverImage: "/images/tai-chi/lesson-03-wudang-18forms.png", fallbackImage: "/images/taiji-mountain.jpg", priceNow: "$39", priceOld: "$59.99", sale: true, page: "qimen" },
+    { id: 5, titleEn: "Heart Calm & Mental Focus", subtitle: "Nourish heart spirit, calm overthinking, relieve inner anxiety & restore sharp clear mind", duration: "~11 min", coverImage: "/images/tai-chi/lesson-02-wudang-13forms.png", fallbackImage: "/images/taiji-mountain.jpg", priceNow: "$39", priceOld: "$59.99", sale: true, page: "qimen" },
+    { id: 6, titleEn: "Deep Night Recovery & Quality Sleep", subtitle: "Calm nightly restlessness, ease frequent waking, enjoy deep uninterrupted sleep & fully refreshed mornings", duration: "~28 min", coverImage: "/images/tai-chi/lesson-01-wudang-28forms.png", fallbackImage: "/images/taiji-mountain.jpg", priceNow: "$39", priceOld: "$59.99", sale: true, page: "qimen" },
+    { id: 7, titleEn: "Five Organs Full System Deep Conditioning", subtitle: "Comprehensive heart/liver/spleen/lung/kidney balance, full body deep maintenance for long term prime wellness", duration: "~30 min", coverImage: "/images/tai-chi/lesson-04-wudang-108forms.png", fallbackImage: "/images/taiji-mountain.jpg", priceNow: "$39", priceOld: "$59.99", sale: true, page: "qimen" },
 ];
 
 // ─── Gua Sha course (single product card) ────────────────────────────────────
 const GUASHA_COURSE = {
-    titleEn: "16 Facial Anti-Aging Gua Sha",
-    subtitle: "16 Chapters · 1 Full Course · 2h 34min total",
+    titleEn: "Natural Facial Gua Sha Full Care Course",
+    subtitle: "Daily 5-Min Routine | Relieve Facial Stiffness, Reduce Puffiness, Brighten Dull Skin & Keep Fresh Rested Look. No Surgery, No Salon Costs.",
+    cardTitle: "16 Step-by-Step Facial Gua Sha Master Course",
+    cardSubtitle: "16 Complete Tutorials | Full 2h 34min Training | Lifetime Access",
     coverImage: "/images/guasha-face.jpg",
     fallbackImage: "/images/face-yoga-masterclass.jpg",
-    priceNow: "$59.99",
+    priceNow: "$45",
     priceOld: "$99.99",
     sale: true,
     page: "guasha",
@@ -61,8 +63,8 @@ const GUASHA_COURSE = {
 
 // ─── Wing Chun lessons ────────────────────────────────────────────────────────
 const WINGCHUN_LESSONS = [
-    { id: 1, titleEn: "Wing Chun 10 Health Qigong Forms", subtitle: "Gentle Daily Practice, Build Strength, Fix Posture & Boost All-Day Energy", duration: "~7 min", coverImage: "/images/wingchun-yangsheng.png", fallbackImage: "/images/wingchun-hero.png", priceNow: "$24.99", priceOld: "$49.99", sale: true, page: "wingchun" },
-    { id: 2, titleEn: "Wing Chun Practical Self-Defense", subtitle: "Simple Everyday Protection Skills, Gain Confidence & Feel Safe Anywhere", duration: "~12 min", coverImage: "/images/wingchun-fangwei.png", fallbackImage: "/images/wingchun-hero.png", priceNow: "$24.99", priceOld: "$49.99", sale: true, page: "wingchun" },
+    { id: 1, titleEn: "Wing Chun 10 Health Qigong Full Course", subtitle: "Structured Daily Gentle Training. Correct Bad Posture, Build Solid Core Strength & Boost All-Day Consistent Energy", duration: "Full Step-by-Step Lessons | ~7 Min Per Routine", coverImage: "/images/wingchun-yangsheng.png", fallbackImage: "/images/wingchun-hero.png", priceNow: "$24.99", priceOld: "$49.99", sale: true, page: "wingchun" },
+    { id: 2, titleEn: "Wing Chun Practical Self-Defense Full Course", subtitle: "Easy Real-Life Protection Techniques. Gain Solid Confidence, Stay Calm & Feel Safe In Any Situation", duration: "Beginner Friendly Guide | ~12 Min Per Lesson", coverImage: "/images/wingchun-fangwei.png", fallbackImage: "/images/wingchun-hero.png", priceNow: "$24.99", priceOld: "$49.99", sale: true, page: "wingchun" },
 ];
 
 // ─── Card component ───────────────────────────────────────────────────────────
@@ -291,7 +293,7 @@ function App() {
                 {/* ── HERO ─────────────────────────────────────────────────── */}
                 <section className="w-full">
                     <img
-                        src="/images/hero-eastculture.jpg"
+                        src="/images/hero-eastculture-new.jpg"
                         alt="Ancient Eastern mountain temple"
                         className="w-full h-auto block"
                         style={{ display: "block" }}

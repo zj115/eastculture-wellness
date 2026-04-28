@@ -16,9 +16,9 @@ const API_BASE =
 // COURSE META
 // ─────────────────────────────────────────────
 const COURSE = {
-    titleEn: "16 Facial Anti-Aging Gua Sha",
-    tagline: "No Surgery • No Needles • No Skincare Scams • Just 5 Minutes a Day at Home",
-    priceNow: "$59.99",
+    titleEn: "Natural Facial Gua Sha Full Care Course",
+    tagline: "Daily 5-Min Routine | Relieve Facial Stiffness, Reduce Puffiness, Brighten Dull Skin & Keep Fresh Rested Look. No Surgery, No Salon Costs.",
+    priceNow: "$45",
     priceOld: "$99.99",
     sale: true,
     courseId: "guasha",

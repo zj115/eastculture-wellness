@@ -602,7 +602,7 @@ export default function QimenPage({
                                 onClick={handleBuyActiveVideo}
                                 className="w-full rounded-2xl border border-slate-300 bg-white px-4 py-3.5 text-sm font-semibold text-slate-900 hover:bg-slate-50 transition active:scale-[0.98]"
                             >
-                                Buy Lesson {activeLesson.id} Only · $10 USD
+                                Buy Lesson {activeLesson.id} Only · $39 USD
                             </button>
                             {!isLoggedIn && (
                                 <p className="text-center text-xs text-amber-700 pt-1">

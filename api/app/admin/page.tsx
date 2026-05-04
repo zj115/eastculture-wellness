@@ -35,9 +35,6 @@ const COURSE_NAMES: Record<string, string> = {
   qigong: "Acupressure Masterclass",
   wingchun: "Wing Chun Foundations",
   guasha: "16 Facial Gua Sha",
-  membership_monthly: "Monthly Membership",
-  membership_quarterly: "Quarterly Membership",
-  membership_annual: "Annual Membership",
 };
 
 function fmt(amount: number) {
@@ -73,13 +70,9 @@ function TypeBadge({ type }: { type: string }) {
   const styles: Record<string, string> = {
     course: "bg-blue-100 text-blue-700",
     video: "bg-purple-100 text-purple-700",
-    membership: "bg-amber-100 text-amber-700",
-    membership_monthly: "bg-amber-100 text-amber-700",
-    membership_quarterly: "bg-amber-100 text-amber-700",
-    membership_annual: "bg-amber-100 text-amber-700",
   };
   const s = styles[type] ?? "bg-slate-100 text-slate-600";
-  const label = type.startsWith("membership") ? "Membership" : type.charAt(0).toUpperCase() + type.slice(1);
+  const label = type.charAt(0).toUpperCase() + type.slice(1);
   return (
     <span className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold ${s}`}>
       {label}

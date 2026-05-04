@@ -19,11 +19,6 @@ function formatDate(str) {
 }
 
 function PurchaseBadge({ type }) {
-    if (type === "membership") return (
-        <span className="rounded-full bg-amber-100 text-amber-800 px-2 py-0.5 text-[10px] font-semibold">
-            Membership
-        </span>
-    );
     if (type === "course") return (
         <span className="rounded-full bg-blue-100 text-blue-800 px-2 py-0.5 text-[10px] font-semibold">
             Course
@@ -37,7 +32,6 @@ function PurchaseBadge({ type }) {
 }
 
 function courseLabel(purchase) {
-    if (purchase.purchase_type === "membership") return "All-Access Membership";
     const map = {
         faceyoga: "Face Yoga & Facial Massage",
         taichi: "Tai Chi System Course",
@@ -62,8 +56,6 @@ export default function AccountPage({ currentUser, purchases = [], onLogout }) {
     const activePurchases = purchases.filter(
         (p) => !p.expires_at || new Date(p.expires_at) > now
     );
-    const isMember = activePurchases.some((p) => p.purchase_type === "membership");
-    const memberPurchase = activePurchases.find((p) => p.purchase_type === "membership");
 
     async function handleChangePassword(e) {
         e.preventDefault();
@@ -165,32 +157,15 @@ export default function AccountPage({ currentUser, purchases = [], onLogout }) {
                             <span className="text-sm text-slate-700">{currentUser?.email}</span>
                         </div>
                         <div className="flex items-center justify-between px-5 py-4">
-                            <span className="text-xs text-slate-500 uppercase tracking-wider">Membership</span>
-                            {isMember ? (
-                                <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-50 border border-amber-200 px-2.5 py-0.5 text-xs text-amber-800 font-medium">
-                                    ★ All-Access Member
-                                    {memberPurchase?.expires_at && (
-                                        <span className="text-amber-600">
-                                            · until {formatDate(memberPurchase.expires_at)}
-                                        </span>
-                                    )}
-                                </span>
-                            ) : (
-                                <span className="text-xs text-slate-400">Standard</span>
-                            )}
-                        </div>
-                        <div className="flex items-center justify-between px-5 py-4">
                             <span className="text-xs text-slate-500 uppercase tracking-wider">Courses Purchased</span>
                             <span className="text-sm font-medium text-slate-900">
-                                {isMember
-                                    ? "All courses"
-                                    : `${activePurchases.filter((p) => p.purchase_type === "course").length}`}
+                                {activePurchases.filter((p) => p.purchase_type === "course").length}
                             </span>
                         </div>
                     </div>
 
                     {/* Summary stats */}
-                    <div className="grid grid-cols-3 gap-3">
+                    <div className="grid grid-cols-2 gap-3">
                         <div className="rounded-2xl border border-slate-200 bg-white p-4 text-center">
                             <div className="text-2xl font-bold text-amber-700">
                                 {activePurchases.length}
@@ -202,12 +177,6 @@ export default function AccountPage({ currentUser, purchases = [], onLogout }) {
                                 {activePurchases.filter((p) => p.purchase_type === "course").length}
                             </div>
                             <div className="mt-1 text-xs text-slate-500">Courses</div>
-                        </div>
-                        <div className="rounded-2xl border border-slate-200 bg-white p-4 text-center">
-                            <div className="text-2xl font-bold text-amber-700">
-                                {isMember ? "★" : "—"}
-                            </div>
-                            <div className="mt-1 text-xs text-slate-500">Member</div>
                         </div>
                     </div>
                 </motion.div>

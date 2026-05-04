@@ -3,30 +3,13 @@ import Stripe from "stripe";
 import { stripe } from "@/lib/stripe";
 import { supabaseAdmin } from "@/lib/supabase";
 
-
-const MS_PER_DAY = 24 * 60 * 60 * 1000;
-
-function getMembershipExpiry(membershipType: string): string {
-  if (membershipType === "membership_annual") {
-    return new Date(Date.now() + 365 * MS_PER_DAY).toISOString();
-  }
-  if (membershipType === "membership_quarterly") {
-    return new Date(Date.now() + 92 * MS_PER_DAY).toISOString();
-  }
-  // monthly (default)
-  return new Date(Date.now() + 31 * MS_PER_DAY).toISOString();
-}
-
 async function grantAccess(
   userId: string,
   orderId: string,
-  type: "video" | "course" | "membership",
+  type: "video" | "course",
   courseId?: string,
-  videoKey?: string,
-  membershipType?: string
+  videoKey?: string
 ) {
-  const expiresAt = type === "membership" ? getMembershipExpiry(membershipType || "membership_monthly") : null;
-
   await supabaseAdmin.from("user_purchases").insert({
     user_id: userId,
     order_id: orderId,
@@ -34,7 +17,7 @@ async function grantAccess(
     course_id: courseId || null,
     video_key: videoKey || null,
     status: "active",
-    expires_at: expiresAt,
+    expires_at: null,
   });
 }
 
@@ -84,70 +67,19 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({ ok: true });
       }
 
-      // Grant access — pass membership type so expiry is set correctly
+      // Grant access
       await grantAccess(
         userId,
         order.id,
-        type as "video" | "course" | "membership",
+        type as "video" | "course",
         metadata.courseId,
-        metadata.videoKey,
-        type // e.g. "membership_monthly", "membership_quarterly", "membership_annual"
+        metadata.videoKey
       );
 
       console.log(`✅ Access granted: user=${userId} type=${type} course=${metadata.courseId} video=${metadata.videoKey}`);
     }
 
-    // Handle subscription renewals
-    if (event.type === "invoice.paid") {
-      const invoice = event.data.object as Stripe.Invoice;
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const subId = (invoice as any).subscription as string;
-
-      if (!subId) return NextResponse.json({ ok: true });
-
-      const subscription = await stripe.subscriptions.retrieve(subId);
-      const userId = subscription.metadata?.userId;
-      const membershipType = subscription.metadata?.type || "membership_monthly";
-
-      if (!userId) return NextResponse.json({ ok: true });
-
-      const newExpiry = getMembershipExpiry(membershipType);
-
-      // Find current active membership record and extend it
-      const { data: existing } = await supabaseAdmin
-        .from("user_purchases")
-        .select("id, expires_at")
-        .eq("user_id", userId)
-        .eq("purchase_type", "membership")
-        .eq("status", "active")
-        .maybeSingle();
-
-      if (existing) {
-        await supabaseAdmin
-          .from("user_purchases")
-          .update({ expires_at: newExpiry })
-          .eq("id", existing.id);
-      } else {
-        await supabaseAdmin.from("user_purchases").insert({
-          user_id: userId,
-          purchase_type: "membership",
-          status: "active",
-          expires_at: newExpiry,
-        });
-      }
-    }
-
-    // Handle subscription cancellation / expiry
-    if (event.type === "customer.subscription.deleted") {
-      const subscription = event.data.object as Stripe.Subscription;
-      const userId = subscription.metadata?.userId;
-
-      if (userId) {
-        await supabaseAdmin
-          .from("user_purchases")
-          .update({ status: "cancelled" })
-          .eq("user_id", userId)
-          .eq("purchase_type", "membership")
+    return NextResponse.json({ ok: true });
           .eq("status", "active");
       }
     }

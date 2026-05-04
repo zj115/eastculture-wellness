@@ -92,52 +92,6 @@ const LESSONS = [
     },
 
     {
-        id: 6,
-        titleEn: "Women's Private Body Comfort Care",
-        subtitleEn: "Soothe 7 Common Female Daily Discomforts | Gentle, Private At-Home Wellness",
-        duration: "~40 min",
-        s3Key: "acupressure/lesson-02-women.mp4",
-        coverImage: "/images/acupoint-womens.png",
-        fallbackImage: "/images/tai-chi/acupressure-cover.jpg",
-
-        intro: "7 Most Common Women's Private Issues • No Drugs • No Embarrassment • Relieve at Home in 3 Steps\n\nPain points you're suffering from:\nBreast hyperplasia with lumps and severe pain during menstruation, worse when angry or tired\nPopliteal cyst (lump behind knee), pain when squatting or walking, difficulty bending legs\nPrivate area itching that comes and goes, unbearable and embarrassing, affecting work and life\nSevere menstrual cramps: stabbing abdominal pain, cold sweats, unable to get out of bed\nUrine leakage when coughing, laughing, or lifting; common after childbirth, causing social anxiety\nIrregular periods, delayed or missed for months, worrying about early ovarian aging\nHeavy menstrual bleeding (flooding), weakness and dizziness, uncontrollable flow\nExpensive hospital visits, long waiting times, and embarrassing private exams\nMedications with side effects, temporary relief from creams, no real solution\nLong-term physical and mental stress, affecting sleep, mood, and confidence",
-
-        conditions: [
-            "Breast Hyperplasia – breast lumps, menstrual pain, tenderness on the sides",
-            "Popliteal Cyst – bulge behind knee, pain with squatting, walking discomfort（4：26）",
-            "Private Area Itching – recurring itch, quick relief for acute symptoms, long-term root repair（8：34）",
-            "Menstrual Cramps – acute abdominal pain, fast pain relief during attacks（14：13）",
-            "Urine Leakage – leakage with cough/laugh, postnatal weakness, pelvic floor relaxation（16：14）",
-            "Delayed/Missed Periods – irregular cycles, amenorrhea (not menopause)（21：03）",
-            "Heavy Menstrual Bleeding – uncontrollable flow, physical weakness（25：35）",
-        ],
-
-        highlights: [
-            { title: "100% natural physical method", desc: "No drugs, no needles, no rinsing, no side effects" },
-            { title: "Fixed pressure points", desc: "3–5 key points per issue, easy to find, remember, and use" },
-            { title: "Private & safe", desc: "Do it yourself at home, no help needed, no embarrassment" },
-            { title: "Save time & money", desc: "No hospital visits, no expensive treatments, 5–10 minutes a day" },
-            { title: "Acute + chronic care", desc: "Fast relief for sudden symptoms, long-term prevention" },
-            { title: "Zero basics required", desc: "No anatomy or meridian knowledge needed" },
-            { title: "Gentle & effective", desc: "Safe for all ages, including postpartum women" },
-        ],
-
-        audience: [
-            "Women with breast lumps, tenderness, or menstrual breast pain",
-            "People with popliteal cysts and knee movement discomfort",
-            "Women suffering from recurring private itching",
-            "Women with severe menstrual cramps relying on painkillers",
-            "Postpartum women or those with urine leakage when coughing/laughing",
-            "Women with irregular, delayed, or missed periods",
-            "Women with heavy, prolonged menstrual bleeding",
-            "Women who value privacy and prefer safe, natural healing",
-            "Anyone who wants to stop wasting time and money on private health issues",
-        ],
-
-        closingEn: "One course solves 7 common women's problems. Learn once, benefit for life - gentle, natural, and completely private.",
-    },
-
-    {
         id: 2,
         titleEn: "Hand & Foot Stiff & Tired Recovery",
         subtitleEn: "Relax 28 Kinds Of Limb Stiffness & Discomfort | Easy Daily Self Care",
@@ -349,6 +303,52 @@ const LESSONS = [
         ],
 
         closingEn: "One course solves 22 waist & leg problems. Learn once, benefit for life.",
+    },
+
+    {
+        id: 6,
+        titleEn: "Women's Private Body Comfort Care",
+        subtitleEn: "Soothe 7 Common Female Daily Discomforts | Gentle, Private At-Home Wellness",
+        duration: "~40 min",
+        s3Key: "acupressure/lesson-02-women.mp4",
+        coverImage: "/images/acupoint-womens.png",
+        fallbackImage: "/images/tai-chi/acupressure-cover.jpg",
+
+        intro: "7 Most Common Women's Private Issues • No Drugs • No Embarrassment • Relieve at Home in 3 Steps\n\nPain points you're suffering from:\nBreast hyperplasia with lumps and severe pain during menstruation, worse when angry or tired\nPopliteal cyst (lump behind knee), pain when squatting or walking, difficulty bending legs\nPrivate area itching that comes and goes, unbearable and embarrassing, affecting work and life\nSevere menstrual cramps: stabbing abdominal pain, cold sweats, unable to get out of bed\nUrine leakage when coughing, laughing, or lifting; common after childbirth, causing social anxiety\nIrregular periods, delayed or missed for months, worrying about early ovarian aging\nHeavy menstrual bleeding (flooding), weakness and dizziness, uncontrollable flow\nExpensive hospital visits, long waiting times, and embarrassing private exams\nMedications with side effects, temporary relief from creams, no real solution\nLong-term physical and mental stress, affecting sleep, mood, and confidence",
+
+        conditions: [
+            "Breast Hyperplasia – breast lumps, menstrual pain, tenderness on the sides",
+            "Popliteal Cyst – bulge behind knee, pain with squatting, walking discomfort（4：26）",
+            "Private Area Itching – recurring itch, quick relief for acute symptoms, long-term root repair（8：34）",
+            "Menstrual Cramps – acute abdominal pain, fast pain relief during attacks（14：13）",
+            "Urine Leakage – leakage with cough/laugh, postnatal weakness, pelvic floor relaxation（16：14）",
+            "Delayed/Missed Periods – irregular cycles, amenorrhea (not menopause)（21：03）",
+            "Heavy Menstrual Bleeding – uncontrollable flow, physical weakness（25：35）",
+        ],
+
+        highlights: [
+            { title: "100% natural physical method", desc: "No drugs, no needles, no rinsing, no side effects" },
+            { title: "Fixed pressure points", desc: "3–5 key points per issue, easy to find, remember, and use" },
+            { title: "Private & safe", desc: "Do it yourself at home, no help needed, no embarrassment" },
+            { title: "Save time & money", desc: "No hospital visits, no expensive treatments, 5–10 minutes a day" },
+            { title: "Acute + chronic care", desc: "Fast relief for sudden symptoms, long-term prevention" },
+            { title: "Zero basics required", desc: "No anatomy or meridian knowledge needed" },
+            { title: "Gentle & effective", desc: "Safe for all ages, including postpartum women" },
+        ],
+
+        audience: [
+            "Women with breast lumps, tenderness, or menstrual breast pain",
+            "People with popliteal cysts and knee movement discomfort",
+            "Women suffering from recurring private itching",
+            "Women with severe menstrual cramps relying on painkillers",
+            "Postpartum women or those with urine leakage when coughing/laughing",
+            "Women with irregular, delayed, or missed periods",
+            "Women with heavy, prolonged menstrual bleeding",
+            "Women who value privacy and prefer safe, natural healing",
+            "Anyone who wants to stop wasting time and money on private health issues",
+        ],
+
+        closingEn: "One course solves 7 common women's problems. Learn once, benefit for life - gentle, natural, and completely private.",
     },
 ];
 

@@ -22,6 +22,7 @@ const COURSE = {
     priceOld: "$419.99",
     sale: true,
     lessonCount: 7,
+    lessonPrice: "$39",
 };
 
 // ─────────────────────────────────────────────

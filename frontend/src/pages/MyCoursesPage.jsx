@@ -60,9 +60,7 @@ function getAccessibleCourses(purchases) {
 
     for (const p of purchases) {
         if (p.expires_at && new Date(p.expires_at) < now) continue;
-        if (p.purchase_type === "membership") {
-            ALL_COURSES.forEach((c) => accessed.add(c.id));
-        } else if (p.purchase_type === "course" && p.course_id) {
+        if (p.purchase_type === "course" && p.course_id) {
             accessed.add(p.course_id);
         } else if (p.purchase_type === "video" && p.video_key) {
             // Any video purchase from a course counts as having access to that course page
@@ -76,19 +74,8 @@ function getAccessibleCourses(purchases) {
     return ALL_COURSES.filter((c) => accessed.has(c.id));
 }
 
-function hasMembership(purchases) {
-    if (!purchases) return false;
-    const now = new Date();
-    return purchases.some(
-        (p) =>
-            p.purchase_type === "membership" &&
-            (!p.expires_at || new Date(p.expires_at) > now)
-    );
-}
-
 export default function MyCoursesPage({ purchases = [], currentUser, onNavigate, onPurchase }) {
     const accessibleCourses = getAccessibleCourses(purchases);
-    const isMember = hasMembership(purchases);
 
     // Locked courses = not yet purchased
     const lockedCourses = ALL_COURSES.filter(
@@ -110,12 +97,6 @@ export default function MyCoursesPage({ purchases = [], currentUser, onNavigate,
                 <p className="mt-1 text-sm text-slate-500">
                     Welcome back, {currentUser?.username}. Here are all your unlocked courses.
                 </p>
-                {isMember && (
-                    <div className="mt-3 inline-flex items-center gap-2 rounded-full bg-amber-50 border border-amber-200 px-3 py-1 text-xs text-amber-800 font-medium">
-                        <span>★</span>
-                        All-Access Member · Unlimited course access
-                    </div>
-                )}
             </motion.div>
 
             {/* Accessible courses */}
@@ -196,7 +177,7 @@ export default function MyCoursesPage({ purchases = [], currentUser, onNavigate,
             )}
 
             {/* Locked courses - upsell */}
-            {lockedCourses.length > 0 && !isMember && (
+            {lockedCourses.length > 0 && (
                 <motion.section
                     initial="hidden"
                     animate="show"
@@ -239,24 +220,6 @@ export default function MyCoursesPage({ purchases = [], currentUser, onNavigate,
                                 </div>
                             </div>
                         ))}
-                    </div>
-
-                    {/* Membership upsell */}
-                    <div className="mt-6 rounded-2xl border border-amber-200 bg-amber-50 p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                        <div>
-                            <div className="text-sm font-semibold text-slate-900">
-                                All-Access Membership · from $30 USD/month
-                            </div>
-                            <div className="mt-0.5 text-xs text-slate-600">
-                                One subscription, unlock all courses, new content monthly
-                            </div>
-                        </div>
-                        <button
-                            onClick={() => onPurchase("membership_monthly")}
-                            className="shrink-0 rounded-full bg-amber-600 px-5 py-2 text-xs font-semibold text-white hover:bg-amber-500 transition"
-                        >
-                            Subscribe Now
-                        </button>
                     </div>
                 </motion.section>
             )}

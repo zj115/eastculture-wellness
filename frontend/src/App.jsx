@@ -220,8 +220,6 @@ function App() {
         const now = new Date();
         return purchases.some((p) => {
             if (p.expires_at && new Date(p.expires_at) < now) return false;
-            // membership (any variant) grants all access
-            if (p.purchase_type === "membership" || p.purchase_type === "membership_monthly" || p.purchase_type === "membership_quarterly" || p.purchase_type === "membership_annual") return true;
             // full course purchase
             if (p.purchase_type === "course" && p.course_id === courseId) return true;
             // individual video purchase from this course also grants course page access
@@ -620,7 +618,7 @@ function App() {
 
             <footer className="border-t border-slate-200 bg-white py-4 text-[11px] text-slate-500">
                 <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-2 px-4 md:flex-row">
-                    <span>© {new Date().getFullYear()} EastCulture · Tai Chi · Traditional Arts Online</span>
+                    <span>© 2015 EastCulture · Tai Chi · Traditional Arts Online</span>
                     <span>All educational content is provided for wellness and cultural learning. It does not replace medical advice.</span>
                 </div>
             </footer>

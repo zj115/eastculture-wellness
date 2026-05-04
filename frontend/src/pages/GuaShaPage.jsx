@@ -18,6 +18,8 @@ const API_BASE =
 const COURSE = {
     titleEn: "Natural Facial Gua Sha Full Care Course",
     tagline: "Daily 5-Min Routine | Relieve Facial Stiffness, Reduce Puffiness, Brighten Dull Skin & Keep Fresh Rested Look. No Surgery, No Salon Costs.",
+    cardTitle: "16 Step-by-Step Facial Gua Sha Master Course",
+    cardSubtitle: "16 Complete Tutorials | Full 2h 34min Training | Lifetime Access",
     priceNow: "$45",
     priceOld: "$99.99",
     sale: true,

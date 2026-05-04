@@ -335,7 +335,7 @@ export default function FaceYogaPage({ onBack, currentUser, authLoading = false,
                                 onClick={handleBuyVideo}
                                 className="w-full rounded-2xl border border-slate-300 bg-white px-4 py-3 text-sm font-semibold text-slate-900 hover:bg-slate-50 transition"
                             >
-                                Buy This Lesson $10 USD
+                                Buy This Lesson $29 USD
                             </button>
 
                             {!isLoggedIn && (
@@ -491,7 +491,7 @@ export default function FaceYogaPage({ onBack, currentUser, authLoading = false,
                                         <div className="flex shrink-0 items-center gap-2 text-xs">
                                             {locked && (
                                                 <span className="rounded-full border border-amber-200 bg-amber-50 px-2 py-1 text-[11px] text-amber-700">
-                                                    🔒 Buy $10 USD
+                                                    🔒 Buy $29 USD
                                                 </span>
                                             )}
                                             {!locked && (

@@ -88,8 +88,8 @@ const LESSONS = [
     {
         id: 2,
         titleEn: "Wing Chun Practical Self-Defense Full Course",
-        subtitleEn: "Structured Real-World Protection Training. Master Easy Effective Defense, Build Instant Reaction Confidence & Feel Safe Anywhere",
-        duration: "Full Step-by-Step Lessons | ~7 Min Per Routine",
+        subtitleEn: "Easy Real-Life Protection Techniques. Gain Solid Confidence, Stay Calm & Feel Safe In Any Situation",
+        duration: "Beginner Friendly Guide | ~12 Min Per Lesson",
         s3Key: "wingchun/lesson-02-fangwei-nine-styles.mp4",
         coverImage: "/images/wingchun-fangwei.png",
         fallbackImage: "/images/wingchun-hero.png",
@@ -519,7 +519,7 @@ export default function WingChunPage({
                                 onClick={handleBuyActiveVideo}
                                 className="w-full rounded-2xl border border-slate-300 bg-white px-4 py-3.5 text-sm font-semibold text-slate-900 hover:bg-slate-50 transition active:scale-[0.98]"
                             >
-                                Buy Lesson {activeLesson.id} Only · $24.99 USD
+                                Buy Lesson {activeLesson.id} Only · $29 USD
                             </button>
                             {!isLoggedIn && (
                                 <p className="text-center text-xs text-amber-700 pt-1">
@@ -580,7 +580,7 @@ export default function WingChunPage({
                                         </span>
                                     ) : (
                                         <span className="mt-0.5 rounded-full border border-amber-200 bg-white px-2 py-0.5 text-[10px] text-amber-700">
-                                            $24.99 USD per lesson
+                                            $29 USD per lesson
                                         </span>
                                     )}
                                 </button>

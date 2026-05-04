@@ -6,15 +6,15 @@ import { supabaseAdmin } from "@/lib/supabase";
 
 // Course/product definitions - prices in USD cents
 const PRODUCTS = {
-  // Individual video - 10 USD each
+  // Individual video - 29 USD each (default for most courses)
   video: {
-    price: 1000, // 10.00 USD
+    price: 2900, // 29.00 USD
     name: (videoTitle: string) => `EastCulture - ${videoTitle}`,
   },
   // Course series
   courses: {
     faceyoga: {
-      price: 5999, // 59.99 USD
+      price: 14900, // 149.00 USD
       name: "Face Yoga & Facial Massage Masterclass",
       nameZh: "面部瑜伽与按摩大师课",
     },
@@ -24,40 +24,20 @@ const PRODUCTS = {
       nameZh: "太极系统课程",
     },
     qigong: {
-      price: 5999, // 59.99 USD
+      price: 17400, // 174.00 USD
       name: "Acupressure Masterclass",
       nameZh: "穴位疗程大师课",
     },
     wingchun: {
-      price: 2499, // 24.99 USD
+      price: 4998, // 49.98 USD
       name: "Wing Chun Foundations – Health & Self-Defense",
       nameZh: "咏春基础课：养生十式 + 防卫九式",
     },
     guasha: {
-      price: 5999, // 59.99 USD
+      price: 4500, // 45.00 USD
       name: "16 Facial Anti-Aging Gua Sha Course",
       nameZh: "16 节面部抗衰刮痧课程",
     },
-  },
-  // Membership plans
-  membership_monthly: {
-    price: 3000, // 30 USD per month
-    interval: "month" as const,
-    name: "EastCulture Monthly Membership",
-    nameZh: "月卡会员",
-  },
-  membership_quarterly: {
-    price: 10000, // 100 USD per quarter (3 months)
-    interval: "month" as const,
-    interval_count: 3,
-    name: "EastCulture Quarterly Membership",
-    nameZh: "季卡会员",
-  },
-  membership_annual: {
-    price: 16800, // 168 USD per year
-    interval: "year" as const,
-    name: "EastCulture Annual Membership",
-    nameZh: "年卡会员",
   },
 } as const;
 
@@ -113,63 +93,36 @@ export async function POST(req: NextRequest) {
         },
       ];
       metadata.courseId = courseId;
-    } else if (type === "membership_monthly" || type === "membership_quarterly" || type === "membership_annual") {
-      const plan = PRODUCTS[type as "membership_monthly" | "membership_quarterly" | "membership_annual"];
-      const productName = lang === "zh" ? plan.nameZh : plan.name;
-      const recurringInterval = "interval_count" in plan
-        ? { interval: plan.interval, interval_count: plan.interval_count }
-        : { interval: plan.interval };
-      lineItems = [
-        {
-          price_data: {
-            currency: "usd",
-            product_data: { name: productName },
-            unit_amount: plan.price,
-            recurring: recurringInterval as Stripe.Checkout.SessionCreateParams.LineItem.PriceData.Recurring,
-          },
-          quantity: 1,
-        },
-      ] as Stripe.Checkout.SessionCreateParams.LineItem[];
     } else {
       return NextResponse.json({ error: "Invalid purchase type" }, { status: 400 });
     }
 
     // Create Stripe Checkout Session
-    const isMembershipType = type === "membership_monthly" || type === "membership_quarterly" || type === "membership_annual";
-    const mode = isMembershipType ? "subscription" : "payment";
-
     const session = await stripe.checkout.sessions.create({
-      mode,
+      mode: "payment",
       line_items: lineItems,
       success_url: `${origin}?payment=success`,
       cancel_url: `${origin}?payment=cancelled`,
       customer_email: user.email,
       metadata,
-      // Pass metadata to subscription so invoice.paid webhook can find userId
-      ...(mode === "subscription" && { subscription_data: { metadata } }),
       payment_method_types: ["card"],
       locale: lang === "zh" ? "zh" : "en",
     });
 
     // Create pending order record
-    const membershipPrices: Record<string, number> = {
-      membership_monthly: 30,
-      membership_quarterly: 100,
-      membership_annual: 168,
-    };
     const amountUsd =
       type === "video"
-        ? 10
+        ? 29
         : type === "course"
         ? (PRODUCTS.courses[courseId as keyof typeof PRODUCTS.courses]?.price ?? 0) / 100
-        : membershipPrices[type] ?? 0;
+        : 0;
 
     await supabaseAdmin.from("orders").insert({
       user_id: user.id,
       stripe_session_id: session.id,
       amount_nzd: amountUsd,
       currency: "usd",
-      purchase_type: isMembershipType ? "membership" : type,
+      purchase_type: type,
       course_id: metadata.courseId || null,
       video_key: metadata.videoKey || null,
       status: "pending",

@@ -80,13 +80,8 @@ export async function POST(req: NextRequest) {
     }
 
     return NextResponse.json({ ok: true });
-          .eq("status", "active");
-      }
-    }
   } catch (err) {
     console.error("Webhook processing error:", err);
     return NextResponse.json({ error: "Processing error" }, { status: 500 });
   }
-
-  return NextResponse.json({ ok: true });
 }

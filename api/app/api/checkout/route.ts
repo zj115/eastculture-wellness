@@ -11,6 +11,11 @@ const PRODUCTS = {
     price: 2900, // 29.00 USD
     name: (videoTitle: string) => `EastCulture - ${videoTitle}`,
   },
+  // 9.9 Quick Relief videos - special pricing
+  jiujiuVideo: {
+    price: 990, // 9.90 USD
+    name: (videoTitle: string) => `EastCulture - ${videoTitle}`,
+  },
   // Course series
   courses: {
     faceyoga: {
@@ -38,6 +43,11 @@ const PRODUCTS = {
       name: "16 Facial Anti-Aging Gua Sha Course",
       nameZh: "16 节面部抗衰刮痧课程",
     },
+    jiujiu: {
+      price: 990, // 9.90 USD (per video, no full course option)
+      name: "Quick Relief Self-Care Course",
+      nameZh: "9.9 快速缓解课程",
+    },
   },
 } as const;
 
@@ -63,12 +73,16 @@ export async function POST(req: NextRequest) {
       if (!videoKey || !videoTitle) {
         return NextResponse.json({ error: "Missing video info" }, { status: 400 });
       }
+      // Check if this is a 9.9 course video
+      const isJiuJiuVideo = videoKey.startsWith("9.9/");
+      const videoProduct = isJiuJiuVideo ? PRODUCTS.jiujiuVideo : PRODUCTS.video;
+
       lineItems = [
         {
           price_data: {
             currency: "usd",
-            product_data: { name: PRODUCTS.video.name(videoTitle) },
-            unit_amount: PRODUCTS.video.price,
+            product_data: { name: videoProduct.name(videoTitle) },
+            unit_amount: videoProduct.price,
           },
           quantity: 1,
         },
@@ -112,7 +126,7 @@ export async function POST(req: NextRequest) {
     // Create pending order record
     const amountUsd =
       type === "video"
-        ? 29
+        ? videoKey?.startsWith("9.9/") ? 9.9 : 29
         : type === "course"
         ? (PRODUCTS.courses[courseId as keyof typeof PRODUCTS.courses]?.price ?? 0) / 100
         : 0;

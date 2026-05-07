@@ -19,11 +19,11 @@ const API_BASE =
 const COURSE = {
     titleEn: "Quick Relief Acupressure Self-Care Master Course",
     subtitleEn: "Full Step-by-Step Acupressure Course. No Medication, No Professional Help Needed. Easy Guided Home Routines, Fast Gentle Body Comfort & Build Long-Lasting Natural Daily Wellness.",
-    priceNow: "$174",
-    priceOld: "$299.99",
-    sale: true,
     lessonCount: 6,
-    courseId: "qigong",   // keep existing courseId so purchases still match
+    lessonPrice: "$29",
+    lessonPriceOld: "$99.99",
+    sale: true,
+    courseId: "qigong",
 };
 
 // ─────────────────────────────────────────────
@@ -613,10 +613,8 @@ export default function QigongPage({
                         {COURSE.subtitleEn}
                     </p>
                     <div className="mt-4 flex flex-wrap items-center gap-3">
-                        <span className="text-3xl font-extrabold text-slate-900">{COURSE.priceNow}</span>
-                        <span className="text-base text-slate-400 line-through">{COURSE.priceOld}</span>
                         <span className="rounded-full border border-amber-200 bg-amber-50 px-2.5 py-0.5 text-xs text-amber-700">
-                            {COURSE.lessonCount} lessons · lifetime access
+                            {COURSE.lessonCount} lessons · buy individually
                         </span>
                     </div>
                 </motion.div>
@@ -627,23 +625,17 @@ export default function QigongPage({
                     transition={{ duration: 0.5, delay: 0.05 }}
                     className="mb-6 space-y-3"
                 >
-                    {isOwned ? (
+                    {canPlayActive ? (
                         <div className="w-full rounded-2xl border border-emerald-300 bg-emerald-50 px-4 py-3 text-center text-sm font-semibold text-emerald-800">
-                            ✓ Full Course Unlocked
+                            ✓ Lesson {activeLesson.id} Unlocked
                         </div>
                     ) : (
                         <>
                             <button
-                                onClick={handleUnlockCourse}
+                                onClick={handleBuyActiveVideo}
                                 className="w-full rounded-2xl bg-amber-600 px-4 py-4 text-sm font-bold text-white hover:bg-amber-500 transition active:scale-[0.98]"
                             >
-                                Unlock Full Course (All {COURSE.lessonCount} Lessons) · {COURSE.priceNow}
-                            </button>
-                            <button
-                                onClick={handleBuyActiveVideo}
-                                className="w-full rounded-2xl border border-slate-300 bg-white px-4 py-3.5 text-sm font-semibold text-slate-900 hover:bg-slate-50 transition active:scale-[0.98]"
-                            >
-                                Buy Lesson {activeLesson.id} Only · $29 USD
+                                Buy Lesson {activeLesson.id} · {COURSE.lessonPrice} USD
                             </button>
                             {!isLoggedIn && (
                                 <p className="text-center text-xs text-amber-700 pt-1">
@@ -764,10 +756,10 @@ export default function QigongPage({
                                     </p>
                                     {isLoggedIn ? (
                                         <button
-                                            onClick={handleUnlockCourse}
+                                            onClick={handleBuyActiveVideo}
                                             className="mt-2 rounded-2xl bg-amber-500 px-5 py-2.5 text-sm font-semibold text-slate-900 hover:bg-amber-400 transition"
                                         >
-                                            Unlock Full Course {COURSE.priceNow}
+                                            Buy This Lesson · {COURSE.lessonPrice}
                                         </button>
                                     ) : (
                                         <button

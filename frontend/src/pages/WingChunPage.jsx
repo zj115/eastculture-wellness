@@ -156,8 +156,8 @@ const LESSONS = [
 // COURSE META
 // ─────────────────────────────────────────────
 const COURSE = {
-    priceNow: "$49.98",
-    priceOld: "$99.98",
+    lessonPrice: "$49.98",
+    lessonPriceOld: "$99.98",
     sale: true,
 };
 
@@ -417,11 +417,6 @@ export default function WingChunPage({
         }, 50);
     }
 
-    function handleUnlockCourse() {
-        if (!isLoggedIn) { onGoLogin?.(); return; }
-        onPurchase?.("course", { courseId: "wingchun" });
-    }
-
     function handleBuyActiveVideo() {
         if (!isLoggedIn) { onGoLogin?.(); return; }
         onPurchase?.("video", {
@@ -489,10 +484,8 @@ export default function WingChunPage({
                     </p>
 
                     <div className="mt-4 flex flex-wrap items-center gap-3">
-                        <span className="text-3xl font-extrabold text-slate-900">{COURSE.priceNow}</span>
-                        <span className="text-base text-slate-400 line-through">{COURSE.priceOld}</span>
                         <span className="rounded-full border border-amber-200 bg-amber-50 px-2.5 py-0.5 text-xs text-amber-700">
-                            2 lessons · lifetime access
+                            2 lessons · buy individually
                         </span>
                     </div>
                 </motion.div>
@@ -503,23 +496,17 @@ export default function WingChunPage({
                     transition={{ duration: 0.5, delay: 0.05 }}
                     className="mb-6 space-y-3"
                 >
-                    {isOwned ? (
+                    {canPlayActive ? (
                         <div className="w-full rounded-2xl border border-emerald-300 bg-emerald-50 px-4 py-3 text-center text-sm font-semibold text-emerald-800">
-                            ✓ Full Course Unlocked
+                            ✓ Lesson {activeLesson.id} Unlocked
                         </div>
                     ) : (
                         <>
                             <button
-                                onClick={handleUnlockCourse}
+                                onClick={handleBuyActiveVideo}
                                 className="w-full rounded-2xl bg-amber-600 px-4 py-4 text-sm font-bold text-white hover:bg-amber-500 transition active:scale-[0.98]"
                             >
-                                Unlock Full Course (Both Lessons) · {COURSE.priceNow}
-                            </button>
-                            <button
-                                onClick={handleBuyActiveVideo}
-                                className="w-full rounded-2xl border border-slate-300 bg-white px-4 py-3.5 text-sm font-semibold text-slate-900 hover:bg-slate-50 transition active:scale-[0.98]"
-                            >
-                                Buy Lesson {activeLesson.id} Only · $29 USD
+                                Buy Lesson {activeLesson.id} · {COURSE.lessonPrice} USD
                             </button>
                             {!isLoggedIn && (
                                 <p className="text-center text-xs text-amber-700 pt-1">
@@ -646,14 +633,14 @@ export default function WingChunPage({
                                     <p className="text-3xl">🔒</p>
                                     <p className="text-base font-bold">Locked</p>
                                     <p className="text-sm text-white/70">
-                                        Purchase to unlock and watch.
+                                        Purchase this lesson to unlock and watch.
                                     </p>
                                     {isLoggedIn ? (
                                         <button
-                                            onClick={handleUnlockCourse}
+                                            onClick={handleBuyActiveVideo}
                                             className="mt-2 rounded-2xl bg-amber-500 px-5 py-2.5 text-sm font-semibold text-slate-900 hover:bg-amber-400 transition"
                                         >
-                                            Unlock Full Course {COURSE.priceNow}
+                                            Buy Lesson {activeLesson.id} · {COURSE.lessonPrice}
                                         </button>
                                     ) : (
                                         <button

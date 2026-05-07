@@ -34,7 +34,7 @@ const LESSONS = [
         titleEn: "Lower Back Pain Relief",
         subtitleEn: "Fast Relief • 3 Acupoints • Feel Better Fast",
         duration: "~5 min",
-        s3Key: "9.9/lower-back-pain.mp4",
+        s3Key: "9.9/腰腿疼痛.mp4",
         coverImage: "/images/jiujiu-waist.png",
         fallbackImage: "/images/acupoint-waist-legs.png",
 
@@ -81,7 +81,7 @@ const LESSONS = [
         titleEn: "Neck & Shoulder Relief",
         subtitleEn: "Release Tension • Move Freely • Fast Relief",
         duration: "~5 min",
-        s3Key: "9.9/neck-shoulder-relief.mp4",
+        s3Key: "9.9/肩颈课.mp4",
         coverImage: "/images/jiujiu-neck.png",
         fallbackImage: "/images/acupoint-neck-shoulder.png",
 
@@ -128,7 +128,7 @@ const LESSONS = [
         titleEn: "Sleep & Calm Support",
         subtitleEn: "10-Min Bedtime Routine • Fall Asleep Faster",
         duration: "~5 min",
-        s3Key: "9.9/sleep-calm-support.mp4",
+        s3Key: "9.9/失眠.mp4",
         coverImage: "/images/jiujiu-sleep.png",
         fallbackImage: "/images/acupoint-daily.png",
 

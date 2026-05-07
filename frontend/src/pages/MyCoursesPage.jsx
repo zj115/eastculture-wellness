@@ -9,6 +9,15 @@ const fadeInUp = {
 // All available courses
 const ALL_COURSES = [
     {
+        id: "jiujiu",
+        page: "jiujiu",
+        titleEn: "Quick Relief Self-Care Course",
+        descEn: "Fast Relief for Common Daily Discomforts. 3 Simple Acupoint Routines, 5-10 Minutes Each.",
+        image: "/images/jiujiu-waist.png",
+        lessons: 3,
+        tag: "Quick Relief",
+    },
+    {
         id: "faceyoga",
         page: "faceyoga",
         titleEn: "Face Yoga & Facial Massage",
@@ -47,6 +56,7 @@ const ALL_COURSES = [
 ];
 
 const COURSE_VIDEO_PREFIXES = {
+    jiujiu: "9.9/",
     faceyoga: "face-yoga/",
     taichi: "taichi/",
     qigong: "acupressure/",

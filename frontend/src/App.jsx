@@ -9,6 +9,7 @@ import GuaShaPage from "./pages/GuaShaPage";
 import QimenPage from "./pages/QimenPage";
 import QigongPage from "./pages/QigongPage";
 import WingChunPage from "./pages/WingChunPage";
+import JiuJiuPage from "./pages/JiuJiuPage";
 import TcmPage from "./pages/TcmPage";
 import FengShuiPage from "./pages/FengShuiPage";
 import LoginPage from "./pages/LoginPage";
@@ -25,6 +26,13 @@ const fadeInUp = {
     hidden: { opacity: 0, y: 40 },
     show: { opacity: 1, y: 0 },
 };
+
+// ─── 9.9 Quick Relief lessons ─────────────────────────────────────────────────
+const JIUJIU_LESSONS = [
+    { id: 1, titleEn: "Lower Back Pain Relief", subtitle: "Fast Relief • 3 Acupoints • Feel Better Fast", duration: "~5 min", coverImage: "/images/jiujiu-waist.png", fallbackImage: "/images/acupoint-waist-legs.png", priceNow: "$3.99", priceOld: "$9.99", sale: true, page: "jiujiu" },
+    { id: 2, titleEn: "Neck & Shoulder Relief", subtitle: "Release Tension • Move Freely • Fast Relief", duration: "~5 min", coverImage: "/images/jiujiu-neck.png", fallbackImage: "/images/acupoint-neck-shoulder.png", priceNow: "$3.99", priceOld: "$9.99", sale: true, page: "jiujiu" },
+    { id: 3, titleEn: "Sleep & Calm Support", subtitle: "10-Min Bedtime Routine • Fall Asleep Faster", duration: "~5 min", coverImage: "/images/jiujiu-sleep.png", fallbackImage: "/images/acupoint-daily.png", priceNow: "$3.99", priceOld: "$9.99", sale: true, page: "jiujiu" },
+];
 
 // ─── Acupoint lessons ─────────────────────────────────────────────────────────
 const ACUPOINT_LESSONS = [
@@ -208,6 +216,7 @@ function App() {
     }
 
     const COURSE_VIDEO_PREFIXES = {
+        jiujiu: "9.9/",
         taichi: "taichi/",
         qigong: "acupressure/",
         wingchun: "wingchun/",
@@ -299,13 +308,36 @@ function App() {
                 </section>
 
                 {/* ── COURSE SECTIONS ────────────────────────────────────────
-                    Fixed order: Acupoint(1) → Tai Chi(2) → Gua Sha(3) → Wing Chun(4)
+                    Fixed order: 9.9(1) → Acupoint(2) → Tai Chi(3) → Gua Sha(4) → Wing Chun(5)
                 ─────────────────────────────────────────────────────────────── */}
                 <div className="mx-auto max-w-6xl px-4 pt-10 flex flex-col gap-12">
 
-                    {/* ACUPOINT — 1st */}
+                    {/* 9.9 QUICK RELIEF — 1st */}
                     <motion.section
                         className="order-1"
+                        initial="hidden"
+                        whileInView="show"
+                        viewport={{ once: true, amount: 0.15 }}
+                        transition={{ duration: 0.6, ease: "easeOut" }}
+                        variants={fadeInUp}
+                    >
+                        <SectionHeading
+                            title="Quick Relief Self-Care Course"
+                            subtitle="Fast Relief for Common Daily Discomforts. 3 Simple Acupoint Routines, 5-10 Minutes Each, Instant Comfort at Home."
+                            onViewAll
+                            viewAllPage="jiujiu"
+                            onNavigate={setActivePage}
+                        />
+                        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+                            {JIUJIU_LESSONS.map((lesson) => (
+                                <LessonCard key={lesson.id} lesson={lesson} onNavigate={setActivePage} />
+                            ))}
+                        </div>
+                    </motion.section>
+
+                    {/* ACUPOINT — 2nd */}
+                    <motion.section
+                        className="order-2"
                         initial="hidden"
                         whileInView="show"
                         viewport={{ once: true, amount: 0.15 }}
@@ -326,9 +358,9 @@ function App() {
                         </div>
                     </motion.section>
 
-                    {/* TAI CHI — 2nd */}
+                    {/* TAI CHI — 3rd */}
                     <motion.section
-                        className="order-2"
+                        className="order-3"
                         initial="hidden"
                         whileInView="show"
                         viewport={{ once: true, amount: 0.15 }}
@@ -349,9 +381,9 @@ function App() {
                         </div>
                     </motion.section>
 
-                    {/* GUA SHA — 3rd */}
+                    {/* GUA SHA — 4th */}
                     <motion.section
-                        className="order-3"
+                        className="order-4"
                         initial="hidden"
                         whileInView="show"
                         viewport={{ once: true, amount: 0.15 }}
@@ -396,9 +428,9 @@ function App() {
                         </div>
                     </motion.section>
 
-                    {/* WING CHUN — 4th */}
+                    {/* WING CHUN — 5th */}
                     <motion.section
-                        className="order-4 mb-8"
+                        className="order-5 mb-8"
                         initial="hidden"
                         whileInView="show"
                         viewport={{ once: true, amount: 0.15 }}
@@ -424,6 +456,8 @@ function App() {
         );
     } else if (activePage === "faceyoga") {
         pageContent = <FaceYogaPage currentUser={currentUser} authLoading={authLoading} isOwned={hasCourseAccess("faceyoga")} purchases={purchases} onPurchase={handlePurchase} onGoLogin={() => setActivePage("login")} />;
+    } else if (activePage === "jiujiu") {
+        pageContent = <JiuJiuPage currentUser={currentUser} authLoading={authLoading} isOwned={hasCourseAccess("jiujiu")} purchases={purchases} onPurchase={handlePurchase} onGoLogin={() => setActivePage("login")} />;
     } else if (activePage === "guasha") {
         pageContent = <GuaShaPage currentUser={currentUser} authLoading={authLoading} isOwned={hasCourseAccess("guasha")} purchases={purchases} onPurchase={handlePurchase} onGoLogin={() => setActivePage("login")} />;
     } else if (activePage === "qimen") {

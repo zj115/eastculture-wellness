@@ -16,8 +16,9 @@ const API_BASE =
 // COURSE META
 // ─────────────────────────────────────────────
 const COURSE = {
-    titleEn: "Natural Facial Gua Sha Full Care Course",
-    tagline: "Daily 5-Min Routine | Relieve Facial Stiffness, Reduce Puffiness, Brighten Dull Skin & Keep Fresh Rested Look. No Surgery, No Salon Costs.",
+    titleEn: "16 Facial Anti-Aging Gua Sha Course",
+    tagline: "No Surgery • No Needles • No Skincare Scams • Just 5 Minutes a Day at Home",
+    mainTitle: "16 Facial Aging Issues SOLVED! Expensive Facials & Injections Not Working? Gua Sha Naturally Fades Wrinkles, Lifts Sagging, Brightens Skin — AT HOME.",
     cardTitle: "16 Step-by-Step Facial Gua Sha Master Course",
     cardSubtitle: "16 Complete Tutorials | Full 2h 34min Training | Lifetime Access",
     priceNow: "$45",
@@ -208,14 +209,16 @@ export default function GuaShaPage({
                     <p className="mt-2 text-sm text-slate-600 leading-relaxed">
                         {COURSE.tagline}
                     </p>
+                    <div className="mt-3 rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3">
+                        <p className="text-sm font-bold text-slate-900 leading-relaxed">
+                            {COURSE.mainTitle}
+                        </p>
+                    </div>
                     <div className="mt-4 flex flex-wrap items-center gap-3">
                         <span className="text-3xl font-extrabold text-slate-900">{COURSE.priceNow}</span>
                         <span className="text-base text-slate-400 line-through">{COURSE.priceOld}</span>
                         <span className="rounded-full border border-amber-200 bg-amber-50 px-2.5 py-0.5 text-xs text-amber-700">
                             16 chapters · lifetime access
-                        </span>
-                        <span className="rounded-full border border-rose-200 bg-rose-50 px-2.5 py-0.5 text-xs text-rose-700">
-                            On Sale
                         </span>
                     </div>
                 </motion.div>
@@ -253,8 +256,8 @@ export default function GuaShaPage({
                     transition={{ duration: 0.5, delay: 0.1 }}
                     className="mb-6"
                 >
-                    <p className="text-[11px] uppercase tracking-widest text-slate-400 mb-2">
-                        Course Contents · 16 Chapters
+                    <p className="text-sm font-bold uppercase tracking-wide text-slate-900 mb-3">
+                        YOUR FULL 16-STEP TRANSFORMATION
                     </p>
                     <p className="text-xs text-slate-500 mb-3">
                         This is one full-length video. Numbers in brackets are timestamps you can jump to directly.

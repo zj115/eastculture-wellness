@@ -202,14 +202,11 @@ export default function GuaShaPage({
                             </span>
                         )}
                     </div>
-                    <p className="text-xs font-medium text-rose-600 mb-1">
-                        {COURSE.tagline}
-                    </p>
                     <h1 className="text-2xl font-bold leading-tight text-slate-900 md:text-3xl">
-                        Youthful Glow Without The Effort
+                        {COURSE.titleEn}
                     </h1>
-                    <p className="mt-1 text-base text-slate-700 font-medium">
-                        Beginner-Friendly Gua Sha Massage. No Tools Expertise, No Pain, Just Natural Anti-Aging Results.
+                    <p className="mt-2 text-sm text-slate-600 leading-relaxed">
+                        {COURSE.tagline}
                     </p>
                     <div className="mt-4 flex flex-wrap items-center gap-3">
                         <span className="text-3xl font-extrabold text-slate-900">{COURSE.priceNow}</span>

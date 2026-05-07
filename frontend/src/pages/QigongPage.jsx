@@ -609,6 +609,9 @@ export default function QigongPage({
                     <h1 className="text-2xl font-bold leading-tight text-slate-900 md:text-3xl">
                         {COURSE.titleEn}
                     </h1>
+                    <p className="mt-2 text-sm text-slate-600 leading-relaxed">
+                        {COURSE.subtitleEn}
+                    </p>
                     <div className="mt-4 flex flex-wrap items-center gap-3">
                         <span className="text-3xl font-extrabold text-slate-900">{COURSE.priceNow}</span>
                         <span className="text-base text-slate-400 line-through">{COURSE.priceOld}</span>

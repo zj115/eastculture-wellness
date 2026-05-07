@@ -13,6 +13,7 @@ const s3 = new S3Client({
 
 // Map S3 key prefix to courseId
 function getCourseIdFromKey(key: string): string {
+  if (key.startsWith("9.9/")) return "jiujiu";
   if (key.startsWith("face-yoga/")) return "faceyoga";
   if (key.startsWith("taichi/")) return "taichi";
   if (key.startsWith("acupressure/")) return "qigong";

@@ -148,7 +148,7 @@ const LESSONS = [
             { title: "No pills, no devices", desc: "Natural, safe, drug-free sleep support" },
             { title: "Fall asleep faster", desc: "Calm your mind and enter sleep state quickly" },
             { title: "Sleep deeper", desc: "Regular practice improves sleep quality and energy" },
-        },
+        ],
 
         instructor: {
             name: "Master Qing Ji",

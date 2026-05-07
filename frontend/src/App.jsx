@@ -552,6 +552,7 @@ function App() {
 
                     <nav className="hidden items-center gap-6 text-sm md:flex">
                         <button className="text-slate-700 hover:text-amber-700 transition" onClick={goHome}>Home</button>
+                        <button className="text-slate-700 hover:text-amber-700 transition" onClick={() => setActivePage("jiujiu")}>Quick Relief</button>
                         <button className="text-slate-700 hover:text-amber-700 transition" onClick={() => setActivePage("guasha")}>Gua Sha</button>
                         <button className="text-slate-700 hover:text-amber-700 transition" onClick={() => setActivePage("qigong")}>Acupoint</button>
                         <button className="text-slate-700 hover:text-amber-700 transition" onClick={() => setActivePage("qimen")}>Tai Chi</button>
@@ -598,6 +599,7 @@ function App() {
                         <nav className="flex flex-col gap-1 px-4 py-4 text-sm">
                             {[
                                 { label: "Home", action: () => { goHome(); setSidebarOpen(false); } },
+                                { label: "Quick Relief", action: () => { setActivePage("jiujiu"); setSidebarOpen(false); } },
                                 { label: "Gua Sha", action: () => { setActivePage("guasha"); setSidebarOpen(false); } },
                                 { label: "Acupoint", action: () => { setActivePage("qigong"); setSidebarOpen(false); } },
                                 { label: "Tai Chi", action: () => { setActivePage("qimen"); setSidebarOpen(false); } },

@@ -29,9 +29,9 @@ const fadeInUp = {
 
 // ─── 9.9 Quick Relief lessons ─────────────────────────────────────────────────
 const JIUJIU_LESSONS = [
-    { id: 1, titleEn: "Lower Back Pain Relief", subtitle: "Fast Relief • 3 Acupoints • Feel Better Fast", duration: "~5 min", coverImage: "/images/jiujiu-waist.png", fallbackImage: "/images/acupoint-waist-legs.png", priceNow: "$3.99", priceOld: "$9.99", sale: true, page: "jiujiu" },
-    { id: 2, titleEn: "Neck & Shoulder Relief", subtitle: "Release Tension • Move Freely • Fast Relief", duration: "~5 min", coverImage: "/images/jiujiu-neck.png", fallbackImage: "/images/acupoint-neck-shoulder.png", priceNow: "$3.99", priceOld: "$9.99", sale: true, page: "jiujiu" },
-    { id: 3, titleEn: "Sleep & Calm Support", subtitle: "10-Min Bedtime Routine • Fall Asleep Faster", duration: "~5 min", coverImage: "/images/jiujiu-sleep.png", fallbackImage: "/images/acupoint-daily.png", priceNow: "$3.99", priceOld: "$9.99", sale: true, page: "jiujiu" },
+    { id: 1, titleEn: "Lower Back Pain Relief", subtitle: "Fast Relief • 3 Acupoints • Feel Better Fast", duration: "~5 min", coverImage: "/images/jiujiu-waist.png", fallbackImage: "/images/acupoint-waist-legs.png", priceNow: "$9.9", priceOld: "$29.99", sale: true, page: "jiujiu" },
+    { id: 2, titleEn: "Neck & Shoulder Relief", subtitle: "Release Tension • Move Freely • Fast Relief", duration: "~5 min", coverImage: "/images/jiujiu-neck.png", fallbackImage: "/images/acupoint-neck-shoulder.png", priceNow: "$9.9", priceOld: "$29.99", sale: true, page: "jiujiu" },
+    { id: 3, titleEn: "Sleep & Calm Support", subtitle: "10-Min Bedtime Routine • Fall Asleep Faster", duration: "~5 min", coverImage: "/images/jiujiu-sleep.png", fallbackImage: "/images/acupoint-daily.png", priceNow: "$9.9", priceOld: "$29.99", sale: true, page: "jiujiu" },
 ];
 
 // ─── Acupoint lessons ─────────────────────────────────────────────────────────

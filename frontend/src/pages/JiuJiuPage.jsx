@@ -22,7 +22,7 @@ const COURSE = {
     priceOld: "$29.99",
     sale: true,
     lessonCount: 3,
-    lessonPrice: "$3.99",
+    lessonPrice: "$9.9",
 };
 
 // ─────────────────────────────────────────────
@@ -471,23 +471,17 @@ export default function JiuJiuPage({
                     transition={{ duration: 0.5, delay: 0.05 }}
                     className="mb-6 space-y-3"
                 >
-                    {isOwned ? (
+                    {canPlayActive ? (
                         <div className="w-full rounded-2xl border border-emerald-300 bg-emerald-50 px-4 py-3 text-center text-sm font-semibold text-emerald-800">
-                            ✓ Full Course Unlocked
+                            ✓ Lesson {activeLesson.id} Unlocked
                         </div>
                     ) : (
                         <>
                             <button
-                                onClick={handleUnlockCourse}
+                                onClick={handleBuyActiveVideo}
                                 className="w-full rounded-2xl bg-amber-600 px-4 py-4 text-sm font-bold text-white hover:bg-amber-500 transition active:scale-[0.98]"
                             >
-                                Unlock Full Course (All {COURSE.lessonCount} Lessons) · {COURSE.priceNow}
-                            </button>
-                            <button
-                                onClick={handleBuyActiveVideo}
-                                className="w-full rounded-2xl border border-slate-300 bg-white px-4 py-3.5 text-sm font-semibold text-slate-900 hover:bg-slate-50 transition active:scale-[0.98]"
-                            >
-                                Buy Lesson {activeLesson.id} Only · $3.99 USD
+                                Buy Lesson {activeLesson.id} · $9.9 USD
                             </button>
                             {!isLoggedIn && (
                                 <p className="text-center text-xs text-amber-700 pt-1">
@@ -538,7 +532,7 @@ export default function JiuJiuPage({
                                         </span>
                                     ) : (
                                         <span className="mt-0.5 rounded-full border border-amber-200 bg-white px-2 py-0.5 text-[9px] text-amber-700">
-                                            🔒 $3.99 USD
+                                            🔒 $9.9 USD
                                         </span>
                                     )}
                                 </button>
@@ -608,10 +602,10 @@ export default function JiuJiuPage({
                                     </p>
                                     {isLoggedIn ? (
                                         <button
-                                            onClick={handleUnlockCourse}
+                                            onClick={handleBuyActiveVideo}
                                             className="mt-2 rounded-2xl bg-amber-500 px-5 py-2.5 text-sm font-semibold text-slate-900 hover:bg-amber-400 transition"
                                         >
-                                            Unlock Full Course {COURSE.priceNow}
+                                            Buy This Lesson · $9.9
                                         </button>
                                     ) : (
                                         <button

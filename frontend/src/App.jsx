@@ -313,8 +313,8 @@ function App() {
                         variants={fadeInUp}
                     >
                         <SectionHeading
-                            title="Natural Pain & Stress Relief Acupressure Care"
-                            subtitle="No Pills, No Therapists. Instant relief for headaches, body aches, anxiety & fatigue with 3 easy home points."
+                            title="Quick Relief Acupressure Self-Care Master Course"
+                            subtitle="Full Step-by-Step Acupressure Course. No Medication, No Professional Help Needed. Easy Guided Home Routines, Fast Gentle Body Comfort & Build Long-Lasting Natural Daily Wellness."
                             onViewAll
                             viewAllPage="qigong"
                             onNavigate={setActivePage}
@@ -336,8 +336,8 @@ function App() {
                         variants={fadeInUp}
                     >
                         <SectionHeading
-                            title="Fix Aches, Calm Anxiety & Sleep Deeply"
-                            subtitle="Traditional Wudang Tai Chi. Gentle Daily Routine For All Ages & Fitness Levels."
+                            title="Nourish Five Internal Organs, Calm Deep Inner Imbalance & Restore Long-Term Masculine Vitality"
+                            subtitle="Ancient Wudang Tai Chi Full Course. Seven Major Viscera Systematic Deep Nourishment, Step-by-Step Guided Practice, Eliminate Root Fatigue & Rebalance Full-Body Natural Wellness."
                             onViewAll
                             viewAllPage="qimen"
                             onNavigate={setActivePage}
@@ -359,8 +359,8 @@ function App() {
                         variants={fadeInUp}
                     >
                         <SectionHeading
-                            title="Reverse Aging Without Surgery"
-                            subtitle="5-Min Daily Gua Sha | Lift, Tighten & Brighten Your Face. No Needles, No Expensive Salon Visits."
+                            title="Natural Facial Gua Sha Full Care Course"
+                            subtitle="Daily 5-Min Routine | Relieve Facial Stiffness, Reduce Puffiness, Brighten Dull Skin & Keep Fresh Rested Look. No Surgery, No Salon Costs."
                             onViewAll
                             viewAllPage="guasha"
                             onNavigate={setActivePage}
@@ -406,8 +406,8 @@ function App() {
                         variants={fadeInUp}
                     >
                         <SectionHeading
-                            title="Wing Chun Practical Self-Defense Mastery"
-                            subtitle="Learn simple, effective personal protection. Build confidence, strength & awareness daily."
+                            title="Wing Chun Complete Self-Defense & Vitality Master Course"
+                            subtitle="Systematic Practical Wing Chun Training. Master Easy Real-World Protection, Fix Posture, Build Core Strength & Unshakable Inner Confidence."
                             onViewAll
                             viewAllPage="wingchun"
                             onNavigate={setActivePage}

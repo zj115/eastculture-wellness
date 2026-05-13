@@ -1,6 +1,7 @@
 // src/App.jsx
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 const API_BASE = import.meta?.env?.VITE_API_BASE || "https://eastculture-api.vercel.app";
 
@@ -78,6 +79,7 @@ const WINGCHUN_LESSONS = [
 
 // ─── Card component ───────────────────────────────────────────────────────────
 function LessonCard({ lesson, onNavigate }) {
+    const { t } = useTranslation();
     const [imgErr, setImgErr] = useState(false);
     return (
         <div
@@ -93,7 +95,7 @@ function LessonCard({ lesson, onNavigate }) {
                 />
                 {lesson.sale && (
                     <span className="absolute top-2 left-2 bg-amber-600 text-white text-[10px] font-semibold px-2.5 py-1 rounded-full">
-                        Sale
+                        {t("common.sale")}
                     </span>
                 )}
             </div>
@@ -122,6 +124,7 @@ function LessonCard({ lesson, onNavigate }) {
 
 // ─── Section heading ──────────────────────────────────────────────────────────
 function SectionHeading({ title, subtitle, onViewAll, viewAllPage, onNavigate }) {
+    const { t } = useTranslation();
     return (
         <div className="flex items-start justify-between mb-4 gap-3">
             <div className="min-w-0">
@@ -133,14 +136,74 @@ function SectionHeading({ title, subtitle, onViewAll, viewAllPage, onNavigate })
                     onClick={() => onNavigate(viewAllPage)}
                     className="text-xs text-amber-700 hover:text-amber-600 transition shrink-0 mt-1"
                 >
-                    View all →
+                    {t("common.viewAll")}
                 </button>
             )}
         </div>
     );
 }
 
+// ─── Language Switcher ────────────────────────────────────────────────────────
+function LanguageSwitcher() {
+    const { i18n, t } = useTranslation();
+    const [isOpen, setIsOpen] = useState(false);
+
+    const languages = [
+        { code: "en", name: t("language.en"), nativeName: "English" },
+        { code: "zh", name: t("language.zh"), nativeName: "中文" },
+        { code: "ja", name: t("language.ja"), nativeName: "日本語" },
+        { code: "ko", name: t("language.ko"), nativeName: "한국어" },
+        { code: "ur", name: t("language.ur"), nativeName: "اردو" },
+        { code: "ar", name: t("language.ar"), nativeName: "العربية" },
+    ];
+
+    const currentLanguage = languages.find(lang => lang.code === i18n.language) || languages[0];
+
+    const handleLanguageChange = (langCode) => {
+        i18n.changeLanguage(langCode);
+        setIsOpen(false);
+    };
+
+    return (
+        <div className="relative">
+            <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="flex items-center gap-1.5 rounded-full border border-slate-300 bg-white px-3 py-1 text-xs text-slate-700 hover:border-amber-300 hover:text-amber-700 transition"
+                aria-label="Select language"
+            >
+                <span className="hidden sm:inline">{currentLanguage.nativeName}</span>
+                <span className="sm:hidden">🌐</span>
+                <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+            </button>
+
+            {isOpen && (
+                <>
+                    <div className="fixed inset-0 z-40" onClick={() => setIsOpen(false)} />
+                    <div className="absolute right-0 mt-2 w-40 rounded-2xl border border-slate-200 bg-white shadow-lg z-50 py-2">
+                        {languages.map((lang) => (
+                            <button
+                                key={lang.code}
+                                onClick={() => handleLanguageChange(lang.code)}
+                                className={`w-full px-4 py-2 text-left text-sm transition ${
+                                    i18n.language === lang.code
+                                        ? "bg-amber-50 text-amber-700 font-semibold"
+                                        : "text-slate-700 hover:bg-slate-50"
+                                }`}
+                            >
+                                {lang.nativeName}
+                            </button>
+                        ))}
+                    </div>
+                </>
+            )}
+        </div>
+    );
+}
+
 function App() {
+    const { t } = useTranslation();
     const [activePage, setActivePage] = useState("home");
     const [currentUser, setCurrentUser] = useState(null);
     const [purchases, setPurchases] = useState([]);
@@ -323,8 +386,8 @@ function App() {
                         variants={fadeInUp}
                     >
                         <SectionHeading
-                            title="Quick Relief Self-Care Course"
-                            subtitle="Fast Relief for Common Daily Discomforts. 4 Simple Acupoint Routines, 5-10 Minutes Each, Instant Comfort at Home."
+                            title={t("jiujiu.title")}
+                            subtitle={t("jiujiu.subtitle")}
                             onViewAll
                             viewAllPage="jiujiu"
                             onNavigate={setActivePage}
@@ -552,26 +615,27 @@ function App() {
                     </div>
 
                     <nav className="hidden items-center gap-6 text-sm md:flex">
-                        <button className="text-slate-700 hover:text-amber-700 transition" onClick={goHome}>Home</button>
-                        <button className="text-slate-700 hover:text-amber-700 transition" onClick={() => setActivePage("jiujiu")}>Quick Relief</button>
-                        <button className="text-slate-700 hover:text-amber-700 transition" onClick={() => setActivePage("guasha")}>Gua Sha</button>
-                        <button className="text-slate-700 hover:text-amber-700 transition" onClick={() => setActivePage("qigong")}>Acupoint</button>
-                        <button className="text-slate-700 hover:text-amber-700 transition" onClick={() => setActivePage("qimen")}>Tai Chi</button>
-                        <button className="text-slate-700 hover:text-amber-700 transition" onClick={() => setActivePage("wingchun")}>Wing Chun</button>
-                        <button className="text-slate-700 hover:text-amber-700 transition" onClick={() => setActivePage("about")}>About</button>
-                        <button className="text-slate-700 hover:text-amber-700 transition" onClick={() => setActivePage("contact")}>Contact</button>
+                        <button className="text-slate-700 hover:text-amber-700 transition" onClick={goHome}>{t("nav.home")}</button>
+                        <button className="text-slate-700 hover:text-amber-700 transition" onClick={() => setActivePage("jiujiu")}>{t("nav.quickRelief")}</button>
+                        <button className="text-slate-700 hover:text-amber-700 transition" onClick={() => setActivePage("guasha")}>{t("nav.guaSha")}</button>
+                        <button className="text-slate-700 hover:text-amber-700 transition" onClick={() => setActivePage("qigong")}>{t("nav.acupoint")}</button>
+                        <button className="text-slate-700 hover:text-amber-700 transition" onClick={() => setActivePage("qimen")}>{t("nav.taiChi")}</button>
+                        <button className="text-slate-700 hover:text-amber-700 transition" onClick={() => setActivePage("wingchun")}>{t("nav.wingChun")}</button>
+                        <button className="text-slate-700 hover:text-amber-700 transition" onClick={() => setActivePage("about")}>{t("nav.about")}</button>
+                        <button className="text-slate-700 hover:text-amber-700 transition" onClick={() => setActivePage("contact")}>{t("nav.contact")}</button>
                         {currentUser && (
-                            <button className="text-slate-700 hover:text-amber-700 transition" onClick={() => setActivePage("mycourses")}>My Courses</button>
+                            <button className="text-slate-700 hover:text-amber-700 transition" onClick={() => setActivePage("mycourses")}>{t("nav.myCourses")}</button>
                         )}
                     </nav>
 
                     <div className="flex items-center gap-3">
+                        <LanguageSwitcher />
                         {!currentUser ? (
                             <button
                                 className="hidden rounded-full border border-amber-300 bg-white px-3 py-1 text-xs text-amber-700 hover:bg-amber-50 md:inline-flex transition"
                                 onClick={() => setActivePage("login")}
                             >
-                                Login
+                                {t("nav.login")}
                             </button>
                         ) : (
                             <button
@@ -599,14 +663,14 @@ function App() {
                         </div>
                         <nav className="flex flex-col gap-1 px-4 py-4 text-sm">
                             {[
-                                { label: "Home", action: () => { goHome(); setSidebarOpen(false); } },
-                                { label: "Quick Relief", action: () => { setActivePage("jiujiu"); setSidebarOpen(false); } },
-                                { label: "Gua Sha", action: () => { setActivePage("guasha"); setSidebarOpen(false); } },
-                                { label: "Acupoint", action: () => { setActivePage("qigong"); setSidebarOpen(false); } },
-                                { label: "Tai Chi", action: () => { setActivePage("qimen"); setSidebarOpen(false); } },
-                                { label: "Wing Chun", action: () => { setActivePage("wingchun"); setSidebarOpen(false); } },
-                                { label: "About", action: () => { setActivePage("about"); setSidebarOpen(false); } },
-                                { label: "Contact", action: () => { setActivePage("contact"); setSidebarOpen(false); } },
+                                { label: t("nav.home"), action: () => { goHome(); setSidebarOpen(false); } },
+                                { label: t("nav.quickRelief"), action: () => { setActivePage("jiujiu"); setSidebarOpen(false); } },
+                                { label: t("nav.guaSha"), action: () => { setActivePage("guasha"); setSidebarOpen(false); } },
+                                { label: t("nav.acupoint"), action: () => { setActivePage("qigong"); setSidebarOpen(false); } },
+                                { label: t("nav.taiChi"), action: () => { setActivePage("qimen"); setSidebarOpen(false); } },
+                                { label: t("nav.wingChun"), action: () => { setActivePage("wingchun"); setSidebarOpen(false); } },
+                                { label: t("nav.about"), action: () => { setActivePage("about"); setSidebarOpen(false); } },
+                                { label: t("nav.contact"), action: () => { setActivePage("contact"); setSidebarOpen(false); } },
                             ].map(({ label, action }) => (
                                 <button key={label} onClick={action} className="rounded-lg px-3 py-2.5 text-left text-slate-700 hover:bg-amber-50 hover:text-amber-700 transition">
                                     {label}
@@ -614,17 +678,18 @@ function App() {
                             ))}
                             {currentUser && (
                                 <button onClick={() => { setActivePage("mycourses"); setSidebarOpen(false); }} className="rounded-lg px-3 py-2.5 text-left text-slate-700 hover:bg-amber-50 hover:text-amber-700 transition">
-                                    My Courses
+                                    {t("nav.myCourses")}
                                 </button>
                             )}
                         </nav>
-                        <div className="mt-auto border-t border-slate-100 px-4 py-4">
+                        <div className="mt-auto border-t border-slate-100 px-4 py-4 space-y-3">
+                            <LanguageSwitcher />
                             {!currentUser ? (
                                 <button
                                     onClick={() => { setActivePage("login"); setSidebarOpen(false); }}
                                     className="w-full rounded-full bg-amber-600 px-4 py-2 text-sm font-semibold text-white hover:bg-amber-500 transition"
                                 >
-                                    Login
+                                    {t("nav.login")}
                                 </button>
                             ) : (
                                 <button
@@ -648,15 +713,15 @@ function App() {
                         className="mt-4 inline-flex items-center gap-2 text-xs md:text-sm text-slate-600 hover:text-amber-700 transition"
                     >
                         <span className="text-lg">←</span>
-                        Back to home
+                        {t("common.backToHome")}
                     </button>
                 </div>
             )}
 
             <footer className="border-t border-slate-200 bg-white py-4 text-[11px] text-slate-500">
                 <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-2 px-4 md:flex-row">
-                    <span>© 2015 EastCulture · Tai Chi · Traditional Arts Online</span>
-                    <span>All educational content is provided for wellness and cultural learning. It does not replace medical advice.</span>
+                    <span>{t("footer.copyright")}</span>
+                    <span>{t("footer.disclaimer")}</span>
                 </div>
             </footer>
         </div>

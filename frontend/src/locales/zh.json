@@ -1,0 +1,148 @@
+{
+  "nav": {
+    "home": "首页",
+    "quickRelief": "快速缓解",
+    "guaSha": "刮痧",
+    "acupoint": "穴位",
+    "taiChi": "太极",
+    "wingChun": "咏春",
+    "about": "关于我们",
+    "contact": "联系我们",
+    "myCourses": "我的课程",
+    "login": "登录",
+    "logout": "退出",
+    "account": "账户"
+  },
+  "language": {
+    "select": "语言",
+    "en": "English",
+    "zh": "中文",
+    "ja": "日本語",
+    "ko": "한국어",
+    "ur": "اردو",
+    "ar": "العربية"
+  },
+  "hero": {
+    "title": "东方文化",
+    "subtitle": "太极 · 传统艺术"
+  },
+  "common": {
+    "sale": "促销",
+    "viewAll": "查看全部 →",
+    "backToHome": "返回首页",
+    "loading": "加载中…",
+    "retry": "重试",
+    "buyNow": "立即购买",
+    "unlocked": "已解锁",
+    "locked": "已锁定",
+    "purchaseRequired": "需要购买才能观看此视频",
+    "loginRequired": "请登录后购买观看。",
+    "signInToPurchase": "登录购买",
+    "lifetimeAccess": "终身访问",
+    "lessons": "课程",
+    "lesson": "课程",
+    "nowPlaying": "正在播放",
+    "duration": "时长",
+    "price": "价格"
+  },
+  "jiujiu": {
+    "title": "9.9 快速缓解自我护理课程",
+    "subtitle": "快速缓解日常不适。4个简单穴位程序，每次5-10分钟，在家即刻舒适。",
+    "videoCourse": "视频课程",
+    "unlockLesson": "课程 {{id}} 已解锁",
+    "buyLesson": "购买课程 {{id}} · $9.9 美元",
+    "lessons": "课程",
+    "fullDescription": "课程 {{id}} — 完整描述",
+    "switchLessons": "切换上方课程查看详情",
+    "whoIsThisFor": "适合谁？",
+    "courseBenefits": "课程收益",
+    "instructor": "讲师",
+    "perfectFor": "完美适合",
+    "disclaimer": "免责声明：本课程仅用于健康目的，不构成医疗建议。如有健康问题，请咨询合格的医疗专业人员。",
+    "playbackError": "播放错误",
+    "selectLesson": "选择上方课程开始播放。",
+    "purchaseToUnlock": "购买以解锁观看。",
+    "lesson1": {
+      "title": "腰腿疼痛缓解",
+      "subtitle": "快速缓解 • 3个穴位 • 快速见效",
+      "intro": "饱受顽固腰痛困扰？厌倦了药膏和治疗的暂时缓解？\n\n本课程帮助您通过3个强大的穴位快速放松紧张肌肉，释放压力，缓解不适。\n\n无需工具，无需帮助。每天只需10-20分钟。\n\n跟随清吉大师，几分钟内感受温暖、放松和缓解。",
+      "closing": "一次购买 → 终身访问。随时练习，快速感觉更好。"
+    },
+    "lesson2": {
+      "title": "颈肩缓解",
+      "subtitle": "释放紧张 • 自由活动 • 快速缓解",
+      "intro": "颈部僵硬？肩膀紧绷？沉重、疼痛、难以移动？\n\n这套程序帮助您快速释放紧张，解锁紧绷的颈肩。\n\n每天只需10分钟。\n\n跟随练习，立即感受缓解——无需用力，无需设备。",
+      "closing": "一次购买 → 终身访问。几分钟内解锁您的颈肩。"
+    },
+    "lesson3": {
+      "title": "睡眠与平静支持",
+      "subtitle": "10分钟睡前程序 • 更快入睡",
+      "intro": "辗转反侧，思绪万千？无法入睡？\n\n这套睡前程序快速平静您的心灵，帮助您自然地睡得更深。\n\n床上10分钟。无需药物，无需设备。\n\n更快入睡，减少醒来。",
+      "closing": "一次购买 → 终身访问。今晚睡得更好。"
+    },
+    "lesson4": {
+      "title": "男性健康与活力",
+      "subtitle": "男性健康 • 自然支持 • 恢复能量",
+      "intro": "感觉精力不足？为活力和健康问题而烦恼？\n\n本课程帮助您了解男性生理健康，学习科学的自我护理方法，提高生活质量。\n\n每天只需10-15分钟。\n\n跟随练习，恢复您的自然活力——安全、自然、有效。",
+      "closing": "一次购买 → 终身访问。自然恢复您的活力。"
+    }
+  },
+  "footer": {
+    "copyright": "© 2015 东方文化 · 太极 · 传统艺术在线",
+    "disclaimer": "所有教育内容仅供健康和文化学习之用。不能替代医疗建议。"
+  },
+  "login": {
+    "title": "登录",
+    "subtitle": "欢迎回到东方文化",
+    "email": "邮箱",
+    "password": "密码",
+    "forgotPassword": "忘记密码？",
+    "signIn": "登录",
+    "noAccount": "还没有账户？",
+    "signUp": "注册",
+    "error": "邮箱或密码无效"
+  },
+  "register": {
+    "title": "创建账户",
+    "subtitle": "今天加入东方文化",
+    "username": "用户名",
+    "email": "邮箱",
+    "password": "密码",
+    "confirmPassword": "确认密码",
+    "createAccount": "创建账户",
+    "haveAccount": "已有账户？",
+    "signIn": "登录",
+    "error": "注册失败。请重试。"
+  },
+  "about": {
+    "title": "关于东方文化",
+    "content": "东方文化致力于保护和分享传统东方健康实践，包括太极、气功、穴位按摩等。"
+  },
+  "contact": {
+    "title": "联系我们",
+    "subtitle": "与我们的团队取得联系",
+    "name": "姓名",
+    "email": "邮箱",
+    "message": "消息",
+    "send": "发送消息",
+    "success": "消息发送成功！",
+    "error": "发送消息失败。请重试。"
+  },
+  "myCourses": {
+    "title": "我的课程",
+    "subtitle": "您购买的课程和课时",
+    "noCourses": "您还没有购买任何课程。",
+    "browseAll": "浏览所有课程",
+    "purchased": "已购买",
+    "expires": "到期"
+  },
+  "account": {
+    "title": "账户设置",
+    "profile": "个人资料",
+    "email": "邮箱",
+    "username": "用户名",
+    "changePassword": "更改密码",
+    "logout": "退出",
+    "purchases": "购买历史"
+  }
+}

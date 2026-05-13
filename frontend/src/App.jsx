@@ -455,8 +455,8 @@ function App() {
                         variants={fadeInUp}
                     >
                         <SectionHeading
-                            title={t("guasha.course.title")}
-                            subtitle={t("guasha.course.subtitle")}
+                            title={t(GUASHA_COURSE.titleKey)}
+                            subtitle={t(GUASHA_COURSE.subtitleKey)}
                             onViewAll
                             viewAllPage="guasha"
                             onNavigate={setActivePage}
@@ -502,8 +502,8 @@ function App() {
                         variants={fadeInUp}
                     >
                         <SectionHeading
-                            title={t("wingchun.course.title")}
-                            subtitle={t("wingchun.course.subtitle")}
+                            title={t("wingchun.courseTitle")}
+                            subtitle={t("wingchun.courseSubtitle")}
                             onViewAll
                             viewAllPage="wingchun"
                             onNavigate={setActivePage}

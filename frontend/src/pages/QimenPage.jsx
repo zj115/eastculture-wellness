@@ -3,6 +3,7 @@
 
 import { motion } from "framer-motion";
 import { useEffect, useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const fadeInUp = {
     hidden: { opacity: 0, y: 24 },
@@ -16,8 +17,8 @@ const API_BASE =
 // COURSE META
 // ─────────────────────────────────────────────
 const COURSE = {
-    titleEn: "Nourish Five Internal Organs, Calm Deep Inner Imbalance & Restore Long-Term Masculine Vitality",
-    subtitleEn: "Ancient Wudang Tai Chi Full Course. Seven Major Viscera Systematic Deep Nourishment, Step-by-Step Guided Practice, Eliminate Root Fatigue & Rebalance Full-Body Natural Wellness.",
+    titleKey: "qimen.course.title",
+    subtitleKey: "qimen.course.subtitle",
     sale: true,
     lessonCount: 7,
     lessonPrice: "$39",
@@ -30,281 +31,246 @@ const COURSE = {
 const LESSONS = [
     {
         id: 1,
-        titleEn: "Kidney Essence & Masculine Vitality",
-        subtitleEn: "Deep core energy restoration, support lasting inner strength, ease body weariness & maintain peak daily male performance",
+        titleKey: "qimen.lessons.0.title",
+        subtitleKey: "qimen.lessons.0.subtitle",
         duration: "~11 min",
         s3Key: "taichi/lesson-07-huogu-yangsheng-gong.mp4",
         coverImage: "/images/tai-chi/lesson-07-huogu-yangsheng.png",
         fallbackImage: "/images/taiji-mountain.jpg",
-
-        intro: "Stop enduring joint pain! Don't rely on painkillers and massages that only treat the symptoms, not the root cause! Bone-Invigorating Health Qigong is taught personally by Master Liu Shigao, the 15th-generation authentic inheritor of the Wudang Sanfeng Sect. This 11-minute course is specially designed for stiff joints, cold and aching bone cavities, and sedentary strain. It unblocks stagnation deep in the joints, relieves pain in the shoulders, neck, lower back and knees, and restores flexibility to your joints.",
-
-        painPoints: [
-            "Office workers: Stiff and sore shoulders, neck and lower back, difficulty standing after sitting, limited range of motion when turning or bending",
-            "Middle-aged and elderly people with joint discomfort: Knee pain, joint cracking, difficulty climbing stairs, worsened symptoms on rainy days",
-            "People with minor sports injuries: Mild waist and knee strain, unable to do intense exercise, in need of gentle recovery",
-            "People with cold-damp constitution: Cold and tight joints, cold hands and feet, persistent cold pain deep in the bones year-round",
+        introKey: "qimen.lessons.0.intro",
+        painPointKeys: [
+            "qimen.lessons.0.painPoints.0",
+            "qimen.lessons.0.painPoints.1",
+            "qimen.lessons.0.painPoints.2",
+            "qimen.lessons.0.painPoints.3",
         ],
-
         instructor: {
-            name: "Master Liu Shigao",
-            title: "15th-Generation Authentic Inheritor of the Wudang Sanfeng Sect",
-            points: [
-                "Authentic Lineage: Disciple of Grandmaster Zhong Yunlong, the 14th-generation leader of the Wudang Sanfeng Sect",
-                "Professional Achievements: Double champion in international Tai Chi and Tai Chi Sword competitions",
-                "Precise Teaching: Trained systematically at the Wudang Zixiao Palace since childhood",
+            nameKey: "qimen.lessons.0.instructor.name",
+            titleKey: "qimen.lessons.0.instructor.title",
+            pointKeys: [
+                "qimen.lessons.0.instructor.points.0",
+                "qimen.lessons.0.instructor.points.1",
+                "qimen.lessons.0.instructor.points.2",
             ],
         },
-
         benefits: [
-            { title: "Qi-guided joint clearing", desc: "Qi penetrates the bone cavities, dissolves cold-damp stagnation, quickly relieves stabbing and cold pain in shoulders, waist and knees" },
-            { title: "Activate joints, eliminate stiffness", desc: "Stretches ligaments and joint capsules, improves range of motion, ends joint cracking and difficulty bending" },
-            { title: "Dispel cold and dampness", desc: "Draws Yang Qi inward, expels deep cold-damp from joints, reduces discomfort on rainy days" },
-            { title: "Strengthen tendons and bones", desc: "Enhances muscle and ligament support, reduces joint wear, prevents recurring strain" },
-            { title: "Time-efficient and easy to maintain", desc: "11-minute short practice, no equipment needed, can be done at home or in the office" },
+            { titleKey: "qimen.lessons.0.benefits.0.title", descKey: "qimen.lessons.0.benefits.0.desc" },
+            { titleKey: "qimen.lessons.0.benefits.1.title", descKey: "qimen.lessons.0.benefits.1.desc" },
+            { titleKey: "qimen.lessons.0.benefits.2.title", descKey: "qimen.lessons.0.benefits.2.desc" },
+            { titleKey: "qimen.lessons.0.benefits.3.title", descKey: "qimen.lessons.0.benefits.3.desc" },
+            { titleKey: "qimen.lessons.0.benefits.4.title", descKey: "qimen.lessons.0.benefits.4.desc" },
         ],
-
-        closingEn: "Stop enduring joint pain at a young age. Bone-Invigorating Health Qigong — 11 minutes to unblock, warm and strengthen your joints every day.",
+        closingKey: "qimen.lessons.0.closing",
     },
 
     {
         id: 2,
-        titleEn: "Liver & Mood Stability Care",
-        subtitleEn: "Clear internal stagnation, soothe irritability, release daily pressure & keep steady calm mindset",
+        titleKey: "qimen.lessons.1.title",
+        subtitleKey: "qimen.lessons.1.subtitle",
         duration: "~10 min",
         s3Key: "taichi/lesson-06-wuji-hunyuan-zhuang.mp4",
         coverImage: "/images/tai-chi/lesson-06-hunyuan-zhuang.png",
         fallbackImage: "/images/taiji-mountain.jpg",
-
-        intro: "Stop suffering from physical weakness, fatigue and sore waist and knees! Stop relying blindly on supplements that only make you weaker! Hunyuan Wuji Stance is taught personally by Master Liu Shigao, the 15th-generation authentic inheritor of the Wudang Sanfeng Sect. This 10-minute ancient standing practice is specially designed for those with insufficient kidney Qi, depleted primordial energy, cold hands and feet, and poor concentration. It gathers Qi and consolidates your foundation, replenishing your exhausted body from the root.",
-
-        painPoints: [
-            "People with insufficient kidney Qi: Sore, weak waist and knees, low energy",
-            "People with cold constitution: Cold hands and feet, cold lower abdomen, aversion to wind and cold",
-            "People with high stress and late nights: Fatigue, poor concentration, easy palpitations",
-            "People with insomnia and restless sleep: Difficulty falling asleep, light sleep, easy waking",
-            "People with weak immunity: Prone to colds and frequent minor illnesses",
+        introKey: "qimen.lessons.1.intro",
+        painPointKeys: [
+            "qimen.lessons.1.painPoints.0",
+            "qimen.lessons.1.painPoints.1",
+            "qimen.lessons.1.painPoints.2",
+            "qimen.lessons.1.painPoints.3",
+            "qimen.lessons.1.painPoints.4",
         ],
-
         instructor: {
-            name: "Master Liu Shigao",
-            title: "15th-Generation Authentic Inheritor of the Wudang Sanfeng Sect",
-            points: [
-                "Authentic Lineage: Bestowed the Taoist name \"Shigao\" — core 15th-generation inheritor, decades of Wudang internal stance practice",
-                "Professional Achievements: Double champion in international Tai Chi and Tai Chi Sword competitions",
-                "Precise Teaching: Proficient in the essence of \"gathering Qi through standing and returning to origin\"",
+            nameKey: "qimen.lessons.1.instructor.name",
+            titleKey: "qimen.lessons.1.instructor.title",
+            pointKeys: [
+                "qimen.lessons.1.instructor.points.0",
+                "qimen.lessons.1.instructor.points.1",
+                "qimen.lessons.1.instructor.points.2",
             ],
         },
-
         benefits: [
-            { title: "Strengthens kidneys and consolidates primordial Qi", desc: "Quickly gathers scattered vital energy, relieves soreness and fatigue" },
-            { title: "Warms Yang and dispels cold", desc: "Improves circulation in the lower body, warms hands, feet and abdomen from within" },
-            { title: "Calms the mind and stabilizes emotions", desc: "Relieves irritation, calms the heart, deepens sleep" },
-            { title: "Boosts energy and eliminates drowsiness", desc: "Keeps you alert and focused during the day" },
-            { title: "Zero-threshold and easy to stick to", desc: "10-minute standing practice, no space or equipment required, suitable for all ages" },
+            { titleKey: "qimen.lessons.1.benefits.0.title", descKey: "qimen.lessons.1.benefits.0.desc" },
+            { titleKey: "qimen.lessons.1.benefits.1.title", descKey: "qimen.lessons.1.benefits.1.desc" },
+            { titleKey: "qimen.lessons.1.benefits.2.title", descKey: "qimen.lessons.1.benefits.2.desc" },
+            { titleKey: "qimen.lessons.1.benefits.3.title", descKey: "qimen.lessons.1.benefits.3.desc" },
+            { titleKey: "qimen.lessons.1.benefits.4.title", descKey: "qimen.lessons.1.benefits.4.desc" },
         ],
-
-        closingEn: "Just 10 minutes a day to gradually recover your scattered vital energy. Hunyuan Wuji Stance — simple, deep, effective.",
+        closingKey: "qimen.lessons.1.closing",
     },
 
     {
         id: 3,
-        titleEn: "Spleen & All-Day Energy Boost",
-        subtitleEn: "Optimize internal energy absorption, banish constant sluggishness & maintain consistent high vitality",
+        titleKey: "qimen.lessons.2.title",
+        subtitleKey: "qimen.lessons.2.subtitle",
         duration: "~17 min",
         s3Key: "taichi/lesson-05-wudang-daomen-baduanjin.mp4",
         coverImage: "/images/tai-chi/lesson-05-baduanjin.png",
         fallbackImage: "/images/taiji-mountain.jpg",
-
-        intro: "Stop suffering from weak spleen and stomach, indigestion, bloating and edema! Wudang Taoist Baduanjin is taught personally by Master Liu Shigao, the 15th-generation authentic inheritor of the Wudang Sanfeng Sect. This 17-minute ancient Daoyin practice specially regulates the spleen and stomach, enhances digestion, improves absorption and speeds up metabolism, solving the root problems of poor appetite, malabsorption, weight gain and weakness.",
-
-        painPoints: [
-            "People with weak spleen and stomach: Indigestion, bloating, poor appetite",
-            "People with intestinal disorders: Recurring constipation or loose stools, abdominal discomfort",
-            "People with bloating and edema: Slow metabolism, fat accumulation, heavy body",
-            "People with sallow complexion: Malnutrition, poor absorption, fatigue and laziness",
-            "Middle-aged and elderly health seekers: Weak physique, unable to do intense exercise, in need of gentle conditioning",
+        introKey: "qimen.lessons.2.intro",
+        painPointKeys: [
+            "qimen.lessons.2.painPoints.0",
+            "qimen.lessons.2.painPoints.1",
+            "qimen.lessons.2.painPoints.2",
+            "qimen.lessons.2.painPoints.3",
+            "qimen.lessons.2.painPoints.4",
         ],
-
         instructor: {
-            name: "Master Liu Shigao",
-            title: "15th-Generation Authentic Inheritor of the Wudang Sanfeng Sect",
-            points: [
-                "Authentic Lineage: Holding the complete ancient Baduanjin Daoyin tradition passed down from Grandmaster Zhong Yunlong",
-                "Professional Achievements: International martial arts champion, proficient in internal organ regulation",
-                "Precise Teaching: Breaks down ancient Baduanjin into simple moves, no empty theories — only tangible effects",
+            nameKey: "qimen.lessons.2.instructor.name",
+            titleKey: "qimen.lessons.2.instructor.title",
+            pointKeys: [
+                "qimen.lessons.2.instructor.points.0",
+                "qimen.lessons.2.instructor.points.1",
+                "qimen.lessons.2.instructor.points.2",
             ],
         },
-
         benefits: [
-            { title: "Strengthens spleen and stomach", desc: "Improves digestion and absorption, relieves bloating, helps nutrients absorb effectively" },
-            { title: "Regulates intestines", desc: "Eases constipation and diarrhea, balances intestinal rhythm, stops recurring discomfort" },
-            { title: "Boosts metabolism", desc: "Reduces bloating and fat, improves circulation, reduces excess fat and edema" },
-            { title: "Replenishes Qi", desc: "Improves sallow complexion, restores rosy color and stronger energy" },
-            { title: "Gentle and safe for the whole family", desc: "Soft movements, suitable for beginners, the elderly and weak people" },
+            { titleKey: "qimen.lessons.2.benefits.0.title", descKey: "qimen.lessons.2.benefits.0.desc" },
+            { titleKey: "qimen.lessons.2.benefits.1.title", descKey: "qimen.lessons.2.benefits.1.desc" },
+            { titleKey: "qimen.lessons.2.benefits.2.title", descKey: "qimen.lessons.2.benefits.2.desc" },
+            { titleKey: "qimen.lessons.2.benefits.3.title", descKey: "qimen.lessons.2.benefits.3.desc" },
+            { titleKey: "qimen.lessons.2.benefits.4.title", descKey: "qimen.lessons.2.benefits.4.desc" },
         ],
-
-        closingEn: "17 minutes of authentic Wudang Baduanjin — feel your spleen and stomach improve with every practice.",
+        closingKey: "qimen.lessons.2.closing",
     },
 
     {
         id: 4,
-        titleEn: "Lung Power & Physical Stamina",
-        subtitleEn: "Deep breath regulation, expand lung capacity, build natural endurance & anti-fatigue reserve",
+        titleKey: "qimen.lessons.3.title",
+        subtitleKey: "qimen.lessons.3.subtitle",
         duration: "~11 min",
         s3Key: "taichi/lesson-03-wudang-sanfeng-taichi-18-forms.mp4",
         coverImage: "/images/tai-chi/lesson-03-wudang-18forms.png",
         fallbackImage: "/images/taiji-mountain.jpg",
-
-        intro: "Stop being destroyed by insomnia, palpitations, irritation and internal friction! Tai Chi for Heart Calming is taught personally by Master Liu Shigao, the 15th-generation authentic inheritor of the Wudang Sanfeng Sect. This 11-minute gentle Tai Chi set specially calms the mind, relieves stress, improves sleep and soothes emotions, helping you relax mentally and physically.",
-
-        painPoints: [
-            "People with insomnia: Difficulty falling asleep, light sleep, easy waking, tired after rest",
-            "Anxious and stressed people: Irritability, overthinking, mental tension",
-            "People with palpitations: Chest tightness, shortness of breath, easy nervousness",
-            "People with mental fatigue: Nerve weakness, poor concentration, brain fog",
-            "People with internal friction: Low mood, physical and mental exhaustion",
+        introKey: "qimen.lessons.3.intro",
+        painPointKeys: [
+            "qimen.lessons.3.painPoints.0",
+            "qimen.lessons.3.painPoints.1",
+            "qimen.lessons.3.painPoints.2",
+            "qimen.lessons.3.painPoints.3",
+            "qimen.lessons.3.painPoints.4",
         ],
-
         instructor: {
-            name: "Master Liu Shigao",
-            title: "15th-Generation Authentic Inheritor of the Wudang Sanfeng Sect",
-            points: [
-                "Authentic Lineage: Proficient in Tai Chi static practice and heart-nourishing methods",
-                "Professional Achievements: International Tai Chi champion, steady and gentle movements",
-                "Practical Teaching: Specially designed for stressed, insomniac and anxious people",
+            nameKey: "qimen.lessons.3.instructor.name",
+            titleKey: "qimen.lessons.3.instructor.title",
+            pointKeys: [
+                "qimen.lessons.3.instructor.points.0",
+                "qimen.lessons.3.instructor.points.1",
+                "qimen.lessons.3.instructor.points.2",
             ],
         },
-
         benefits: [
-            { title: "Calms the heart and relieves anxiety", desc: "Releases mental pressure, stabilizes emotions" },
-            { title: "Improves insomnia and sleep quality", desc: "Faster onset, deeper sleep, more energy upon waking" },
-            { title: "Relieves palpitations and chest tightness", desc: "Balances breathing, eases discomfort" },
-            { title: "Relaxes the brain and reduces fatigue", desc: "Sharpens the mind, improves focus" },
-            { title: "Time-efficient and sustainable", desc: "11-minute practice, suitable for morning or night" },
+            { titleKey: "qimen.lessons.3.benefits.0.title", descKey: "qimen.lessons.3.benefits.0.desc" },
+            { titleKey: "qimen.lessons.3.benefits.1.title", descKey: "qimen.lessons.3.benefits.1.desc" },
+            { titleKey: "qimen.lessons.3.benefits.2.title", descKey: "qimen.lessons.3.benefits.2.desc" },
+            { titleKey: "qimen.lessons.3.benefits.3.title", descKey: "qimen.lessons.3.benefits.3.desc" },
+            { titleKey: "qimen.lessons.3.benefits.4.title", descKey: "qimen.lessons.3.benefits.4.desc" },
         ],
-
-        closingEn: "The heart governs the spirit. An unsettled heart leads to poor sleep and weak health. Practice daily — more peace with every session.",
+        closingKey: "qimen.lessons.3.closing",
     },
 
     {
         id: 5,
-        titleEn: "Heart Calm & Mental Focus",
-        subtitleEn: "Nourish heart spirit, calm overthinking, relieve inner anxiety & restore sharp clear mind",
+        titleKey: "qimen.lessons.4.title",
+        subtitleKey: "qimen.lessons.4.subtitle",
         duration: "~11 min",
         s3Key: "taichi/lesson-02-wudang-sanfeng-taichi-13-forms.mp4",
         coverImage: "/images/tai-chi/lesson-02-wudang-13forms.png",
         fallbackImage: "/images/taiji-mountain.jpg",
-
-        intro: "Stop letting liver Qi stagnation, chest tightness, irritation and acne harm your body! Tai Chi for Soothing the Liver is taught personally by Master Liu Shigao, the 15th-generation authentic inheritor of the Wudang Sanfeng Sect. This 11-minute stretching Tai Chi set specially soothes the liver, regulates Qi, releases stagnation and clears liver fire, making your body free of blockage, tightness and irritation.",
-
-        painPoints: [
-            "People with liver Qi stagnation: Chest tightness, frequent sighing, rib pain",
-            "Irritable people: Bad temper, depression, strong mood swings",
-            "People with liver damage from late nights: Bitter mouth, acne, dry eyes",
-            "People with Qi stagnation: Dizziness, body tightness, blocked meridians",
-            "Women in need of regulation: Breast tenderness and mood swings before menstruation",
+        introKey: "qimen.lessons.4.intro",
+        painPointKeys: [
+            "qimen.lessons.4.painPoints.0",
+            "qimen.lessons.4.painPoints.1",
+            "qimen.lessons.4.painPoints.2",
+            "qimen.lessons.4.painPoints.3",
+            "qimen.lessons.4.painPoints.4",
         ],
-
         instructor: {
-            name: "Master Liu Shigao",
-            title: "15th-Generation Authentic Inheritor of the Wudang Sanfeng Sect",
-            points: [
-                "Authentic Lineage: Proficient in meridian stretching and Qi regulation",
-                "Professional Achievements: International Tai Chi champion, open and smooth movements with clear Qi paths",
-                "Precise Teaching: Simple and easy to learn, specially designed for liver meridian blockage",
+            nameKey: "qimen.lessons.4.instructor.name",
+            titleKey: "qimen.lessons.4.instructor.title",
+            pointKeys: [
+                "qimen.lessons.4.instructor.points.0",
+                "qimen.lessons.4.instructor.points.1",
+                "qimen.lessons.4.instructor.points.2",
             ],
         },
-
         benefits: [
-            { title: "Soothes the liver and regulates Qi", desc: "Eliminates chest tightness and sighing, relaxes the body" },
-            { title: "Clears liver fire", desc: "Relieves bitter mouth, dry eyes and irritation" },
-            { title: "Smooths Qi flow and unblocks meridians", desc: "Reduces body tightness and soreness" },
-            { title: "Calms emotions", desc: "Less anger, less internal friction, more ease" },
-            { title: "Simple and efficient", desc: "11-minute stretching, usable at work or home" },
+            { titleKey: "qimen.lessons.4.benefits.0.title", descKey: "qimen.lessons.4.benefits.0.desc" },
+            { titleKey: "qimen.lessons.4.benefits.1.title", descKey: "qimen.lessons.4.benefits.1.desc" },
+            { titleKey: "qimen.lessons.4.benefits.2.title", descKey: "qimen.lessons.4.benefits.2.desc" },
+            { titleKey: "qimen.lessons.4.benefits.3.title", descKey: "qimen.lessons.4.benefits.3.desc" },
+            { titleKey: "qimen.lessons.4.benefits.4.title", descKey: "qimen.lessons.4.benefits.4.desc" },
         ],
-
-        closingEn: "The liver governs free flow of Qi. Once unblocked, the whole body flows. Soothe the liver — feel the difference every day.",
+        closingKey: "qimen.lessons.4.closing",
     },
 
     {
         id: 6,
-        titleEn: "Deep Night Recovery & Quality Sleep",
-        subtitleEn: "Calm nightly restlessness, ease frequent waking, enjoy deep uninterrupted sleep & fully refreshed mornings",
+        titleKey: "qimen.lessons.5.title",
+        subtitleKey: "qimen.lessons.5.subtitle",
         duration: "~28 min",
         s3Key: "taichi/lesson-01-wudang-sanfeng-taichi-28-forms.mp4",
         coverImage: "/images/tai-chi/lesson-01-wudang-28forms.png",
         fallbackImage: "/images/taiji-mountain.jpg",
-
-        intro: "Stop catching colds every season and feeling uncomfortable in the wind! Tai Chi for Nourishing the Lungs is taught personally by Master Liu Shigao, the 15th-generation authentic inheritor of the Wudang Sanfeng Sect. This 28-minute breath-coordinated Tai Chi set specially moistens the lungs, strengthens lung Qi, improves immunity and relieves dry throat, making you full of energy with stronger defense.",
-
-        painPoints: [
-            "People with weak lung Qi: Prone to colds, low immunity, weak health",
-            "People with throat discomfort: Dry throat, easy coughing, phlegm discomfort",
-            "People with shallow breathing: Shortness of breath, weak voice, chest tightness",
-            "Public speakers and voice users: Teachers, streamers with chronic throat fatigue",
-            "People in dry environments: Nasal dryness, skin dryness, sensitive lungs",
+        introKey: "qimen.lessons.5.intro",
+        painPointKeys: [
+            "qimen.lessons.5.painPoints.0",
+            "qimen.lessons.5.painPoints.1",
+            "qimen.lessons.5.painPoints.2",
+            "qimen.lessons.5.painPoints.3",
+            "qimen.lessons.5.painPoints.4",
         ],
-
         instructor: {
-            name: "Master Liu Shigao",
-            title: "15th-Generation Authentic Inheritor of the Wudang Sanfeng Sect",
-            points: [
-                "Authentic Lineage: Direct inheritor, proficient in breath Daoyin and lung regulation",
-                "Professional Achievements: International Tai Chi champion, expert in guiding Qi with form",
-                "Practical Teaching: Movements matched with breathing, easy to learn, obvious long-term effects",
+            nameKey: "qimen.lessons.5.instructor.name",
+            titleKey: "qimen.lessons.5.instructor.title",
+            pointKeys: [
+                "qimen.lessons.5.instructor.points.0",
+                "qimen.lessons.5.instructor.points.1",
+                "qimen.lessons.5.instructor.points.2",
             ],
         },
-
         benefits: [
-            { title: "Moistens lungs and boosts lung function", desc: "Deepens breathing, relieves shortness of breath" },
-            { title: "Enhances immunity", desc: "Reduces seasonal colds, strengthens external defense" },
-            { title: "Relieves dry throat and coughing", desc: "Moistens nose and throat, reduces irritation" },
-            { title: "Replenishes Qi and improves complexion", desc: "Boosts energy, strengthens voice" },
-            { title: "Gentle health care", desc: "Suitable for the weak, elderly and beginners" },
+            { titleKey: "qimen.lessons.5.benefits.0.title", descKey: "qimen.lessons.5.benefits.0.desc" },
+            { titleKey: "qimen.lessons.5.benefits.1.title", descKey: "qimen.lessons.5.benefits.1.desc" },
+            { titleKey: "qimen.lessons.5.benefits.2.title", descKey: "qimen.lessons.5.benefits.2.desc" },
+            { titleKey: "qimen.lessons.5.benefits.3.title", descKey: "qimen.lessons.5.benefits.3.desc" },
+            { titleKey: "qimen.lessons.5.benefits.4.title", descKey: "qimen.lessons.5.benefits.4.desc" },
         ],
-
-        closingEn: "The lungs govern Qi of the whole body. Strong lung Qi means a strong body. Practice daily — breathe deeper, live better.",
+        closingKey: "qimen.lessons.5.closing",
     },
 
     {
         id: 7,
-        titleEn: "Five Organs Full System Deep Conditioning",
-        subtitleEn: "Comprehensive heart/liver/spleen/lung/kidney balance, full body deep maintenance for long term prime wellness",
+        titleKey: "qimen.lessons.6.title",
+        subtitleKey: "qimen.lessons.6.subtitle",
         duration: "~30 min",
         s3Key: "taichi/lesson-04-wudang-sanfeng-taichi-108-forms.mp4",
         coverImage: "/images/tai-chi/lesson-04-wudang-108forms.png",
         fallbackImage: "/images/taiji-mountain.jpg",
-
-        intro: "Stop suffering from Qi and blood deficiency, organ imbalance and overall sub-health! Tai Chi for Qi and Blood Regulation is taught personally by Master Liu Shigao, the 15th-generation authentic inheritor of the Wudang Sanfeng Sect. This 30-minute complete Tai Chi set balances Qi and blood, nourishes the heart, liver, spleen, lungs and kidneys, unblocks meridians, providing full-body conditioning in one practice.",
-
-        painPoints: [
-            "People with Qi and blood deficiency: Sallow complexion, dizziness, fatigue, numb hands and feet",
-            "People with organ disorders: Combined heart, liver, spleen, lung and kidney weakness",
-            "People with full-body sub-health: Aches, fatigue, poor sleep, bad complexion",
-            "Middle-aged and elderly health seekers: Declining health, in need of comprehensive anti-aging care",
-            "Systematic health lovers: Want one complete routine instead of mixed fragments",
+        introKey: "qimen.lessons.6.intro",
+        painPointKeys: [
+            "qimen.lessons.6.painPoints.0",
+            "qimen.lessons.6.painPoints.1",
+            "qimen.lessons.6.painPoints.2",
+            "qimen.lessons.6.painPoints.3",
+            "qimen.lessons.6.painPoints.4",
         ],
-
         instructor: {
-            name: "Master Liu Shigao",
-            title: "15th-Generation Authentic Inheritor of the Wudang Sanfeng Sect",
-            points: [
-                "Authentic Lineage: Holding the complete Wudang Tai Chi system, proficient in Qi, blood and organ regulation",
-                "Professional Achievements: International Tai Chi champion, integrating heart, liver, spleen, lung and kidney nourishment",
-                "Systematic Teaching: Step-by-step, full-body coverage in one complete set",
+            nameKey: "qimen.lessons.6.instructor.name",
+            titleKey: "qimen.lessons.6.instructor.title",
+            pointKeys: [
+                "qimen.lessons.6.instructor.points.0",
+                "qimen.lessons.6.instructor.points.1",
+                "qimen.lessons.6.instructor.points.2",
             ],
         },
-
         benefits: [
-            { title: "Balances full-body Qi and blood", desc: "Improves pale complexion, dizziness and fatigue" },
-            { title: "Nourishes five internal organs", desc: "Synchronously balances heart, liver, spleen, lungs and kidneys" },
-            { title: "Unblocks full-body meridians", desc: "Relieves soreness, stiffness and stagnation" },
-            { title: "Strengthens foundation and immunity", desc: "Slows aging, boosts energy" },
-            { title: "All-in-one full-body practice", desc: "One set completes full-body conditioning without switching routines" },
+            { titleKey: "qimen.lessons.6.benefits.0.title", descKey: "qimen.lessons.6.benefits.0.desc" },
+            { titleKey: "qimen.lessons.6.benefits.1.title", descKey: "qimen.lessons.6.benefits.1.desc" },
+            { titleKey: "qimen.lessons.6.benefits.2.title", descKey: "qimen.lessons.6.benefits.2.desc" },
+            { titleKey: "qimen.lessons.6.benefits.3.title", descKey: "qimen.lessons.6.benefits.3.desc" },
+            { titleKey: "qimen.lessons.6.benefits.4.title", descKey: "qimen.lessons.6.benefits.4.desc" },
         ],
-
-        closingEn: "Imbalanced Qi and blood lead to disordered organs. This comprehensive practice regulates both — nourishing all at once, leaving you fully open after every session.",
+        closingKey: "qimen.lessons.6.closing",
     },
 ];
 
@@ -320,46 +286,46 @@ function SectionTitle({ children }) {
     );
 }
 
-function PainPointsList({ items }) {
+function PainPointsList({ items, t }) {
     return (
         <ul className="space-y-2.5">
-            {items.map((item, i) => (
+            {items.map((itemKey, i) => (
                 <li key={i} className="flex gap-3 text-sm text-slate-700 leading-snug">
                     <span className="mt-0.5 shrink-0 text-amber-500 font-bold text-base leading-none">✕</span>
-                    <span>{item}</span>
+                    <span>{t(itemKey)}</span>
                 </li>
             ))}
         </ul>
     );
 }
 
-function BenefitsList({ items }) {
+function BenefitsList({ items, t }) {
     return (
         <div className="grid gap-3 sm:grid-cols-2">
             {items.map((b, i) => (
                 <div key={i} className="rounded-2xl border border-slate-200 bg-white p-4 space-y-1.5">
                     <p className="text-sm font-semibold text-slate-900 leading-snug">
-                        <span className="text-emerald-600 mr-1.5">✓</span>{b.title}
+                        <span className="text-emerald-600 mr-1.5">✓</span>{t(b.titleKey)}
                     </p>
-                    <p className="text-xs text-slate-500 leading-relaxed pl-5">{b.desc}</p>
+                    <p className="text-xs text-slate-500 leading-relaxed pl-5">{t(b.descKey)}</p>
                 </div>
             ))}
         </div>
     );
 }
 
-function InstructorCard({ instructor }) {
+function InstructorCard({ instructor, t }) {
     return (
         <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 space-y-2">
             <div>
-                <p className="text-sm font-bold text-slate-900">{instructor.name}</p>
-                <p className="text-xs text-amber-700 mt-0.5">{instructor.title}</p>
+                <p className="text-sm font-bold text-slate-900">{t(instructor.nameKey)}</p>
+                <p className="text-xs text-amber-700 mt-0.5">{t(instructor.titleKey)}</p>
             </div>
             <ul className="space-y-1.5">
-                {instructor.points.map((pt, i) => (
+                {instructor.pointKeys.map((ptKey, i) => (
                     <li key={i} className="flex gap-2 text-xs text-slate-600 leading-relaxed">
                         <span className="shrink-0 text-slate-400 mt-0.5">•</span>
-                        <span>{pt}</span>
+                        <span>{t(ptKey)}</span>
                     </li>
                 ))}
             </ul>
@@ -367,52 +333,52 @@ function InstructorCard({ instructor }) {
     );
 }
 
-function LessonDetail({ lesson }) {
+function LessonDetail({ lesson, t }) {
     return (
         <div className="space-y-5">
             {/* Intro */}
             <div className="rounded-3xl border border-slate-200 bg-white p-5 space-y-3">
                 <div>
                     <h2 className="text-lg font-bold text-slate-900 leading-snug">
-                        {lesson.titleEn}
+                        {t(lesson.titleKey)}
                     </h2>
                     <p className="text-sm text-amber-700 mt-1 font-medium">
-                        {lesson.subtitleEn}
+                        {t(lesson.subtitleKey)}
                     </p>
                 </div>
                 <p className="text-sm text-slate-700 leading-relaxed">
-                    {lesson.intro}
+                    {t(lesson.introKey)}
                 </p>
             </div>
 
             {/* Pain Points */}
             <div className="rounded-3xl border border-amber-200 bg-amber-50 p-5">
-                <SectionTitle>Who Is This For?</SectionTitle>
-                <PainPointsList items={lesson.painPoints} />
+                <SectionTitle>{t("qimen.whoIsThisFor")}</SectionTitle>
+                <PainPointsList items={lesson.painPointKeys} t={t} />
             </div>
 
             {/* Benefits */}
             <div className="rounded-3xl border border-slate-200 bg-slate-50 p-5">
-                <SectionTitle>Core Benefits</SectionTitle>
-                <BenefitsList items={lesson.benefits} />
+                <SectionTitle>{t("qimen.coreBenefits")}</SectionTitle>
+                <BenefitsList items={lesson.benefits} t={t} />
             </div>
 
             {/* Instructor */}
             <div className="rounded-3xl border border-slate-200 bg-white p-5">
-                <SectionTitle>Instructor</SectionTitle>
-                <InstructorCard instructor={lesson.instructor} />
+                <SectionTitle>{t("qimen.instructor")}</SectionTitle>
+                <InstructorCard instructor={lesson.instructor} t={t} />
             </div>
 
             {/* Closing */}
             <div className="rounded-3xl bg-slate-900 px-5 py-5 text-center">
                 <p className="text-sm font-medium text-white/90 leading-relaxed">
-                    {lesson.closingEn}
+                    {t(lesson.closingKey)}
                 </p>
             </div>
 
             {/* Disclaimer */}
             <div className="rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-xs text-amber-900 leading-relaxed">
-                Disclaimer: This program is for wellness purposes only and is not medical advice. Please consult a qualified healthcare professional if you have any health concerns.
+                {t("qimen.disclaimer")}
             </div>
         </div>
     );
@@ -429,6 +395,7 @@ export default function QimenPage({
     onPurchase,
     onGoLogin,
 }) {
+    const { t } = useTranslation();
     const isLoggedIn = !!currentUser;
     const isOwned = !!isOwnedProp;
 
@@ -493,7 +460,7 @@ export default function QimenPage({
             onPurchase?.("video", {
                 courseId: "taichi",
                 videoKey: lesson.s3Key,
-                videoTitle: lesson.titleEn,
+                videoTitle: t(lesson.titleKey),
             });
             return;
         }
@@ -514,7 +481,7 @@ export default function QimenPage({
         onPurchase?.("video", {
             courseId: "taichi",
             videoKey: activeLesson.s3Key,
-            videoTitle: activeLesson.titleEn,
+            videoTitle: t(activeLesson.titleKey),
         });
     }
 
@@ -545,7 +512,7 @@ export default function QimenPage({
                 >
                     <img
                         src={heroSrc}
-                        alt={activeLesson.titleEn}
+                        alt={t(activeLesson.titleKey)}
                         onError={() => setImgError(true)}
                         className="w-full object-cover object-center"
                         style={{ display: "block", aspectRatio: "16/9", maxHeight: "420px" }}
@@ -560,23 +527,23 @@ export default function QimenPage({
                 >
                     <div className="flex flex-wrap items-center gap-2 mb-2">
                         <span className="text-[11px] uppercase tracking-widest text-slate-500">
-                            Video Course
+                            {t("qimen.videoCourse")}
                         </span>
                         {COURSE.sale && (
                             <span className="rounded-full bg-slate-900 px-2.5 py-0.5 text-[11px] font-semibold text-white">
-                                Sale
+                                {t("qimen.sale")}
                             </span>
                         )}
                     </div>
                     <h1 className="text-2xl font-bold leading-tight text-slate-900 md:text-3xl">
-                        {COURSE.titleEn}
+                        {t(COURSE.titleKey)}
                     </h1>
                     <p className="mt-2 text-sm text-slate-600 leading-relaxed">
-                        {COURSE.subtitleEn}
+                        {t(COURSE.subtitleKey)}
                     </p>
                     <div className="mt-4 flex flex-wrap items-center gap-3">
                         <span className="rounded-full border border-amber-200 bg-amber-50 px-2.5 py-0.5 text-xs text-amber-700">
-                            {COURSE.lessonCount} lessons · buy individually
+                            {t("qimen.lessonCount", { count: COURSE.lessonCount })}
                         </span>
                     </div>
                 </motion.div>
@@ -589,7 +556,7 @@ export default function QimenPage({
                 >
                     {canPlayActive ? (
                         <div className="w-full rounded-2xl border border-emerald-300 bg-emerald-50 px-4 py-3 text-center text-sm font-semibold text-emerald-800">
-                            ✓ Lesson {activeLesson.id} Unlocked
+                            {t("qimen.lessonUnlocked", { lessonId: activeLesson.id })}
                         </div>
                     ) : (
                         <>
@@ -597,11 +564,11 @@ export default function QimenPage({
                                 onClick={handleBuyActiveVideo}
                                 className="w-full rounded-2xl bg-amber-600 px-4 py-4 text-sm font-bold text-white hover:bg-amber-500 transition active:scale-[0.98]"
                             >
-                                Buy Lesson {activeLesson.id} · {COURSE.lessonPrice} USD
+                                {t("qimen.buyLesson", { lessonId: activeLesson.id, price: COURSE.lessonPrice })}
                             </button>
                             {!isLoggedIn && (
                                 <p className="text-center text-xs text-amber-700 pt-1">
-                                    Please sign in to purchase and watch.
+                                    {t("qimen.signInToPurchase")}
                                 </p>
                             )}
                         </>
@@ -615,7 +582,7 @@ export default function QimenPage({
                     className="mb-5"
                 >
                     <p className="text-[11px] uppercase tracking-widest text-slate-400 mb-2">
-                        Lessons
+                        {t("qimen.lessons")}
                     </p>
                     <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4">
                         {LESSONS.map((lesson) => {
@@ -636,19 +603,19 @@ export default function QimenPage({
                                         <span className="absolute right-2 top-2 h-2 w-2 rounded-full bg-amber-500" />
                                     )}
                                     <span className="text-[10px] uppercase tracking-wide text-slate-400">
-                                        Lesson {lesson.id}
+                                        {t("qimen.lessonNumber", { number: lesson.id })}
                                     </span>
                                     <span className="text-xs font-bold text-slate-900 leading-snug pr-3 line-clamp-2">
-                                        {lesson.titleEn}
+                                        {t(lesson.titleKey)}
                                     </span>
                                     <span className="text-[10px] text-slate-500">{lesson.duration}</span>
                                     {unlocked ? (
                                         <span className="mt-0.5 rounded-full border border-emerald-200 bg-emerald-50 px-2 py-0.5 text-[9px] font-medium text-emerald-700">
-                                            Unlocked
+                                            {t("qimen.unlocked")}
                                         </span>
                                     ) : (
                                         <span className="mt-0.5 rounded-full border border-amber-200 bg-white px-2 py-0.5 text-[9px] text-amber-700">
-                                            🔒 $39 USD
+                                            🔒 {COURSE.lessonPrice}
                                         </span>
                                     )}
                                 </button>
@@ -670,20 +637,20 @@ export default function QimenPage({
                                 {loading && (
                                     <div className="absolute inset-0 z-10 flex items-center justify-center bg-black/60">
                                         <div className="rounded-2xl border border-white/10 bg-white/10 px-4 py-2 text-sm text-white">
-                                            Loading…
+                                            {t("qimen.loading")}
                                         </div>
                                     </div>
                                 )}
                                 {error && !loading && (
                                     <div className="flex aspect-video w-full items-center justify-center p-6 text-center text-white">
                                         <div>
-                                            <p className="text-base font-semibold">Playback error</p>
+                                            <p className="text-base font-semibold">{t("qimen.playbackError")}</p>
                                             <p className="mt-2 text-sm text-white/70">{error}</p>
                                             <button
                                                 onClick={() => fetchSignedUrl(activeLesson.s3Key)}
                                                 className="mt-4 rounded-2xl bg-amber-500 px-4 py-2 text-sm font-semibold text-slate-900"
                                             >
-                                                Retry
+                                                {t("qimen.retry")}
                                             </button>
                                         </div>
                                     </div>
@@ -697,13 +664,13 @@ export default function QimenPage({
                                         style={{ display: "block", aspectRatio: "16/9" }}
                                     >
                                         <source src={videoUrl} type="video/mp4" />
-                                        Your browser does not support video.
+                                        {t("qimen.videoNotSupported")}
                                     </video>
                                 )}
                                 {!error && !loading && !videoUrl && (
                                     <div className="flex aspect-video w-full items-center justify-center p-6 text-center text-white">
                                         <p className="text-sm text-white/70">
-                                            Select a lesson above to play.
+                                            {t("qimen.selectLesson")}
                                         </p>
                                     </div>
                                 )}
@@ -712,23 +679,23 @@ export default function QimenPage({
                             <div className="flex aspect-video w-full items-center justify-center p-6 text-center text-white">
                                 <div className="max-w-sm space-y-3">
                                     <p className="text-3xl">🔒</p>
-                                    <p className="text-base font-bold">Locked</p>
+                                    <p className="text-base font-bold">{t("qimen.locked")}</p>
                                     <p className="text-sm text-white/70">
-                                        Purchase this lesson to unlock and watch.
+                                        {t("qimen.purchaseToUnlock")}
                                     </p>
                                     {isLoggedIn ? (
                                         <button
                                             onClick={handleBuyActiveVideo}
                                             className="mt-2 rounded-2xl bg-amber-500 px-5 py-2.5 text-sm font-semibold text-slate-900 hover:bg-amber-400 transition"
                                         >
-                                            Buy Lesson {activeLesson.id} · {COURSE.lessonPrice}
+                                            {t("qimen.buyLessonShort", { lessonId: activeLesson.id, price: COURSE.lessonPrice })}
                                         </button>
                                     ) : (
                                         <button
                                             onClick={() => onGoLogin?.()}
                                             className="mt-2 rounded-2xl border border-white/30 bg-white/10 px-5 py-2.5 text-sm font-semibold text-white hover:bg-white/20 transition"
                                         >
-                                            Sign in to purchase
+                                            {t("qimen.signInToPurchaseShort")}
                                         </button>
                                     )}
                                 </div>
@@ -739,13 +706,13 @@ export default function QimenPage({
                     {/* Now Playing bar */}
                     <div className="mt-3 rounded-2xl border border-slate-200 bg-white px-4 py-3">
                         <p className="text-[10px] uppercase tracking-widest text-slate-400">
-                            Now Playing
+                            {t("qimen.nowPlaying")}
                         </p>
                         <p className="mt-1 text-sm font-bold text-slate-900">
-                            Lesson {activeLesson.id} · {activeLesson.titleEn}
+                            {t("qimen.lessonNumberWithTitle", { number: activeLesson.id, title: t(activeLesson.titleKey) })}
                         </p>
                         <p className="text-xs text-slate-500 mt-0.5">
-                            {activeLesson.subtitleEn}
+                            {t(activeLesson.subtitleKey)}
                         </p>
                     </div>
                 </motion.div>
@@ -758,13 +725,13 @@ export default function QimenPage({
                 >
                     <div className="mb-4">
                         <h2 className="text-base font-bold text-slate-900">
-                            Lesson {activeLesson.id} — Full Description
+                            {t("qimen.lessonFullDescription", { number: activeLesson.id })}
                         </h2>
                         <p className="text-xs text-slate-400 mt-0.5">
-                            Switch lessons above to see details for each
+                            {t("qimen.switchLessons")}
                         </p>
                     </div>
-                    <LessonDetail lesson={activeLesson} />
+                    <LessonDetail lesson={activeLesson} t={t} />
                 </motion.div>
 
             </main>

@@ -43,48 +43,252 @@
     "lesson": "レッスン",
     "nowPlaying": "再生中",
     "duration": "時間",
-    "price": "価格"
+    "price": "価格",
+    "videoCourse": "ビデオコース",
+    "playbackError": "再生エラー",
+    "selectLesson": "上記からレッスンを選択して再生してください。",
+    "purchaseToUnlock": "購入してロック解除して視聴してください。",
+    "disclaimer": "免責事項：このプログラムはウェルネス目的のみであり、医学的アドバイスではありません。健康上の懸念がある場合は、資格のある医療専門家にご相談ください。",
+    "fullCourse": "フルコース",
+    "buyIndividually": "個別購入",
+    "courseVideo": "コースビデオ"
   },
   "jiujiu": {
     "title": "クイックリリーフセルフケアコース",
     "subtitle": "日常の不快感を素早く緩和。4つのシンプルなツボルーチン、各5〜10分、自宅で即座に快適に。",
+    "priceNow": "$9.9",
+    "priceOld": "$29.99",
+    "sale": "セール",
+    "lessonInfo": "4レッスン・永久アクセス",
     "videoCourse": "ビデオコース",
-    "unlockLesson": "レッスン {{id}} ロック解除済み",
-    "buyLesson": "レッスン {{id}} を購入 · $9.9 USD",
-    "lessons": "レッスン",
-    "fullDescription": "レッスン {{id}} — 詳細説明",
-    "switchLessons": "上記のレッスンを切り替えて詳細を確認",
-    "whoIsThisFor": "誰のためのコース？",
-    "courseBenefits": "コースの利点",
+    "lessonUnlocked": "✓ レッスン{{lessonId}}がアンロックされました",
+    "buyLesson": "レッスン{{lessonId}}を購入 · {{price}}",
+    "signInToPurchase": "購入して視聴するにはサインインしてください。",
+    "lessonsLabel": "レッスン",
+    "lessonLabel": "レッスン{{id}}",
+    "unlocked": "アンロック済み",
+    "loading": "読み込み中…",
+    "playbackError": "再生エラー",
+    "retry": "再試行",
+    "videoNotSupported": "お使いのブラウザは動画をサポートしていません。",
+    "selectLesson": "上のレッスンを選択して再生してください。",
+    "locked": "ロック中",
+    "purchaseToWatch": "購入してアンロックして視聴してください。",
+    "buyThisLesson": "このレッスンを購入 · $9.9",
+    "signInToPurchaseShort": "サインインして購入",
+    "nowPlaying": "再生中",
+    "fullDescription": "レッスン{{lessonId}} — 完全な説明",
+    "switchLessons": "上のレッスンを切り替えて各レッスンの詳細を確認してください",
+    "whoIsThisFor": "誰のためのコースですか？",
+    "courseBenefits": "コースのメリット",
     "instructor": "講師",
     "perfectFor": "最適な対象",
-    "disclaimer": "免責事項：このプログラムはウェルネス目的のみであり、医学的アドバイスではありません。健康上の懸念がある場合は、資格のある医療専門家にご相談ください。",
-    "playbackError": "再生エラー",
-    "selectLesson": "上記のレッスンを選択して再生してください。",
-    "purchaseToUnlock": "購入してロックを解除して視聴してください。",
-    "lesson1": {
-      "title": "腰痛緩和",
-      "subtitle": "素早い緩和 • 3つのツボ • すぐに改善",
-      "intro": "頑固な腰痛に悩んでいますか？クリームや治療の一時的な緩和に疲れていませんか？\n\nこのコースは、3つの強力なツボで緊張した筋肉を素早くリラックスさせ、緊張を解放し、不快感を和らげます。\n\n道具不要、助けも不要。1日10〜20分だけ。\n\n清吉マスターに従って、数分で温かさ、リラックス、緩和を感じてください。",
-      "closing": "1回の購入 → 生涯アクセス。いつでも練習して、すぐに気分が良くなります。"
-    },
-    "lesson2": {
-      "title": "首と肩の緩和",
-      "subtitle": "緊張を解放 • 自由に動く • 素早い緩和",
-      "intro": "首が硬い？肩が張っている？重く、痛く、動かしにくい？\n\nこのルーチンは、緊張を素早く解放し、硬い首と肩をほぐします。\n\n1日わずか10分。\n\n一緒に行って、即座に緩和を感じてください—力も器具も不要。",
-      "closing": "1回の購入 → 生涯アクセス。数分で首と肩をほぐします。"
-    },
-    "lesson3": {
-      "title": "睡眠と落ち着きのサポート",
-      "subtitle": "10分の就寝前ルーチン • より早く眠りにつく",
-      "intro": "寝返りを打ち、考えが巡る？眠れない？\n\nこの就寝前ルーチンは、心を素早く落ち着かせ、自然により深く眠るのを助けます。\n\nベッドで10分。薬も器具も不要。\n\nより早く眠りにつき、目覚めが少なくなります。",
-      "closing": "1回の購入 → 生涯アクセス。今夜はよく眠れます。"
-    },
-    "lesson4": {
-      "title": "男性の健康と活力",
-      "subtitle": "男性のウェルネス • 自然なサポート • エネルギーを回復",
-      "intro": "エネルギー不足を感じていますか？活力とウェルネスの問題に悩んでいますか？\n\nこのコースは、男性の生理的健康を理解し、生活の質を向上させる科学的なセルフケア方法を学ぶのに役立ちます。\n\n1日わずか10〜15分。\n\n一緒に行って、自然な活力を回復してください—安全、自然、効果的。",
-      "closing": "1回の購入 → 生涯アクセス。自然に活力を回復します。"
+    "disclaimer": "免責事項：このプログラムはウェルネス目的のみであり、医療アドバイスではありません。健康上の懸念がある場合は、資格のある医療専門家にご相談ください。",
+    "lessons": {
+      "lesson1": {
+        "title": "腰痛緩和調整コース",
+        "subtitle": "素早い緩和・3つのツボ・すぐに楽に",
+        "duration": "約5分",
+        "intro": "頑固な腰痛に悩んでいますか？クリームや治療による一時的な緩和に疲れていませんか？\n\nこのコースは、3つの強力なツボで緊張した筋肉を素早くリラックスさせ、緊張を解放し、不快感を和らげます。\n\n道具不要、助けも不要。1日わずか10〜20分。\n\n清吉先生に従って、数分で温かさ、リラックス、緩和を感じてください。",
+        "painPoints": [
+          "長時間の座位による繰り返す腰痛",
+          "曲げる、持ち上げる、過労による腰部の負担",
+          "腰部の硬直、痛み、冷え",
+          "パッチや治療による一時的な緩和、しかし痛みが戻る",
+          "自宅で自然な、薬物不使用の痛み緩和を望む"
+        ],
+        "benefits": [
+          {
+            "title": "素早い緩和",
+            "desc": "3つのコアツボが緊張した腰部を素早くほぐしてリラックス"
+          },
+          {
+            "title": "道具不要",
+            "desc": "自宅で自分で行う、機器不要"
+          },
+          {
+            "title": "毎日10〜20分",
+            "desc": "短く効果的なルーチン"
+          },
+          {
+            "title": "温かさとリラックスを感じる",
+            "desc": "背中の熱感と緩みを即座に感じる"
+          },
+          {
+            "title": "根本的な改善",
+            "desc": "定期的な練習で血流を改善し、繰り返す痛みを防ぐ"
+          }
+        ],
+        "instructor": {
+          "name": "清吉先生",
+          "title": "中医学実践者",
+          "points": [
+            "長年の臨床経験を持つ認定中医学実践者",
+            "ツボ押しと経絡療法を専門とする",
+            "完全な初心者でも簡単にフォローできる教え方"
+          ]
+        },
+        "audience": [
+          "オフィスワーカーや長時間座っている人",
+          "繰り返す硬直、痛み、疲労のある人",
+          "穏やかで自然なセルフケアを好む人",
+          "完全な初心者も歓迎"
+        ],
+        "closing": "一度購入 → 永久アクセス。いつでも練習、すぐに楽に。"
+      },
+      "lesson2": {
+        "title": "首と肩の緩和",
+        "subtitle": "緊張を解放・自由に動く・素早い緩和",
+        "duration": "約5分",
+        "intro": "首が硬い？肩が張っている？重く、痛く、動きにくい？\n\nこのルーチンは、緊張を素早く解放し、硬い首と肩をほぐします。\n\n1日わずか10分。\n\nフォローして即座に緩和を感じてください—力不要、機器不要。",
+        "painPoints": [
+          "スマホやパソコンの使用による硬く重い首と肩",
+          "頭を回すときの首のカチカチ音",
+          "肩が重い石を背負っているような感じ",
+          "首の緊張によるめまいや手のしびれ",
+          "マッサージや機器なしで素早い緩和を望む"
+        ],
+        "benefits": [
+          {
+            "title": "素早い緊張解放",
+            "desc": "3つのツボが硬い首と肩を即座にほぐす"
+          },
+          {
+            "title": "毎日10分",
+            "desc": "短いルーチン、即座の緩和"
+          },
+          {
+            "title": "力不要、機器不要",
+            "desc": "穏やかな圧力、安全で効果的"
+          },
+          {
+            "title": "柔軟性を回復",
+            "desc": "首と肩を再び自由に動かす"
+          },
+          {
+            "title": "より軽く、活力を感じる",
+            "desc": "重い負担を解放し、リフレッシュを感じる"
+          }
+        ],
+        "instructor": {
+          "name": "清吉先生",
+          "title": "中医学実践者",
+          "points": [
+            "長年の臨床経験を持つ認定中医学実践者",
+            "ツボ押しと経絡療法を専門とする",
+            "完全な初心者でも簡単にフォローできる教え方"
+          ]
+        },
+        "audience": [
+          "オフィスワーカーや長時間座っている人",
+          "繰り返す硬直、痛み、疲労のある人",
+          "穏やかで自然なセルフケアを好む人",
+          "完全な初心者も歓迎"
+        ],
+        "closing": "一度購入 → 永久アクセス。数分で首と肩をほぐす。"
+      },
+      "lesson3": {
+        "title": "睡眠と落ち着きのサポート",
+        "subtitle": "10分の就寝ルーチン・より早く眠りにつく",
+        "duration": "約5分",
+        "intro": "寝返りを打って、考えが巡って眠れない？\n\nこの就寝ルーチンは、心を素早く落ち着かせ、より深く眠るのを助けます—自然に。\n\nベッドで10分。薬不要、デバイス不要。\n\nより早く眠りにつき、目覚めが少なくなります。",
+        "painPoints": [
+          "寝返りを打って眠れない",
+          "考えが巡って、心が止まらない",
+          "夜中に目覚めて、再び眠れない",
+          "薬なしで自然な睡眠サポートを望む",
+          "シンプルな就寝ルーチンが必要"
+        ],
+        "benefits": [
+          {
+            "title": "素早いリラックス",
+            "desc": "3つの落ち着きのツボが神経と感情を素早くリラックス"
+          },
+          {
+            "title": "ベッドで10分",
+            "desc": "横になって、睡眠直前に行う"
+          },
+          {
+            "title": "薬不要、デバイス不要",
+            "desc": "自然で安全な、薬物不使用の睡眠サポート"
+          },
+          {
+            "title": "より早く眠りにつく",
+            "desc": "心を落ち着かせ、素早く睡眠状態に入る"
+          },
+          {
+            "title": "より深く眠る",
+            "desc": "定期的な練習で睡眠の質とエネルギーを改善"
+          }
+        ],
+        "instructor": {
+          "name": "清吉先生",
+          "title": "中医学実践者",
+          "points": [
+            "長年の臨床経験を持つ認定中医学実践者",
+            "ツボ押しと経絡療法を専門とする",
+            "完全な初心者でも簡単にフォローできる教え方"
+          ]
+        },
+        "audience": [
+          "オフィスワーカーや長時間座っている人",
+          "繰り返す硬直、痛み、疲労のある人",
+          "穏やかで自然なセルフケアを好む人",
+          "完全な初心者も歓迎"
+        ],
+        "closing": "一度購入 → 永久アクセス。今夜より良く眠る。"
+      },
+      "lesson4": {
+        "title": "男性の健康と活力",
+        "subtitle": "男性のウェルネス・自然なサポート・活力を回復",
+        "duration": "約5分",
+        "intro": "エネルギー不足を感じていますか？活力とウェルネスの懸念に苦しんでいますか？\n\nこのコースは、男性の生理的健康を理解し、生活の質を向上させる科学的なセルフケア方法を学ぶのを助けます。\n\n1日わずか10〜15分。\n\nフォローして自然な活力を回復してください—安全、自然、効果的。",
+        "painPoints": [
+          "日常生活に影響を与えるエネルギー不足と疲労",
+          "男性の健康と活力に関する懸念",
+          "ストレスとライフスタイルがウェルネスに影響",
+          "男性の健康への自然で全体的なアプローチを望む",
+          "安全で効果的なセルフケア方法を探している"
+        ],
+        "benefits": [
+          {
+            "title": "活力を回復",
+            "desc": "男性の健康とエネルギーをサポートするツボを学ぶ"
+          },
+          {
+            "title": "毎日10〜15分",
+            "desc": "スケジュールに合うシンプルなルーチン"
+          },
+          {
+            "title": "自然で安全",
+            "desc": "薬物不使用、全体的なウェルネスアプローチ"
+          },
+          {
+            "title": "科学的方法",
+            "desc": "中医学の原理に基づく"
+          },
+          {
+            "title": "生活の質を向上",
+            "desc": "より活力があり、バランスが取れていると感じる"
+          }
+        ],
+        "instructor": {
+          "name": "清吉先生",
+          "title": "中医学実践者",
+          "points": [
+            "長年の臨床経験を持つ認定中医学実践者",
+            "ツボ押しと経絡療法を専門とする",
+            "完全な初心者でも簡単にフォローできる教え方"
+          ]
+        },
+        "audience": [
+          "自然なウェルネスサポートを求める男性",
+          "エネルギー不足や活力の懸念を経験している人",
+          "全体的な健康アプローチに興味がある人",
+          "完全な初心者も歓迎"
+        ],
+        "closing": "一度購入 → 永久アクセス。自然に活力を回復。"
+      }
     }
   },
   "footer": {
@@ -164,7 +368,9 @@
     "message": "メッセージ",
     "send": "メッセージを送信",
     "success": "メッセージが正常に送信されました！",
-    "error": "メッセージの送信に失敗しました。もう一度お試しください。"
+    "error": "メッセージの送信に失敗しました。もう一度お試しください。",
+    "emailLabel": "メール",
+    "emailValue": "jzc1998926@gmail.com"
   },
   "myCourses": {
     "title": "マイコース",
@@ -301,184 +507,6 @@
     },
     "disclaimer": "重要：このコースは、伝統的な中医学理論とライフスタイルのアイデアを共有するためのものです。診断や処方は提供しません。具体的な病気や継続的な不快感については、まず資格のある医療専門家にご相談ください。"
   },
-  "jiujiu": {
-    "title": "クイックリリーフセルフケアコース",
-    "subtitle": "日常の不快感を素早く緩和。4つのシンプルなツボルーチン、各5〜10分、自宅で即座に快適に。",
-    "priceNow": "$9.9",
-    "priceOld": "$29.99",
-    "sale": "セール",
-    "lessonInfo": "4レッスン・永久アクセス",
-    "videoCourse": "ビデオコース",
-    "lessonUnlocked": "✓ レッスン{{lessonId}}がアンロックされました",
-    "buyLesson": "レッスン{{lessonId}}を購入 · {{price}}",
-    "signInToPurchase": "購入して視聴するにはサインインしてください。",
-    "lessonsLabel": "レッスン",
-    "lessonLabel": "レッスン{{id}}",
-    "unlocked": "アンロック済み",
-    "loading": "読み込み中…",
-    "playbackError": "再生エラー",
-    "retry": "再試行",
-    "videoNotSupported": "お使いのブラウザは動画をサポートしていません。",
-    "selectLesson": "上のレッスンを選択して再生してください。",
-    "locked": "ロック中",
-    "purchaseToWatch": "購入してアンロックして視聴してください。",
-    "buyThisLesson": "このレッスンを購入 · $9.9",
-    "signInToPurchaseShort": "サインインして購入",
-    "nowPlaying": "再生中",
-    "fullDescription": "レッスン{{lessonId}} — 完全な説明",
-    "switchLessons": "上のレッスンを切り替えて各レッスンの詳細を確認してください",
-    "whoIsThisFor": "誰のためのコースですか？",
-    "courseBenefits": "コースのメリット",
-    "instructor": "講師",
-    "perfectFor": "最適な対象",
-    "disclaimer": "免責事項：このプログラムはウェルネス目的のみであり、医療アドバイスではありません。健康上の懸念がある場合は、資格のある医療専門家にご相談ください。",
-    "lessons": {
-      "lesson1": {
-        "title": "腰痛緩和調整コース",
-        "subtitle": "素早い緩和・3つのツボ・すぐに楽に",
-        "duration": "約5分",
-        "intro": "頑固な腰痛に悩んでいますか？クリームや治療による一時的な緩和に疲れていませんか？\n\nこのコースは、3つの強力なツボで緊張した筋肉を素早くリラックスさせ、緊張を解放し、不快感を和らげます。\n\n道具不要、助けも不要。1日わずか10〜20分。\n\n清吉先生に従って、数分で温かさ、リラックス、緩和を感じてください。",
-        "painPoints": [
-          "長時間の座位による繰り返す腰痛",
-          "曲げる、持ち上げる、過労による腰部の負担",
-          "腰部の硬直、痛み、冷え",
-          "パッチや治療による一時的な緩和、しかし痛みが戻る",
-          "自宅で自然な、薬物不使用の痛み緩和を望む"
-        ],
-        "benefits": [
-          { "title": "素早い緩和", "desc": "3つのコアツボが緊張した腰部を素早くほぐしてリラックス" },
-          { "title": "道具不要", "desc": "自宅で自分で行う、機器不要" },
-          { "title": "毎日10〜20分", "desc": "短く効果的なルーチン" },
-          { "title": "温かさとリラックスを感じる", "desc": "背中の熱感と緩みを即座に感じる" },
-          { "title": "根本的な改善", "desc": "定期的な練習で血流を改善し、繰り返す痛みを防ぐ" }
-        ],
-        "instructor": {
-          "name": "清吉先生",
-          "title": "中医学実践者",
-          "points": [
-            "長年の臨床経験を持つ認定中医学実践者",
-            "ツボ押しと経絡療法を専門とする",
-            "完全な初心者でも簡単にフォローできる教え方"
-          ]
-        },
-        "audience": [
-          "オフィスワーカーや長時間座っている人",
-          "繰り返す硬直、痛み、疲労のある人",
-          "穏やかで自然なセルフケアを好む人",
-          "完全な初心者も歓迎"
-        ],
-        "closing": "一度購入 → 永久アクセス。いつでも練習、すぐに楽に。"
-      },
-      "lesson2": {
-        "title": "首と肩の緩和",
-        "subtitle": "緊張を解放・自由に動く・素早い緩和",
-        "duration": "約5分",
-        "intro": "首が硬い？肩が張っている？重く、痛く、動きにくい？\n\nこのルーチンは、緊張を素早く解放し、硬い首と肩をほぐします。\n\n1日わずか10分。\n\nフォローして即座に緩和を感じてください—力不要、機器不要。",
-        "painPoints": [
-          "スマホやパソコンの使用による硬く重い首と肩",
-          "頭を回すときの首のカチカチ音",
-          "肩が重い石を背負っているような感じ",
-          "首の緊張によるめまいや手のしびれ",
-          "マッサージや機器なしで素早い緩和を望む"
-        ],
-        "benefits": [
-          { "title": "素早い緊張解放", "desc": "3つのツボが硬い首と肩を即座にほぐす" },
-          { "title": "毎日10分", "desc": "短いルーチン、即座の緩和" },
-          { "title": "力不要、機器不要", "desc": "穏やかな圧力、安全で効果的" },
-          { "title": "柔軟性を回復", "desc": "首と肩を再び自由に動かす" },
-          { "title": "より軽く、活力を感じる", "desc": "重い負担を解放し、リフレッシュを感じる" }
-        ],
-        "instructor": {
-          "name": "清吉先生",
-          "title": "中医学実践者",
-          "points": [
-            "長年の臨床経験を持つ認定中医学実践者",
-            "ツボ押しと経絡療法を専門とする",
-            "完全な初心者でも簡単にフォローできる教え方"
-          ]
-        },
-        "audience": [
-          "オフィスワーカーや長時間座っている人",
-          "繰り返す硬直、痛み、疲労のある人",
-          "穏やかで自然なセルフケアを好む人",
-          "完全な初心者も歓迎"
-        ],
-        "closing": "一度購入 → 永久アクセス。数分で首と肩をほぐす。"
-      },
-      "lesson3": {
-        "title": "睡眠と落ち着きのサポート",
-        "subtitle": "10分の就寝ルーチン・より早く眠りにつく",
-        "duration": "約5分",
-        "intro": "寝返りを打って、考えが巡って眠れない？\n\nこの就寝ルーチンは、心を素早く落ち着かせ、より深く眠るのを助けます—自然に。\n\nベッドで10分。薬不要、デバイス不要。\n\nより早く眠りにつき、目覚めが少なくなります。",
-        "painPoints": [
-          "寝返りを打って眠れない",
-          "考えが巡って、心が止まらない",
-          "夜中に目覚めて、再び眠れない",
-          "薬なしで自然な睡眠サポートを望む",
-          "シンプルな就寝ルーチンが必要"
-        ],
-        "benefits": [
-          { "title": "素早いリラックス", "desc": "3つの落ち着きのツボが神経と感情を素早くリラックス" },
-          { "title": "ベッドで10分", "desc": "横になって、睡眠直前に行う" },
-          { "title": "薬不要、デバイス不要", "desc": "自然で安全な、薬物不使用の睡眠サポート" },
-          { "title": "より早く眠りにつく", "desc": "心を落ち着かせ、素早く睡眠状態に入る" },
-          { "title": "より深く眠る", "desc": "定期的な練習で睡眠の質とエネルギーを改善" }
-        ],
-        "instructor": {
-          "name": "清吉先生",
-          "title": "中医学実践者",
-          "points": [
-            "長年の臨床経験を持つ認定中医学実践者",
-            "ツボ押しと経絡療法を専門とする",
-            "完全な初心者でも簡単にフォローできる教え方"
-          ]
-        },
-        "audience": [
-          "オフィスワーカーや長時間座っている人",
-          "繰り返す硬直、痛み、疲労のある人",
-          "穏やかで自然なセルフケアを好む人",
-          "完全な初心者も歓迎"
-        ],
-        "closing": "一度購入 → 永久アクセス。今夜より良く眠る。"
-      },
-      "lesson4": {
-        "title": "男性の健康と活力",
-        "subtitle": "男性のウェルネス・自然なサポート・活力を回復",
-        "duration": "約5分",
-        "intro": "エネルギー不足を感じていますか？活力とウェルネスの懸念に苦しんでいますか？\n\nこのコースは、男性の生理的健康を理解し、生活の質を向上させる科学的なセルフケア方法を学ぶのを助けます。\n\n1日わずか10〜15分。\n\nフォローして自然な活力を回復してください—安全、自然、効果的。",
-        "painPoints": [
-          "日常生活に影響を与えるエネルギー不足と疲労",
-          "男性の健康と活力に関する懸念",
-          "ストレスとライフスタイルがウェルネスに影響",
-          "男性の健康への自然で全体的なアプローチを望む",
-          "安全で効果的なセルフケア方法を探している"
-        ],
-        "benefits": [
-          { "title": "活力を回復", "desc": "男性の健康とエネルギーをサポートするツボを学ぶ" },
-          { "title": "毎日10〜15分", "desc": "スケジュールに合うシンプルなルーチン" },
-          { "title": "自然で安全", "desc": "薬物不使用、全体的なウェルネスアプローチ" },
-          { "title": "科学的方法", "desc": "中医学の原理に基づく" },
-          { "title": "生活の質を向上", "desc": "より活力があり、バランスが取れていると感じる" }
-        ],
-        "instructor": {
-          "name": "清吉先生",
-          "title": "中医学実践者",
-          "points": [
-            "長年の臨床経験を持つ認定中医学実践者",
-            "ツボ押しと経絡療法を専門とする",
-            "完全な初心者でも簡単にフォローできる教え方"
-          ]
-        },
-        "audience": [
-          "自然なウェルネスサポートを求める男性",
-          "エネルギー不足や活力の懸念を経験している人",
-          "全体的な健康アプローチに興味がある人",
-          "完全な初心者も歓迎"
-        ],
-        "closing": "一度購入 → 永久アクセス。自然に活力を回復。"
-      }
-    }
-  },
   "guasha": {
     "title": "16ステップ フェイシャル刮痧コース",
     "tagline": "手術不要 • 注射不要 • 高額スキンケア不要 • 1日5分自宅で",
@@ -524,22 +552,86 @@
     "ctaButton": "全コース解除 · {{price}}",
     "disclaimer": "免責事項：このプログラムはウェルネスと教育目的のみであり、医療アドバイスではありません。健康上の懸念がある場合は、資格のある医療専門家に相談してください。",
     "chapters": {
-      "chapter1": {"title": "初心者基礎クラス", "desc": "刮痧の核心ロジック、ツール、圧力、安全ルールをマスター。経験ゼロ → 10分で完全な自信。", "timestamp": "null"},
-      "chapter2": {"title": "額のシワ", "desc": "横シワを滑らかに、額の皮膚を引き締め、老けた額の外観を消す。", "timestamp": "02：34"},
-      "chapter3": {"title": "眉間のシワ", "desc": "眉間の緊張を解放、縦シワを薄く、怒った/疲れた外観を取り除く。", "timestamp": "16：00"},
-      "chapter4": {"title": "目の下のたるみ", "desc": "むくみを排出、たるんだ皮膚を引き締め、膨らんだ袋を縮小 — 目が覚めてリフトアップ。", "timestamp": "26：40"},
-      "chapter5": {"title": "クマ", "desc": "循環を促進、目の下を明るく、ストレスと夜更かしからのパンダ目を消す。", "timestamp": "39：07"},
-      "chapter6": {"title": "目尻のシワ", "desc": "角の細かいシワを滑らかに、繊細な目の領域を引き締め、目の周りの老化を遅らせる。", "timestamp": "52：11"},
-      "chapter7": {"title": "涙袋", "desc": "くぼんだ涙袋を自然にふっくら、疲れた外観を減らし、若々しい豊かさを回復。", "timestamp": "1：02：07"},
-      "chapter8": {"title": "ほうれい線", "desc": "頬をリフト、深い笑いジワを柔らかく、顔の老化の第1の兆候を逆転。", "timestamp": "1：12：47"},
-      "chapter9": {"title": "くぼんだ中顔面/鼻基部", "desc": "平らな中顔面をリフトしてふっくら、自然なボリュームを作成、くぼんだ外観を改善。", "timestamp": "1：26：07"},
-      "chapter10": {"title": "垂れた頬骨", "desc": "落ちた頬骨をリフト、リンゴの豊かさを回復、たるみを根源から逆転。", "timestamp": "1：36：08"},
-      "chapter11": {"title": "全顔のたるみ", "desc": "全顔リフトルーチン — 皮膚を再び引き締め、輪郭を再定義、全顔の崩壊を逆転。", "timestamp": "1：45：43"},
-      "chapter12": {"title": "口周りの細かいシワ", "desc": "乾燥したシワを滑らかに、唇の領域を保湿、喫煙者のシワと老化した口のテクスチャを消す。", "timestamp": "1：57：00"},
-      "chapter13": {"title": "下がった口角", "desc": "悲しい、下がった唇をリフト、優しく、若々しく、フレンドリーな表情を作成。", "timestamp": "2：06：44"},
-      "chapter14": {"title": "ぼやけた顎ラインと二重あご", "desc": "シャープな顎ラインを彫刻、脂肪パッドを減らし、むくみを消す — 顔が即座に細く見える。", "timestamp": "2：14：57"},
-      "chapter15": {"title": "黒ずみとニキビ跡", "desc": "肝斑、日焼け跡、ニキビ跡を薄く — 明るく、均一な肌を明らかに。", "timestamp": "2：23：17"},
-      "chapter16": {"title": "顔のむくみと膨張", "desc": "余分な液体を排出、迅速に消腫、数分で引き締まった、リフトされたV字型の顔を取得。", "timestamp": "2：34：27"}
+      "chapter1": {
+        "title": "初心者基礎クラス",
+        "desc": "刮痧の核心ロジック、ツール、圧力、安全ルールをマスター。経験ゼロ → 10分で完全な自信。",
+        "timestamp": "null"
+      },
+      "chapter2": {
+        "title": "額のシワ",
+        "desc": "横シワを滑らかに、額の皮膚を引き締め、老けた額の外観を消す。",
+        "timestamp": "02：34"
+      },
+      "chapter3": {
+        "title": "眉間のシワ",
+        "desc": "眉間の緊張を解放、縦シワを薄く、怒った/疲れた外観を取り除く。",
+        "timestamp": "16：00"
+      },
+      "chapter4": {
+        "title": "目の下のたるみ",
+        "desc": "むくみを排出、たるんだ皮膚を引き締め、膨らんだ袋を縮小 — 目が覚めてリフトアップ。",
+        "timestamp": "26：40"
+      },
+      "chapter5": {
+        "title": "クマ",
+        "desc": "循環を促進、目の下を明るく、ストレスと夜更かしからのパンダ目を消す。",
+        "timestamp": "39：07"
+      },
+      "chapter6": {
+        "title": "目尻のシワ",
+        "desc": "角の細かいシワを滑らかに、繊細な目の領域を引き締め、目の周りの老化を遅らせる。",
+        "timestamp": "52：11"
+      },
+      "chapter7": {
+        "title": "涙袋",
+        "desc": "くぼんだ涙袋を自然にふっくら、疲れた外観を減らし、若々しい豊かさを回復。",
+        "timestamp": "1：02：07"
+      },
+      "chapter8": {
+        "title": "ほうれい線",
+        "desc": "頬をリフト、深い笑いジワを柔らかく、顔の老化の第1の兆候を逆転。",
+        "timestamp": "1：12：47"
+      },
+      "chapter9": {
+        "title": "くぼんだ中顔面/鼻基部",
+        "desc": "平らな中顔面をリフトしてふっくら、自然なボリュームを作成、くぼんだ外観を改善。",
+        "timestamp": "1：26：07"
+      },
+      "chapter10": {
+        "title": "垂れた頬骨",
+        "desc": "落ちた頬骨をリフト、リンゴの豊かさを回復、たるみを根源から逆転。",
+        "timestamp": "1：36：08"
+      },
+      "chapter11": {
+        "title": "全顔のたるみ",
+        "desc": "全顔リフトルーチン — 皮膚を再び引き締め、輪郭を再定義、全顔の崩壊を逆転。",
+        "timestamp": "1：45：43"
+      },
+      "chapter12": {
+        "title": "口周りの細かいシワ",
+        "desc": "乾燥したシワを滑らかに、唇の領域を保湿、喫煙者のシワと老化した口のテクスチャを消す。",
+        "timestamp": "1：57：00"
+      },
+      "chapter13": {
+        "title": "下がった口角",
+        "desc": "悲しい、下がった唇をリフト、優しく、若々しく、フレンドリーな表情を作成。",
+        "timestamp": "2：06：44"
+      },
+      "chapter14": {
+        "title": "ぼやけた顎ラインと二重あご",
+        "desc": "シャープな顎ラインを彫刻、脂肪パッドを減らし、むくみを消す — 顔が即座に細く見える。",
+        "timestamp": "2：14：57"
+      },
+      "chapter15": {
+        "title": "黒ずみとニキビ跡",
+        "desc": "肝斑、日焼け跡、ニキビ跡を薄く — 明るく、均一な肌を明らかに。",
+        "timestamp": "2：23：17"
+      },
+      "chapter16": {
+        "title": "顔のむくみと膨張",
+        "desc": "余分な液体を排出、迅速に消腫、数分で引き締まった、リフトされたV字型の顔を取得。",
+        "timestamp": "2：34：27"
+      }
     },
     "painPoints": {
       "0": "シワが支配している：額のシワ、眉間のシワ、目尻のシワ、ほうれい線、口のシワ — 月ごとに深くなる",
@@ -553,13 +645,34 @@
       "8": "敏感肌：赤み、かゆみ、毛細血管の破裂 — 厳しい治療を使用できない"
     },
     "whyPoints": {
-      "0": {"title": "100%天然、安全、リスクなし", "desc": "針なし、レーザーなし、ダウンタイムなし、傷跡なし — 敏感肌と妊娠に安全。"},
-      "1": {"title": "ターゲット、ステップバイステップ、推測なし", "desc": "各レッスンは1つの特定の問題を修正。結果を迅速に見る — ランダムな技術なし。"},
-      "2": {"title": "1日わずか5分", "desc": "顔を洗いながらやる。忙しいライフスタイルに適合。"},
-      "3": {"title": "即時+長期結果", "desc": "1回のセッション後：むくみが少なく、肌が明るく、顔が引き締まる。28日後：シワが柔らかく、たるみがリフト、肌が輝く。"},
-      "4": {"title": "エステと充填剤で数千ドル節約", "desc": "1回の購入 = 生涯の美容ツール。サブスクリプションなし、繰り返しコストなし。"},
-      "5": {"title": "すべての人のために — 男性と女性、すべての年齢", "desc": "オフィスワーカー、ママ、シニア、学生 — 誰でも学べる、誰でも利益を得る。"},
-      "6": {"title": "内側から肌を修正", "desc": "循環を促進、緊張を解放、閉塞をクリア。これは表面の美しさではない — これは本当のアンチエイジング。"}
+      "0": {
+        "title": "100%天然、安全、リスクなし",
+        "desc": "針なし、レーザーなし、ダウンタイムなし、傷跡なし — 敏感肌と妊娠に安全。"
+      },
+      "1": {
+        "title": "ターゲット、ステップバイステップ、推測なし",
+        "desc": "各レッスンは1つの特定の問題を修正。結果を迅速に見る — ランダムな技術なし。"
+      },
+      "2": {
+        "title": "1日わずか5分",
+        "desc": "顔を洗いながらやる。忙しいライフスタイルに適合。"
+      },
+      "3": {
+        "title": "即時+長期結果",
+        "desc": "1回のセッション後：むくみが少なく、肌が明るく、顔が引き締まる。28日後：シワが柔らかく、たるみがリフト、肌が輝く。"
+      },
+      "4": {
+        "title": "エステと充填剤で数千ドル節約",
+        "desc": "1回の購入 = 生涯の美容ツール。サブスクリプションなし、繰り返しコストなし。"
+      },
+      "5": {
+        "title": "すべての人のために — 男性と女性、すべての年齢",
+        "desc": "オフィスワーカー、ママ、シニア、学生 — 誰でも学べる、誰でも利益を得る。"
+      },
+      "6": {
+        "title": "内側から肌を修正",
+        "desc": "循環を促進、緊張を解放、閉塞をクリア。これは表面の美しさではない — これは本当のアンチエイジング。"
+      }
     },
     "whoPoints": {
       "0": "疲れていないのに疲れて見える",
@@ -627,24 +740,98 @@
           "9": "健康を保ちたいが時間がない、スペースがない、基礎がない、どこから始めればいいかわからない"
         },
         "forms": {
-          "0": {"name": "立ち方基礎式", "relieves": "エネルギー不足、四肢の冷え、下半身の不安定、疲労", "core": "安定した立ち方、エネルギーを集める、活力を向上", "benefit": ""},
-          "1": {"name": "首肩リラックス式", "relieves": "首の硬さ、肩の痛み、めまい、手のしびれ、首のこぶ", "core": "首と肩をほぐし、緊張を素早く和らげる", "benefit": ""},
-          "2": {"name": "胸開き気バランス式", "relieves": "胸の圧迫感、息切れ、ストレス、気分の落ち込み", "core": "胸を開き、呼吸を滑らかに、心を落ち着かせる", "benefit": ""},
-          "3": {"name": "腰股関節リラックス式", "relieves": "腰痛、下背部の硬さ、座ることによる動きの制限", "core": "腰をリラックス、脊椎を保護、柔軟性を回復", "benefit": ""},
-          "4": {"name": "体筋肉ストレッチ式", "relieves": "全身の緊張、筋肉の硬さ、柔軟性の低さ", "core": "優しくストレッチ、緊張を解放、体を柔らかくする", "benefit": ""},
-          "5": {"name": "膝足首ケア式", "relieves": "膝の不快感、足首の弱さ、関節の硬さ", "core": "関節を優しく保護、安定性を向上、膝への圧力なし", "benefit": ""},
-          "6": {"name": "手首指活性化式", "relieves": "手首の痛み、指のしびれ、マウス手、循環不良", "core": "指と手首を活性化、過度使用の負担を和らげる", "benefit": ""},
-          "7": {"name": "呼吸鎮静式", "relieves": "不眠症、不安、落ち着きのなさ、睡眠不良", "core": "呼吸を調整、神経を落ち着かせ、よく眠れるように", "benefit": ""},
-          "8": {"name": "体ひねり経絡開き式", "relieves": "重い体、血流の遅さ、体の痛み、疲れ", "core": "循環を改善、停滞を減らし、体を軽くする", "benefit": ""},
-          "9": {"name": "閉じ式気戻し", "relieves": "散らばったエネルギー、練習後の落ち着きのなさ", "core": "気を集め、効果を固め、体と心を完全にリラックス", "benefit": ""}
+          "0": {
+            "name": "立ち方基礎式",
+            "relieves": "エネルギー不足、四肢の冷え、下半身の不安定、疲労",
+            "core": "安定した立ち方、エネルギーを集める、活力を向上",
+            "benefit": ""
+          },
+          "1": {
+            "name": "首肩リラックス式",
+            "relieves": "首の硬さ、肩の痛み、めまい、手のしびれ、首のこぶ",
+            "core": "首と肩をほぐし、緊張を素早く和らげる",
+            "benefit": ""
+          },
+          "2": {
+            "name": "胸開き気バランス式",
+            "relieves": "胸の圧迫感、息切れ、ストレス、気分の落ち込み",
+            "core": "胸を開き、呼吸を滑らかに、心を落ち着かせる",
+            "benefit": ""
+          },
+          "3": {
+            "name": "腰股関節リラックス式",
+            "relieves": "腰痛、下背部の硬さ、座ることによる動きの制限",
+            "core": "腰をリラックス、脊椎を保護、柔軟性を回復",
+            "benefit": ""
+          },
+          "4": {
+            "name": "体筋肉ストレッチ式",
+            "relieves": "全身の緊張、筋肉の硬さ、柔軟性の低さ",
+            "core": "優しくストレッチ、緊張を解放、体を柔らかくする",
+            "benefit": ""
+          },
+          "5": {
+            "name": "膝足首ケア式",
+            "relieves": "膝の不快感、足首の弱さ、関節の硬さ",
+            "core": "関節を優しく保護、安定性を向上、膝への圧力なし",
+            "benefit": ""
+          },
+          "6": {
+            "name": "手首指活性化式",
+            "relieves": "手首の痛み、指のしびれ、マウス手、循環不良",
+            "core": "指と手首を活性化、過度使用の負担を和らげる",
+            "benefit": ""
+          },
+          "7": {
+            "name": "呼吸鎮静式",
+            "relieves": "不眠症、不安、落ち着きのなさ、睡眠不良",
+            "core": "呼吸を調整、神経を落ち着かせ、よく眠れるように",
+            "benefit": ""
+          },
+          "8": {
+            "name": "体ひねり経絡開き式",
+            "relieves": "重い体、血流の遅さ、体の痛み、疲れ",
+            "core": "循環を改善、停滞を減らし、体を軽くする",
+            "benefit": ""
+          },
+          "9": {
+            "name": "閉じ式気戻し",
+            "relieves": "散らばったエネルギー、練習後の落ち着きのなさ",
+            "core": "気を集め、効果を固め、体と心を完全にリラックス",
+            "benefit": ""
+          }
         },
         "advantages": {
-          "0": {"icon": "⏱", "title": "わずか7分", "desc": "短く効率的、どんなスケジュールにも合う"},
-          "1": {"icon": "🛡", "title": "100%安全", "desc": "ジャンプなし、ひざまずきなし、強い力なし、怪我なし"},
-          "2": {"icon": "🌿", "title": "全身ケア", "desc": "首、肩、腰、関節、睡眠、気分すべてカバー"},
-          "3": {"icon": "✨", "title": "超簡単", "desc": "経験ゼロで必要、ただ従って練習"},
-          "4": {"icon": "👥", "title": "みんなのため", "desc": "オフィスワーカー、高齢者、忙しい人、すべての年齢"},
-          "5": {"icon": "♾", "title": "生涯の利益", "desc": "一度学べば、生涯の利益"}
+          "0": {
+            "icon": "⏱",
+            "title": "わずか7分",
+            "desc": "短く効率的、どんなスケジュールにも合う"
+          },
+          "1": {
+            "icon": "🛡",
+            "title": "100%安全",
+            "desc": "ジャンプなし、ひざまずきなし、強い力なし、怪我なし"
+          },
+          "2": {
+            "icon": "🌿",
+            "title": "全身ケア",
+            "desc": "首、肩、腰、関節、睡眠、気分すべてカバー"
+          },
+          "3": {
+            "icon": "✨",
+            "title": "超簡単",
+            "desc": "経験ゼロで必要、ただ従って練習"
+          },
+          "4": {
+            "icon": "👥",
+            "title": "みんなのため",
+            "desc": "オフィスワーカー、高齢者、忙しい人、すべての年齢"
+          },
+          "5": {
+            "icon": "♾",
+            "title": "生涯の利益",
+            "desc": "一度学べば、生涯の利益"
+          }
         },
         "audience": {
           "0": "首、肩、腰の痛みのあるオフィスワーカー",
@@ -682,23 +869,92 @@
           "7": "盲目的に反撃を強いられ、攻撃者をより攻撃的にする"
         },
         "forms": {
-          "0": {"name": "タンサオ + ステップ + 連続パンチ", "relieves": "より背の高い攻撃者からの右ストレートパンチ", "core": "ブロックではなく偏向；隙間を露出；素早く反撃", "benefit": "力なしで重いパンチを中和"},
-          "1": {"name": "フーサオ + パンチ", "relieves": "強い直接パンチ/全力攻撃", "core": "角度を変え、力を封じ、攻撃者をバランスから押す", "benefit": "大きな攻撃者でも即座に止める"},
-          "2": {"name": "ラップサオ対スイングパンチ", "relieves": "大きなスイング、左右フック", "core": "腕に付着、攻撃経路を変更、隙間を開く", "benefit": "ノックアウトを避ける；素早く反撃"},
-          "3": {"name": "ボンサオ + ロール + フックパンチ", "relieves": "エレベーター攻撃、正面攻撃、後退する余地なし", "core": "腰を回し、腕を封じ、近接打撃", "benefit": "狭いスペースで機能；同時に防御と反撃"},
-          "4": {"name": "ダブルスラップコントロール", "relieves": "顔つかみ、胸つかみ、挑発", "core": "デュアルスラップで攻撃能力を無効化", "benefit": "1秒ですべての来る動きをシャットダウン"},
-          "5": {"name": "タンサオ + ステップ + ブロック＆スラップ", "relieves": "突然の突進、近接制御", "core": "前進、顔をブロック、距離を制御", "benefit": "攻撃者を遠ざけ、制御を取る"},
-          "6": {"name": "クロスフィンガーストライク対ストレートパンチ", "relieves": "体への直接パンチ", "core": "最初に偏向、下半身を打つ", "benefit": "攻撃者を弱める一つの動き"},
-          "7": {"name": "肘コントロール＆エスケープ", "relieves": "手首つかみ、服つかみ、腕を保持", "core": "持ち上げ、ガイド、力をリダイレクト", "benefit": "しっかりつかまれても1秒で解放"},
-          "8": {"name": "馬歩 + 後方打撃", "relieves": "後ろからの熊抱き、突然の拘束", "core": "安定した姿勢、後方カウンター、解放", "benefit": "実際の危険にある女性のための命を救う動き"}
+          "0": {
+            "name": "タンサオ + ステップ + 連続パンチ",
+            "relieves": "より背の高い攻撃者からの右ストレートパンチ",
+            "core": "ブロックではなく偏向；隙間を露出；素早く反撃",
+            "benefit": "力なしで重いパンチを中和"
+          },
+          "1": {
+            "name": "フーサオ + パンチ",
+            "relieves": "強い直接パンチ/全力攻撃",
+            "core": "角度を変え、力を封じ、攻撃者をバランスから押す",
+            "benefit": "大きな攻撃者でも即座に止める"
+          },
+          "2": {
+            "name": "ラップサオ対スイングパンチ",
+            "relieves": "大きなスイング、左右フック",
+            "core": "腕に付着、攻撃経路を変更、隙間を開く",
+            "benefit": "ノックアウトを避ける；素早く反撃"
+          },
+          "3": {
+            "name": "ボンサオ + ロール + フックパンチ",
+            "relieves": "エレベーター攻撃、正面攻撃、後退する余地なし",
+            "core": "腰を回し、腕を封じ、近接打撃",
+            "benefit": "狭いスペースで機能；同時に防御と反撃"
+          },
+          "4": {
+            "name": "ダブルスラップコントロール",
+            "relieves": "顔つかみ、胸つかみ、挑発",
+            "core": "デュアルスラップで攻撃能力を無効化",
+            "benefit": "1秒ですべての来る動きをシャットダウン"
+          },
+          "5": {
+            "name": "タンサオ + ステップ + ブロック＆スラップ",
+            "relieves": "突然の突進、近接制御",
+            "core": "前進、顔をブロック、距離を制御",
+            "benefit": "攻撃者を遠ざけ、制御を取る"
+          },
+          "6": {
+            "name": "クロスフィンガーストライク対ストレートパンチ",
+            "relieves": "体への直接パンチ",
+            "core": "最初に偏向、下半身を打つ",
+            "benefit": "攻撃者を弱める一つの動き"
+          },
+          "7": {
+            "name": "肘コントロール＆エスケープ",
+            "relieves": "手首つかみ、服つかみ、腕を保持",
+            "core": "持ち上げ、ガイド、力をリダイレクト",
+            "benefit": "しっかりつかまれても1秒で解放"
+          },
+          "8": {
+            "name": "馬歩 + 後方打撃",
+            "relieves": "後ろからの熊抱き、突然の拘束",
+            "core": "安定した姿勢、後方カウンター、解放",
+            "benefit": "実際の危険にある女性のための命を救う動き"
+          }
         },
         "advantages": {
-          "0": {"icon": "💪", "title": "技術が力に勝る", "desc": "女性、高齢者、小柄な体格すべて使用可能"},
-          "1": {"icon": "⚡", "title": "7分で学ぶ", "desc": "シンプルな動き、複雑なルーチンなし"},
-          "2": {"icon": "📍", "title": "どこでも機能", "desc": "エレベーター、通り、廊下、スペース不要"},
-          "3": {"icon": "🤝", "title": "安全＆非暴力", "desc": "偏向と制御、残忍な戦闘ではない"},
-          "4": {"icon": "🚀", "title": "経験ゼロ必要", "desc": "柔軟性やフィットネス不要"},
-          "5": {"icon": "🛡", "title": "90%の危険をカバー", "desc": "パンチ、つかみ、抱き、罠 — すべて解決"}
+          "0": {
+            "icon": "💪",
+            "title": "技術が力に勝る",
+            "desc": "女性、高齢者、小柄な体格すべて使用可能"
+          },
+          "1": {
+            "icon": "⚡",
+            "title": "7分で学ぶ",
+            "desc": "シンプルな動き、複雑なルーチンなし"
+          },
+          "2": {
+            "icon": "📍",
+            "title": "どこでも機能",
+            "desc": "エレベーター、通り、廊下、スペース不要"
+          },
+          "3": {
+            "icon": "🤝",
+            "title": "安全＆非暴力",
+            "desc": "偏向と制御、残忍な戦闘ではない"
+          },
+          "4": {
+            "icon": "🚀",
+            "title": "経験ゼロ必要",
+            "desc": "柔軟性やフィットネス不要"
+          },
+          "5": {
+            "icon": "🛡",
+            "title": "90%の危険をカバー",
+            "desc": "パンチ、つかみ、抱き、罠 — すべて解決"
+          }
         },
         "audience": {
           "0": "一人で歩くか遅くまで働く女性",
@@ -716,6 +972,228 @@
           "4": "あなたと家族のための生涯の護身術スキル"
         },
         "closing": "危険は予告なしに来ます。詠春護身術9式 — シンプル、リアル、効果的。安全を保ち、自信を保つ。"
+      }
+    }
+  },
+  "qimen": {
+    "courseTitle": "Nourish Five Internal Organs, Calm Deep Inner Imbalance & Restore Long-Term Masculine Vitality",
+    "courseSubtitle": "Ancient Wudang Tai Chi Full Course. Seven Major Viscera Systematic Deep Nourishment, Step-by-Step Guided Practice, Eliminate Root Fatigue & Rebalance Full-Body Natural Wellness.",
+    "videoCourse": "Video Course",
+    "sale": "Sale",
+    "lessonsInfo": "7 lessons · buy individually",
+    "lessonPrice": "$39",
+    "lessonPriceOld": "$59.99",
+    "lessonUnlocked": "✓ Lesson {{lessonId}} Unlocked",
+    "buyLesson": "Buy Lesson {{lessonId}} · {{price}} USD",
+    "signInPrompt": "Please sign in to purchase and watch.",
+    "lessonsLabel": "Lessons",
+    "lessonLabel": "Lesson {{lessonId}}",
+    "unlocked": "Unlocked",
+    "locked": "🔒 $39 USD",
+    "loading": "Loading…",
+    "playbackError": "Playback error",
+    "retry": "Retry",
+    "videoNotSupported": "Your browser does not support video.",
+    "selectLesson": "Select a lesson above to play.",
+    "lockedTitle": "Locked",
+    "purchasePrompt": "Purchase this lesson to unlock and watch.",
+    "buyThisLesson": "Buy Lesson {{lessonId}} · {{price}}",
+    "signInToPurchase": "Sign in to purchase",
+    "nowPlaying": "Now Playing",
+    "lessonDetailTitle": "Lesson {{lessonId}} — Full Description",
+    "lessonDetailSubtitle": "Switch lessons above to see details for each",
+    "whoIsThisFor": "Who Is This For?",
+    "coreBenefits": "Core Benefits",
+    "instructor": "Instructor",
+    "disclaimer": "Disclaimer: This program is for wellness purposes only and is not medical advice. Please consult a qualified healthcare professional if you have any health concerns.",
+    "lessons": {
+      "lesson1": {
+        "title": "Kidney Essence & Masculine Vitality",
+        "subtitle": "Deep core energy restoration, support lasting inner strength, ease body weariness & maintain peak daily male performance",
+        "duration": "~11 min",
+        "intro": "Stop enduring joint pain! Don't rely on painkillers and massages that only treat the symptoms, not the root cause! Bone-Invigorating Health Qigong is taught personally by Master Liu Shigao, the 15th-generation authentic inheritor of the Wudang Sanfeng Sect. This 11-minute course is specially designed for stiff joints, cold and aching bone cavities, and sedentary strain. It unblocks stagnation deep in the joints, relieves pain in the shoulders, neck, lower back and knees, and restores flexibility to your joints.",
+        "painPoint1": "Office workers: Stiff and sore shoulders, neck and lower back, difficulty standing after sitting, limited range of motion when turning or bending",
+        "painPoint2": "Middle-aged and elderly people with joint discomfort: Knee pain, joint cracking, difficulty climbing stairs, worsened symptoms on rainy days",
+        "painPoint3": "People with minor sports injuries: Mild waist and knee strain, unable to do intense exercise, in need of gentle recovery",
+        "painPoint4": "People with cold-damp constitution: Cold and tight joints, cold hands and feet, persistent cold pain deep in the bones year-round",
+        "instructorName": "Master Liu Shigao",
+        "instructorTitle": "15th-Generation Authentic Inheritor of the Wudang Sanfeng Sect",
+        "instructorPoint1": "Authentic Lineage: Disciple of Grandmaster Zhong Yunlong, the 14th-generation leader of the Wudang Sanfeng Sect",
+        "instructorPoint2": "Professional Achievements: Double champion in international Tai Chi and Tai Chi Sword competitions",
+        "instructorPoint3": "Precise Teaching: Trained systematically at the Wudang Zixiao Palace since childhood",
+        "benefit1Title": "Qi-guided joint clearing",
+        "benefit1Desc": "Qi penetrates the bone cavities, dissolves cold-damp stagnation, quickly relieves stabbing and cold pain in shoulders, waist and knees",
+        "benefit2Title": "Activate joints, eliminate stiffness",
+        "benefit2Desc": "Stretches ligaments and joint capsules, improves range of motion, ends joint cracking and difficulty bending",
+        "benefit3Title": "Dispel cold and dampness",
+        "benefit3Desc": "Draws Yang Qi inward, expels deep cold-damp from joints, reduces discomfort on rainy days",
+        "benefit4Title": "Strengthen tendons and bones",
+        "benefit4Desc": "Enhances muscle and ligament support, reduces joint wear, prevents recurring strain",
+        "benefit5Title": "Time-efficient and easy to maintain",
+        "benefit5Desc": "11-minute short practice, no equipment needed, can be done at home or in the office",
+        "closing": "Stop enduring joint pain at a young age. Bone-Invigorating Health Qigong — 11 minutes to unblock, warm and strengthen your joints every day."
+      },
+      "lesson2": {
+        "title": "Liver & Mood Stability Care",
+        "subtitle": "Clear internal stagnation, soothe irritability, release daily pressure & keep steady calm mindset",
+        "duration": "~10 min",
+        "intro": "Stop suffering from physical weakness, fatigue and sore waist and knees! Stop relying blindly on supplements that only make you weaker! Hunyuan Wuji Stance is taught personally by Master Liu Shigao, the 15th-generation authentic inheritor of the Wudang Sanfeng Sect. This 10-minute ancient standing practice is specially designed for those with insufficient kidney Qi, depleted primordial energy, cold hands and feet, and poor concentration. It gathers Qi and consolidates your foundation, replenishing your exhausted body from the root.",
+        "painPoint1": "People with insufficient kidney Qi: Sore, weak waist and knees, low energy",
+        "painPoint2": "People with cold constitution: Cold hands and feet, cold lower abdomen, aversion to wind and cold",
+        "painPoint3": "People with high stress and late nights: Fatigue, poor concentration, easy palpitations",
+        "painPoint4": "People with insomnia and restless sleep: Difficulty falling asleep, light sleep, easy waking",
+        "painPoint5": "People with weak immunity: Prone to colds and frequent minor illnesses",
+        "instructorName": "Master Liu Shigao",
+        "instructorTitle": "15th-Generation Authentic Inheritor of the Wudang Sanfeng Sect",
+        "instructorPoint1": "Authentic Lineage: Bestowed the Taoist name \"Shigao\" — core 15th-generation inheritor, decades of Wudang internal stance practice",
+        "instructorPoint2": "Professional Achievements: Double champion in international Tai Chi and Tai Chi Sword competitions",
+        "instructorPoint3": "Precise Teaching: Proficient in the essence of \"gathering Qi through standing and returning to origin\"",
+        "benefit1Title": "Strengthens kidneys and consolidates primordial Qi",
+        "benefit1Desc": "Quickly gathers scattered vital energy, relieves soreness and fatigue",
+        "benefit2Title": "Warms Yang and dispels cold",
+        "benefit2Desc": "Improves circulation in the lower body, warms hands, feet and abdomen from within",
+        "benefit3Title": "Calms the mind and stabilizes emotions",
+        "benefit3Desc": "Relieves irritation, calms the heart, deepens sleep",
+        "benefit4Title": "Boosts energy and eliminates drowsiness",
+        "benefit4Desc": "Keeps you alert and focused during the day",
+        "benefit5Title": "Zero-threshold and easy to stick to",
+        "benefit5Desc": "10-minute standing practice, no space or equipment required, suitable for all ages",
+        "closing": "Just 10 minutes a day to gradually recover your scattered vital energy. Hunyuan Wuji Stance — simple, deep, effective."
+      },
+      "lesson3": {
+        "title": "Spleen & All-Day Energy Boost",
+        "subtitle": "Optimize internal energy absorption, banish constant sluggishness & maintain consistent high vitality",
+        "duration": "~17 min",
+        "intro": "Stop suffering from weak spleen and stomach, indigestion, bloating and edema! Wudang Taoist Baduanjin is taught personally by Master Liu Shigao, the 15th-generation authentic inheritor of the Wudang Sanfeng Sect. This 17-minute ancient Daoyin practice specially regulates the spleen and stomach, enhances digestion, improves absorption and speeds up metabolism, solving the root problems of poor appetite, malabsorption, weight gain and weakness.",
+        "painPoint1": "People with weak spleen and stomach: Indigestion, bloating, poor appetite",
+        "painPoint2": "People with intestinal disorders: Recurring constipation or loose stools, abdominal discomfort",
+        "painPoint3": "People with bloating and edema: Slow metabolism, fat accumulation, heavy body",
+        "painPoint4": "People with sallow complexion: Malnutrition, poor absorption, fatigue and laziness",
+        "painPoint5": "Middle-aged and elderly health seekers: Weak physique, unable to do intense exercise, in need of gentle conditioning",
+        "instructorName": "Master Liu Shigao",
+        "instructorTitle": "15th-Generation Authentic Inheritor of the Wudang Sanfeng Sect",
+        "instructorPoint1": "Authentic Lineage: Holding the complete ancient Baduanjin Daoyin tradition passed down from Grandmaster Zhong Yunlong",
+        "instructorPoint2": "Professional Achievements: International martial arts champion, proficient in internal organ regulation",
+        "instructorPoint3": "Precise Teaching: Breaks down ancient Baduanjin into simple moves, no empty theories — only tangible effects",
+        "benefit1Title": "Strengthens spleen and stomach",
+        "benefit1Desc": "Improves digestion and absorption, relieves bloating, helps nutrients absorb effectively",
+        "benefit2Title": "Regulates intestines",
+        "benefit2Desc": "Eases constipation and diarrhea, balances intestinal rhythm, stops recurring discomfort",
+        "benefit3Title": "Boosts metabolism",
+        "benefit3Desc": "Reduces bloating and fat, improves circulation, reduces excess fat and edema",
+        "benefit4Title": "Replenishes Qi",
+        "benefit4Desc": "Improves sallow complexion, restores rosy color and stronger energy",
+        "benefit5Title": "Gentle and safe for the whole family",
+        "benefit5Desc": "Soft movements, suitable for beginners, the elderly and weak people",
+        "closing": "17 minutes of authentic Wudang Baduanjin — feel your spleen and stomach improve with every practice."
+      },
+      "lesson4": {
+        "title": "Lung Power & Physical Stamina",
+        "subtitle": "Deep breath regulation, expand lung capacity, build natural endurance & anti-fatigue reserve",
+        "duration": "~11 min",
+        "intro": "Stop being destroyed by insomnia, palpitations, irritation and internal friction! Tai Chi for Heart Calming is taught personally by Master Liu Shigao, the 15th-generation authentic inheritor of the Wudang Sanfeng Sect. This 11-minute gentle Tai Chi set specially calms the mind, relieves stress, improves sleep and soothes emotions, helping you relax mentally and physically.",
+        "painPoint1": "People with insomnia: Difficulty falling asleep, light sleep, easy waking, tired after rest",
+        "painPoint2": "Anxious and stressed people: Irritability, overthinking, mental tension",
+        "painPoint3": "People with palpitations: Chest tightness, shortness of breath, easy nervousness",
+        "painPoint4": "People with mental fatigue: Nerve weakness, poor concentration, brain fog",
+        "painPoint5": "People with internal friction: Low mood, physical and mental exhaustion",
+        "instructorName": "Master Liu Shigao",
+        "instructorTitle": "15th-Generation Authentic Inheritor of the Wudang Sanfeng Sect",
+        "instructorPoint1": "Authentic Lineage: Proficient in Tai Chi static practice and heart-nourishing methods",
+        "instructorPoint2": "Professional Achievements: International Tai Chi champion, steady and gentle movements",
+        "instructorPoint3": "Practical Teaching: Specially designed for stressed, insomniac and anxious people",
+        "benefit1Title": "Calms the heart and relieves anxiety",
+        "benefit1Desc": "Releases mental pressure, stabilizes emotions",
+        "benefit2Title": "Improves insomnia and sleep quality",
+        "benefit2Desc": "Faster onset, deeper sleep, more energy upon waking",
+        "benefit3Title": "Relieves palpitations and chest tightness",
+        "benefit3Desc": "Balances breathing, eases discomfort",
+        "benefit4Title": "Relaxes the brain and reduces fatigue",
+        "benefit4Desc": "Sharpens the mind, improves focus",
+        "benefit5Title": "Time-efficient and sustainable",
+        "benefit5Desc": "11-minute practice, suitable for morning or night",
+        "closing": "The heart governs the spirit. An unsettled heart leads to poor sleep and weak health. Practice daily — more peace with every session."
+      },
+      "lesson5": {
+        "title": "Heart Calm & Mental Focus",
+        "subtitle": "Nourish heart spirit, calm overthinking, relieve inner anxiety & restore sharp clear mind",
+        "duration": "~11 min",
+        "intro": "Stop letting liver Qi stagnation, chest tightness, irritation and acne harm your body! Tai Chi for Soothing the Liver is taught personally by Master Liu Shigao, the 15th-generation authentic inheritor of the Wudang Sanfeng Sect. This 11-minute stretching Tai Chi set specially soothes the liver, regulates Qi, releases stagnation and clears liver fire, making your body free of blockage, tightness and irritation.",
+        "painPoint1": "People with liver Qi stagnation: Chest tightness, frequent sighing, rib pain",
+        "painPoint2": "Irritable people: Bad temper, depression, strong mood swings",
+        "painPoint3": "People with liver damage from late nights: Bitter mouth, acne, dry eyes",
+        "painPoint4": "People with Qi stagnation: Dizziness, body tightness, blocked meridians",
+        "painPoint5": "Women in need of regulation: Breast tenderness and mood swings before menstruation",
+        "instructorName": "Master Liu Shigao",
+        "instructorTitle": "15th-Generation Authentic Inheritor of the Wudang Sanfeng Sect",
+        "instructorPoint1": "Authentic Lineage: Proficient in meridian stretching and Qi regulation",
+        "instructorPoint2": "Professional Achievements: International Tai Chi champion, open and smooth movements with clear Qi paths",
+        "instructorPoint3": "Precise Teaching: Simple and easy to learn, specially designed for liver meridian blockage",
+        "benefit1Title": "Soothes the liver and regulates Qi",
+        "benefit1Desc": "Eliminates chest tightness and sighing, relaxes the body",
+        "benefit2Title": "Clears liver fire",
+        "benefit2Desc": "Relieves bitter mouth, dry eyes and irritation",
+        "benefit3Title": "Smooths Qi flow and unblocks meridians",
+        "benefit3Desc": "Reduces body tightness and soreness",
+        "benefit4Title": "Calms emotions",
+        "benefit4Desc": "Less anger, less internal friction, more ease",
+        "benefit5Title": "Simple and efficient",
+        "benefit5Desc": "11-minute stretching, usable at work or home",
+        "closing": "The liver governs free flow of Qi. Once unblocked, the whole body flows. Soothe the liver — feel the difference every day."
+      },
+      "lesson6": {
+        "title": "Deep Night Recovery & Quality Sleep",
+        "subtitle": "Calm nightly restlessness, ease frequent waking, enjoy deep uninterrupted sleep & fully refreshed mornings",
+        "duration": "~28 min",
+        "intro": "Stop catching colds every season and feeling uncomfortable in the wind! Tai Chi for Nourishing the Lungs is taught personally by Master Liu Shigao, the 15th-generation authentic inheritor of the Wudang Sanfeng Sect. This 28-minute breath-coordinated Tai Chi set specially moistens the lungs, strengthens lung Qi, improves immunity and relieves dry throat, making you full of energy with stronger defense.",
+        "painPoint1": "People with weak lung Qi: Prone to colds, low immunity, weak health",
+        "painPoint2": "People with throat discomfort: Dry throat, easy coughing, phlegm discomfort",
+        "painPoint3": "People with shallow breathing: Shortness of breath, weak voice, chest tightness",
+        "painPoint4": "Public speakers and voice users: Teachers, streamers with chronic throat fatigue",
+        "painPoint5": "People in dry environments: Nasal dryness, skin dryness, sensitive lungs",
+        "instructorName": "Master Liu Shigao",
+        "instructorTitle": "15th-Generation Authentic Inheritor of the Wudang Sanfeng Sect",
+        "instructorPoint1": "Authentic Lineage: Direct inheritor, proficient in breath Daoyin and lung regulation",
+        "instructorPoint2": "Professional Achievements: International Tai Chi champion, expert in guiding Qi with form",
+        "instructorPoint3": "Practical Teaching: Movements matched with breathing, easy to learn, obvious long-term effects",
+        "benefit1Title": "Moistens lungs and boosts lung function",
+        "benefit1Desc": "Deepens breathing, relieves shortness of breath",
+        "benefit2Title": "Enhances immunity",
+        "benefit2Desc": "Reduces seasonal colds, strengthens external defense",
+        "benefit3Title": "Relieves dry throat and coughing",
+        "benefit3Desc": "Moistens nose and throat, reduces irritation",
+        "benefit4Title": "Replenishes Qi and improves complexion",
+        "benefit4Desc": "Boosts energy, strengthens voice",
+        "benefit5Title": "Gentle health care",
+        "benefit5Desc": "Suitable for the weak, elderly and beginners",
+        "closing": "The lungs govern Qi of the whole body. Strong lung Qi means a strong body. Practice daily — breathe deeper, live better."
+      },
+      "lesson7": {
+        "title": "Five Organs Full System Deep Conditioning",
+        "subtitle": "Comprehensive heart/liver/spleen/lung/kidney balance, full body deep maintenance for long term prime wellness",
+        "duration": "~30 min",
+        "intro": "Stop suffering from Qi and blood deficiency, organ imbalance and overall sub-health! Tai Chi for Qi and Blood Regulation is taught personally by Master Liu Shigao, the 15th-generation authentic inheritor of the Wudang Sanfeng Sect. This 30-minute complete Tai Chi set balances Qi and blood, nourishes the heart, liver, spleen, lungs and kidneys, unblocks meridians, providing full-body conditioning in one practice.",
+        "painPoint1": "People with Qi and blood deficiency: Sallow complexion, dizziness, fatigue, numb hands and feet",
+        "painPoint2": "People with organ disorders: Combined heart, liver, spleen, lung and kidney weakness",
+        "painPoint3": "People with full-body sub-health: Aches, fatigue, poor sleep, bad complexion",
+        "painPoint4": "Middle-aged and elderly health seekers: Declining health, in need of comprehensive anti-aging care",
+        "painPoint5": "Systematic health lovers: Want one complete routine instead of mixed fragments",
+        "instructorName": "Master Liu Shigao",
+        "instructorTitle": "15th-Generation Authentic Inheritor of the Wudang Sanfeng Sect",
+        "instructorPoint1": "Authentic Lineage: Holding the complete Wudang Tai Chi system, proficient in Qi, blood and organ regulation",
+        "instructorPoint2": "Professional Achievements: International Tai Chi champion, integrating heart, liver, spleen, lung and kidney nourishment",
+        "instructorPoint3": "Systematic Teaching: Step-by-step, full-body coverage in one complete set",
+        "benefit1Title": "Balances full-body Qi and blood",
+        "benefit1Desc": "Improves pale complexion, dizziness and fatigue",
+        "benefit2Title": "Nourishes five internal organs",
+        "benefit2Desc": "Synchronously balances heart, liver, spleen, lungs and kidneys",
+        "benefit3Title": "Unblocks full-body meridians",
+        "benefit3Desc": "Relieves soreness, stiffness and stagnation",
+        "benefit4Title": "Strengthens foundation and immunity",
+        "benefit4Desc": "Slows aging, boosts energy",
+        "benefit5Title": "All-in-one full-body practice",
+        "benefit5Desc": "One set completes full-body conditioning without switching routines",
+        "closing": "Imbalanced Qi and blood lead to disordered organs. This comprehensive practice regulates both — nourishing all at once, leaving you fully open after every session."
       }
     }
   }

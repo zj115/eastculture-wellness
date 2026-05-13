@@ -1,8 +1,9 @@
 // src/pages/JiuJiuPage.jsx
-// 9.9 Quick Relief Course — 3 Lessons
+// 9.9 Quick Relief Course — 4 Lessons
 
 import { motion } from "framer-motion";
 import { useEffect, useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const fadeInUp = {
     hidden: { opacity: 0, y: 24 },
@@ -12,209 +13,31 @@ const fadeInUp = {
 const API_BASE =
     import.meta?.env?.VITE_API_BASE || "https://eastculture-api.vercel.app";
 
-// ─────────────────────────────────────────────
-// COURSE META
-// ─────────────────────────────────────────────
-const COURSE = {
-    titleEn: "Quick Relief Self-Care Course",
-    subtitleEn: "Fast Relief for Common Daily Discomforts. 4 Simple Acupoint Routines, 5-10 Minutes Each, Instant Comfort at Home.",
-    priceNow: "$9.9",
-    priceOld: "$29.99",
-    sale: true,
-    lessonCount: 4,
-    lessonPrice: "$9.9",
-};
-
-// ─────────────────────────────────────────────
-// LESSON DATA
-// ─────────────────────────────────────────────
-const LESSONS = [
+// Static lesson metadata (non-translatable)
+const LESSON_META = [
     {
         id: 1,
-        titleEn: "Lower Back Pain Relief",
-        subtitleEn: "Fast Relief • 3 Acupoints • Feel Better Fast",
-        duration: "~5 min",
         s3Key: "9.9/腰腿疼痛.mp4",
         coverImage: "/images/jiujiu-waist.png",
         fallbackImage: "/images/acupoint-waist-legs.png",
-
-        intro: "Suffering from stubborn lower back pain? Tired of temporary relief from creams and treatments?\n\nThis course helps you quickly relax tight muscles, release tension, and ease discomfort with 3 powerful acupressure points.\n\nNo tools, no help needed. Just 10–20 minutes a day.\n\nFollow Master Qing Ji and feel warmth, relaxation, and relief in minutes.",
-
-        painPoints: [
-            "Long sitting hours causing recurring back pain",
-            "Bending, lifting, or overwork leading to lower back strain",
-            "Stiffness, soreness, coldness in the lower back",
-            "Temporary relief from patches and therapy, but pain returns",
-            "Want natural, drug-free pain relief at home",
-        ],
-
-        benefits: [
-            { title: "Fast relief", desc: "3 core acupoints quickly unblock and relax tight lower back" },
-            { title: "No tools needed", desc: "Do it yourself at home, no equipment required" },
-            { title: "10-20 minutes daily", desc: "Short, effective routine that fits any schedule" },
-            { title: "Feel warmth & relaxation", desc: "Immediate sensation of heat and looseness in the back" },
-            { title: "Root-cause improvement", desc: "Regular practice improves blood flow and prevents recurring pain" },
-        ],
-
-        instructor: {
-            name: "Master Qing Ji",
-            title: "Traditional Chinese Medicine Practitioner",
-            points: [
-                "Certified TCM practitioner with years of clinical experience",
-                "Specializes in acupressure and meridian therapy",
-                "Easy-to-follow teaching style for complete beginners",
-            ],
-        },
-
-        audience: [
-            "Office workers & people with long sitting hours",
-            "Those with recurring stiffness, soreness, or fatigue",
-            "People who prefer gentle, natural self-care",
-            "Complete beginners welcome",
-        ],
-
-        closingEn: "One purchase → lifetime access. Practice anytime, feel better fast.",
     },
-
     {
         id: 2,
-        titleEn: "Neck & Shoulder Relief",
-        subtitleEn: "Release Tension • Move Freely • Fast Relief",
-        duration: "~5 min",
         s3Key: "9.9/肩颈课.mp4",
         coverImage: "/images/jiujiu-neck.png",
         fallbackImage: "/images/acupoint-neck-shoulder.png",
-
-        intro: "Stiff neck? Tight shoulders? Heavy, painful, hard to move?\n\nThis routine helps you release tension quickly and unlock tight neck & shoulders.\n\nJust 10 minutes a day.\n\nFollow along and feel instant relief—no force, no equipment.",
-
-        painPoints: [
-            "Phone & computer use causing stiff, heavy neck and shoulders",
-            "Neck cracking sounds when turning head",
-            "Shoulders feel like carrying heavy stones",
-            "Dizziness or hand numbness from neck tension",
-            "Want quick relief without massage or equipment",
-        ],
-
-        benefits: [
-            { title: "Quick tension release", desc: "3 acupoints instantly unlock stiff neck and shoulders" },
-            { title: "10 minutes daily", desc: "Short routine, immediate relief" },
-            { title: "No force, no equipment", desc: "Gentle pressure, safe and effective" },
-            { title: "Restore flexibility", desc: "Move your neck and shoulders freely again" },
-            { title: "Feel lighter & energized", desc: "Release the heavy burden, feel refreshed" },
-        ],
-
-        instructor: {
-            name: "Master Qing Ji",
-            title: "Traditional Chinese Medicine Practitioner",
-            points: [
-                "Certified TCM practitioner with years of clinical experience",
-                "Specializes in acupressure and meridian therapy",
-                "Easy-to-follow teaching style for complete beginners",
-            ],
-        },
-
-        audience: [
-            "Office workers & people with long sitting hours",
-            "Those with recurring stiffness, soreness, or fatigue",
-            "People who prefer gentle, natural self-care",
-            "Complete beginners welcome",
-        ],
-
-        closingEn: "One purchase → lifetime access. Unlock your neck & shoulders in minutes.",
     },
-
     {
         id: 3,
-        titleEn: "Sleep & Calm Support",
-        subtitleEn: "10-Min Bedtime Routine • Fall Asleep Faster",
-        duration: "~5 min",
         s3Key: "9.9/失眠.mp4",
         coverImage: "/images/jiujiu-sleep.png",
         fallbackImage: "/images/acupoint-daily.png",
-
-        intro: "Tossing, turning, racing thoughts? Can't fall asleep?\n\nThis bedtime routine calms your mind fast and helps you sleep deeper—naturally.\n\n10 minutes in bed. No pills, no devices.\n\nFall asleep quicker, wake up less.",
-
-        painPoints: [
-            "Tossing and turning, can't fall asleep",
-            "Racing thoughts, mind won't stop",
-            "Waking up in the middle of the night, can't go back to sleep",
-            "Want natural sleep support without medication",
-            "Need a simple bedtime routine",
-        ],
-
-        benefits: [
-            { title: "Fast relaxation", desc: "3 calming acupoints quickly relax nerves and emotions" },
-            { title: "10 minutes in bed", desc: "Do it lying down, right before sleep" },
-            { title: "No pills, no devices", desc: "Natural, safe, drug-free sleep support" },
-            { title: "Fall asleep faster", desc: "Calm your mind and enter sleep state quickly" },
-            { title: "Sleep deeper", desc: "Regular practice improves sleep quality and energy" },
-        ],
-
-        instructor: {
-            name: "Master Qing Ji",
-            title: "Traditional Chinese Medicine Practitioner",
-            points: [
-                "Certified TCM practitioner with years of clinical experience",
-                "Specializes in acupressure and meridian therapy",
-                "Easy-to-follow teaching style for complete beginners",
-            ],
-        },
-
-        audience: [
-            "Office workers & people with long sitting hours",
-            "Those with recurring stiffness, soreness, or fatigue",
-            "People who prefer gentle, natural self-care",
-            "Complete beginners welcome",
-        ],
-
-        closingEn: "One purchase → lifetime access. Sleep better tonight.",
     },
-
     {
         id: 4,
-        titleEn: "Men's Health & Vitality",
-        subtitleEn: "Male Wellness • Natural Support • Restore Energy",
-        duration: "~5 min",
         s3Key: "9.9/男科.mp4",
         coverImage: "/images/jiujiu-mens-health.png",
         fallbackImage: "/images/acupoint-daily.png",
-
-        intro: "Feeling low energy? Struggling with vitality and wellness concerns?\n\nThis course helps you understand men's physiological health and learn scientific self-care methods to improve quality of life.\n\nJust 10-15 minutes a day.\n\nFollow along and restore your natural vitality—safe, natural, effective.",
-
-        painPoints: [
-            "Low energy and fatigue affecting daily life",
-            "Concerns about men's health and vitality",
-            "Stress and lifestyle affecting wellness",
-            "Want natural, holistic approaches to men's health",
-            "Looking for safe, effective self-care methods",
-        ],
-
-        benefits: [
-            { title: "Restore vitality", desc: "Learn acupoints that support men's health and energy" },
-            { title: "10-15 minutes daily", desc: "Simple routine that fits your schedule" },
-            { title: "Natural & safe", desc: "Drug-free, holistic approach to wellness" },
-            { title: "Scientific methods", desc: "Based on Traditional Chinese Medicine principles" },
-            { title: "Improve quality of life", desc: "Feel more energized and balanced" },
-        ],
-
-        instructor: {
-            name: "Master Qing Ji",
-            title: "Traditional Chinese Medicine Practitioner",
-            points: [
-                "Certified TCM practitioner with years of clinical experience",
-                "Specializes in acupressure and meridian therapy",
-                "Easy-to-follow teaching style for complete beginners",
-            ],
-        },
-
-        audience: [
-            "Men seeking natural wellness support",
-            "Those experiencing low energy or vitality concerns",
-            "People interested in holistic health approaches",
-            "Complete beginners welcome",
-        ],
-
-        closingEn: "One purchase → lifetime access. Restore your vitality naturally.",
     },
 ];
 
@@ -290,17 +113,17 @@ function AudienceList({ items }) {
     );
 }
 
-function LessonDetail({ lesson }) {
+function LessonDetail({ lesson, t }) {
     return (
         <div className="space-y-5">
             {/* Intro */}
             <div className="rounded-3xl border border-slate-200 bg-white p-5 space-y-3">
                 <div>
                     <h2 className="text-lg font-bold text-slate-900 leading-snug">
-                        {lesson.titleEn}
+                        {lesson.title}
                     </h2>
                     <p className="text-sm text-amber-700 mt-1 font-medium">
-                        {lesson.subtitleEn}
+                        {lesson.subtitle}
                     </p>
                 </div>
                 <p className="text-sm text-slate-700 leading-relaxed whitespace-pre-line">
@@ -310,38 +133,38 @@ function LessonDetail({ lesson }) {
 
             {/* Pain Points */}
             <div className="rounded-3xl border border-amber-200 bg-amber-50 p-5">
-                <SectionTitle>Who Is This For?</SectionTitle>
+                <SectionTitle>{t('jiujiu.whoIsThisFor')}</SectionTitle>
                 <PainPointsList items={lesson.painPoints} />
             </div>
 
             {/* Benefits */}
             <div className="rounded-3xl border border-slate-200 bg-slate-50 p-5">
-                <SectionTitle>Course Benefits</SectionTitle>
+                <SectionTitle>{t('jiujiu.courseBenefits')}</SectionTitle>
                 <BenefitsList items={lesson.benefits} />
             </div>
 
             {/* Instructor */}
             <div className="rounded-3xl border border-slate-200 bg-white p-5">
-                <SectionTitle>Instructor</SectionTitle>
+                <SectionTitle>{t('jiujiu.instructor')}</SectionTitle>
                 <InstructorCard instructor={lesson.instructor} />
             </div>
 
             {/* Audience */}
             <div className="rounded-3xl border border-emerald-100 bg-emerald-50 p-5">
-                <SectionTitle>Perfect For</SectionTitle>
+                <SectionTitle>{t('jiujiu.perfectFor')}</SectionTitle>
                 <AudienceList items={lesson.audience} />
             </div>
 
             {/* Closing */}
             <div className="rounded-3xl bg-slate-900 px-5 py-5 text-center">
                 <p className="text-sm font-medium text-white/90 leading-relaxed">
-                    {lesson.closingEn}
+                    {lesson.closing}
                 </p>
             </div>
 
             {/* Disclaimer */}
             <div className="rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-xs text-amber-900 leading-relaxed">
-                Disclaimer: This program is for wellness purposes only and is not medical advice. Please consult a qualified healthcare professional if you have any health concerns.
+                {t('jiujiu.disclaimer')}
             </div>
         </div>
     );
@@ -358,6 +181,7 @@ export default function JiuJiuPage({
     onPurchase,
     onGoLogin,
 }) {
+    const { t } = useTranslation();
     const isLoggedIn = !!currentUser;
     const isOwned = !!isOwnedProp;
 
@@ -367,9 +191,25 @@ export default function JiuJiuPage({
     const [error, setError] = useState("");
     const [imgError, setImgError] = useState(false);
 
+    // Build lessons from translations
+    const LESSONS = useMemo(() => {
+        return LESSON_META.map((meta) => ({
+            ...meta,
+            title: t(`jiujiu.lessons.lesson${meta.id}.title`),
+            subtitle: t(`jiujiu.lessons.lesson${meta.id}.subtitle`),
+            duration: t(`jiujiu.lessons.lesson${meta.id}.duration`),
+            intro: t(`jiujiu.lessons.lesson${meta.id}.intro`),
+            painPoints: t(`jiujiu.lessons.lesson${meta.id}.painPoints`, { returnObjects: true }),
+            benefits: t(`jiujiu.lessons.lesson${meta.id}.benefits`, { returnObjects: true }),
+            instructor: t(`jiujiu.lessons.lesson${meta.id}.instructor`, { returnObjects: true }),
+            audience: t(`jiujiu.lessons.lesson${meta.id}.audience`, { returnObjects: true }),
+            closing: t(`jiujiu.lessons.lesson${meta.id}.closing`),
+        }));
+    }, [t]);
+
     const activeLesson = useMemo(
         () => LESSONS.find((x) => x.id === activeLessonId) || LESSONS[0],
-        [activeLessonId]
+        [activeLessonId, LESSONS]
     );
 
     useEffect(() => { setImgError(false); }, [activeLessonId]);
@@ -422,7 +262,7 @@ export default function JiuJiuPage({
             onPurchase?.("video", {
                 courseId: "jiujiu",
                 videoKey: lesson.s3Key,
-                videoTitle: lesson.titleEn,
+                videoTitle: lesson.title,
             });
             return;
         }
@@ -443,7 +283,7 @@ export default function JiuJiuPage({
         onPurchase?.("video", {
             courseId: "jiujiu",
             videoKey: activeLesson.s3Key,
-            videoTitle: activeLesson.titleEn,
+            videoTitle: activeLesson.title,
         });
     }
 
@@ -474,7 +314,7 @@ export default function JiuJiuPage({
                 >
                     <img
                         src={heroSrc}
-                        alt={activeLesson.titleEn}
+                        alt={activeLesson.title}
                         onError={() => setImgError(true)}
                         className="w-full object-cover object-center"
                         style={{ display: "block", aspectRatio: "16/9", maxHeight: "420px" }}
@@ -489,25 +329,23 @@ export default function JiuJiuPage({
                 >
                     <div className="flex flex-wrap items-center gap-2 mb-2">
                         <span className="text-[11px] uppercase tracking-widest text-slate-500">
-                            Video Course
+                            {t('jiujiu.videoCourse')}
                         </span>
-                        {COURSE.sale && (
-                            <span className="rounded-full bg-slate-900 px-2.5 py-0.5 text-[11px] font-semibold text-white">
-                                Sale
-                            </span>
-                        )}
+                        <span className="rounded-full bg-slate-900 px-2.5 py-0.5 text-[11px] font-semibold text-white">
+                            {t('jiujiu.sale')}
+                        </span>
                     </div>
                     <h1 className="text-2xl font-bold leading-tight text-slate-900 md:text-3xl">
-                        {COURSE.titleEn}
+                        {t('jiujiu.title')}
                     </h1>
                     <p className="mt-2 text-sm text-slate-600 leading-relaxed">
-                        {COURSE.subtitleEn}
+                        {t('jiujiu.subtitle')}
                     </p>
                     <div className="mt-4 flex flex-wrap items-center gap-3">
-                        <span className="text-3xl font-extrabold text-slate-900">{COURSE.priceNow}</span>
-                        <span className="text-base text-slate-400 line-through">{COURSE.priceOld}</span>
+                        <span className="text-3xl font-extrabold text-slate-900">{t('jiujiu.priceNow')}</span>
+                        <span className="text-base text-slate-400 line-through">{t('jiujiu.priceOld')}</span>
                         <span className="rounded-full border border-amber-200 bg-amber-50 px-2.5 py-0.5 text-xs text-amber-700">
-                            {COURSE.lessonCount} lessons · lifetime access
+                            {t('jiujiu.lessonInfo')}
                         </span>
                     </div>
                 </motion.div>
@@ -520,7 +358,7 @@ export default function JiuJiuPage({
                 >
                     {canPlayActive ? (
                         <div className="w-full rounded-2xl border border-emerald-300 bg-emerald-50 px-4 py-3 text-center text-sm font-semibold text-emerald-800">
-                            ✓ Lesson {activeLesson.id} Unlocked
+                            {t('jiujiu.lessonUnlocked', { lessonId: activeLesson.id })}
                         </div>
                     ) : (
                         <>
@@ -528,11 +366,11 @@ export default function JiuJiuPage({
                                 onClick={handleBuyActiveVideo}
                                 className="w-full rounded-2xl bg-amber-600 px-4 py-4 text-sm font-bold text-white hover:bg-amber-500 transition active:scale-[0.98]"
                             >
-                                Buy Lesson {activeLesson.id} · $9.9 USD
+                                {t('jiujiu.buyLesson', { lessonId: activeLesson.id, price: '$9.9 USD' })}
                             </button>
                             {!isLoggedIn && (
                                 <p className="text-center text-xs text-amber-700 pt-1">
-                                    Please sign in to purchase and watch.
+                                    {t('jiujiu.signInToPurchase')}
                                 </p>
                             )}
                         </>
@@ -546,7 +384,7 @@ export default function JiuJiuPage({
                     className="mb-5"
                 >
                     <p className="text-[11px] uppercase tracking-widest text-slate-400 mb-2">
-                        Lessons
+                        {t('jiujiu.lessonsLabel')}
                     </p>
                     <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
                         {LESSONS.map((lesson) => {
@@ -567,15 +405,15 @@ export default function JiuJiuPage({
                                         <span className="absolute right-2 top-2 h-2 w-2 rounded-full bg-amber-500" />
                                     )}
                                     <span className="text-[10px] uppercase tracking-wide text-slate-400">
-                                        Lesson {lesson.id}
+                                        {t('jiujiu.lessonLabel', { id: lesson.id })}
                                     </span>
                                     <span className="text-xs font-bold text-slate-900 leading-snug pr-3 line-clamp-2">
-                                        {lesson.titleEn}
+                                        {lesson.title}
                                     </span>
                                     <span className="text-[10px] text-slate-500">{lesson.duration}</span>
                                     {unlocked ? (
                                         <span className="mt-0.5 rounded-full border border-emerald-200 bg-emerald-50 px-2 py-0.5 text-[9px] font-medium text-emerald-700">
-                                            Unlocked
+                                            {t('jiujiu.unlocked')}
                                         </span>
                                     ) : (
                                         <span className="mt-0.5 rounded-full border border-amber-200 bg-white px-2 py-0.5 text-[9px] text-amber-700">
@@ -601,20 +439,20 @@ export default function JiuJiuPage({
                                 {loading && (
                                     <div className="absolute inset-0 z-10 flex items-center justify-center bg-black/60">
                                         <div className="rounded-2xl border border-white/10 bg-white/10 px-4 py-2 text-sm text-white">
-                                            Loading…
+                                            {t('jiujiu.loading')}
                                         </div>
                                     </div>
                                 )}
                                 {error && !loading && (
                                     <div className="flex aspect-video w-full items-center justify-center p-6 text-center text-white">
                                         <div>
-                                            <p className="text-base font-semibold">Playback error</p>
+                                            <p className="text-base font-semibold">{t('jiujiu.playbackError')}</p>
                                             <p className="mt-2 text-sm text-white/70">{error}</p>
                                             <button
                                                 onClick={() => fetchSignedUrl(activeLesson.s3Key)}
                                                 className="mt-4 rounded-2xl bg-amber-500 px-4 py-2 text-sm font-semibold text-slate-900"
                                             >
-                                                Retry
+                                                {t('jiujiu.retry')}
                                             </button>
                                         </div>
                                     </div>
@@ -628,13 +466,13 @@ export default function JiuJiuPage({
                                         style={{ display: "block", aspectRatio: "16/9" }}
                                     >
                                         <source src={videoUrl} type="video/mp4" />
-                                        Your browser does not support video.
+                                        {t('jiujiu.videoNotSupported')}
                                     </video>
                                 )}
                                 {!error && !loading && !videoUrl && (
                                     <div className="flex aspect-video w-full items-center justify-center p-6 text-center text-white">
                                         <p className="text-sm text-white/70">
-                                            Select a lesson above to play.
+                                            {t('jiujiu.selectLesson')}
                                         </p>
                                     </div>
                                 )}
@@ -643,23 +481,23 @@ export default function JiuJiuPage({
                             <div className="flex aspect-video w-full items-center justify-center p-6 text-center text-white">
                                 <div className="max-w-sm space-y-3">
                                     <p className="text-3xl">🔒</p>
-                                    <p className="text-base font-bold">Locked</p>
+                                    <p className="text-base font-bold">{t('jiujiu.locked')}</p>
                                     <p className="text-sm text-white/70">
-                                        Purchase to unlock and watch.
+                                        {t('jiujiu.purchaseToWatch')}
                                     </p>
                                     {isLoggedIn ? (
                                         <button
                                             onClick={handleBuyActiveVideo}
                                             className="mt-2 rounded-2xl bg-amber-500 px-5 py-2.5 text-sm font-semibold text-slate-900 hover:bg-amber-400 transition"
                                         >
-                                            Buy This Lesson · $9.9
+                                            {t('jiujiu.buyThisLesson')}
                                         </button>
                                     ) : (
                                         <button
                                             onClick={() => onGoLogin?.()}
                                             className="mt-2 rounded-2xl border border-white/30 bg-white/10 px-5 py-2.5 text-sm font-semibold text-white hover:bg-white/20 transition"
                                         >
-                                            Sign in to purchase
+                                            {t('jiujiu.signInToPurchaseShort')}
                                         </button>
                                     )}
                                 </div>
@@ -670,13 +508,13 @@ export default function JiuJiuPage({
                     {/* Now Playing bar */}
                     <div className="mt-3 rounded-2xl border border-slate-200 bg-white px-4 py-3">
                         <p className="text-[10px] uppercase tracking-widest text-slate-400">
-                            Now Playing
+                            {t('jiujiu.nowPlaying')}
                         </p>
                         <p className="mt-1 text-sm font-bold text-slate-900">
-                            Lesson {activeLesson.id} · {activeLesson.titleEn}
+                            {t('jiujiu.lessonLabel', { id: activeLesson.id })} · {activeLesson.title}
                         </p>
                         <p className="text-xs text-slate-500 mt-0.5">
-                            {activeLesson.subtitleEn}
+                            {activeLesson.subtitle}
                         </p>
                     </div>
                 </motion.div>
@@ -689,13 +527,13 @@ export default function JiuJiuPage({
                 >
                     <div className="mb-4">
                         <h2 className="text-base font-bold text-slate-900">
-                            Lesson {activeLesson.id} — Full Description
+                            {t('jiujiu.fullDescription', { lessonId: activeLesson.id })}
                         </h2>
                         <p className="text-xs text-slate-400 mt-0.5">
-                            Switch lessons above to see details for each
+                            {t('jiujiu.switchLessons')}
                         </p>
                     </div>
-                    <LessonDetail lesson={activeLesson} />
+                    <LessonDetail lesson={activeLesson} t={t} />
                 </motion.div>
 
             </main>

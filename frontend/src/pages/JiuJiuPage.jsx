@@ -17,11 +17,11 @@ const API_BASE =
 // ─────────────────────────────────────────────
 const COURSE = {
     titleEn: "Quick Relief Self-Care Course",
-    subtitleEn: "Fast Relief for Common Daily Discomforts. 3 Simple Acupoint Routines, 5-10 Minutes Each, Instant Comfort at Home.",
+    subtitleEn: "Fast Relief for Common Daily Discomforts. 4 Simple Acupoint Routines, 5-10 Minutes Each, Instant Comfort at Home.",
     priceNow: "$9.9",
     priceOld: "$29.99",
     sale: true,
-    lessonCount: 3,
+    lessonCount: 4,
     lessonPrice: "$9.9",
 };
 
@@ -168,6 +168,53 @@ const LESSONS = [
         ],
 
         closingEn: "One purchase → lifetime access. Sleep better tonight.",
+    },
+
+    {
+        id: 4,
+        titleEn: "Men's Health & Vitality",
+        subtitleEn: "Male Wellness • Natural Support • Restore Energy",
+        duration: "~5 min",
+        s3Key: "9.9/男科.mp4",
+        coverImage: "/images/jiujiu-mens-health.png",
+        fallbackImage: "/images/acupoint-daily.png",
+
+        intro: "Feeling low energy? Struggling with vitality and wellness concerns?\n\nThis course helps you understand men's physiological health and learn scientific self-care methods to improve quality of life.\n\nJust 10-15 minutes a day.\n\nFollow along and restore your natural vitality—safe, natural, effective.",
+
+        painPoints: [
+            "Low energy and fatigue affecting daily life",
+            "Concerns about men's health and vitality",
+            "Stress and lifestyle affecting wellness",
+            "Want natural, holistic approaches to men's health",
+            "Looking for safe, effective self-care methods",
+        ],
+
+        benefits: [
+            { title: "Restore vitality", desc: "Learn acupoints that support men's health and energy" },
+            { title: "10-15 minutes daily", desc: "Simple routine that fits your schedule" },
+            { title: "Natural & safe", desc: "Drug-free, holistic approach to wellness" },
+            { title: "Scientific methods", desc: "Based on Traditional Chinese Medicine principles" },
+            { title: "Improve quality of life", desc: "Feel more energized and balanced" },
+        ],
+
+        instructor: {
+            name: "Master Qing Ji",
+            title: "Traditional Chinese Medicine Practitioner",
+            points: [
+                "Certified TCM practitioner with years of clinical experience",
+                "Specializes in acupressure and meridian therapy",
+                "Easy-to-follow teaching style for complete beginners",
+            ],
+        },
+
+        audience: [
+            "Men seeking natural wellness support",
+            "Those experiencing low energy or vitality concerns",
+            "People interested in holistic health approaches",
+            "Complete beginners welcome",
+        ],
+
+        closingEn: "One purchase → lifetime access. Restore your vitality naturally.",
     },
 ];
 

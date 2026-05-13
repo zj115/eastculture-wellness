@@ -600,5 +600,153 @@
       "5": "You want safe, natural, long-lasting anti-aging",
       "6": "You want to look younger — WITHOUT expensive treatments"
     }
+  },
+  "wingchun": {
+    "courseTitle": "Wing Chun Complete Self-Defense & Vitality Master Course",
+    "courseSubtitle": "Systematic Practical Wing Chun Training. Master Easy Real-World Protection, Fix Posture, Build Core Strength & Unshakable Inner Confidence.",
+    "videoCourse": "Video Course",
+    "sale": "Sale",
+    "lessonsInfo": "2 lessons · buy individually",
+    "lessonPrice": "$49.98",
+    "lessonPriceOld": "$99.98",
+    "lessonUnlocked": "✓ Lesson {{lessonId}} Unlocked",
+    "buyLesson": "Buy Lesson {{lessonId}} · {{price}} USD",
+    "signInPrompt": "Please sign in to purchase and watch.",
+    "lessonsLabel": "Lessons",
+    "lessonLabel": "Lesson {{lessonId}}",
+    "unlocked": "Unlocked",
+    "pricePerLesson": "$29 USD per lesson",
+    "loading": "Loading…",
+    "playbackError": "Playback error",
+    "retry": "Retry",
+    "videoNotSupported": "Your browser does not support video.",
+    "selectLesson": "Select a lesson above to play.",
+    "locked": "Locked",
+    "purchasePrompt": "Purchase this lesson to unlock and watch.",
+    "signInToPurchase": "Sign in to purchase",
+    "nowPlaying": "Now Playing",
+    "lessonDetailTitle": "Lesson {{lessonId}} — Full Description",
+    "lessonDetailSubtitle": "Switch lessons above to see details for each",
+    "painPointsTitle": "Do Any of These Sound Familiar?",
+    "advantagesTitle": "Course Advantages",
+    "audienceTitle": "Who Is This For?",
+    "gainsTitle": "What You Will Gain",
+    "forLabel": "For:",
+    "howLabel": "How:",
+    "benefitLabel": "Benefit:",
+    "courseContent": "Course Content",
+    "disclaimer": "Note: Please train in a safe environment with enough space. All demonstrations are for educational purposes only and do not encourage violence.",
+    "lessons": {
+      "lesson1": {
+        "title": "Wing Chun 10 Health Qigong Full Course",
+        "subtitle": "Structured Daily Gentle Training. Correct Bad Posture, Build Solid Core Strength & Boost All-Day Consistent Energy",
+        "tag": "Wellness · Full-body care",
+        "duration": "Full Step-by-Step Lessons | ~7 Min Per Routine",
+        "intro": "You don't need long workouts or difficult moves. This Wing Chun Health Qigong – 10 Forms comes from authentic Wing Chun stances, breathing and meridian principles. No fighting, no jumping, no intense effort, zero injury. The full routine is only about 7 minutes, perfect for busy modern life. It relaxes your body, improves blood circulation, calms your mind, and helps you sleep better.",
+        "formsLabel": "10 Forms",
+        "painPoints": {
+          "0": "Long hours working and phone use make your neck and shoulders stiff, with dizziness, numb hands, and a visible neck hump",
+          "1": "Lower back pain and tightness from sitting too long; you can't sit or stand long, bending down is hard",
+          "2": "Joints feel stiff and creaky — knees weak, wrists sore, fingers numb, movement not flexible",
+          "3": "Body feels tight and heavy, hard to relax, low flexibility, easy to feel sore all over",
+          "4": "Cold hands and feet all year, weak energy, easily tired, lack of strength",
+          "5": "Poor sleep: hard to fall asleep, light sleep, easy to wake up, still tired after sleeping",
+          "6": "Stress, anxiety, chest tightness, irritable, cannot relax even when resting",
+          "7": "Low immunity, easily tired and sick, body getting weaker",
+          "8": "Tried yoga, running, gym, massage — too tiring, hard to keep, or causes joint pressure",
+          "9": "Want to keep healthy but no time, no space, no foundation, don't know where to start"
+        },
+        "forms": {
+          "0": {"name": "Stance Foundation Form", "relieves": "Weak energy, cold limbs, unsteady lower body, fatigue", "core": "Steady stance, gather energy, improve vitality", "benefit": ""},
+          "1": {"name": "Neck & Shoulder Relaxation Form", "relieves": "Stiff neck, sore shoulders, dizziness, numb hands, neck hump", "core": "Loosen neck and shoulders, relieve tension quickly", "benefit": ""},
+          "2": {"name": "Chest Opening & Qi Balancing Form", "relieves": "Chest tightness, shortness of breath, stress, low mood", "core": "Open the chest, smooth breathing, calm the mind", "benefit": ""},
+          "3": {"name": "Waist & Hip Relaxation Form", "relieves": "Sore waist, stiff lower back, limited movement from sitting", "core": "Relax waist, protect the spine, restore flexibility", "benefit": ""},
+          "4": {"name": "Body & Muscle Stretching Form", "relieves": "Full-body tightness, stiff muscles, poor flexibility", "core": "Stretch gently, release tension, make the body supple", "benefit": ""},
+          "5": {"name": "Knee & Ankle Care Form", "relieves": "Knee discomfort, weak ankles, stiff joints", "core": "Protect joints gently, improve stability, no knee pressure", "benefit": ""},
+          "6": {"name": "Wrist & Finger Activation Form", "relieves": "Sore wrists, numb fingers, mouse hand, poor circulation", "core": "Activate fingers and wrists, ease overuse strain", "benefit": ""},
+          "7": {"name": "Breathing & Calming Form", "relieves": "Insomnia, anxiety, restlessness, poor sleep", "core": "Regulate breath, calm nerves, help you sleep well", "benefit": ""},
+          "8": {"name": "Body Twisting & Meridian Opening Form", "relieves": "Heavy body, slow blood flow, body aches, tiredness", "core": "Improve circulation, reduce stagnation, lighten the body", "benefit": ""},
+          "9": {"name": "Closing Form & Qi Returning", "relieves": "Scattered energy, restlessness after practice", "core": "Gather Qi, consolidate effects, fully relax body and mind", "benefit": ""}
+        },
+        "advantages": {
+          "0": {"icon": "⏱", "title": "Only 7 Minutes", "desc": "Short, efficient, fits any schedule"},
+          "1": {"icon": "🛡", "title": "100% Safe", "desc": "No jumping, no kneeling, no hard force, no injury"},
+          "2": {"icon": "🌿", "title": "Full-Body Care", "desc": "Neck, shoulders, waist, joints, sleep, mood all covered"},
+          "3": {"icon": "✨", "title": "Super Easy", "desc": "Zero experience needed, just follow and practice"},
+          "4": {"icon": "👥", "title": "For Everyone", "desc": "Office workers, seniors, busy people, all ages"},
+          "5": {"icon": "♾", "title": "Lifetime Benefit", "desc": "Learn once, benefit for life"}
+        },
+        "audience": {
+          "0": "Office workers with neck, shoulder and waist pain",
+          "1": "People with poor sleep, anxiety and low energy",
+          "2": "People with cold limbs, weak body and low immunity",
+          "3": "Seniors and those who cannot do intense exercise",
+          "4": "Stressed people who need to relax",
+          "5": "Wing Chun lovers who want gentle, healthy practice",
+          "6": "Anyone who wants simple, safe daily health practice"
+        },
+        "gains": {
+          "0": "Relief from neck, shoulder and waist discomfort",
+          "1": "More flexible joints and looser muscles",
+          "2": "Better blood circulation and warmer hands and feet",
+          "3": "Calmer mind and improved sleep",
+          "4": "A simple 7-minute daily health routine you can do anywhere"
+        },
+        "closing": "Start today. Just 7 minutes a day to relax, refresh and recharge. Wing Chun Health Qigong 10 Forms – simple, safe, effective."
+      },
+      "lesson2": {
+        "title": "Wing Chun Practical Self-Defense Full Course",
+        "subtitle": "Easy Real-Life Protection Techniques. Gain Solid Confidence, Stay Calm & Feel Safe In Any Situation",
+        "tag": "Self-defense · Real situations",
+        "duration": "Beginner Friendly Guide | ~12 Min Per Lesson",
+        "intro": "You don't need strength, height, or long-term training. This Wing Chun Self-Defense 9 Forms comes from real combat principles. It uses skill over strength, controls angles, neutralizes attacks instantly, and works in real dangerous situations: street attacks, elevator traps, wrist grabs, bear hugs, front punches, and more. Simple, safe, highly effective — beginners can learn in minutes.",
+        "formsLabel": "9 Real Scenarios",
+        "painPoints": {
+          "0": "Walking alone at night, taking elevators, feeling unsafe and anxious",
+          "1": "Meeting taller / stronger attackers, too weak to block and easy to get hurt",
+          "2": "Attacked with punches, grabs, or chokes — panicked with no idea what to do",
+          "3": "Trapped in small spaces (elevator, corridor, bus), nowhere to run",
+          "4": "Grabbed from behind, struggling makes it more dangerous",
+          "5": "Tried other martial arts: too hard, too tiring, too violent, not practical",
+          "6": "No martial arts experience, small body, worried you can't defend yourself",
+          "7": "Forced to fight back blindly, making the attacker more aggressive"
+        },
+        "forms": {
+          "0": {"name": "Tan Sau + Step + Chain Punches", "relieves": "Right straight punch from a taller attacker", "core": "Deflect, not block; expose gaps; counter fast", "benefit": "Neutralize heavy punches without strength"},
+          "1": {"name": "Fu Sau + Punch", "relieves": "Strong direct punch / full-force attack", "core": "Change angle, seal power, push attacker off balance", "benefit": "Stop even big attackers instantly"},
+          "2": {"name": "Lap Sau vs. Swing Punch", "relieves": "Big swings, left-right hooks", "core": "Stick to the arm, change attack path, open gaps", "benefit": "Avoid being knocked out; counter quickly"},
+          "3": {"name": "Bong Sau + Roll + Hook Punch", "relieves": "Elevator attack, front assault, no room to retreat", "core": "Turn waist, seal the arm, close-quarters strike", "benefit": "Works in tight spaces; defend and counter at once"},
+          "4": {"name": "Double Slap Control", "relieves": "Face grabbing, chest grabbing, provocation", "core": "Dual slap to disable attack ability", "benefit": "Shut down all incoming moves in 1 second"},
+          "5": {"name": "Tan Sau + Step + Block & Slap", "relieves": "Sudden rush, close control", "core": "Step forward, block face, control distance", "benefit": "Keep attacker away and take control"},
+          "6": {"name": "Cross Finger Strike vs. Straight Punch", "relieves": "Direct punch to body", "core": "Deflect first, strike lower body", "benefit": "One move to weaken the attacker"},
+          "7": {"name": "Elbow Control & Escape", "relieves": "Wrist grab, clothes grab, held arm", "core": "Lift, guide, redirect force", "benefit": "Break free in 1 second even if grabbed tight"},
+          "8": {"name": "Horse Stance + Rear Strike", "relieves": "Bear hug from behind, sudden restraint", "core": "Stable stance, rear counter, break free", "benefit": "Life-saving move for women in real danger"}
+        },
+        "advantages": {
+          "0": {"icon": "💪", "title": "Skill beats strength", "desc": "Women, seniors, and small builds can all use it"},
+          "1": {"icon": "⚡", "title": "Learn in 7 minutes", "desc": "Simple moves, no complex routines"},
+          "2": {"icon": "📍", "title": "Works anywhere", "desc": "Elevator, street, corridor, no space needed"},
+          "3": {"icon": "🤝", "title": "Safe & non-violent", "desc": "Deflect and control, not brutal fighting"},
+          "4": {"icon": "🚀", "title": "Zero experience needed", "desc": "No flexibility or fitness required"},
+          "5": {"icon": "🛡", "title": "Covers 90% dangers", "desc": "Punches, grabs, hugs, traps — all solved"}
+        },
+        "audience": {
+          "0": "Women who walk alone or work late",
+          "1": "Office workers who fear conflict",
+          "2": "Students and people who use elevators often",
+          "3": "Parents who want to protect their family",
+          "4": "Anyone who wants practical, easy self-defense",
+          "5": "Beginners with no time or energy for hard training"
+        },
+        "gains": {
+          "0": "Stay calm when attacked — no panic, no blind fight",
+          "1": "Escape grabs, hugs, and punches in seconds",
+          "2": "Defend yourself even in small spaces",
+          "3": "Protect yourself with skill, not strength",
+          "4": "A lifetime self-defense skill for you and your family"
+        },
+        "closing": "Danger comes without warning. Wing Chun Self-Defense 9 Forms – simple, real, effective. Stay safe, stay confident."
+      }
+    }
   }
 }

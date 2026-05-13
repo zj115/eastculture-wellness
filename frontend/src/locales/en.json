@@ -423,5 +423,182 @@
         "closing": "One purchase → lifetime access. Restore your vitality naturally."
       }
     }
+  },
+  "guasha": {
+    "title": "16 Facial Anti-Aging Gua Sha Course",
+    "tagline": "No Surgery • No Needles • No Skincare Scams • Just 5 Minutes a Day at Home",
+    "mainTitle": "16 Facial Aging Issues SOLVED! Expensive Facials & Injections Not Working? Gua Sha Naturally Fades Wrinkles, Lifts Sagging, Brightens Skin — AT HOME.",
+    "cardTitle": "16 Step-by-Step Facial Gua Sha Master Course",
+    "cardSubtitle": "16 Complete Tutorials | Full 2h 34min Training | Lifetime Access",
+    "priceNow": "$45",
+    "priceOld": "$99.99",
+    "sale": "Sale",
+    "videoCourse": "Video Course",
+    "chaptersInfo": "16 chapters · lifetime access",
+    "unlocked": "✓ Full Course Unlocked",
+    "unlockButton": "Unlock Full Course (All 16 Chapters) · {{price}}",
+    "signInPrompt": "Please sign in to purchase and watch.",
+    "transformationTitle": "YOUR FULL 16-STEP TRANSFORMATION",
+    "timestampNote": "This is one full-length video. Numbers in brackets are timestamps you can jump to directly.",
+    "chapterUnlocked": "Unlocked",
+    "loading": "Loading…",
+    "playbackError": "Playback error",
+    "retry": "Retry",
+    "videoNotSupported": "Your browser does not support video.",
+    "loadingVideo": "Loading video…",
+    "locked": "Locked",
+    "purchasePrompt": "Purchase to unlock and watch.",
+    "unlockCourseButton": "Unlock Full Course {{price}}",
+    "signInToPurchase": "Sign in to purchase",
+    "courseVideoLabel": "Course Video",
+    "courseVideoTitle": "16 Facial Anti-Aging Gua Sha — Full Course",
+    "videoInfo": "2h 34min · Use timestamps in chapter list above to navigate",
+    "videoError": "Failed to load video URL",
+    "videoInvalid": "Unable to get a valid video link",
+    "networkError": "Network error: cannot reach backend",
+    "painPointsTitle": "The Aging Nightmare You're Living Every Day",
+    "whyTitle": "WHY THIS COURSE BEATS EVERY OTHER TREATMENT",
+    "whoTitle": "WHO NEEDS THIS COURSE?",
+    "ctaLine1": "You don't need expensive facials.",
+    "ctaLine2": "You don't need risky injections.",
+    "ctaLine3": "You don't need endless skincare products.",
+    "ctaMain": "You just need the RIGHT GUA SHA METHOD — targeted, gentle, and proven.",
+    "ctaBenefitsIntro": "In 5 minutes a day, you can:",
+    "ctaBenefits": "Lift sagging • Fade wrinkles • Slim face • Brighten skin • Erase dark spots • Look 5–10 years younger.",
+    "ctaClosing": "This course is your at-home beauty clinic — forever.",
+    "ctaButton": "Unlock Full Course · {{price}}",
+    "disclaimer": "Disclaimer: This program is for wellness and educational purposes only and is not medical advice. Please consult a qualified healthcare professional if you have any health concerns.",
+    "chapters": {
+      "chapter1": {
+        "title": "Beginner Foundation Class",
+        "desc": "Master core Gua Sha logic, tools, pressure, and safety rules. ZERO experience → FULL confidence in 10 minutes.",
+        "timestamp": "null"
+      },
+      "chapter2": {
+        "title": "Forehead Lines",
+        "desc": "Smooth horizontal wrinkles, tighten forehead skin, erase the \"aged forehead\" look.",
+        "timestamp": "02：34"
+      },
+      "chapter3": {
+        "title": "11s / Glabellar Lines",
+        "desc": "Release tension between brows, fade vertical frown lines, remove angry/tired appearance.",
+        "timestamp": "16：00"
+      },
+      "chapter4": {
+        "title": "Under-Eye Bags",
+        "desc": "Drain puffiness, tighten loose skin, shrink bulging bags — eyes look awake and lifted.",
+        "timestamp": "26：40"
+      },
+      "chapter5": {
+        "title": "Dark Circles",
+        "desc": "Boost circulation, brighten under-eyes, eliminate \"panda eyes\" from stress & late nights.",
+        "timestamp": "39：07"
+      },
+      "chapter6": {
+        "title": "Crow's Feet",
+        "desc": "Smooth fine lines at the corners, firm delicate eye area, slow aging around eyes.",
+        "timestamp": "52：11"
+      },
+      "chapter7": {
+        "title": "Tear Troughs",
+        "desc": "Plump sunken hollows naturally, reduce tired look, restore youthful fullness.",
+        "timestamp": "1：02：07"
+      },
+      "chapter8": {
+        "title": "Nasolabial Folds",
+        "desc": "Lift cheeks, soften deep smile lines, reverse the #1 sign of facial aging.",
+        "timestamp": "1：12：47"
+      },
+      "chapter9": {
+        "title": "Sunken Mid-Face / Nasal Base",
+        "desc": "Lift and plump flat mid-face, create natural volume, improve \"sunken\" appearance.",
+        "timestamp": "1：26：07"
+      },
+      "chapter10": {
+        "title": "Droopy Cheekbones",
+        "desc": "Lift fallen cheekbones, restore apple fullness, reverse sagging at the source.",
+        "timestamp": "1：36：08"
+      },
+      "chapter11": {
+        "title": "Full-Face Sagging",
+        "desc": "Total facial lifting routine — re-tighten skin, redefine contour, reverse full-face collapse.",
+        "timestamp": "1：45：43"
+      },
+      "chapter12": {
+        "title": "Fine Lines Around Mouth",
+        "desc": "Smooth dry lines, moisturize lip area, erase \"smoker's lines\" & aging mouth texture.",
+        "timestamp": "1：57：00"
+      },
+      "chapter13": {
+        "title": "Downturned Mouth Corners",
+        "desc": "Lift sad, downturned lips, create a gentle, youthful, friendly expression.",
+        "timestamp": "2：06：44"
+      },
+      "chapter14": {
+        "title": "Blurred Jawline & Double Chin",
+        "desc": "Sculpt a sharp jawline, reduce fat pad, eliminate puffiness — face looks SLIMMER instantly.",
+        "timestamp": "2：14：57"
+      },
+      "chapter15": {
+        "title": "Dark Spots & Acne Scars",
+        "desc": "Fade melasma, sun spots, and post-acne marks — reveal clear, bright, even skin.",
+        "timestamp": "2：23：17"
+      },
+      "chapter16": {
+        "title": "Facial Puffiness & Bloating",
+        "desc": "Drain excess fluid, de-puff quickly, get a tight, lifted, V-shape face in minutes.",
+        "timestamp": "2：34：27"
+      }
+    },
+    "painPoints": {
+      "0": "Wrinkles are taking over: forehead lines, 11s, crow's feet, nasolabial folds, mouth wrinkles — getting deeper by the month",
+      "1": "Eye area collapsed: puffy bags, dark circles, sunken tear troughs — you look tired, old, and worn-out",
+      "2": "Mid-face flattened & sagging: cheekbones dropped, smile lines deepened, mouth corners turned down — sad, bitter, aged look",
+      "3": "Jawline gone: double chin, puffy face, undefined contour — you look bigger, older, less photogenic",
+      "4": "Skin dull & muddy: melasma, sun spots, acne scars, yellow tone — expensive creams do NOTHING",
+      "5": "Skincare not absorbing: products sit on top, waste money, no glow, no lift, no real change",
+      "6": "Scared of needles & fillers: pain, risk, lumps, rebound, huge cost, unnatural look",
+      "7": "Tired of salon scams: temporary results, pushy sales, monthly bills, zero long-term fix",
+      "8": "Sensitive skin: redness, itching, broken capillaries — you can't use harsh treatments"
+    },
+    "whyPoints": {
+      "0": {
+        "title": "100% Natural, Safe, No Risk",
+        "desc": "No needles, no lasers, no downtime, no scarring — safe for sensitive skin & pregnancy."
+      },
+      "1": {
+        "title": "Targeted, Step-by-Step, No Guesswork",
+        "desc": "Each lesson fixes one specific issue. You see results FAST — no random techniques."
+      },
+      "2": {
+        "title": "Just 5 Minutes a Day",
+        "desc": "Do it while you wash your face. Fits into any busy lifestyle."
+      },
+      "3": {
+        "title": "INSTANT + LONG-TERM Results",
+        "desc": "After one session: less puffiness, brighter skin, tighter face. After 28 days: wrinkles softer, sagging lifted, skin glowing."
+      },
+      "4": {
+        "title": "Save THOUSANDS on Facials & Fillers",
+        "desc": "One purchase = lifelong beauty tool. No subscriptions, no repeat costs."
+      },
+      "5": {
+        "title": "For EVERYONE — Men & Women, All Ages",
+        "desc": "Office workers, moms, seniors, students — anyone can learn, anyone can benefit."
+      },
+      "6": {
+        "title": "Fixes Skin FROM THE INSIDE",
+        "desc": "Boost circulation, release tension, clear blockages. This is not \"surface beauty\" — this is real anti-aging."
+      }
+    },
+    "whoPoints": {
+      "0": "You look tired even when you're not",
+      "1": "You hate your deepening wrinkles & sagging",
+      "2": "You want a slimmer face, sharper jawline",
+      "3": "You spend money on skincare with NO real results",
+      "4": "You fear needles, fillers, and cosmetic procedures",
+      "5": "You want safe, natural, long-lasting anti-aging",
+      "6": "You want to look younger — WITHOUT expensive treatments"
+    }
   }
 }

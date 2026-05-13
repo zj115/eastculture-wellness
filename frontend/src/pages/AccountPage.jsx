@@ -1,6 +1,7 @@
 // src/pages/AccountPage.jsx
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 const API_BASE = import.meta?.env?.VITE_API_BASE || "https://eastculture-api.vercel.app";
 
@@ -19,24 +20,27 @@ function formatDate(str) {
 }
 
 function PurchaseBadge({ type }) {
+    const { t } = useTranslation();
     if (type === "course") return (
         <span className="rounded-full bg-blue-100 text-blue-800 px-2 py-0.5 text-[10px] font-semibold">
-            Course
+            {t("account.course")}
         </span>
     );
     return (
         <span className="rounded-full bg-slate-100 text-slate-700 px-2 py-0.5 text-[10px] font-semibold">
-            Video
+            {t("account.video")}
         </span>
     );
 }
 
-function courseLabel(purchase) {
+function courseLabel(purchase, t) {
     const map = {
-        faceyoga: "Face Yoga & Facial Massage",
-        taichi: "Tai Chi System Course",
-        qigong: "Acupressure Therapy",
-        wingchun: "Wing Chun Foundations",
+        faceyoga: t("account.courseFaceYoga"),
+        taichi: t("account.courseTaiChi"),
+        qigong: t("account.courseAcupressure"),
+        wingchun: t("account.courseWingChun"),
+        jiujiu: t("account.courseQuickRelief"),
+        guasha: t("account.courseGuaSha"),
     };
     if (purchase.course_id && map[purchase.course_id]) return map[purchase.course_id];
     if (purchase.video_key) {
@@ -47,6 +51,7 @@ function courseLabel(purchase) {
 }
 
 export default function AccountPage({ currentUser, purchases = [], onLogout }) {
+    const { t } = useTranslation();
     const [tab, setTab] = useState("overview"); // overview | purchases | password
     const [pwForm, setPwForm] = useState({ current: "", next: "", confirm: "" });
     const [pwStatus, setPwStatus] = useState(null); // null | "loading" | "success" | "error"
@@ -60,11 +65,11 @@ export default function AccountPage({ currentUser, purchases = [], onLogout }) {
     async function handleChangePassword(e) {
         e.preventDefault();
         if (pwForm.next !== pwForm.confirm) {
-            setPwError("Passwords do not match");
+            setPwError(t("account.passwordMismatch"));
             return;
         }
         if (pwForm.next.length < 6) {
-            setPwError("Password must be at least 6 characters");
+            setPwError(t("account.passwordTooShort"));
             return;
         }
         setPwStatus("loading");
@@ -82,11 +87,11 @@ export default function AccountPage({ currentUser, purchases = [], onLogout }) {
                 setPwForm({ current: "", next: "", confirm: "" });
             } else {
                 setPwStatus("error");
-                setPwError(data.error || "Failed to change password");
+                setPwError(data.error || t("account.passwordChangeFailed"));
             }
         } catch {
             setPwStatus("error");
-            setPwError("Network error. Please try again.");
+            setPwError(t("account.networkError"));
         }
     }
 
@@ -102,7 +107,7 @@ export default function AccountPage({ currentUser, purchases = [], onLogout }) {
             >
                 <div>
                     <h1 className="text-2xl font-semibold text-slate-900 md:text-3xl">
-                        My Account
+                        {t("account.title")}
                     </h1>
                     <p className="mt-1 text-sm text-slate-500">
                         {currentUser?.email}
@@ -112,16 +117,16 @@ export default function AccountPage({ currentUser, purchases = [], onLogout }) {
                     onClick={onLogout}
                     className="rounded-full border border-slate-200 px-3 py-1.5 text-xs text-slate-600 hover:border-red-200 hover:text-red-600 transition"
                 >
-                    Log out
+                    {t("account.logOut")}
                 </button>
             </motion.div>
 
             {/* Tabs */}
             <div className="flex gap-1 rounded-xl bg-slate-100 p-1 text-xs font-medium w-fit">
                 {[
-                    { key: "overview", label: "Overview" },
-                    { key: "purchases", label: "Purchases" },
-                    { key: "password", label: "Change Password" },
+                    { key: "overview", label: t("account.overview") },
+                    { key: "purchases", label: t("account.purchases") },
+                    { key: "password", label: t("account.changePassword") },
                 ].map((tab_) => (
                     <button
                         key={tab_.key}
@@ -149,15 +154,15 @@ export default function AccountPage({ currentUser, purchases = [], onLogout }) {
                     {/* Account info */}
                     <div className="rounded-2xl border border-slate-200 bg-white divide-y divide-slate-100">
                         <div className="flex items-center justify-between px-5 py-4">
-                            <span className="text-xs text-slate-500 uppercase tracking-wider">Username</span>
+                            <span className="text-xs text-slate-500 uppercase tracking-wider">{t("account.username")}</span>
                             <span className="text-sm font-medium text-slate-900">{currentUser?.username}</span>
                         </div>
                         <div className="flex items-center justify-between px-5 py-4">
-                            <span className="text-xs text-slate-500 uppercase tracking-wider">Email</span>
+                            <span className="text-xs text-slate-500 uppercase tracking-wider">{t("account.email")}</span>
                             <span className="text-sm text-slate-700">{currentUser?.email}</span>
                         </div>
                         <div className="flex items-center justify-between px-5 py-4">
-                            <span className="text-xs text-slate-500 uppercase tracking-wider">Courses Purchased</span>
+                            <span className="text-xs text-slate-500 uppercase tracking-wider">{t("account.coursesPurchased")}</span>
                             <span className="text-sm font-medium text-slate-900">
                                 {activePurchases.filter((p) => p.purchase_type === "course").length}
                             </span>
@@ -170,13 +175,13 @@ export default function AccountPage({ currentUser, purchases = [], onLogout }) {
                             <div className="text-2xl font-bold text-amber-700">
                                 {activePurchases.length}
                             </div>
-                            <div className="mt-1 text-xs text-slate-500">Active Purchases</div>
+                            <div className="mt-1 text-xs text-slate-500">{t("account.activePurchases")}</div>
                         </div>
                         <div className="rounded-2xl border border-slate-200 bg-white p-4 text-center">
                             <div className="text-2xl font-bold text-amber-700">
                                 {activePurchases.filter((p) => p.purchase_type === "course").length}
                             </div>
-                            <div className="mt-1 text-xs text-slate-500">Courses</div>
+                            <div className="mt-1 text-xs text-slate-500">{t("account.courses")}</div>
                         </div>
                     </div>
                 </motion.div>
@@ -193,7 +198,7 @@ export default function AccountPage({ currentUser, purchases = [], onLogout }) {
                     {purchases.length === 0 ? (
                         <div className="rounded-2xl border border-dashed border-slate-200 bg-slate-50 p-10 text-center">
                             <p className="text-sm text-slate-500">
-                                No purchases yet
+                                {t("account.noPurchases")}
                             </p>
                         </div>
                     ) : (
@@ -206,15 +211,15 @@ export default function AccountPage({ currentUser, purchases = [], onLogout }) {
                                             <PurchaseBadge type={p.purchase_type} />
                                             <div>
                                                 <div className="text-sm font-medium text-slate-900">
-                                                    {courseLabel(p)}
+                                                    {courseLabel(p, t)}
                                                 </div>
                                                 <div className="text-xs text-slate-400">
                                                     {formatDate(p.created_at)}
                                                     {p.expires_at && (
                                                         <span className="ml-2">
                                                             · {expired
-                                                                ? "Expired"
-                                                                : `Expires ${formatDate(p.expires_at)}`}
+                                                                ? t("account.expired")
+                                                                : `${t("account.expires")} ${formatDate(p.expires_at)}`}
                                                         </span>
                                                     )}
                                                 </div>
@@ -222,9 +227,9 @@ export default function AccountPage({ currentUser, purchases = [], onLogout }) {
                                         </div>
                                         <div className="text-xs text-slate-400">
                                             {expired ? (
-                                                <span className="text-red-400">Expired</span>
+                                                <span className="text-red-400">{t("account.expired")}</span>
                                             ) : (
-                                                <span className="text-emerald-600">Active</span>
+                                                <span className="text-emerald-600">{t("account.active")}</span>
                                             )}
                                         </div>
                                     </div>
@@ -249,7 +254,7 @@ export default function AccountPage({ currentUser, purchases = [], onLogout }) {
                     >
                         <div>
                             <label className="block text-xs font-medium text-slate-600 mb-1">
-                                Current Password
+                                {t("account.currentPassword")}
                             </label>
                             <input
                                 type="password"
@@ -261,7 +266,7 @@ export default function AccountPage({ currentUser, purchases = [], onLogout }) {
                         </div>
                         <div>
                             <label className="block text-xs font-medium text-slate-600 mb-1">
-                                New Password
+                                {t("account.newPassword")}
                             </label>
                             <input
                                 type="password"
@@ -274,7 +279,7 @@ export default function AccountPage({ currentUser, purchases = [], onLogout }) {
                         </div>
                         <div>
                             <label className="block text-xs font-medium text-slate-600 mb-1">
-                                Confirm New Password
+                                {t("account.confirmNewPassword")}
                             </label>
                             <input
                                 type="password"
@@ -290,7 +295,7 @@ export default function AccountPage({ currentUser, purchases = [], onLogout }) {
                         )}
                         {pwStatus === "success" && (
                             <p className="text-xs text-emerald-600">
-                                Password changed successfully
+                                {t("account.passwordChangedSuccess")}
                             </p>
                         )}
 
@@ -299,7 +304,7 @@ export default function AccountPage({ currentUser, purchases = [], onLogout }) {
                             disabled={pwStatus === "loading"}
                             className="w-full rounded-full bg-amber-600 py-2 text-sm font-semibold text-white hover:bg-amber-500 transition disabled:opacity-60"
                         >
-                            {pwStatus === "loading" ? "Saving..." : "Change Password"}
+                            {pwStatus === "loading" ? t("account.saving") : t("account.changePasswordButton")}
                         </button>
                     </form>
                 </motion.div>

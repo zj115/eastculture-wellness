@@ -1,5 +1,6 @@
 // src/pages/MyCoursesPage.jsx
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 const fadeInUp = {
     hidden: { opacity: 0, y: 24 },
@@ -11,47 +12,56 @@ const ALL_COURSES = [
     {
         id: "jiujiu",
         page: "jiujiu",
-        titleEn: "Quick Relief Self-Care Course",
-        descEn: "Fast Relief for Common Daily Discomforts. 3 Simple Acupoint Routines, 5-10 Minutes Each.",
+        titleKey: "myCourses.courseQuickRelief",
+        descKey: "myCourses.courseQuickReliefDesc",
         image: "/images/jiujiu-waist.png",
-        lessons: 3,
-        tag: "Quick Relief",
+        lessons: 4,
+        tagKey: "myCourses.tagQuickRelief",
     },
     {
         id: "faceyoga",
         page: "faceyoga",
-        titleEn: "Face Yoga & Facial Massage",
-        descEn: "Gentle routines to lift, relax and refresh your facial muscles.",
+        titleKey: "myCourses.courseFaceYoga",
+        descKey: "myCourses.courseFaceYogaDesc",
         image: "/images/face-yoga-masterclass.jpg",
         lessons: 16,
-        tag: "Face Yoga",
+        tagKey: "myCourses.tagFaceYoga",
     },
     {
         id: "taichi",
         page: "qimen",
-        titleEn: "Tai Chi System Course",
-        descEn: "Soft, flowing Tai Chi routines to nourish your joints, balance and inner calm.",
+        titleKey: "myCourses.courseTaiChi",
+        descKey: "myCourses.courseTaiChiDesc",
         image: "/images/taiji-mountain.jpg",
-        lessons: 4,
-        tag: "Tai Chi",
+        lessons: 7,
+        tagKey: "myCourses.tagTaiChi",
     },
     {
         id: "qigong",
         page: "qigong",
-        titleEn: "Acupressure Therapy",
-        descEn: "Simple acupressure routines to release tension and restore calm.",
+        titleKey: "myCourses.courseAcupressure",
+        descKey: "myCourses.courseAcupressureDesc",
         image: "/images/tai-chi/acupressure-cover.jpg",
         lessons: 6,
-        tag: "Acupressure",
+        tagKey: "myCourses.tagAcupressure",
     },
     {
         id: "wingchun",
         page: "wingchun",
-        titleEn: "Wing Chun Foundations",
-        descEn: "Health Qigong 10 Forms + Self-Defense 9 Forms. ~7 min each, for all ages.",
+        titleKey: "myCourses.courseWingChun",
+        descKey: "myCourses.courseWingChunDesc",
         image: "/images/wingchun-hero.png",
         lessons: 2,
-        tag: "Wing Chun",
+        tagKey: "myCourses.tagWingChun",
+    },
+    {
+        id: "guasha",
+        page: "guasha",
+        titleKey: "myCourses.courseGuaSha",
+        descKey: "myCourses.courseGuaShaDesc",
+        image: "/images/guasha-face.jpg",
+        lessons: 16,
+        tagKey: "myCourses.tagGuaSha",
     },
 ];
 
@@ -85,6 +95,7 @@ function getAccessibleCourses(purchases) {
 }
 
 export default function MyCoursesPage({ purchases = [], currentUser, onNavigate, onPurchase }) {
+    const { t } = useTranslation();
     const accessibleCourses = getAccessibleCourses(purchases);
 
     // Locked courses = not yet purchased
@@ -102,10 +113,10 @@ export default function MyCoursesPage({ purchases = [], currentUser, onNavigate,
                 transition={{ duration: 0.5 }}
             >
                 <h1 className="text-2xl font-semibold text-slate-900 md:text-3xl">
-                    My Courses
+                    {t("myCourses.title")}
                 </h1>
                 <p className="mt-1 text-sm text-slate-500">
-                    Welcome back, {currentUser?.username}. Here are all your unlocked courses.
+                    {t("myCourses.welcomeBack", { username: currentUser?.username })}
                 </p>
             </motion.div>
 
@@ -118,7 +129,7 @@ export default function MyCoursesPage({ purchases = [], currentUser, onNavigate,
                     transition={{ duration: 0.5, delay: 0.1 }}
                 >
                     <h2 className="mb-4 text-sm font-semibold uppercase tracking-widest text-slate-400">
-                        Unlocked Courses
+                        {t("myCourses.unlockedCourses")}
                     </h2>
                     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                         {accessibleCourses.map((course) => (
@@ -131,30 +142,30 @@ export default function MyCoursesPage({ purchases = [], currentUser, onNavigate,
                                 <div className="relative h-36 overflow-hidden">
                                     <img
                                         src={course.image}
-                                        alt={course.titleEn}
+                                        alt={t(course.titleKey)}
                                         className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                                     <div className="absolute top-2 right-2 rounded-full bg-emerald-500 px-2 py-0.5 text-[10px] text-white font-semibold">
-                                        Unlocked
+                                        {t("myCourses.unlocked")}
                                     </div>
                                 </div>
                                 <div className="p-4">
                                     <div className="mb-1 text-[10px] uppercase tracking-wider text-amber-700 font-medium">
-                                        {course.tag}
+                                        {t(course.tagKey)}
                                     </div>
                                     <h3 className="text-sm font-semibold text-slate-900">
-                                        {course.titleEn}
+                                        {t(course.titleKey)}
                                     </h3>
                                     <p className="mt-1 text-xs text-slate-500">
-                                        {course.descEn}
+                                        {t(course.descKey)}
                                     </p>
                                     <div className="mt-3 flex items-center justify-between">
                                         <span className="text-xs text-slate-400">
-                                            {course.lessons} lessons
+                                            {t("myCourses.lessonsCount", { count: course.lessons })}
                                         </span>
                                         <span className="text-xs font-medium text-amber-700 group-hover:text-amber-600 transition">
-                                            Continue →
+                                            {t("myCourses.continue")}
                                         </span>
                                     </div>
                                 </div>
@@ -172,16 +183,16 @@ export default function MyCoursesPage({ purchases = [], currentUser, onNavigate,
                 >
                     <div className="text-3xl mb-3">📚</div>
                     <p className="text-sm font-medium text-slate-700">
-                        You haven't purchased any courses yet
+                        {t("myCourses.noPurchases")}
                     </p>
                     <p className="mt-1 text-xs text-slate-500">
-                        Browse courses and start your first lesson
+                        {t("myCourses.noPurchasesSubtitle")}
                     </p>
                     <button
                         onClick={() => onNavigate("home")}
                         className="mt-4 rounded-full bg-amber-600 px-5 py-2 text-xs font-semibold text-white hover:bg-amber-500 transition"
                     >
-                        Browse Courses
+                        {t("myCourses.browseCourses")}
                     </button>
                 </motion.div>
             )}
@@ -195,7 +206,7 @@ export default function MyCoursesPage({ purchases = [], currentUser, onNavigate,
                     transition={{ duration: 0.5, delay: 0.2 }}
                 >
                     <h2 className="mb-4 text-sm font-semibold uppercase tracking-widest text-slate-400">
-                        More Courses
+                        {t("myCourses.moreCourses")}
                     </h2>
                     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                         {lockedCourses.map((course) => (
@@ -206,26 +217,26 @@ export default function MyCoursesPage({ purchases = [], currentUser, onNavigate,
                                 <div className="relative h-36 overflow-hidden">
                                     <img
                                         src={course.image}
-                                        alt={course.titleEn}
+                                        alt={t(course.titleKey)}
                                         className="h-full w-full object-cover grayscale"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                                     <div className="absolute top-2 right-2 rounded-full bg-slate-700 px-2 py-0.5 text-[10px] text-white">
-                                        🔒 Locked
+                                        {t("myCourses.locked")}
                                     </div>
                                 </div>
                                 <div className="p-4">
                                     <div className="mb-1 text-[10px] uppercase tracking-wider text-slate-400 font-medium">
-                                        {course.tag}
+                                        {t(course.tagKey)}
                                     </div>
                                     <h3 className="text-sm font-semibold text-slate-700">
-                                        {course.titleEn}
+                                        {t(course.titleKey)}
                                     </h3>
                                     <button
                                         onClick={() => onPurchase("course", { courseId: course.id })}
                                         className="mt-3 w-full rounded-full border border-amber-300 px-3 py-1.5 text-xs font-semibold text-amber-700 hover:bg-amber-50 transition"
                                     >
-                                        Purchase to unlock
+                                        {t("myCourses.purchaseToUnlock")}
                                     </button>
                                 </div>
                             </div>

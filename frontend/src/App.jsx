@@ -30,39 +30,39 @@ const fadeInUp = {
 
 // ─── 9.9 Quick Relief lessons ─────────────────────────────────────────────────
 const JIUJIU_LESSONS = [
-    { id: 1, titleEn: "Lower Back Pain Relief", subtitle: "Fast Relief • 3 Acupoints • Feel Better Fast", duration: "~5 min", coverImage: "/images/jiujiu-waist.png", fallbackImage: "/images/acupoint-waist-legs.png", priceNow: "$9.9", priceOld: "$29.99", sale: true, page: "jiujiu" },
-    { id: 2, titleEn: "Neck & Shoulder Relief", subtitle: "Release Tension • Move Freely • Fast Relief", duration: "~5 min", coverImage: "/images/jiujiu-neck.png", fallbackImage: "/images/acupoint-neck-shoulder.png", priceNow: "$9.9", priceOld: "$29.99", sale: true, page: "jiujiu" },
-    { id: 3, titleEn: "Sleep & Calm Support", subtitle: "10-Min Bedtime Routine • Fall Asleep Faster", duration: "~5 min", coverImage: "/images/jiujiu-sleep.png", fallbackImage: "/images/acupoint-daily.png", priceNow: "$9.9", priceOld: "$29.99", sale: true, page: "jiujiu" },
-    { id: 4, titleEn: "Men's Health & Vitality", subtitle: "Male Wellness • Natural Support • Restore Energy", duration: "~5 min", coverImage: "/images/jiujiu-mens-health.png", fallbackImage: "/images/acupoint-daily.png", priceNow: "$9.9", priceOld: "$29.99", sale: true, page: "jiujiu" },
+    { id: 1, titleKey: "jiujiu.lessons.lesson1.title", subtitleKey: "jiujiu.lessons.lesson1.subtitle", durationKey: "jiujiu.lessons.lesson1.duration", coverImage: "/images/jiujiu-waist.png", fallbackImage: "/images/acupoint-waist-legs.png", priceNow: "$9.9", priceOld: "$29.99", sale: true, page: "jiujiu" },
+    { id: 2, titleKey: "jiujiu.lessons.lesson2.title", subtitleKey: "jiujiu.lessons.lesson2.subtitle", durationKey: "jiujiu.lessons.lesson2.duration", coverImage: "/images/jiujiu-neck.png", fallbackImage: "/images/acupoint-neck-shoulder.png", priceNow: "$9.9", priceOld: "$29.99", sale: true, page: "jiujiu" },
+    { id: 3, titleKey: "jiujiu.lessons.lesson3.title", subtitleKey: "jiujiu.lessons.lesson3.subtitle", durationKey: "jiujiu.lessons.lesson3.duration", coverImage: "/images/jiujiu-sleep.png", fallbackImage: "/images/acupoint-daily.png", priceNow: "$9.9", priceOld: "$29.99", sale: true, page: "jiujiu" },
+    { id: 4, titleKey: "jiujiu.lessons.lesson4.title", subtitleKey: "jiujiu.lessons.lesson4.subtitle", durationKey: "jiujiu.lessons.lesson4.duration", coverImage: "/images/jiujiu-mens-health.png", fallbackImage: "/images/acupoint-daily.png", priceNow: "$9.9", priceOld: "$29.99", sale: true, page: "jiujiu" },
 ];
 
 // ─── Acupoint lessons ─────────────────────────────────────────────────────────
 const ACUPOINT_LESSONS = [
-    { id: 1, titleEn: "Head Tension & Heavy Discomfort Release", subtitle: "Ease 23 Types Of Head & Neck Tightness | 3 Simple Moves For Instant Calm At Home", duration: "~60 min", coverImage: "/images/acupoint-head.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "$29", priceOld: "$99.99", sale: true, page: "qigong" },
-    { id: 2, titleEn: "Hand & Foot Stiff & Tired Recovery", subtitle: "Relax 28 Kinds Of Limb Stiffness & Discomfort | Easy Daily Self Care", duration: "~90 min", coverImage: "/images/acupoint-hands-feet.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "$29", priceOld: "$99.99", sale: true, page: "qigong" },
-    { id: 3, titleEn: "Full Body Daily Fatigue & Tension Care", subtitle: "Ease 16 Common Everyday Body Stiffness | No Extra Tools Needed", duration: "~70 min", coverImage: "/images/acupoint-daily.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "$29", priceOld: "$99.99", sale: true, page: "qigong" },
-    { id: 4, titleEn: "Neck & Shoulder Tightness Relief", subtitle: "Release 8 Types Of Upper Body Soreness | Quick 5-Minute Daily Routine", duration: "~40 min", coverImage: "/images/acupoint-neck-shoulder.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "$29", priceOld: "$99.99", sale: true, page: "qigong" },
-    { id: 5, titleEn: "Back & Leg Stiffness & Weariness Care", subtitle: "Ease 18 Kinds Of Lower Body Discomfort | Natural Gentle Daily Practices", duration: "~80 min", coverImage: "/images/acupoint-waist-legs.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "$29", priceOld: "$99.99", sale: true, page: "qigong" },
-    { id: 6, titleEn: "Women's Private Body Comfort Care", subtitle: "Soothe 7 Common Female Daily Discomforts | Gentle, Private At-Home Wellness", duration: "~45 min", coverImage: "/images/acupoint-womens.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "$29", priceOld: "$99.99", sale: true, page: "qigong" },
+    { id: 1, titleKey: "qigong.lessons.1.title", subtitleKey: "qigong.lessons.1.subtitle", durationKey: "qigong.lessons.1.duration", coverImage: "/images/acupoint-head.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "$29", priceOld: "$99.99", sale: true, page: "qigong" },
+    { id: 2, titleKey: "qigong.lessons.2.title", subtitleKey: "qigong.lessons.2.subtitle", durationKey: "qigong.lessons.2.duration", coverImage: "/images/acupoint-hands-feet.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "$29", priceOld: "$99.99", sale: true, page: "qigong" },
+    { id: 3, titleKey: "qigong.lessons.3.title", subtitleKey: "qigong.lessons.3.subtitle", durationKey: "qigong.lessons.3.duration", coverImage: "/images/acupoint-daily.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "$29", priceOld: "$99.99", sale: true, page: "qigong" },
+    { id: 4, titleKey: "qigong.lessons.4.title", subtitleKey: "qigong.lessons.4.subtitle", durationKey: "qigong.lessons.4.duration", coverImage: "/images/acupoint-neck-shoulder.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "$29", priceOld: "$99.99", sale: true, page: "qigong" },
+    { id: 5, titleKey: "qigong.lessons.5.title", subtitleKey: "qigong.lessons.5.subtitle", durationKey: "qigong.lessons.5.duration", coverImage: "/images/acupoint-waist-legs.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "$29", priceOld: "$99.99", sale: true, page: "qigong" },
+    { id: 6, titleKey: "qigong.lessons.6.title", subtitleKey: "qigong.lessons.6.subtitle", durationKey: "qigong.lessons.6.duration", coverImage: "/images/acupoint-womens.png", fallbackImage: "/images/tai-chi/acupressure-cover.jpg", priceNow: "$29", priceOld: "$99.99", sale: true, page: "qigong" },
 ];
 
 // ─── Tai Chi lessons (from QimenPage data) ───────────────────────────────────
 const TAICHI_LESSONS = [
-    { id: 1, titleEn: "Kidney Essence & Masculine Vitality", subtitle: "Deep core energy restoration, support lasting inner strength, ease body weariness & maintain peak daily male performance", duration: "~11 min", coverImage: "/images/tai-chi/lesson-07-huogu-yangsheng.png", fallbackImage: "/images/taiji-mountain.jpg", priceNow: "$39", priceOld: "$59.99", sale: true, page: "qimen" },
-    { id: 2, titleEn: "Liver & Mood Stability Care", subtitle: "Clear internal stagnation, soothe irritability, release daily pressure & keep steady calm mindset", duration: "~10 min", coverImage: "/images/tai-chi/lesson-06-hunyuan-zhuang.png", fallbackImage: "/images/taiji-mountain.jpg", priceNow: "$39", priceOld: "$59.99", sale: true, page: "qimen" },
-    { id: 3, titleEn: "Spleen & All-Day Energy Boost", subtitle: "Optimize internal energy absorption, banish constant sluggishness & maintain consistent high vitality", duration: "~17 min", coverImage: "/images/tai-chi/lesson-05-baduanjin.png", fallbackImage: "/images/taiji-mountain.jpg", priceNow: "$39", priceOld: "$59.99", sale: true, page: "qimen" },
-    { id: 4, titleEn: "Lung Power & Physical Stamina", subtitle: "Deep breath regulation, expand lung capacity, build natural endurance & anti-fatigue reserve", duration: "~11 min", coverImage: "/images/tai-chi/lesson-03-wudang-18forms.png", fallbackImage: "/images/taiji-mountain.jpg", priceNow: "$39", priceOld: "$59.99", sale: true, page: "qimen" },
-    { id: 5, titleEn: "Heart Calm & Mental Focus", subtitle: "Nourish heart spirit, calm overthinking, relieve inner anxiety & restore sharp clear mind", duration: "~11 min", coverImage: "/images/tai-chi/lesson-02-wudang-13forms.png", fallbackImage: "/images/taiji-mountain.jpg", priceNow: "$39", priceOld: "$59.99", sale: true, page: "qimen" },
-    { id: 6, titleEn: "Deep Night Recovery & Quality Sleep", subtitle: "Calm nightly restlessness, ease frequent waking, enjoy deep uninterrupted sleep & fully refreshed mornings", duration: "~28 min", coverImage: "/images/tai-chi/lesson-01-wudang-28forms.png", fallbackImage: "/images/taiji-mountain.jpg", priceNow: "$39", priceOld: "$59.99", sale: true, page: "qimen" },
-    { id: 7, titleEn: "Five Organs Full System Deep Conditioning", subtitle: "Comprehensive heart/liver/spleen/lung/kidney balance, full body deep maintenance for long term prime wellness", duration: "~30 min", coverImage: "/images/tai-chi/lesson-04-wudang-108forms.png", fallbackImage: "/images/taiji-mountain.jpg", priceNow: "$39", priceOld: "$59.99", sale: true, page: "qimen" },
+    { id: 1, titleKey: "qimen.lessons.lesson1.title", subtitleKey: "qimen.lessons.lesson1.subtitle", durationKey: "qimen.lessons.lesson1.duration", coverImage: "/images/tai-chi/lesson-07-huogu-yangsheng.png", fallbackImage: "/images/taiji-mountain.jpg", priceNow: "$39", priceOld: "$59.99", sale: true, page: "qimen" },
+    { id: 2, titleKey: "qimen.lessons.lesson2.title", subtitleKey: "qimen.lessons.lesson2.subtitle", durationKey: "qimen.lessons.lesson2.duration", coverImage: "/images/tai-chi/lesson-06-hunyuan-zhuang.png", fallbackImage: "/images/taiji-mountain.jpg", priceNow: "$39", priceOld: "$59.99", sale: true, page: "qimen" },
+    { id: 3, titleKey: "qimen.lessons.lesson3.title", subtitleKey: "qimen.lessons.lesson3.subtitle", durationKey: "qimen.lessons.lesson3.duration", coverImage: "/images/tai-chi/lesson-05-baduanjin.png", fallbackImage: "/images/taiji-mountain.jpg", priceNow: "$39", priceOld: "$59.99", sale: true, page: "qimen" },
+    { id: 4, titleKey: "qimen.lessons.lesson4.title", subtitleKey: "qimen.lessons.lesson4.subtitle", durationKey: "qimen.lessons.lesson4.duration", coverImage: "/images/tai-chi/lesson-03-wudang-18forms.png", fallbackImage: "/images/taiji-mountain.jpg", priceNow: "$39", priceOld: "$59.99", sale: true, page: "qimen" },
+    { id: 5, titleKey: "qimen.lessons.lesson5.title", subtitleKey: "qimen.lessons.lesson5.subtitle", durationKey: "qimen.lessons.lesson5.duration", coverImage: "/images/tai-chi/lesson-02-wudang-13forms.png", fallbackImage: "/images/taiji-mountain.jpg", priceNow: "$39", priceOld: "$59.99", sale: true, page: "qimen" },
+    { id: 6, titleKey: "qimen.lessons.lesson6.title", subtitleKey: "qimen.lessons.lesson6.subtitle", durationKey: "qimen.lessons.lesson6.duration", coverImage: "/images/tai-chi/lesson-01-wudang-28forms.png", fallbackImage: "/images/taiji-mountain.jpg", priceNow: "$39", priceOld: "$59.99", sale: true, page: "qimen" },
+    { id: 7, titleKey: "qimen.lessons.lesson7.title", subtitleKey: "qimen.lessons.lesson7.subtitle", durationKey: "qimen.lessons.lesson7.duration", coverImage: "/images/tai-chi/lesson-04-wudang-108forms.png", fallbackImage: "/images/taiji-mountain.jpg", priceNow: "$39", priceOld: "$59.99", sale: true, page: "qimen" },
 ];
 
 // ─── Gua Sha course (single product card) ────────────────────────────────────
 const GUASHA_COURSE = {
-    titleEn: "Natural Facial Gua Sha Full Care Course",
-    subtitle: "Daily 5-Min Routine | Relieve Facial Stiffness, Reduce Puffiness, Brighten Dull Skin & Keep Fresh Rested Look. No Surgery, No Salon Costs.",
-    cardTitle: "16 Step-by-Step Facial Gua Sha Master Course",
-    cardSubtitle: "16 Complete Tutorials | Full 2h 34min Training | Lifetime Access",
+    titleKey: "guasha.title",
+    subtitleKey: "guasha.mainTitle",
+    cardTitleKey: "guasha.cardTitle",
+    cardSubtitleKey: "guasha.cardSubtitle",
     coverImage: "/images/guasha-face.jpg",
     fallbackImage: "/images/face-yoga-masterclass.jpg",
     priceNow: "$45",
@@ -73,8 +73,8 @@ const GUASHA_COURSE = {
 
 // ─── Wing Chun lessons ────────────────────────────────────────────────────────
 const WINGCHUN_LESSONS = [
-    { id: 1, titleEn: "Wing Chun 10 Health Qigong Full Course", subtitle: "Structured Daily Gentle Training. Correct Bad Posture, Build Solid Core Strength & Boost All-Day Consistent Energy", duration: "Full Step-by-Step Lessons | ~7 Min Per Routine", coverImage: "/images/wingchun-yangsheng.png", fallbackImage: "/images/wingchun-hero.png", priceNow: "$49.98", priceOld: "$99.98", sale: true, page: "wingchun" },
-    { id: 2, titleEn: "Wing Chun Practical Self-Defense Full Course", subtitle: "Easy Real-Life Protection Techniques. Gain Solid Confidence, Stay Calm & Feel Safe In Any Situation", duration: "Beginner Friendly Guide | ~12 Min Per Lesson", coverImage: "/images/wingchun-fangwei.png", fallbackImage: "/images/wingchun-hero.png", priceNow: "$49.98", priceOld: "$99.98", sale: true, page: "wingchun" },
+    { id: 1, titleKey: "wingchun.lessons.lesson1.title", subtitleKey: "wingchun.lessons.lesson1.subtitle", durationKey: "wingchun.lessons.lesson1.duration", coverImage: "/images/wingchun-yangsheng.png", fallbackImage: "/images/wingchun-hero.png", priceNow: "$49.98", priceOld: "$99.98", sale: true, page: "wingchun" },
+    { id: 2, titleKey: "wingchun.lessons.lesson2.title", subtitleKey: "wingchun.lessons.lesson2.subtitle", durationKey: "wingchun.lessons.lesson2.duration", coverImage: "/images/wingchun-fangwei.png", fallbackImage: "/images/wingchun-hero.png", priceNow: "$49.98", priceOld: "$99.98", sale: true, page: "wingchun" },
 ];
 
 // ─── Card component ───────────────────────────────────────────────────────────
@@ -89,7 +89,7 @@ function LessonCard({ lesson, onNavigate }) {
             <div className="relative overflow-hidden aspect-[4/3]">
                 <img
                     src={imgErr ? lesson.fallbackImage : lesson.coverImage}
-                    alt={lesson.titleEn}
+                    alt={t(lesson.titleKey)}
                     onError={() => setImgErr(true)}
                     className="w-full h-full object-cover transition duration-500 group-hover:scale-105"
                 />
@@ -101,13 +101,13 @@ function LessonCard({ lesson, onNavigate }) {
             </div>
             <div className="p-3 flex flex-col flex-1">
                 <p className="text-xs font-semibold text-slate-900 leading-snug mb-1 line-clamp-2">
-                    {lesson.titleEn}
+                    {t(lesson.titleKey)}
                 </p>
-                {lesson.subtitle && (
-                    <p className="text-[11px] text-slate-500 mb-2 leading-snug line-clamp-2">{lesson.subtitle}</p>
+                {lesson.subtitleKey && (
+                    <p className="text-[11px] text-slate-500 mb-2 leading-snug line-clamp-2">{t(lesson.subtitleKey)}</p>
                 )}
-                {lesson.duration && (
-                    <p className="text-[11px] text-slate-400 mb-2">{lesson.duration}</p>
+                {lesson.durationKey && (
+                    <p className="text-[11px] text-slate-400 mb-2">{t(lesson.durationKey)}</p>
                 )}
                 <div className="mt-auto pt-2">
                     {lesson.priceOld && (
@@ -409,8 +409,8 @@ function App() {
                         variants={fadeInUp}
                     >
                         <SectionHeading
-                            title="Quick Relief Acupressure Self-Care Master Course"
-                            subtitle="Full Step-by-Step Acupressure Course. No Medication, No Professional Help Needed. Easy Guided Home Routines, Fast Gentle Body Comfort & Build Long-Lasting Natural Daily Wellness."
+                            title={t("qigong.course.title")}
+                            subtitle={t("qigong.course.subtitle")}
                             onViewAll
                             viewAllPage="qigong"
                             onNavigate={setActivePage}
@@ -432,8 +432,8 @@ function App() {
                         variants={fadeInUp}
                     >
                         <SectionHeading
-                            title="Nourish Five Internal Organs, Calm Deep Inner Imbalance & Restore Long-Term Masculine Vitality"
-                            subtitle="Ancient Wudang Tai Chi Full Course. Seven Major Viscera Systematic Deep Nourishment, Step-by-Step Guided Practice, Eliminate Root Fatigue & Rebalance Full-Body Natural Wellness."
+                            title={t("qimen.courseTitle")}
+                            subtitle={t("qimen.courseSubtitle")}
                             onViewAll
                             viewAllPage="qimen"
                             onNavigate={setActivePage}
@@ -455,8 +455,8 @@ function App() {
                         variants={fadeInUp}
                     >
                         <SectionHeading
-                            title="Natural Facial Gua Sha Full Care Course"
-                            subtitle="Daily 5-Min Routine | Relieve Facial Stiffness, Reduce Puffiness, Brighten Dull Skin & Keep Fresh Rested Look. No Surgery, No Salon Costs."
+                            title={t("guasha.course.title")}
+                            subtitle={t("guasha.course.subtitle")}
                             onViewAll
                             viewAllPage="guasha"
                             onNavigate={setActivePage}
@@ -470,17 +470,17 @@ function App() {
                             <div className="relative overflow-hidden aspect-[4/3]">
                                 <img
                                     src={GUASHA_COURSE.coverImage}
-                                    alt={GUASHA_COURSE.titleEn}
+                                    alt={t(GUASHA_COURSE.titleKey)}
                                     className="w-full h-full object-cover"
                                     onError={(e) => { e.target.src = GUASHA_COURSE.fallbackImage; }}
                                 />
                                 <span className="absolute top-2 left-2 bg-amber-600 text-white text-[10px] font-semibold px-2.5 py-1 rounded-full">
-                                    Sale
+                                    {t("common.sale")}
                                 </span>
                             </div>
                             <div className="p-3 flex flex-col flex-1">
-                                <p className="text-xs font-semibold text-slate-900 leading-snug mb-1">{GUASHA_COURSE.titleEn}</p>
-                                <p className="text-[11px] text-slate-500 mb-2">{GUASHA_COURSE.subtitle}</p>
+                                <p className="text-xs font-semibold text-slate-900 leading-snug mb-1">{t(GUASHA_COURSE.cardTitleKey)}</p>
+                                <p className="text-[11px] text-slate-500 mb-2">{t(GUASHA_COURSE.cardSubtitleKey)}</p>
                                 <div className="mt-auto pt-2">
                                     <div className="flex items-center gap-2">
                                         <span className="text-xl font-bold text-slate-900">{GUASHA_COURSE.priceNow}</span>
@@ -502,8 +502,8 @@ function App() {
                         variants={fadeInUp}
                     >
                         <SectionHeading
-                            title="Wing Chun Complete Self-Defense & Vitality Master Course"
-                            subtitle="Systematic Practical Wing Chun Training. Master Easy Real-World Protection, Fix Posture, Build Core Strength & Unshakable Inner Confidence."
+                            title={t("wingchun.course.title")}
+                            subtitle={t("wingchun.course.subtitle")}
                             onViewAll
                             viewAllPage="wingchun"
                             onNavigate={setActivePage}

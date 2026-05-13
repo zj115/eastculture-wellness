@@ -1,5 +1,6 @@
 // src/pages/ProgramPage.jsx
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 const fadeInUp = {
     hidden: { opacity: 0, y: 40 },
@@ -7,6 +8,8 @@ const fadeInUp = {
 };
 
 export default function ProgramPage({ onBack }) {
+    const { t } = useTranslation();
+
     return (
         <main className="mx-auto max-w-6xl px-4 pb-20 pt-10 md:pt-14 space-y-10 md:space-y-14">
             <button
@@ -14,7 +17,7 @@ export default function ProgramPage({ onBack }) {
                 className="mb-2 inline-flex items-center gap-2 text-xs text-slate-500 hover:text-slate-700 transition"
             >
                 <span className="text-lg">←</span>
-                Back to home
+                {t('common.backToHome')}
             </button>
 
             <motion.section
@@ -26,32 +29,26 @@ export default function ProgramPage({ onBack }) {
             >
                 <div className="space-y-4">
                     <p className="inline-flex items-center rounded-full bg-slate-900 px-3 py-1 text-[11px] text-white border border-slate-200/60">
-                        Guided Learning Path · Program
+                        {t('program.guidedPath')}
                     </p>
 
                     <h1 className="text-2xl md:text-3xl font-semibold tracking-tight text-slate-900">
-                        Build your own Tai Chi & traditional arts practice, step by step
+                        {t('program.title')}
                     </h1>
 
                     <p className="text-sm md:text-base text-slate-600">
-                        This Program page connects all courses into one clear path: start with foundations, then grow into Qigong, Tai Chi, Wing Chun, TCM thinking and Feng Shui. You can follow the suggested order or choose the path that fits your current life.
+                        {t('program.subtitle')}
                     </p>
                 </div>
 
                 <div className="rounded-3xl border border-slate-200 bg-white p-4 md:p-5 text-xs md:text-sm text-slate-700 space-y-3 shadow-sm">
                     <h2 className="text-sm font-semibold text-slate-900">
-                        This program is ideal if:
+                        {t('program.idealIf')}
                     </h2>
                     <ul className="space-y-2 list-disc list-inside text-slate-600">
-                        <li>
-                            You prefer a guided sequence instead of "start anywhere you like".
-                        </li>
-                        <li>
-                            You have 10–30 minutes a day and want to make it count.
-                        </li>
-                        <li>
-                            You want both physical practice and cultural understanding.
-                        </li>
+                        <li>{t('program.ideal1')}</li>
+                        <li>{t('program.ideal2')}</li>
+                        <li>{t('program.ideal3')}</li>
                     </ul>
                 </div>
             </motion.section>
@@ -64,74 +61,58 @@ export default function ProgramPage({ onBack }) {
                 className="space-y-5"
             >
                 <h2 className="text-xl md:text-2xl font-semibold text-slate-900">
-                    Three-stage learning path
+                    {t('program.threeStageTitle')}
                 </h2>
 
                 <div className="grid gap-4 md:grid-cols-3">
                     <div className="rounded-3xl border border-slate-200 bg-white p-4 md:p-5 text-sm space-y-2 shadow-sm">
                         <p className="text-[11px] uppercase tracking-wide text-slate-500">
-                            Level 1 · Foundations
+                            {t('program.level1.label')}
                         </p>
                         <h3 className="font-semibold text-slate-900">
-                            Posture, breathing & basic Tai Chi
+                            {t('program.level1.title')}
                         </h3>
                         <p className="text-xs text-slate-600">
-                            Focus on safety and consistency. You'll start with standing, breathing and simple, gentle movements to build stability.
+                            {t('program.level1.desc')}
                         </p>
                         <ul className="text-xs text-slate-600 space-y-1">
-                            <li>• Qigong & breathing intro</li>
-                            <li>
-                                • Tai Chi Mountain Practice · Part 1: stance, steps, basic hand shapes
-                            </li>
-                            <li>
-                                • 10–15 minutes daily, feeling breath and body weight changes
-                            </li>
+                            <li>• {t('program.level1.point1')}</li>
+                            <li>• {t('program.level1.point2')}</li>
+                            <li>• {t('program.level1.point3')}</li>
                         </ul>
                     </div>
 
                     <div className="rounded-3xl border border-slate-200 bg-white p-4 md:p-5 text-sm space-y-2 shadow-sm">
                         <p className="text-[11px] uppercase tracking-wide text-slate-500">
-                            Level 2 · Build a habit
+                            {t('program.level2.label')}
                         </p>
                         <h3 className="font-semibold text-slate-900">
-                            8-week balance & wellness plan
+                            {t('program.level2.title')}
                         </h3>
                         <p className="text-xs text-slate-600">
-                            Once you can follow the basics, move into an 8-week plan combining Tai Chi, Qigong and gentle face relaxation.
+                            {t('program.level2.desc')}
                         </p>
                         <ul className="text-xs text-slate-600 space-y-1">
-                            <li>
-                                • 3 days/week: Tai Chi Mountain + standing practice
-                            </li>
-                            <li>
-                                • 2 days/week: face yoga & neck-shoulder release
-                            </li>
-                            <li>
-                                • 1 day/week: TCM for daily life – body types & routines
-                            </li>
+                            <li>• {t('program.level2.point1')}</li>
+                            <li>• {t('program.level2.point2')}</li>
+                            <li>• {t('program.level2.point3')}</li>
                         </ul>
                     </div>
 
                     <div className="rounded-3xl border border-slate-200 bg-white p-4 md:p-5 text-sm space-y-2 shadow-sm">
                         <p className="text-[11px] uppercase tracking-wide text-slate-500">
-                            Level 3 · Deep dive & expansion
+                            {t('program.level3.label')}
                         </p>
                         <h3 className="font-semibold text-slate-900">
-                            Wing Chun, Feng Shui & culture
+                            {t('program.level3.title')}
                         </h3>
                         <p className="text-xs text-slate-600">
-                            When your body feels stable, choose a more martial or more cultural focus to deepen your journey.
+                            {t('program.level3.desc')}
                         </p>
                         <ul className="text-xs text-slate-600 space-y-1">
-                            <li>
-                                • Wing Chun Foundations for structure & partner drills
-                            </li>
-                            <li>
-                                • Feng Shui & Space Harmony for home and workspace
-                            </li>
-                            <li>
-                                • Combine with TCM for a body–energy–space perspective
-                            </li>
+                            <li>• {t('program.level3.point1')}</li>
+                            <li>• {t('program.level3.point2')}</li>
+                            <li>• {t('program.level3.point3')}</li>
                         </ul>
                     </div>
                 </div>
@@ -145,11 +126,11 @@ export default function ProgramPage({ onBack }) {
                 className="space-y-5"
             >
                 <h2 className="text-xl md:text-2xl font-semibold text-slate-900">
-                    A realistic example week
+                    {t('program.exampleWeekTitle')}
                 </h2>
 
                 <p className="text-sm text-slate-600 max-w-3xl">
-                    Here is a very practical weekly schedule: 10–25 minutes per day, even with a busy job. You can copy it or adjust it to your life.
+                    {t('program.exampleWeekDesc')}
                 </p>
 
                 <div className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
@@ -158,7 +139,7 @@ export default function ProgramPage({ onBack }) {
                             <div key={day} className="p-3 md:p-4 space-y-1">
                                 <p className="font-semibold text-slate-900">{day}</p>
                                 <p className="text-[10px] uppercase tracking-wide text-slate-500">
-                                    Duration
+                                    {t('program.durationLabel')}
                                 </p>
                                 <p className="text-xs text-slate-700">
                                     {i === 5 || i === 6
@@ -168,18 +149,16 @@ export default function ProgramPage({ onBack }) {
                                             : "15–20 min"}
                                 </p>
                                 <p className="text-[10px] uppercase tracking-wide text-slate-500 pt-1">
-                                    Practice
+                                    {t('program.practiceLabel')}
                                 </p>
                                 <p className="text-xs text-slate-600">
-                                    {(() => {
-                                        if (i === 0) return "Tai Chi Mountain basics + standing";
-                                        if (i === 1) return "Qigong breathing + neck release";
-                                        if (i === 2) return "Face yoga · eyes & expression";
-                                        if (i === 3) return "Tai Chi Mountain · review";
-                                        if (i === 4) return "TCM thinking · body type & routine";
-                                        if (i === 5) return "Wing Chun basics or Feng Shui";
-                                        return "Free practice · review favourite moves";
-                                    })()}
+                                    {i === 0 && t('program.monday')}
+                                    {i === 1 && t('program.tuesday')}
+                                    {i === 2 && t('program.wednesday')}
+                                    {i === 3 && t('program.thursday')}
+                                    {i === 4 && t('program.friday')}
+                                    {i === 5 && t('program.saturday')}
+                                    {i === 6 && t('program.sunday')}
                                 </p>
                             </div>
                         ))}
@@ -195,40 +174,40 @@ export default function ProgramPage({ onBack }) {
                 className="space-y-5"
             >
                 <h2 className="text-xl md:text-2xl font-semibold text-slate-900">
-                    How to combine the courses?
+                    {t('program.combineTitle')}
                 </h2>
 
                 <div className="grid gap-4 md:grid-cols-2">
                     <div className="rounded-3xl border border-slate-200 bg-white p-4 md:p-5 text-sm space-y-2 shadow-sm">
                         <h3 className="font-semibold text-slate-900">
-                            If your focus is health & stress
+                            {t('program.healthFocus.title')}
                         </h3>
                         <ul className="text-xs text-slate-600 space-y-1.5">
-                            <li>• Qigong & Breathing</li>
-                            <li>• Tai Chi Mountain Practice</li>
-                            <li>• Face Yoga & Massage for sleep and soft expression</li>
-                            <li>• TCM for Daily Life to understand why you feel tired</li>
+                            <li>• {t('program.healthFocus.point1')}</li>
+                            <li>• {t('program.healthFocus.point2')}</li>
+                            <li>• {t('program.healthFocus.point3')}</li>
+                            <li>• {t('program.healthFocus.point4')}</li>
                         </ul>
                     </div>
 
                     <div className="rounded-3xl border border-slate-200 bg-white p-4 md:p-5 text-sm space-y-2 shadow-sm">
                         <h3 className="font-semibold text-slate-900">
-                            If you enjoy martial structure & power
+                            {t('program.martialFocus.title')}
                         </h3>
                         <ul className="text-xs text-slate-600 space-y-1.5">
-                            <li>• Tai Chi Mountain Practice (full series)</li>
-                            <li>• Wing Chun Foundations</li>
-                            <li>• Standing Qigong for rooting and stamina</li>
-                            <li>• Add a little TCM knowledge to avoid overtraining</li>
+                            <li>• {t('program.martialFocus.point1')}</li>
+                            <li>• {t('program.martialFocus.point2')}</li>
+                            <li>• {t('program.martialFocus.point3')}</li>
+                            <li>• {t('program.martialFocus.point4')}</li>
                         </ul>
                     </div>
 
                     <div className="rounded-3xl border border-slate-200 bg-white p-4 md:p-5 text-sm space-y-2 md:col-span-2 shadow-sm">
                         <h3 className="font-semibold text-slate-900">
-                            If you start from space & lifestyle
+                            {t('program.spaceFocus.title')}
                         </h3>
                         <p className="text-xs text-slate-600">
-                            Begin with Feng Shui & Space Harmony plus TCM for Daily Life: tidy your space and routines first, then add gentle Tai Chi and Qigong. This order is very friendly if you've been under stress and movement feels hard at the moment.
+                            {t('program.spaceFocus.desc')}
                         </p>
                     </div>
                 </div>

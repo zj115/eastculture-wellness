@@ -246,6 +246,75 @@
     "faq4Q": "Is this medical treatment?",
     "faq4A": "No. All content is for wellness and cultural learning only. Please follow your doctor's advice for any medical condition."
   },
+  "faceYoga": {
+    "title": "Face Yoga & Facial Massage Masterclass",
+    "subtitle": "Complete facial wellness program combining muscle training and traditional techniques. Gentle & beginner-friendly.",
+    "priceNow": "$29",
+    "priceOld": "$99",
+    "sale": "Sale",
+    "videoCourse": "Video Course",
+    "courseInfo": "Full course · lifetime access",
+    "unlocked": "✓ Course Unlocked",
+    "buyButton": "Buy Course · {{price}} USD",
+    "signInPrompt": "Please sign in to purchase and watch.",
+    "loading": "Loading…",
+    "playbackError": "Playback error",
+    "retry": "Retry",
+    "videoNotSupported": "Your browser does not support video.",
+    "locked": "Locked",
+    "purchasePrompt": "Purchase to unlock and watch.",
+    "buyCourseButton": "Buy Course · {{price}}",
+    "signInToPurchase": "Sign in to purchase",
+    "disclaimer": "Disclaimer: This program is for wellness purposes only and is not medical advice. Please consult a qualified healthcare professional if you have any health concerns."
+  },
+  "fengShui": {
+    "title": "Feng Shui & Space Harmony: Let Your Home and Desk Support You",
+    "subtitle": "This course approaches Feng Shui in a practical way: no heavy formulas, no fear-based superstition. We return to the simple question: does this space help you feel calm, safe and focused? By adjusting directions, movement paths, light and clutter, we gently align your home and workspace with your intentions.",
+    "section1Title": "Core Ideas: Direction, Flow & Feeling",
+    "section1Content": "We start from how a person feels, not only from compass numbers: What is the first thing you see when you enter? Is your back supported when you sit? When you work, do you face a wall or an open view? These details influence your sense of possibility and motivation. We use simple before/after examples to show the impact of each change.",
+    "section2Title": "Small Adjustments for Modern Life",
+    "section2Content": "We don't ask you to renovate or move. Instead, the focus is on small corrections within your current space: adjusting desk direction, slightly shifting the bed, softening harsh door-to-door lines, improving light and adding living elements like plants.",
+    "topicsTitle": "Main Topics You'll Learn",
+    "topics": {
+      "0": "Basic directions and the idea of a 'qi mouth' of the home—how doors, windows and corridors influence movement and energy.",
+      "1": "Bedroom principles: bed position, headboard, mirrors and electronics arrangement for better rest and recovery.",
+      "2": "Desk & workspace layout: creating a sense of focus and control, reducing constant distractions and procrastination.",
+      "3": "Entrance, living room and storage: decluttering and creating visual anchors so coming home feels lighter and more welcoming.",
+      "4": "Gentle remedies for common Feng Shui worries (beams over the bed, door facing door, bathroom positions) without creating fear."
+    },
+    "audienceTitle": "Who This Course is For",
+    "audience": {
+      "0": "People who feel their home is cluttered or chaotic but don't know where to start.",
+      "1": "Renters or flatmates who want small, affordable tweaks instead of big renovations.",
+      "2": "Freelancers and remote workers who spend many hours at home and want their space to support their career.",
+      "3": "Anyone curious about Feng Shui who wants a balanced, respectful yet down-to-earth introduction."
+    },
+    "disclaimer": "Note: This program draws on traditional Feng Shui concepts and elements of environmental psychology, aimed at helping you make more mindful choices about your space. It is not real-estate, architectural or financial advice—please consult local professionals for major housing or renovation decisions."
+  },
+  "tcm": {
+    "title": "Traditional Chinese Medicine for Daily Life: Meridians, Body Types & Everyday Care",
+    "subtitle": "This course is not about turning you into a doctor. Instead, we use everyday language and stories to explain TCM ideas: What are meridians? What do cold, heat, deficiency and excess really mean? Why do some people handle late nights better than others? You will learn to read the signals of your own body and make kinder choices in rest, food and lifestyle.",
+    "section1Title": "How TCM Sees the Body",
+    "section1Content": "Instead of only focusing on the painful spot, TCM looks at the whole person: Is your qi and blood flowing? Are sleep, emotions and digestion in balance? Through diagrams and real-life examples we introduce the ideas of 'wholeness' and 'balance', and why the same symptom can come from very different patterns.",
+    "section2Title": "How the Course is Structured",
+    "section2Content": "The course is divided into short modules: basic concepts, case stories, mini self-checks and everyday tips. Each lesson is 8–15 minutes so you can easily relate the content to yourself or your family without memorising heavy terminology—just a few clear guiding ideas you can reuse.",
+    "modulesTitle": "Key Modules You'll Learn",
+    "modules": {
+      "0": "Meridians & Qi-Blood Basics: using simple 'water pipe' and 'road traffic' analogies to understand flow, blockage and regulation.",
+      "1": "Common body types: tendencies toward cold, heat, qi deficiency, blood deficiency and how each pattern reacts to food, weather and stress.",
+      "2": "Digestive health & the Spleen-Stomach system: why TCM calls it 'the root of post-heaven qi' and what that means in modern life.",
+      "3": "Emotions & the five organs: accessible explanations of ideas like 'the Liver governs free flow' so you can see how mood and body affect each other.",
+      "4": "Seasonal care: how to gently adjust lifestyle and habits across spring, summer, autumn and winter."
+    },
+    "audienceTitle": "Who This Course is For",
+    "audience": {
+      "0": "People who often feel cold hands and feet, get 'heat' symptoms easily, or experience the same minor issues again and again.",
+      "1": "Office workers who want to care for themselves in a gentle, long-term way instead of only relying on painkillers and pushing through.",
+      "2": "Learners interested in TCM who tried reading books before but found them too abstract or complicated.",
+      "3": "Students of Tai Chi, qigong or other mind–body practices who want a clearer 'map' of the body's internal logic."
+    },
+    "disclaimer": "Important: This course is for sharing traditional TCM theory and lifestyle ideas only. It does not provide diagnosis or prescriptions. For any concrete illness or ongoing discomfort, please consult qualified medical professionals first."
+  },
   "jiujiu": {
     "title": "Quick Relief Self-Care Course",
     "subtitle": "Fast Relief for Common Daily Discomforts. 4 Simple Acupoint Routines, 5-10 Minutes Each, Instant Comfort at Home.",

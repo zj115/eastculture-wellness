@@ -3,6 +3,7 @@
 
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const fadeInUp = {
     hidden: { opacity: 0, y: 24 },
@@ -16,11 +17,6 @@ const API_BASE =
 // COURSE META
 // ─────────────────────────────────────────────
 const COURSE = {
-    titleEn: "Face Yoga & Facial Massage Masterclass",
-    subtitleEn: "Complete facial wellness program combining muscle training and traditional techniques. Gentle & beginner-friendly.",
-    priceNow: "$29",
-    priceOld: "$99",
-    sale: true,
     courseId: "faceyoga",
     s3Key: "face-yoga/4月10日_x264.mp4",
     coverImage: "/images/face-yoga-masterclass.jpg",
@@ -34,6 +30,7 @@ export default function FaceYogaPage({
     onPurchase,
     onGoLogin,
 }) {
+    const { t } = useTranslation();
     const isLoggedIn = !!currentUser;
     const isOwned = !!isOwnedProp;
 
@@ -65,16 +62,16 @@ export default function FaceYogaPage({
             );
             const data = await res.json().catch(() => ({}));
             if (!res.ok) {
-                setError(data?.error || "Failed to load video URL");
+                setError(data?.error || t("faceYoga.playbackError"));
                 return;
             }
             if (!data?.url || typeof data.url !== "string" || !data.url.startsWith("https://")) {
-                setError("Unable to get a valid video link");
+                setError(t("faceYoga.playbackError"));
                 return;
             }
             setVideoUrl(data.url);
         } catch {
-            setError("Network error: cannot reach backend");
+            setError(t("faceYoga.playbackError"));
         } finally {
             setLoading(false);
         }
@@ -85,7 +82,7 @@ export default function FaceYogaPage({
         onPurchase?.("video", {
             courseId: COURSE.courseId,
             videoKey: COURSE.s3Key,
-            videoTitle: COURSE.titleEn,
+            videoTitle: t("faceYoga.title"),
         });
     }
 
@@ -113,7 +110,7 @@ export default function FaceYogaPage({
                 >
                     <img
                         src={COURSE.coverImage}
-                        alt={COURSE.titleEn}
+                        alt={t("faceYoga.title")}
                         className="w-full object-cover object-center"
                         style={{ display: "block", aspectRatio: "16/9", maxHeight: "420px" }}
                     />
@@ -127,25 +124,23 @@ export default function FaceYogaPage({
                 >
                     <div className="flex flex-wrap items-center gap-2 mb-2">
                         <span className="text-[11px] uppercase tracking-widest text-slate-500">
-                            Video Course
+                            {t("faceYoga.videoCourse")}
                         </span>
-                        {COURSE.sale && (
-                            <span className="rounded-full bg-slate-900 px-2.5 py-0.5 text-[11px] font-semibold text-white">
-                                Sale
-                            </span>
-                        )}
+                        <span className="rounded-full bg-slate-900 px-2.5 py-0.5 text-[11px] font-semibold text-white">
+                            {t("faceYoga.sale")}
+                        </span>
                     </div>
                     <h1 className="text-2xl font-bold leading-tight text-slate-900 md:text-3xl">
-                        {COURSE.titleEn}
+                        {t("faceYoga.title")}
                     </h1>
                     <p className="mt-2 text-sm text-slate-600 leading-relaxed">
-                        {COURSE.subtitleEn}
+                        {t("faceYoga.subtitle")}
                     </p>
                     <div className="mt-4 flex flex-wrap items-center gap-3">
-                        <span className="text-3xl font-extrabold text-slate-900">{COURSE.priceNow}</span>
-                        <span className="text-base text-slate-400 line-through">{COURSE.priceOld}</span>
+                        <span className="text-3xl font-extrabold text-slate-900">{t("faceYoga.priceNow")}</span>
+                        <span className="text-base text-slate-400 line-through">{t("faceYoga.priceOld")}</span>
                         <span className="rounded-full border border-amber-200 bg-amber-50 px-2.5 py-0.5 text-xs text-amber-700">
-                            Full course · lifetime access
+                            {t("faceYoga.courseInfo")}
                         </span>
                     </div>
                 </motion.div>
@@ -158,7 +153,7 @@ export default function FaceYogaPage({
                 >
                     {canPlay ? (
                         <div className="w-full rounded-2xl border border-emerald-300 bg-emerald-50 px-4 py-3 text-center text-sm font-semibold text-emerald-800">
-                            ✓ Course Unlocked
+                            {t("faceYoga.unlocked")}
                         </div>
                     ) : (
                         <>
@@ -166,11 +161,11 @@ export default function FaceYogaPage({
                                 onClick={handleBuy}
                                 className="w-full rounded-2xl bg-amber-600 px-4 py-4 text-sm font-bold text-white hover:bg-amber-500 transition active:scale-[0.98]"
                             >
-                                Buy Course · {COURSE.priceNow} USD
+                                {t("faceYoga.buyButton", { price: t("faceYoga.priceNow") })}
                             </button>
                             {!isLoggedIn && (
                                 <p className="text-center text-xs text-amber-700 pt-1">
-                                    Please sign in to purchase and watch.
+                                    {t("faceYoga.signInPrompt")}
                                 </p>
                             )}
                         </>
@@ -189,20 +184,20 @@ export default function FaceYogaPage({
                                 {loading && (
                                     <div className="absolute inset-0 z-10 flex items-center justify-center bg-black/60">
                                         <div className="rounded-2xl border border-white/10 bg-white/10 px-4 py-2 text-sm text-white">
-                                            Loading…
+                                            {t("faceYoga.loading")}
                                         </div>
                                     </div>
                                 )}
                                 {error && !loading && (
                                     <div className="flex aspect-video w-full items-center justify-center p-6 text-center text-white">
                                         <div>
-                                            <p className="text-base font-semibold">Playback error</p>
+                                            <p className="text-base font-semibold">{t("faceYoga.playbackError")}</p>
                                             <p className="mt-2 text-sm text-white/70">{error}</p>
                                             <button
                                                 onClick={fetchSignedUrl}
                                                 className="mt-4 rounded-2xl bg-amber-500 px-4 py-2 text-sm font-semibold text-slate-900"
                                             >
-                                                Retry
+                                                {t("faceYoga.retry")}
                                             </button>
                                         </div>
                                     </div>
@@ -215,7 +210,7 @@ export default function FaceYogaPage({
                                         style={{ display: "block", aspectRatio: "16/9" }}
                                     >
                                         <source src={videoUrl} type="video/mp4" />
-                                        Your browser does not support video.
+                                        {t("faceYoga.videoNotSupported")}
                                     </video>
                                 )}
                             </div>
@@ -223,23 +218,23 @@ export default function FaceYogaPage({
                             <div className="flex aspect-video w-full items-center justify-center p-6 text-center text-white">
                                 <div className="max-w-sm space-y-3">
                                     <p className="text-3xl">🔒</p>
-                                    <p className="text-base font-bold">Locked</p>
+                                    <p className="text-base font-bold">{t("faceYoga.locked")}</p>
                                     <p className="text-sm text-white/70">
-                                        Purchase to unlock and watch.
+                                        {t("faceYoga.purchasePrompt")}
                                     </p>
                                     {isLoggedIn ? (
                                         <button
                                             onClick={handleBuy}
                                             className="mt-2 rounded-2xl bg-amber-500 px-5 py-2.5 text-sm font-semibold text-slate-900 hover:bg-amber-400 transition"
                                         >
-                                            Buy Course · {COURSE.priceNow}
+                                            {t("faceYoga.buyCourseButton", { price: t("faceYoga.priceNow") })}
                                         </button>
                                     ) : (
                                         <button
                                             onClick={() => onGoLogin?.()}
                                             className="mt-2 rounded-2xl border border-white/30 bg-white/10 px-5 py-2.5 text-sm font-semibold text-white hover:bg-white/20 transition"
                                         >
-                                            Sign in to purchase
+                                            {t("faceYoga.signInToPurchase")}
                                         </button>
                                     )}
                                 </div>
@@ -254,7 +249,7 @@ export default function FaceYogaPage({
                     transition={{ duration: 0.4, delay: 0.15 }}
                 >
                     <div className="rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-xs text-amber-900 leading-relaxed">
-                        Disclaimer: This program is for wellness purposes only and is not medical advice. Please consult a qualified healthcare professional if you have any health concerns.
+                        {t("faceYoga.disclaimer")}
                     </div>
                 </motion.div>
 

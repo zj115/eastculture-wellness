@@ -32,6 +32,7 @@ const JIUJIU_LESSONS = [
     { id: 1, titleEn: "Lower Back Pain Relief", subtitle: "Fast Relief • 3 Acupoints • Feel Better Fast", duration: "~5 min", coverImage: "/images/jiujiu-waist.png", fallbackImage: "/images/acupoint-waist-legs.png", priceNow: "$9.9", priceOld: "$29.99", sale: true, page: "jiujiu" },
     { id: 2, titleEn: "Neck & Shoulder Relief", subtitle: "Release Tension • Move Freely • Fast Relief", duration: "~5 min", coverImage: "/images/jiujiu-neck.png", fallbackImage: "/images/acupoint-neck-shoulder.png", priceNow: "$9.9", priceOld: "$29.99", sale: true, page: "jiujiu" },
     { id: 3, titleEn: "Sleep & Calm Support", subtitle: "10-Min Bedtime Routine • Fall Asleep Faster", duration: "~5 min", coverImage: "/images/jiujiu-sleep.png", fallbackImage: "/images/acupoint-daily.png", priceNow: "$9.9", priceOld: "$29.99", sale: true, page: "jiujiu" },
+    { id: 4, titleEn: "Men's Health & Vitality", subtitle: "Male Wellness • Natural Support • Restore Energy", duration: "~5 min", coverImage: "/images/jiujiu-mens-health.png", fallbackImage: "/images/acupoint-daily.png", priceNow: "$9.9", priceOld: "$29.99", sale: true, page: "jiujiu" },
 ];
 
 // ─── Acupoint lessons ─────────────────────────────────────────────────────────
@@ -323,7 +324,7 @@ function App() {
                     >
                         <SectionHeading
                             title="Quick Relief Self-Care Course"
-                            subtitle="Fast Relief for Common Daily Discomforts. 3 Simple Acupoint Routines, 5-10 Minutes Each, Instant Comfort at Home."
+                            subtitle="Fast Relief for Common Daily Discomforts. 4 Simple Acupoint Routines, 5-10 Minutes Each, Instant Comfort at Home."
                             onViewAll
                             viewAllPage="jiujiu"
                             onNavigate={setActivePage}

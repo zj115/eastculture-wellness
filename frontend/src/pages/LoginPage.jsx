@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const API_BASE = import.meta?.env?.VITE_API_BASE || "https://eastculture-api.vercel.app";
 
 // ─── Forgot-password inline panel ────────────────────────────────────────────
 function ForgotPassword({ onBack }) {
+  const { t } = useTranslation();
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [sent, setSent] = useState(false);
@@ -22,7 +24,7 @@ function ForgotPassword({ onBack }) {
       // Always show success (don't reveal whether email exists)
       setSent(true);
     } catch {
-      setError("Network error. Please try again.");
+      setError(t("login.networkError"));
     } finally {
       setLoading(false);
     }
@@ -35,16 +37,16 @@ function ForgotPassword({ onBack }) {
           ✉️
         </div>
         <div>
-          <p className="text-sm font-semibold text-slate-900">Check your email</p>
+          <p className="text-sm font-semibold text-slate-900">{t("login.checkEmail")}</p>
           <p className="mt-1 text-xs text-slate-500">
-            If an account exists for <strong>{email}</strong>, a reset link has been sent. Check your spam folder too.
+            {t("login.resetLinkSent", { email })}
           </p>
         </div>
         <button
           onClick={onBack}
           className="text-xs text-amber-700 underline hover:text-amber-600"
         >
-          Back to login
+          {t("login.backToLogin")}
         </button>
       </div>
     );
@@ -57,22 +59,22 @@ function ForgotPassword({ onBack }) {
           onClick={onBack}
           className="mb-4 inline-flex items-center gap-1.5 text-xs text-slate-500 hover:text-slate-700 transition"
         >
-          <span>←</span> Back to login
+          <span>←</span> {t("login.backToLogin")}
         </button>
-        <p className="text-base font-semibold text-slate-900">Forgot your password?</p>
+        <p className="text-base font-semibold text-slate-900">{t("login.forgotPassword")}</p>
         <p className="mt-1 text-xs text-slate-500">
-          Enter your email and we'll send you a reset link.
+          {t("login.forgotPasswordDesc")}
         </p>
       </div>
 
       <form className="space-y-4" onSubmit={handleSubmit}>
         <div className="space-y-1.5">
-          <label className="text-xs font-medium text-slate-700">Email address</label>
+          <label className="text-xs font-medium text-slate-700">{t("login.emailAddress")}</label>
           <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="Your registered email"
+            placeholder={t("login.emailPlaceholder")}
             className="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 placeholder-slate-400 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none transition"
             required
           />
@@ -89,7 +91,7 @@ function ForgotPassword({ onBack }) {
           disabled={loading}
           className="w-full rounded-2xl bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white hover:bg-slate-800 transition disabled:opacity-50"
         >
-          {loading ? "Sending…" : "Send reset link"}
+          {loading ? t("login.sending") : t("login.sendResetLink")}
         </button>
       </form>
     </div>
@@ -98,6 +100,7 @@ function ForgotPassword({ onBack }) {
 
 // ─── Reset-password form (shown when ?reset_token= is in the URL) ─────────────
 function ResetPassword({ token, onDone }) {
+  const { t } = useTranslation();
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
   const [loading, setLoading] = useState(false);
@@ -107,8 +110,8 @@ function ResetPassword({ token, onDone }) {
   async function handleSubmit(e) {
     e.preventDefault();
     setError("");
-    if (password.length < 6) { setError("Password must be at least 6 characters."); return; }
-    if (password !== confirm) { setError("Passwords do not match."); return; }
+    if (password.length < 6) { setError(t("register.passwordTooShort")); return; }
+    if (password !== confirm) { setError(t("register.passwordMismatch")); return; }
     setLoading(true);
     try {
       const res = await fetch(`${API_BASE}/api/auth/reset-password`, {
@@ -117,11 +120,11 @@ function ResetPassword({ token, onDone }) {
         body: JSON.stringify({ mode: "confirm", token, password }),
       });
       const data = await res.json();
-      if (!res.ok) { setError(data.error || "Reset failed."); return; }
+      if (!res.ok) { setError(data.error || t("login.resetFailed")); return; }
       setDone(true);
       setTimeout(onDone, 2000);
     } catch {
-      setError("Network error. Please try again.");
+      setError(t("login.networkError"));
     } finally {
       setLoading(false);
     }
@@ -131,8 +134,8 @@ function ResetPassword({ token, onDone }) {
     return (
       <div className="space-y-3 text-center">
         <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-emerald-50 text-2xl">✅</div>
-        <p className="text-sm font-semibold text-slate-900">Password updated!</p>
-        <p className="text-xs text-slate-500">Redirecting to login…</p>
+        <p className="text-sm font-semibold text-slate-900">{t("login.passwordUpdated")}</p>
+        <p className="text-xs text-slate-500">{t("login.redirecting")}</p>
       </div>
     );
   }
@@ -140,21 +143,21 @@ function ResetPassword({ token, onDone }) {
   return (
     <div className="space-y-5">
       <div>
-        <p className="text-base font-semibold text-slate-900">Set a new password</p>
-        <p className="mt-1 text-xs text-slate-500">Choose a new password for your account.</p>
+        <p className="text-base font-semibold text-slate-900">{t("login.setNewPassword")}</p>
+        <p className="mt-1 text-xs text-slate-500">{t("login.setNewPasswordDesc")}</p>
       </div>
       <form className="space-y-4" onSubmit={handleSubmit}>
         <div className="space-y-1.5">
-          <label className="text-xs font-medium text-slate-700">New password</label>
+          <label className="text-xs font-medium text-slate-700">{t("login.newPassword")}</label>
           <input type="password" value={password} onChange={(e) => setPassword(e.target.value)}
-            placeholder="At least 6 characters"
+            placeholder={t("register.passwordPlaceholder")}
             className="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 placeholder-slate-400 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none transition"
             required />
         </div>
         <div className="space-y-1.5">
-          <label className="text-xs font-medium text-slate-700">Confirm new password</label>
+          <label className="text-xs font-medium text-slate-700">{t("login.confirmNewPassword")}</label>
           <input type="password" value={confirm} onChange={(e) => setConfirm(e.target.value)}
-            placeholder="Enter password again"
+            placeholder={t("register.confirmPlaceholder")}
             className="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 placeholder-slate-400 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none transition"
             required />
         </div>
@@ -163,7 +166,7 @@ function ResetPassword({ token, onDone }) {
         )}
         <button type="submit" disabled={loading}
           className="w-full rounded-2xl bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white hover:bg-slate-800 transition disabled:opacity-50">
-          {loading ? "Updating…" : "Update password"}
+          {loading ? t("login.updating") : t("login.updatePassword")}
         </button>
       </form>
     </div>
@@ -176,6 +179,7 @@ export default function LoginPage({
   onGoRegister,
   onLoginSuccess,
 }) {
+  const { t } = useTranslation();
   const [identifier, setIdentifier] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -202,7 +206,7 @@ export default function LoginPage({
       const data = await res.json();
 
       if (!res.ok) {
-        setError(data.error || "Login failed. Please try again.");
+        setError(data.error || t("login.loginFailed"));
         return;
       }
 
@@ -212,7 +216,7 @@ export default function LoginPage({
 
       onLoginSuccess(data.user);
     } catch {
-      setError("Network error. Please try again later.");
+      setError(t("login.networkError"));
     } finally {
       setLoading(false);
     }
@@ -231,7 +235,7 @@ export default function LoginPage({
         className="mb-8 inline-flex items-center gap-2 text-xs text-slate-500 hover:text-slate-700 transition"
       >
         <span className="text-lg">←</span>
-        Back to home
+        {t("common.backToHome")}
       </button>
 
       <div className="grid gap-12 md:grid-cols-[minmax(0,420px),1fr] items-start">
@@ -253,26 +257,26 @@ export default function LoginPage({
               <div className="mb-6">
                 <div className="mb-2 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs text-slate-600">
                   <span className="h-2 w-2 rounded-full bg-emerald-500" />
-                  Member access
+                  {t("login.memberAccess")}
                 </div>
                 <h1 className="text-2xl font-semibold text-slate-900 md:text-3xl">
-                  Member Login
+                  {t("login.title")}
                 </h1>
                 <p className="mt-2 text-sm text-slate-600">
-                  Log in to access your courses, orders and learning progress.
+                  {t("login.subtitle")}
                 </p>
               </div>
 
               <form className="space-y-4" onSubmit={handleSubmit}>
                 <div className="space-y-1.5">
                   <label className="text-xs font-medium text-slate-700">
-                    Email / Username
+                    {t("login.emailUsername")}
                   </label>
                   <input
                     type="text"
                     value={identifier}
                     onChange={(e) => setIdentifier(e.target.value)}
-                    placeholder="Enter your email or username"
+                    placeholder={t("login.identifierPlaceholder")}
                     className="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 placeholder-slate-400 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none transition"
                     required
                   />
@@ -281,21 +285,21 @@ export default function LoginPage({
                 <div className="space-y-1.5">
                   <div className="flex items-center justify-between">
                     <label className="text-xs font-medium text-slate-700">
-                      Password
+                      {t("login.password")}
                     </label>
                     <button
                       type="button"
                       onClick={() => setView("forgot")}
                       className="text-[11px] text-amber-700 hover:text-amber-600 underline-offset-2 hover:underline transition"
                     >
-                      Forgot password?
+                      {t("login.forgotPasswordLink")}
                     </button>
                   </div>
                   <input
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    placeholder="Enter your password"
+                    placeholder={t("login.passwordPlaceholder")}
                     className="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 placeholder-slate-400 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none transition"
                     required
                   />
@@ -312,7 +316,7 @@ export default function LoginPage({
                   disabled={loading}
                   className="mt-2 w-full rounded-2xl bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white hover:bg-slate-800 transition disabled:opacity-50"
                 >
-                  {loading ? "Logging in…" : "Login"}
+                  {loading ? t("login.loggingIn") : t("login.loginButton")}
                 </button>
               </form>
 
@@ -321,7 +325,7 @@ export default function LoginPage({
                   onClick={onGoRegister}
                   className="underline hover:text-slate-700"
                 >
-                  No account yet? Create one
+                  {t("login.noAccount")}
                 </button>
               </div>
             </>
@@ -330,12 +334,12 @@ export default function LoginPage({
 
         <section className="hidden md:block space-y-4 text-sm text-slate-600">
           <h2 className="text-lg font-semibold text-slate-900">
-            Why create an account?
+            {t("login.whyAccount")}
           </h2>
           <ul className="space-y-2 text-xs leading-6">
-            <li>• Access all your purchased courses anytime.</li>
-            <li>• Sync your learning progress.</li>
-            <li>• Join member Q&amp;A and live sessions.</li>
+            <li>• {t("login.benefit1")}</li>
+            <li>• {t("login.benefit2")}</li>
+            <li>• {t("login.benefit3")}</li>
           </ul>
         </section>
       </div>

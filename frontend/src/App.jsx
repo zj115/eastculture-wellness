@@ -81,10 +81,20 @@ const WINGCHUN_LESSONS = [
 function LessonCard({ lesson, onNavigate }) {
     const { t } = useTranslation();
     const [imgErr, setImgErr] = useState(false);
+
+    const handleClick = () => {
+        console.log('LessonCard clicked:', lesson.page, 'onNavigate:', typeof onNavigate);
+        if (onNavigate && typeof onNavigate === 'function') {
+            onNavigate(lesson.page);
+        } else {
+            console.error('onNavigate is not a function:', onNavigate);
+        }
+    };
+
     return (
         <div
             className="group cursor-pointer bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden flex flex-col"
-            onClick={() => onNavigate(lesson.page)}
+            onClick={handleClick}
         >
             <div className="relative overflow-hidden aspect-[4/3]">
                 <img
@@ -208,6 +218,11 @@ function App() {
     const [currentUser, setCurrentUser] = useState(null);
     const [purchases, setPurchases] = useState([]);
     const [sidebarOpen, setSidebarOpen] = useState(false);
+
+    // Debug: log sidebar state changes
+    useEffect(() => {
+        console.log('Sidebar state changed:', sidebarOpen);
+    }, [sidebarOpen]);
     const [authLoading, setAuthLoading] = useState(true);
 
     const [touchStartX, setTouchStartX] = useState(null);
@@ -253,16 +268,20 @@ function App() {
         }
     }, []);
 
-    // Page view tracking — fires on every page navigation
+    // Page view tracking — fires on every page navigation with debounce
     useEffect(() => {
-        fetch("https://eastculture-api.vercel.app/api/track", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                path: "/" + activePage,
-                referrer: document.referrer || null,
-            }),
-        }).catch(() => {}); // silently ignore errors
+        const timer = setTimeout(() => {
+            fetch("https://eastculture-api.vercel.app/api/track", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    path: "/" + activePage,
+                    referrer: document.referrer || null,
+                }),
+            }).catch(() => {}); // silently ignore errors
+        }, 300); // debounce 300ms to avoid rapid fire requests
+
+        return () => clearTimeout(timer);
     }, [activePage]);
 
     async function handleLogout() {
@@ -652,7 +671,10 @@ function App() {
             {/* ── MOBILE SIDEBAR ───────────────────────────────────────── */}
             {sidebarOpen && (
                 <div className="fixed inset-0 z-50 flex md:hidden">
-                    <div className="absolute inset-0 bg-black/40" onClick={() => setSidebarOpen(false)} />
+                    <div className="absolute inset-0 bg-black/40" onClick={() => {
+                        console.log('Overlay clicked, closing sidebar');
+                        setSidebarOpen(false);
+                    }} />
                     <div className="relative flex w-72 flex-col bg-white shadow-xl">
                         <div className="flex items-center justify-between border-b border-slate-100 px-5 py-4">
                             <div className="flex items-center gap-2">

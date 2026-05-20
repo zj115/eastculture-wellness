@@ -183,8 +183,8 @@ EastCulture/
 ### Clone Repository
 
 ```bash
-git clone https://github.com/zj115/eastculture-.git
-cd eastculture-
+git clone https://github.com/zj115/eastculture-wellness.git
+cd eastculture-wellness
 ```
 
 ### Frontend Setup

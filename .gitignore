@@ -33,3 +33,31 @@ yarn-error.log*
 
 # TypeScript
 *.tsbuildinfo
+
+# Sensitive data files
+*.csv
+orders*.csv
+user*.csv
+purchases*.csv
+
+# Personal documents
+*CV*.pdf
+*CV*.docx
+*resume*.pdf
+*_GitHub_Setup/
+
+# Deployment notes with sensitive info
+DEPLOYMENT*.md
+*_SETUP.md
+*_CONFIG.json
+
+# Translation work files
+*translations*.json
+translate_*.js
+check_translations.js
+
+# Deployment scripts
+deploy-*.sh
+
+# Test files
+test-*.html

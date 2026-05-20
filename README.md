@@ -2,6 +2,14 @@
 
 A full-stack multilingual wellness education platform offering video courses in traditional Chinese medicine, Tai Chi, Qigong, Face Yoga, and holistic health practices.
 
+## Screenshots
+
+<img src="./screenshots/homepage-hero.jpg" width="100%" alt="Homepage Hero Section" />
+
+<img src="./screenshots/courses-overview.jpg" width="100%" alt="Courses Overview" />
+
+<img src="./screenshots/course-video-player.jpg" width="100%" alt="Course Video Player" />
+
 ## Live Demo
 
 **Frontend:** [https://eastculture.vercel.app](https://eastculture.vercel.app)  
@@ -269,17 +277,6 @@ ADMIN_SECRET_KEY=your_admin_password
 ```
 
 **Note:** Never commit `.env.local` files. Use `.env.example` as a template.
-
-## Screenshots
-
-### Homepage Hero
-<img src="./screenshots/homepage-hero.jpg" width="100%" alt="Homepage Hero Section" />
-
-### Course Catalog
-<img src="./screenshots/my-courses.jpg" width="100%" alt="My Courses Page" />
-
-### Pricing Page
-<img src="./screenshots/pricing-page.jpg" width="100%" alt="Pricing and Plans" />
 
 ## My Contribution
 

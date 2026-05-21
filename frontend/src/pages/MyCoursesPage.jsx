@@ -132,7 +132,7 @@ export default function MyCoursesPage({ purchases = [], currentUser, onNavigate,
                         {t("myCourses.unlockedCourses")}
                     </h2>
                     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                        {accessibleCourses.map((course) => (
+                        {accessibleCourses.map((course, index) => (
                             <motion.div
                                 key={course.id}
                                 className="group rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden hover:shadow-md transition cursor-pointer"
@@ -143,6 +143,7 @@ export default function MyCoursesPage({ purchases = [], currentUser, onNavigate,
                                     <img
                                         src={course.image}
                                         alt={t(course.titleKey)}
+                                        loading={index < 3 ? "eager" : "lazy"}
                                         className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
@@ -209,7 +210,7 @@ export default function MyCoursesPage({ purchases = [], currentUser, onNavigate,
                         {t("myCourses.moreCourses")}
                     </h2>
                     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                        {lockedCourses.map((course) => (
+                        {lockedCourses.map((course, index) => (
                             <div
                                 key={course.id}
                                 className="rounded-2xl border border-slate-200 bg-white shadow-sm overflow-hidden opacity-70"
@@ -218,6 +219,7 @@ export default function MyCoursesPage({ purchases = [], currentUser, onNavigate,
                                     <img
                                         src={course.image}
                                         alt={t(course.titleKey)}
+                                        loading={index < 3 ? "eager" : "lazy"}
                                         className="h-full w-full object-cover grayscale"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />

@@ -1,303 +1,163 @@
 # EastCulture Wellness
 
-A full-stack multilingual wellness education platform offering video courses in traditional Chinese medicine, Tai Chi, Qigong, Face Yoga, and holistic health practices.
+A multilingual wellness education platform offering video courses and individual lessons in traditional Chinese medicine, Tai Chi, Qigong, Face Yoga, and related practices.
+
+**Live site:** https://www.wellnesseastern.com/
+**API:** Deployed separately on Vercel as a Next.js backend.
 
 ## Screenshots
 
-### Homepage Hero
-The landing page introduces the EastCulture wellness brand with a clear call-to-action and multilingual navigation.
+![Homepage hero](screenshots/homepage-hero.jpg)
+*Landing page with multilingual navigation and brand introduction.*
 
-<img src="./screenshots/homepage-hero.jpg" width="100%" alt="EastCulture Homepage Hero" />
+![Course catalogue](screenshots/courses-overview.jpg)
+*Course catalogue with structured video lessons and pricing.*
 
-### Course Overview
-The course catalogue displays wellness video lessons with pricing, course cards, and structured learning content.
-
-<img src="./screenshots/courses-overview.jpg" width="100%" alt="Course Overview" />
-
-### Course Video Player
-The video player page supports protected lesson playback, unlocked content status, and lesson navigation.
-
-<img src="./screenshots/course-video-player.jpg" width="100%" alt="Course Video Player" />
-
-## Live Demo
-
-**Frontend:** [https://www.wellnesseastern.com/](https://www.wellnesseastern.com/)  
-**API:** Deployed on Vercel as a separate backend service
+![Course video player](screenshots/course-video-player.jpg)
+*Protected video playback with lesson navigation and purchase-based access.*
 
 ## Overview
 
-EastCulture is a commercial wellness education platform that provides structured video courses and individual lessons in Eastern health practices. The platform supports course purchases, individual video purchases, and monthly membership subscriptions through Stripe payment integration.
+EastCulture is a commercial-style wellness platform built around three purchase types: full courses, individual videos, and a monthly membership. The frontend is a React SPA, the API is a Next.js service, and payments and content access are gated through Stripe and time-limited S3 URLs.
 
-**Target Users:**
-- Individuals interested in traditional Chinese medicine and wellness
-- Students learning Tai Chi, Qigong, and acupressure techniques
-- Health practitioners seeking structured educational content
-
-**Project Type:** Full-stack SaaS platform with payment processing and secure video delivery
+The platform targets learners interested in traditional Chinese medicine, Tai Chi, Qigong, and acupressure, including practitioners looking for structured material in their own language.
 
 ## Tech Stack
 
-### Frontend
-- React with Vite
-- Framer Motion (animations)
-- i18next (internationalization)
-- Tailwind CSS
+**Frontend** — React, Vite, Tailwind CSS, Framer Motion, i18next (6 languages: English, Simplified Chinese, Korean, Japanese, Spanish, French).
 
-### Backend
-- Next.js (API routes)
-- TypeScript
-- JWT authentication
-- Stripe webhooks
+**Backend** — Next.js API routes (TypeScript), JWT auth with HTTP-only cookies, Stripe webhook handling.
 
-### Database
-- Supabase (PostgreSQL)
-- Row-level security policies
+**Data & storage** — Supabase (PostgreSQL with row-level security), AWS S3 for video hosting with pre-signed URL access.
 
-### Payment & Subscriptions
-- Stripe Checkout
-- Stripe webhook integration
-- Subscription management
-
-### Media Storage
-- AWS S3 (video hosting)
-- Pre-signed URLs for secure access
-
-### Deployment
-- Vercel (frontend and API)
-- Environment-based configuration
-
-### Internationalization
-- 6 languages supported: English, Chinese (Simplified), Korean, Japanese, Spanish, French
+**Deployment** — Frontend and API deployed separately on Vercel.
 
 ## Key Features
 
-- **Multilingual Support** — Full i18next integration with 6 language options
-- **Secure Video Delivery** — AWS S3 with pre-signed URLs and purchase-based access control
-- **Payment Integration** — Stripe Checkout for courses, individual videos, and memberships
-- **User Authentication** — JWT-based auth with HTTP-only cookies
-- **Purchase Management** — Track user purchases and unlock content dynamically
-- **Responsive Design** — Mobile-first approach with Tailwind CSS
-- **Admin Dashboard** — View users, orders, and revenue statistics
-- **Webhook Processing** — Automated content unlocking after successful payment
+- Six-language UI with i18next and per-route translation loading.
+- Stripe Checkout for courses, single videos, and monthly subscriptions.
+- Webhook-driven content unlocking after successful payment.
+- Pre-signed S3 URLs for video access (1-hour expiry) tied to verified purchases.
+- JWT authentication with HTTP-only cookies and bcrypt-hashed passwords.
+- Admin view for user counts, recent orders, and revenue totals.
+- Mobile-first responsive layout.
 
 ## Architecture
 
-### System Overview
+The frontend talks to the Next.js API for auth, purchases, and video URL requests. Purchase events are routed through Stripe, with webhooks unlocking content in Supabase. Video files live in S3 and are served via short-lived signed URLs only after the API verifies the user owns the content.
 
 ```
-┌─────────────┐         ┌──────────────┐         ┌─────────────┐
-│   Frontend  │────────▶│   Next.js    │────────▶│  Supabase   │
-│ (React/Vite)│         │   API Routes │         │ (PostgreSQL)│
-└─────────────┘         └──────────────┘         └─────────────┘
-                               │
-                               ├──────────────────▶ Stripe API
-                               │
-                               └──────────────────▶ AWS S3
+Frontend (React/Vite) ─▶ Next.js API ─▶ Supabase
+                              │
+                              ├─▶ Stripe (Checkout + Webhooks)
+                              └─▶ AWS S3 (signed URLs)
 ```
 
-The frontend is a single-page application built with React and Vite. It communicates with the backend API for authentication, purchases, and video access. The API handles payment processing through Stripe, stores data in Supabase PostgreSQL, and serves secure video content from AWS S3 using pre-signed URLs.
+**Payment flow:** user starts checkout → API creates Stripe session → user pays → Stripe webhook unlocks content in DB → user gains access.
 
-**Payment Flow:** User initiates purchase → API creates Stripe Checkout session → User completes payment → Stripe webhook notifies API → API unlocks content in database → User gains access
-
-**Video Access:** User requests video → API verifies purchase → API generates time-limited S3 URL → Frontend plays video
+**Video flow:** user requests a lesson → API verifies purchase → API returns a 1-hour signed S3 URL → frontend plays the video.
 
 ## Project Structure
 
 ```
-EastCulture/
-├── frontend/                   # React + Vite SPA
+eastculture-wellness/
+├── frontend/                  # React + Vite SPA
 │   ├── src/
-│   │   ├── App.jsx            # Main app component with routing
-│   │   ├── i18n.js            # i18next configuration
 │   │   ├── pages/             # Page components
-│   │   └── locales/           # Translation files (en, zh, ko, ja, es, fr)
-│   ├── public/                # Static assets
+│   │   ├── locales/           # en, zh, ko, ja, es, fr
+│   │   ├── App.jsx
+│   │   └── i18n.js
 │   └── .env.example
 │
-├── api/                        # Next.js API backend
-│   ├── app/
-│   │   ├── api/
-│   │   │   ├── auth/          # Registration, login, logout
-│   │   │   ├── checkout/      # Stripe checkout creation
-│   │   │   ├── webhook/       # Stripe webhook handler
-│   │   │   ├── video-url/     # S3 pre-signed URL generation
-│   │   │   ├── purchases/     # User purchase queries
-│   │   │   └── admin/         # Admin dashboard endpoints
-│   │   └── payment/           # Payment success/cancel pages
-│   ├── lib/
-│   │   ├── supabase.ts        # Supabase client
-│   │   ├── stripe.ts          # Stripe client
-│   │   └── auth.ts            # JWT utilities
+├── api/                       # Next.js backend
+│   ├── app/api/
+│   │   ├── auth/              # Register, login, logout
+│   │   ├── checkout/          # Stripe session creation
+│   │   ├── webhook/           # Stripe webhook handler
+│   │   ├── video-url/         # Signed S3 URL endpoint
+│   │   ├── purchases/         # User purchase queries
+│   │   └── admin/             # Admin endpoints
+│   ├── lib/                   # supabase / stripe / auth clients
 │   └── .env.example
 │
-├── screenshots/                # Documentation images
-├── docs/                       # Additional documentation
-└── README.md
+└── screenshots/
 ```
 
-## Installation and Setup
+## Setup
 
-### Prerequisites
-
-- Node.js 18+
-- Supabase account
-- Stripe account
-- AWS S3 bucket
-
-### Clone Repository
+Prerequisites: Node.js 18+, a Supabase project, a Stripe account, and an S3 bucket.
 
 ```bash
 git clone https://github.com/zj115/eastculture-wellness.git
 cd eastculture-wellness
 ```
 
-### Frontend Setup
+**Frontend**
 
 ```bash
 cd frontend
 npm install
-cp .env.example .env.local
-```
-
-Edit `.env.local`:
-```
-VITE_API_BASE=http://localhost:3000
-```
-
-Run development server:
-```bash
+cp .env.example .env.local   # VITE_API_BASE=http://localhost:3000
 npm run dev
 ```
 
-### API Setup
+**API**
 
 ```bash
 cd api
 npm install
-cp .env.example .env.local
-```
-
-Edit `.env.local` with your credentials (see Environment Variables section below).
-
-Run development server:
-```bash
+cp .env.example .env.local   # see below
 npm run dev
 ```
 
-### Database Setup
-
-1. Create a Supabase project
-2. Run the SQL schema from `api/supabase/schema.sql` in the SQL Editor
-3. Configure Row Level Security policies as needed
-
-### Stripe Setup
-
-1. Create Stripe account and get API keys
-2. Set up webhook endpoint pointing to `/api/webhook/stripe`
-3. Subscribe to events: `checkout.session.completed`, `invoice.paid`, `customer.subscription.deleted`
-
-### AWS S3 Setup
-
-1. Create S3 bucket for video storage
-2. Configure CORS policy to allow frontend domain
-3. Upload course videos with appropriate folder structure
-4. Create IAM user with S3 read permissions
+Then run the SQL in `api/supabase/schema.sql` against your Supabase project, register a Stripe webhook pointing at `/api/webhook/stripe`, and create an S3 bucket with CORS allowing the frontend origin.
 
 ## Environment Variables
 
-### Frontend (.env.local)
+**Frontend (`.env.local`)**
 
 ```
 VITE_API_BASE=https://your-api-domain.vercel.app
 ```
 
-### API (.env.local)
+**API (`.env.local`)**
 
 ```
-NEXT_PUBLIC_SUPABASE_URL=https://xxxxx.supabase.co
-SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key
-JWT_SECRET=your_random_32_character_jwt_secret
-STRIPE_SECRET_KEY=your_stripe_secret_key
-STRIPE_WEBHOOK_SECRET=your_stripe_webhook_secret
+NEXT_PUBLIC_SUPABASE_URL=
+SUPABASE_SERVICE_ROLE_KEY=
+JWT_SECRET=
+STRIPE_SECRET_KEY=
+STRIPE_WEBHOOK_SECRET=
 AWS_REGION=ap-southeast-2
-S3_BUCKET_NAME=your-s3-bucket-name
-AWS_ACCESS_KEY_ID=your_aws_access_key_id
-AWS_SECRET_ACCESS_KEY=your_aws_secret_access_key
-NEXT_PUBLIC_FRONTEND_URL=https://your-frontend-domain.vercel.app
-ADMIN_SECRET_KEY=your_admin_password
+S3_BUCKET_NAME=
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+NEXT_PUBLIC_FRONTEND_URL=
+ADMIN_SECRET_KEY=
 ```
 
-**Note:** Never commit `.env.local` files. Use `.env.example` as a template.
+`.env.local` is gitignored. Use `.env.example` as a template.
 
-## My Contribution
+## What I Built
 
-I developed this full-stack platform from initial concept through deployment. My work included:
+I built this project end-to-end, from the initial schema design through to the production deployment.
 
-**Frontend Development:**
-- Built responsive React SPA with Vite and Tailwind CSS
-- Implemented i18next for 6-language support with dynamic translation loading
-- Created reusable page components for courses, lessons, and user account management
-- Integrated Framer Motion for smooth page transitions and animations
-- Designed mobile-first responsive layouts
+On the frontend I set up the React + Vite SPA, built the i18next layer for six languages, and put together the course/lesson/account pages with Tailwind and Framer Motion. The part that took the most iteration was making the video player respect purchase state cleanly — a locked lesson needs to feel like a locked lesson, not an error.
 
-**Backend Development:**
-- Developed Next.js API with TypeScript for type safety
-- Implemented JWT authentication with HTTP-only cookies
-- Built Stripe Checkout integration for courses, videos, and subscriptions
-- Created webhook handler to process payment confirmations and unlock content
-- Designed RESTful API endpoints for auth, purchases, and video access
+On the backend I built the Next.js API in TypeScript, wired up Stripe Checkout for the three purchase types, and wrote the webhook handler that unlocks content after a successful payment. JWT auth lives in HTTP-only cookies with bcrypt-hashed passwords.
 
-**Database Design:**
-- Designed PostgreSQL schema in Supabase with proper relationships
-- Implemented user authentication with bcrypt password hashing
-- Created purchase tracking system linking users to unlocked content
-- Set up database queries with proper indexing for performance
+The video pipeline was the part I spent the most time getting right. S3 holds the source files, and the API generates short-lived signed URLs only after checking that the user actually owns the lesson. URLs expire in an hour so a leaked link can't be shared indefinitely.
 
-**Payment Integration:**
-- Integrated Stripe Checkout for multiple purchase types (course, video, membership)
-- Implemented webhook signature verification for security
-- Built automated content unlocking after successful payment
-- Handled subscription lifecycle events
-
-**Video Delivery:**
-- Configured AWS S3 bucket for video storage with CORS policies
-- Implemented pre-signed URL generation for secure video access
-- Built access control logic based on user purchases
-- Set up time-limited URLs to prevent unauthorized sharing
-
-**Deployment:**
-- Deployed frontend and API separately on Vercel
-- Configured environment variables for production
-- Set up custom domains and SSL certificates
-- Implemented CORS policies for cross-origin requests
+I designed the Postgres schema in Supabase with row-level security, added the indexes the purchase queries needed, and configured the Vercel deployments for frontend and API as separate services.
 
 ## Security and Privacy
 
-- All passwords are hashed using bcrypt before storage
-- JWT tokens stored in HTTP-only cookies to prevent XSS attacks
-- Stripe webhook signatures verified to prevent fraudulent requests
-- Video URLs are pre-signed and expire after 1 hour
-- Environment variables managed outside repository
-- No customer data or payment information stored in repository
-- Database credentials and API keys excluded from version control
+Production credentials are not stored in this repository. Passwords are hashed with bcrypt before they reach the database, JWTs sit in HTTP-only cookies, and Stripe webhook signatures are verified on every call. Video URLs are signed and short-lived, so they can't be reused. Customer data and payment details are kept out of the repo entirely; screenshots are sanitised.
 
 ## Future Improvements
 
-- Add video progress tracking and resume functionality
-- Implement course completion certificates
-- Add user reviews and ratings for courses
-- Create instructor dashboard for content management
-- Add email notifications for purchase confirmations
-- Implement course recommendations based on user interests
-- Add social sharing features for completed courses
-- Optimize video streaming with adaptive bitrate
-
-## Notes
-
-This repository is shared for portfolio and demonstration purposes. Sensitive business information, customer data, and production credentials have been removed. Screenshots have been sanitized to protect user privacy.
-
-The platform was developed as a commercial project and demonstrates real-world full-stack development skills including payment processing, secure media delivery, and multilingual support.
+A few things I'd like to add when there's time: video progress tracking and resume, course-completion certificates, an instructor-facing CMS view, and adaptive-bitrate streaming for slower connections.
 
 ## License
 
-This repository is shared for portfolio and demonstration purposes only. All rights reserved.
+*Shared for portfolio and demonstration purposes. All rights reserved.*

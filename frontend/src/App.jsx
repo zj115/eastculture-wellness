@@ -400,9 +400,8 @@ function App() {
                     <motion.section
                         className="order-1"
                         initial="hidden"
-                        whileInView="show"
-                        viewport={{ once: true, amount: 0.15 }}
-                        transition={{ duration: 0.6, ease: "easeOut" }}
+                        animate="show"
+                        transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
                         variants={fadeInUp}
                     >
                         <SectionHeading

@@ -4,9 +4,18 @@ A full-stack multilingual wellness education platform offering video courses in 
 
 ## Screenshots
 
-<img src="./screenshots/homepage-hero.jpg" width="100%" alt="Homepage Hero Section" />
+### Homepage Hero
+The landing page introduces the EastCulture wellness brand with a clear call-to-action and multilingual navigation.
 
-<img src="./screenshots/courses-overview.jpg" width="100%" alt="Courses Overview" />
+<img src="./screenshots/homepage-hero.jpg" width="100%" alt="EastCulture Homepage Hero" />
+
+### Course Overview
+The course catalogue displays wellness video lessons with pricing, course cards, and structured learning content.
+
+<img src="./screenshots/courses-overview.jpg" width="100%" alt="Course Overview" />
+
+### Course Video Player
+The video player page supports protected lesson playback, unlocked content status, and lesson navigation.
 
 <img src="./screenshots/course-video-player.jpg" width="100%" alt="Course Video Player" />
 

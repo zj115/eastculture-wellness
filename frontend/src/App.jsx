@@ -31,8 +31,8 @@ const fadeInUp = {
 // ─── 9.9 Quick Relief lessons ─────────────────────────────────────────────────
 const JIUJIU_LESSONS = [
     { id: 1, titleKey: "jiujiu.lessons.lesson1.title", subtitleKey: "jiujiu.lessons.lesson1.subtitle", durationKey: "jiujiu.lessons.lesson1.duration", coverImage: "/images/jiujiu-waist.jpg", fallbackImage: "/images/acupoint-waist-legs.png", priceNow: "$9.9", priceOld: "$29.99", sale: true, page: "jiujiu" },
-    { id: 2, titleKey: "jiujiu.lessons.lesson2.title", subtitleKey: "jiujiu.lessons.lesson2.subtitle", durationKey: "jiujiu.lessons.lesson2.duration", coverImage: "/images/jiujiu-neck.png", fallbackImage: "/images/acupoint-neck-shoulder.png", priceNow: "$9.9", priceOld: "$29.99", sale: true, page: "jiujiu" },
-    { id: 3, titleKey: "jiujiu.lessons.lesson3.title", subtitleKey: "jiujiu.lessons.lesson3.subtitle", durationKey: "jiujiu.lessons.lesson3.duration", coverImage: "/images/jiujiu-sleep.png", fallbackImage: "/images/acupoint-daily.png", priceNow: "$9.9", priceOld: "$29.99", sale: true, page: "jiujiu" },
+    { id: 2, titleKey: "jiujiu.lessons.lesson2.title", subtitleKey: "jiujiu.lessons.lesson2.subtitle", durationKey: "jiujiu.lessons.lesson2.duration", coverImage: "/images/jiujiu-neck.jpg", fallbackImage: "/images/acupoint-neck-shoulder.png", priceNow: "$9.9", priceOld: "$29.99", sale: true, page: "jiujiu" },
+    { id: 3, titleKey: "jiujiu.lessons.lesson3.title", subtitleKey: "jiujiu.lessons.lesson3.subtitle", durationKey: "jiujiu.lessons.lesson3.duration", coverImage: "/images/jiujiu-sleep.jpg", fallbackImage: "/images/acupoint-daily.png", priceNow: "$9.9", priceOld: "$29.99", sale: true, page: "jiujiu" },
     { id: 4, titleKey: "jiujiu.lessons.lesson4.title", subtitleKey: "jiujiu.lessons.lesson4.subtitle", durationKey: "jiujiu.lessons.lesson4.duration", coverImage: "/images/jiujiu-mens-health.png", fallbackImage: "/images/acupoint-daily.png", priceNow: "$9.9", priceOld: "$29.99", sale: true, page: "jiujiu" },
 ];
 
@@ -100,6 +100,7 @@ function LessonCard({ lesson, onNavigate }) {
                 <img
                     src={imgErr ? lesson.fallbackImage : lesson.coverImage}
                     alt={t(lesson.titleKey)}
+                    loading="eager"
                     onError={() => setImgErr(true)}
                     className="w-full h-full object-cover transition duration-500 group-hover:scale-105"
                 />

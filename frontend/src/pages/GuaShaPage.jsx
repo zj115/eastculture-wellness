@@ -139,6 +139,7 @@ export default function GuaShaPage({
                     <img
                         src={heroSrc}
                         alt={COURSE.titleEn}
+                        loading="eager"
                         onError={() => setImgError(true)}
                         className="w-full object-cover object-center"
                         style={{ display: "block", aspectRatio: "16/9", maxHeight: "420px" }}

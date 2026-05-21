@@ -384,6 +384,7 @@ export default function WingChunPage({
                     <img
                         src={heroSrc}
                         alt={t(`wingchun.lessons.lesson${activeLesson.id}.title`)}
+                        loading="eager"
                         onError={() => setImgError(true)}
                         className="w-full object-cover object-center"
                         style={{ display: "block", aspectRatio: "16/9", maxHeight: "420px" }}

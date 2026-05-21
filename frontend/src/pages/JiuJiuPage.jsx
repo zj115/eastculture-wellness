@@ -315,6 +315,7 @@ export default function JiuJiuPage({
                     <img
                         src={heroSrc}
                         alt={activeLesson.title}
+                        loading="eager"
                         onError={() => setImgError(true)}
                         className="w-full object-cover object-center"
                         style={{ display: "block", aspectRatio: "16/9", maxHeight: "420px" }}

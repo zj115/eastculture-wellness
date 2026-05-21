@@ -36,7 +36,7 @@ const LESSONS = [
         duration: "~11 min",
         s3Key: "taichi/lesson-07-huogu-yangsheng-gong.mp4",
         coverImage: "/images/tai-chi/lesson-07-huogu-yangsheng.png",
-        fallbackImage: "/images/taiji-mountain.jpg",
+        fallbackImage: "/images/taiji-mountain-new.jpg",
         introKey: "qimen.lessons.lesson1.intro",
         painPointKeys: [
             "qimen.lessons.lesson1.painPoint1",
@@ -70,7 +70,7 @@ const LESSONS = [
         duration: "~10 min",
         s3Key: "taichi/lesson-06-wuji-hunyuan-zhuang.mp4",
         coverImage: "/images/tai-chi/lesson-06-hunyuan-zhuang.png",
-        fallbackImage: "/images/taiji-mountain.jpg",
+        fallbackImage: "/images/taiji-mountain-new.jpg",
         introKey: "qimen.lessons.lesson2.intro",
         painPointKeys: [
             "qimen.lessons.lesson2.painPoint1",
@@ -105,7 +105,7 @@ const LESSONS = [
         duration: "~17 min",
         s3Key: "taichi/lesson-05-wudang-daomen-baduanjin.mp4",
         coverImage: "/images/tai-chi/lesson-05-baduanjin.png",
-        fallbackImage: "/images/taiji-mountain.jpg",
+        fallbackImage: "/images/taiji-mountain-new.jpg",
         introKey: "qimen.lessons.lesson3.intro",
         painPointKeys: [
             "qimen.lessons.lesson3.painPoint1",
@@ -140,7 +140,7 @@ const LESSONS = [
         duration: "~11 min",
         s3Key: "taichi/lesson-03-wudang-sanfeng-taichi-18-forms.mp4",
         coverImage: "/images/tai-chi/lesson-03-wudang-18forms.png",
-        fallbackImage: "/images/taiji-mountain.jpg",
+        fallbackImage: "/images/taiji-mountain-new.jpg",
         introKey: "qimen.lessons.lesson4.intro",
         painPointKeys: [
             "qimen.lessons.lesson4.painPoint1",
@@ -175,7 +175,7 @@ const LESSONS = [
         duration: "~11 min",
         s3Key: "taichi/lesson-02-wudang-sanfeng-taichi-13-forms.mp4",
         coverImage: "/images/tai-chi/lesson-02-wudang-13forms.png",
-        fallbackImage: "/images/taiji-mountain.jpg",
+        fallbackImage: "/images/taiji-mountain-new.jpg",
         introKey: "qimen.lessons.lesson5.intro",
         painPointKeys: [
             "qimen.lessons.lesson5.painPoint1",
@@ -210,7 +210,7 @@ const LESSONS = [
         duration: "~28 min",
         s3Key: "taichi/lesson-01-wudang-sanfeng-taichi-28-forms.mp4",
         coverImage: "/images/tai-chi/lesson-01-wudang-28forms.png",
-        fallbackImage: "/images/taiji-mountain.jpg",
+        fallbackImage: "/images/taiji-mountain-new.jpg",
         introKey: "qimen.lessons.lesson6.intro",
         painPointKeys: [
             "qimen.lessons.lesson6.painPoint1",
@@ -245,7 +245,7 @@ const LESSONS = [
         duration: "~30 min",
         s3Key: "taichi/lesson-04-wudang-sanfeng-taichi-108-forms.mp4",
         coverImage: "/images/tai-chi/lesson-04-wudang-108forms.png",
-        fallbackImage: "/images/taiji-mountain.jpg",
+        fallbackImage: "/images/taiji-mountain-new.jpg",
         introKey: "qimen.lessons.lesson7.intro",
         painPointKeys: [
             "qimen.lessons.lesson7.painPoint1",

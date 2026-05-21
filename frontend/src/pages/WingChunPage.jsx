@@ -259,13 +259,13 @@ export default function WingChunPage({
             id: 1,
             s3Key: "wingchun/lesson-01-yangsheng-ten-styles.mp4",
             coverImage: "/images/wingchun-yangsheng.png",
-            fallbackImage: "/images/wingchun-hero.png",
+            fallbackImage: "/images/wingchun-hero.jpg",
         },
         {
             id: 2,
             s3Key: "wingchun/lesson-02-fangwei-nine-styles.mp4",
             coverImage: "/images/wingchun-fangwei.png",
-            fallbackImage: "/images/wingchun-hero.png",
+            fallbackImage: "/images/wingchun-hero.jpg",
         },
     ], []);
 

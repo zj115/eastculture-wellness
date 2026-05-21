@@ -18,7 +18,7 @@ const LESSON_META = [
     {
         id: 1,
         s3Key: "9.9/腰腿疼痛.mp4",
-        coverImage: "/images/jiujiu-waist.png",
+        coverImage: "/images/jiujiu-waist.jpg",
         fallbackImage: "/images/acupoint-waist-legs.png",
     },
     {

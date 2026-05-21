@@ -1,4 +1,4 @@
-# EastCulture
+# EastCulture Wellness
 
 A full-stack multilingual wellness education platform offering video courses in traditional Chinese medicine, Tai Chi, Qigong, Face Yoga, and holistic health practices.
 
@@ -86,50 +86,11 @@ EastCulture is a commercial wellness education platform that provides structured
                                └──────────────────▶ AWS S3
 ```
 
-### Frontend Architecture
+The frontend is a single-page application built with React and Vite. It communicates with the backend API for authentication, purchases, and video access. The API handles payment processing through Stripe, stores data in Supabase PostgreSQL, and serves secure video content from AWS S3 using pre-signed URLs.
 
-The frontend is a single-page application built with React and Vite. It communicates with the backend API for authentication, purchases, and video access. The i18next library handles all translations dynamically based on user language selection.
+**Payment Flow:** User initiates purchase → API creates Stripe Checkout session → User completes payment → Stripe webhook notifies API → API unlocks content in database → User gains access
 
-### Backend Architecture
-
-The API is built with Next.js App Router and provides RESTful endpoints for:
-- User registration and login
-- Stripe checkout session creation
-- Webhook handling for payment confirmation
-- Video URL generation with access control
-- User purchase history retrieval
-
-### Database Schema
-
-**Main tables:**
-- `users` — User accounts with hashed passwords
-- `orders` — Payment records linked to Stripe sessions
-- `user_purchases` — Unlocked content for each user (courses or individual videos)
-
-### Authentication Flow
-
-1. User registers/logs in via API
-2. API generates JWT token stored in HTTP-only cookie
-3. Protected routes verify JWT on each request
-4. Token includes user ID and expiration
-
-### Payment Flow
-
-1. User clicks "Purchase" on course or video
-2. Frontend calls `/api/checkout` with purchase details
-3. API creates Stripe Checkout session
-4. User completes payment on Stripe-hosted page
-5. Stripe sends webhook to `/api/webhook/stripe`
-6. API verifies webhook signature and unlocks content in database
-7. User redirected back to platform with access granted
-
-### Video Access Control
-
-1. User requests video playback
-2. Frontend calls `/api/video-url` with video key
-3. API checks if user has purchased the content
-4. If authorized, API generates pre-signed S3 URL (valid for 1 hour)
-5. Frontend plays video using the temporary URL
+**Video Access:** User requests video → API verifies purchase → API generates time-limited S3 URL → Frontend plays video
 
 ## Project Structure
 
@@ -142,7 +103,6 @@ EastCulture/
 │   │   ├── pages/             # Page components
 │   │   └── locales/           # Translation files (en, zh, ko, ja, es, fr)
 │   ├── public/                # Static assets
-│   ├── package.json
 │   └── .env.example
 │
 ├── api/                        # Next.js API backend
@@ -154,20 +114,16 @@ EastCulture/
 │   │   │   ├── video-url/     # S3 pre-signed URL generation
 │   │   │   ├── purchases/     # User purchase queries
 │   │   │   └── admin/         # Admin dashboard endpoints
-│   │   ├── admin/             # Admin UI page
 │   │   └── payment/           # Payment success/cancel pages
 │   ├── lib/
 │   │   ├── supabase.ts        # Supabase client
 │   │   ├── stripe.ts          # Stripe client
-│   │   ├── auth.ts            # JWT utilities
-│   │   └── database.types.ts  # TypeScript types
-│   ├── middleware.ts          # CORS and auth middleware
-│   ├── package.json
+│   │   └── auth.ts            # JWT utilities
 │   └── .env.example
 │
 ├── screenshots/                # Documentation images
-├── README.md
-└── .gitignore
+├── docs/                       # Additional documentation
+└── README.md
 ```
 
 ## Installation and Setup
@@ -175,7 +131,6 @@ EastCulture/
 ### Prerequisites
 
 - Node.js 18+
-- npm or yarn
 - Supabase account
 - Stripe account
 - AWS S3 bucket
@@ -213,20 +168,7 @@ npm install
 cp .env.example .env.local
 ```
 
-Edit `.env.local` with your credentials:
-```
-NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
-SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
-JWT_SECRET=your_jwt_secret
-STRIPE_SECRET_KEY=your_stripe_secret_key
-STRIPE_WEBHOOK_SECRET=your_webhook_secret
-AWS_REGION=your_aws_region
-S3_BUCKET_NAME=your_bucket_name
-AWS_ACCESS_KEY_ID=your_access_key
-AWS_SECRET_ACCESS_KEY=your_secret_key
-NEXT_PUBLIC_FRONTEND_URL=http://localhost:5173
-ADMIN_SECRET_KEY=your_admin_secret
-```
+Edit `.env.local` with your credentials (see Environment Variables section below).
 
 Run development server:
 ```bash
@@ -264,14 +206,14 @@ VITE_API_BASE=https://your-api-domain.vercel.app
 
 ```
 NEXT_PUBLIC_SUPABASE_URL=https://xxxxx.supabase.co
-SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
-JWT_SECRET=random_32_character_string
-STRIPE_SECRET_KEY=sk_live_xxx or sk_test_xxx
-STRIPE_WEBHOOK_SECRET=whsec_xxx
+SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key
+JWT_SECRET=your_random_32_character_jwt_secret
+STRIPE_SECRET_KEY=your_stripe_secret_key
+STRIPE_WEBHOOK_SECRET=your_stripe_webhook_secret
 AWS_REGION=ap-southeast-2
-S3_BUCKET_NAME=your-bucket-name
-AWS_ACCESS_KEY_ID=AKIA...
-AWS_SECRET_ACCESS_KEY=your_secret_key
+S3_BUCKET_NAME=your-s3-bucket-name
+AWS_ACCESS_KEY_ID=your_aws_access_key_id
+AWS_SECRET_ACCESS_KEY=your_aws_secret_access_key
 NEXT_PUBLIC_FRONTEND_URL=https://your-frontend-domain.vercel.app
 ADMIN_SECRET_KEY=your_admin_password
 ```
@@ -340,7 +282,6 @@ I developed this full-stack platform from initial concept through deployment. My
 - Implement course recommendations based on user interests
 - Add social sharing features for completed courses
 - Optimize video streaming with adaptive bitrate
-- Add offline download capability for mobile apps
 
 ## Notes
 

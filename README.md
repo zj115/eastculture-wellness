@@ -21,8 +21,8 @@ The video player page supports protected lesson playback, unlocked content statu
 
 ## Live Demo
 
-**Frontend:** [https://eastculture.vercel.app](https://eastculture.vercel.app)  
-**API:** Deployed on Vercel (separate service)
+**Frontend:** [https://www.wellnesseastern.com/](https://www.wellnesseastern.com/)  
+**API:** Deployed on Vercel as a separate backend service
 
 ## Overview
 

@@ -6,9 +6,10 @@ import { supabaseAdmin } from "@/lib/supabase";
 async function grantAccess(
   userId: string,
   orderId: string,
-  type: "video" | "course",
+  type: "video" | "course" | "service",
   courseId?: string,
-  videoKey?: string
+  videoKey?: string,
+  serviceId?: string
 ) {
   await supabaseAdmin.from("user_purchases").insert({
     user_id: userId,
@@ -16,6 +17,7 @@ async function grantAccess(
     purchase_type: type,
     course_id: courseId || null,
     video_key: videoKey || null,
+    service_id: serviceId || null,
     status: "active",
     expires_at: null,
   });
@@ -71,12 +73,13 @@ export async function POST(req: NextRequest) {
       await grantAccess(
         userId,
         order.id,
-        type as "video" | "course",
+        type as "video" | "course" | "service",
         metadata.courseId,
-        metadata.videoKey
+        metadata.videoKey,
+        metadata.serviceId
       );
 
-      console.log(`✅ Access granted: user=${userId} type=${type} course=${metadata.courseId} video=${metadata.videoKey}`);
+      console.log(`✅ Access granted: user=${userId} type=${type} course=${metadata.courseId} video=${metadata.videoKey} service=${metadata.serviceId}`);
     }
 
     return NextResponse.json({ ok: true });

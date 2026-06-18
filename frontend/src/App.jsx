@@ -11,6 +11,7 @@ import QimenPage from "./pages/QimenPage";
 import QigongPage from "./pages/QigongPage";
 import WingChunPage from "./pages/WingChunPage";
 import JiuJiuPage from "./pages/JiuJiuPage";
+import XuanXuePage from "./pages/XuanXuePage";
 import TcmPage from "./pages/TcmPage";
 import FengShuiPage from "./pages/FengShuiPage";
 import LoginPage from "./pages/LoginPage";
@@ -513,7 +514,7 @@ function App() {
 
                     {/* WING CHUN — 5th */}
                     <motion.section
-                        className="order-5 mb-8"
+                        className="order-5"
                         initial="hidden"
                         whileInView="show"
                         viewport={{ once: true, amount: 0.15 }}
@@ -534,6 +535,35 @@ function App() {
                         </div>
                     </motion.section>
 
+                    {/* XUAN XUE (METAPHYSICS SERVICES) — 6th */}
+                    <motion.section
+                        className="order-6 mb-8"
+                        initial="hidden"
+                        whileInView="show"
+                        viewport={{ once: true, amount: 0.15 }}
+                        transition={{ duration: 0.6, ease: "easeOut" }}
+                        variants={fadeInUp}
+                    >
+                        <SectionHeading
+                            title={t("xuanxue.sectionTitle")}
+                            subtitle={t("xuanxue.sectionSubtitle")}
+                            onViewAll
+                            viewAllPage="xuanxue"
+                            onNavigate={setActivePage}
+                        />
+                        <div className="rounded-2xl border border-amber-200 bg-gradient-to-br from-amber-50 to-orange-50 p-6 text-center">
+                            <p className="text-sm text-slate-700 mb-4 leading-relaxed">
+                                {t("xuanxue.sectionDescription")}
+                            </p>
+                            <button
+                                onClick={() => setActivePage("xuanxue")}
+                                className="inline-flex items-center gap-2 rounded-full bg-amber-600 px-6 py-3 text-sm font-semibold text-white hover:bg-amber-500 transition"
+                            >
+                                {t("xuanxue.viewServices")}
+                            </button>
+                        </div>
+                    </motion.section>
+
                 </div>
             </main>
         );
@@ -549,6 +579,8 @@ function App() {
         pageContent = <QigongPage currentUser={currentUser} authLoading={authLoading} isOwned={hasCourseAccess("qigong")} purchases={purchases} onPurchase={handlePurchase} onGoLogin={() => setActivePage("login")} />;
     } else if (activePage === "wingchun") {
         pageContent = <WingChunPage currentUser={currentUser} authLoading={authLoading} isOwned={hasCourseAccess("wingchun")} purchases={purchases} onPurchase={handlePurchase} onGoLogin={() => setActivePage("login")} />;
+    } else if (activePage === "xuanxue") {
+        pageContent = <XuanXuePage currentUser={currentUser} authLoading={authLoading} onPurchase={handlePurchase} onGoLogin={() => setActivePage("login")} />;
     } else if (activePage === "tcm") {
         pageContent = <TcmPage />;
     } else if (activePage === "fengshui") {
@@ -640,6 +672,7 @@ function App() {
                         <button className="text-slate-700 hover:text-amber-700 transition" onClick={() => setActivePage("qigong")}>{t("nav.acupoint")}</button>
                         <button className="text-slate-700 hover:text-amber-700 transition" onClick={() => setActivePage("qimen")}>{t("nav.taiChi")}</button>
                         <button className="text-slate-700 hover:text-amber-700 transition" onClick={() => setActivePage("wingchun")}>{t("nav.wingChun")}</button>
+                        <button className="text-slate-700 hover:text-amber-700 transition" onClick={() => setActivePage("xuanxue")}>{t("nav.xuanxue")}</button>
                         <button className="text-slate-700 hover:text-amber-700 transition" onClick={() => setActivePage("about")}>{t("nav.about")}</button>
                         <button className="text-slate-700 hover:text-amber-700 transition" onClick={() => setActivePage("contact")}>{t("nav.contact")}</button>
                         {currentUser && (
@@ -691,6 +724,7 @@ function App() {
                                 { label: t("nav.acupoint"), action: () => { setActivePage("qigong"); setSidebarOpen(false); } },
                                 { label: t("nav.taiChi"), action: () => { setActivePage("qimen"); setSidebarOpen(false); } },
                                 { label: t("nav.wingChun"), action: () => { setActivePage("wingchun"); setSidebarOpen(false); } },
+                                { label: t("nav.xuanxue"), action: () => { setActivePage("xuanxue"); setSidebarOpen(false); } },
                                 { label: t("nav.about"), action: () => { setActivePage("about"); setSidebarOpen(false); } },
                                 { label: t("nav.contact"), action: () => { setActivePage("contact"); setSidebarOpen(false); } },
                             ].map(({ label, action }) => (

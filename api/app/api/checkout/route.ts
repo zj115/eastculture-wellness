@@ -49,6 +49,29 @@ const PRODUCTS = {
       nameZh: "9.9 快速缓解课程",
     },
   },
+  // Metaphysics / Taoist Folk Services - NZD pricing
+  services: {
+    hehe: {
+      price: 18000, // 180.00 NZD
+      name: "Relationship Harmony Adjustment",
+      nameZh: "情缘磁场调和",
+    },
+    bucaiku: {
+      price: 18000, // 180.00 NZD
+      name: "Wealth Treasury Restoration",
+      nameZh: "修补先天禄库",
+    },
+    qimen: {
+      price: 3900, // 39.00 NZD
+      name: "Qi Men Dun Jia Time-Space Reading",
+      nameZh: "奇门遁甲时空推演",
+    },
+    huanyinzhai: {
+      price: 12000, // 120.00 NZD
+      name: "Karmic Debt Clearance",
+      nameZh: "清偿先天受生阴债",
+    },
+  },
 } as const;
 
 export async function POST(req: NextRequest) {
@@ -59,7 +82,7 @@ export async function POST(req: NextRequest) {
     }
 
     const body = await req.json();
-    const { type, courseId, videoKey, videoTitle, lang } = body;
+    const { type, courseId, videoKey, videoTitle, serviceId, serviceTitle, lang } = body;
 
     const origin = req.headers.get("origin") || process.env.NEXT_PUBLIC_FRONTEND_URL || "https://wellnesseastern.com";
 
@@ -107,6 +130,23 @@ export async function POST(req: NextRequest) {
         },
       ];
       metadata.courseId = courseId;
+    } else if (type === "service") {
+      const service = PRODUCTS.services[serviceId as keyof typeof PRODUCTS.services];
+      if (!service) {
+        return NextResponse.json({ error: "Unknown service" }, { status: 400 });
+      }
+      const productName = lang === "zh" ? service.nameZh : service.name;
+      lineItems = [
+        {
+          price_data: {
+            currency: "nzd",
+            product_data: { name: productName },
+            unit_amount: service.price,
+          },
+          quantity: 1,
+        },
+      ];
+      metadata.serviceId = serviceId;
     } else {
       return NextResponse.json({ error: "Invalid purchase type" }, { status: 400 });
     }
@@ -124,18 +164,22 @@ export async function POST(req: NextRequest) {
     });
 
     // Create pending order record
-    const amountUsd =
+    const amount =
       type === "video"
         ? videoKey?.startsWith("9.9/") ? 9.9 : 29
         : type === "course"
         ? (PRODUCTS.courses[courseId as keyof typeof PRODUCTS.courses]?.price ?? 0) / 100
+        : type === "service"
+        ? (PRODUCTS.services[serviceId as keyof typeof PRODUCTS.services]?.price ?? 0) / 100
         : 0;
+
+    const currency = type === "service" ? "nzd" : "usd";
 
     await supabaseAdmin.from("orders").insert({
       user_id: user.id,
       stripe_session_id: session.id,
-      amount_nzd: amountUsd,
-      currency: "usd",
+      amount_nzd: amount,
+      currency: currency,
       purchase_type: type,
       course_id: metadata.courseId || null,
       video_key: metadata.videoKey || null,

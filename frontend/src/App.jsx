@@ -344,7 +344,7 @@ function App() {
                 method: "POST",
                 headers: { "Content-Type": "application/json", ...getAuthHeaders() },
                 credentials: "include",
-                body: JSON.stringify({ type, lang: "en", ...options }),
+                body: JSON.stringify({ type, lang: i18n.language, ...options }),
             });
             const data = await res.json();
             if (data.url) {

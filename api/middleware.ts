@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 const ALLOWED_ORIGINS = new Set([
   "https://wellnesseastern.com",
   "https://www.wellnesseastern.com",
+  "https://eastculture.vercel.app",
   "http://localhost:5173",
   "http://localhost:3000",
 ]);

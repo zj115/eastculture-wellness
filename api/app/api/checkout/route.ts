@@ -74,6 +74,13 @@ const PRODUCTS = {
   },
 } as const;
 
+const STRIPE_LOCALES: Record<string, Stripe.Checkout.SessionCreateParams.Locale> = {
+  en: "en",
+  ja: "ja",
+  ko: "ko",
+  zh: "zh",
+};
+
 export async function POST(req: NextRequest) {
   try {
     const user = await getUserFromRequest(req);
@@ -160,7 +167,7 @@ export async function POST(req: NextRequest) {
       customer_email: user.email,
       metadata,
       payment_method_types: ["card"],
-      locale: lang === "zh" ? "zh" : "en",
+      locale: STRIPE_LOCALES[lang] ?? "auto",
     });
 
     // Create pending order record
@@ -183,6 +190,7 @@ export async function POST(req: NextRequest) {
       purchase_type: type,
       course_id: metadata.courseId || null,
       video_key: metadata.videoKey || null,
+      service_id: metadata.serviceId || null,
       status: "pending",
     });
 

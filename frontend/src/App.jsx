@@ -215,7 +215,7 @@ function LanguageSwitcher() {
 }
 
 function App() {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     const [activePage, setActivePage] = useState("home");
     const [currentUser, setCurrentUser] = useState(null);
     const [purchases, setPurchases] = useState([]);
@@ -273,7 +273,7 @@ function App() {
     // Page view tracking — fires on every page navigation with debounce
     useEffect(() => {
         const timer = setTimeout(() => {
-            fetch("https://eastculture-api.vercel.app/api/track", {
+            fetch(`${API_BASE}/api/track`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({

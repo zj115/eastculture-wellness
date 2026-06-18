@@ -15,6 +15,7 @@ interface Order {
   purchase_type: string;
   course_id: string | null;
   video_key: string | null;
+  service_id: string | null;
   status: string;
   created_at: string;
   paid_at: string | null;
@@ -36,6 +37,20 @@ const COURSE_NAMES: Record<string, string> = {
   wingchun: "Wing Chun Foundations",
   guasha: "16 Facial Gua Sha",
 };
+
+const SERVICE_NAMES: Record<string, string> = {
+  hehe: "Relationship Harmony Adjustment",
+  bucaiku: "Wealth Treasury Restoration",
+  qimen: "Qi Men Dun Jia Time-Space Reading",
+  huanyinzhai: "Karmic Debt Clearance",
+};
+
+function orderLabel(order: Order) {
+  if (order.course_id) return COURSE_NAMES[order.course_id] ?? order.course_id;
+  if (order.service_id) return SERVICE_NAMES[order.service_id] ?? order.service_id;
+  if (order.video_key) return order.video_key;
+  return order.purchase_type;
+}
 
 function fmt(amount: number) {
   return `$${amount.toFixed(2)} USD`;
@@ -175,9 +190,9 @@ export default function AdminPage() {
 
   const summaryMap: Record<string, { name: string; count: number; revenue: number }> = {};
   paidOrders.forEach((o) => {
-    const key = o.course_id ?? o.purchase_type;
+    const key = o.course_id ?? o.service_id ?? o.purchase_type;
     if (!summaryMap[key]) {
-      summaryMap[key] = { name: COURSE_NAMES[key] ?? key, count: 0, revenue: 0 };
+      summaryMap[key] = { name: COURSE_NAMES[key] ?? SERVICE_NAMES[key] ?? key, count: 0, revenue: 0 };
     }
     summaryMap[key].count += 1;
     summaryMap[key].revenue += Number(o.amount_nzd);
@@ -415,7 +430,7 @@ export default function AdminPage() {
                               </td>
                               <td className="px-4 py-3">
                                 <p className="text-xs font-medium text-slate-700 leading-snug">
-                                  {COURSE_NAMES[o.course_id ?? o.purchase_type] ?? o.course_id ?? o.purchase_type}
+                                  {orderLabel(o)}
                                 </p>
                                 <TypeBadge type={o.purchase_type} />
                               </td>
@@ -432,7 +447,7 @@ export default function AdminPage() {
                         <div key={o.id} className="px-5 py-3.5 flex items-start justify-between gap-3">
                           <div className="min-w-0">
                             <p className="text-xs font-semibold text-slate-900 truncate">{o.users?.username ?? "—"}</p>
-                            <p className="text-xs text-slate-400 truncate">{COURSE_NAMES[o.course_id ?? o.purchase_type] ?? o.purchase_type}</p>
+                            <p className="text-xs text-slate-400 truncate">{orderLabel(o)}</p>
                             <p className="text-xs text-slate-400 mt-0.5">{fmtDate(o.paid_at ?? o.created_at)}</p>
                           </div>
                           <div className="flex flex-col items-end gap-1 shrink-0">
@@ -659,7 +674,7 @@ export default function AdminPage() {
                           </td>
                           <td className="px-4 py-3.5"><TypeBadge type={o.purchase_type} /></td>
                           <td className="px-4 py-3.5 text-xs font-medium text-slate-700">
-                            {COURSE_NAMES[o.course_id ?? ""] ?? o.course_id ?? o.video_key ?? "—"}
+                            {orderLabel(o)}
                           </td>
                           <td className="px-4 py-3.5 font-bold text-slate-900 whitespace-nowrap">{fmt(Number(o.amount_nzd))}</td>
                           <td className="px-4 py-3.5"><StatusBadge status={o.status} /></td>
@@ -686,7 +701,7 @@ export default function AdminPage() {
                         <span className="text-xs text-slate-400">{fmtDate(o.paid_at ?? o.created_at)}</span>
                       </div>
                       <p className="text-xs text-slate-500 mt-1 truncate">
-                        {COURSE_NAMES[o.course_id ?? ""] ?? o.course_id ?? o.video_key ?? "—"}
+                        {orderLabel(o)}
                       </p>
                     </div>
                   ))}

@@ -1,11 +1,27 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import HttpBackend from "i18next-http-backend";
+import en from "./locales/en.json";
+import zh from "./locales/zh.json";
+import ja from "./locales/ja.json";
+import ko from "./locales/ko.json";
+import ur from "./locales/ur.json";
+import ar from "./locales/ar.json";
+
+const resources = {
+  en: { translation: en },
+  zh: { translation: zh },
+  ja: { translation: ja },
+  ko: { translation: ko },
+  ur: { translation: ur },
+  ar: { translation: ar },
+};
 
 i18n
   .use(HttpBackend)
   .use(initReactI18next)
   .init({
+    resources,
     lng: localStorage.getItem("language") || "en",
     fallbackLng: "en",
     backend: {

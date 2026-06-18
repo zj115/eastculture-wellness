@@ -20,9 +20,10 @@ CREATE TABLE IF NOT EXISTS orders (
   stripe_payment_intent TEXT,
   amount_nzd NUMERIC(10,2) NOT NULL,
   currency TEXT DEFAULT 'nzd',
-  purchase_type TEXT NOT NULL CHECK (purchase_type IN ('video', 'course', 'membership')),
+  purchase_type TEXT NOT NULL CHECK (purchase_type IN ('video', 'course', 'membership', 'service')),
   course_id TEXT,       -- e.g. 'faceyoga', 'taichi', 'qigong'
   video_key TEXT,       -- e.g. 'face-yoga/lesson-03-frown-line-relief.mp4'
+  service_id TEXT,      -- e.g. 'hehe', 'bucaiku', 'qimen', 'huanyinzhai'
   status TEXT DEFAULT 'pending' CHECK (status IN ('pending', 'paid', 'failed', 'refunded')),
   created_at TIMESTAMPTZ DEFAULT NOW(),
   paid_at TIMESTAMPTZ
@@ -33,9 +34,10 @@ CREATE TABLE IF NOT EXISTS user_purchases (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
   order_id UUID REFERENCES orders(id),
-  purchase_type TEXT NOT NULL CHECK (purchase_type IN ('video', 'course', 'membership')),
+  purchase_type TEXT NOT NULL CHECK (purchase_type IN ('video', 'course', 'membership', 'service')),
   course_id TEXT,
   video_key TEXT,
+  service_id TEXT,
   status TEXT DEFAULT 'active' CHECK (status IN ('active', 'expired', 'cancelled')),
   expires_at TIMESTAMPTZ,  -- NULL = lifetime, set for membership subscriptions
   created_at TIMESTAMPTZ DEFAULT NOW()
@@ -47,6 +49,7 @@ CREATE INDEX IF NOT EXISTS idx_orders_stripe_session ON orders(stripe_session_id
 CREATE INDEX IF NOT EXISTS idx_purchases_user_id ON user_purchases(user_id);
 CREATE INDEX IF NOT EXISTS idx_purchases_user_course ON user_purchases(user_id, course_id);
 CREATE INDEX IF NOT EXISTS idx_purchases_user_video ON user_purchases(user_id, video_key);
+CREATE INDEX IF NOT EXISTS idx_purchases_user_service ON user_purchases(user_id, service_id);
 
 -- =============================================
 -- Row Level Security (RLS) - enable on all tables

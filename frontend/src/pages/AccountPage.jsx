@@ -26,6 +26,11 @@ function PurchaseBadge({ type }) {
             {t("account.course")}
         </span>
     );
+    if (type === "service") return (
+        <span className="rounded-full bg-amber-100 text-amber-800 px-2 py-0.5 text-[10px] font-semibold">
+            {t("account.service")}
+        </span>
+    );
     return (
         <span className="rounded-full bg-slate-100 text-slate-700 px-2 py-0.5 text-[10px] font-semibold">
             {t("account.video")}
@@ -43,6 +48,9 @@ function courseLabel(purchase, t) {
         guasha: t("account.courseGuaSha"),
     };
     if (purchase.course_id && map[purchase.course_id]) return map[purchase.course_id];
+    if (purchase.service_id) {
+        return t(`xuanxue.services.${purchase.service_id}.title`, { defaultValue: purchase.service_id });
+    }
     if (purchase.video_key) {
         const parts = purchase.video_key.split("/");
         return parts[parts.length - 1].replace(/-/g, " ").replace(".mp4", "");

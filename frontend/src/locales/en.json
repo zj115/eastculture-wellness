@@ -11,7 +11,8 @@
     "myCourses": "My Courses",
     "login": "Login",
     "logout": "Logout",
-    "account": "Account"
+    "account": "Account",
+    "xuanxue": "Daoist Services"
   },
   "language": {
     "select": "Language",
@@ -361,11 +362,26 @@
           "Want natural, drug-free pain relief at home"
         ],
         "benefits": [
-          { "title": "Fast relief", "desc": "3 core acupoints quickly unblock and relax tight lower back" },
-          { "title": "No tools needed", "desc": "Do it yourself at home, no equipment required" },
-          { "title": "10-20 minutes daily", "desc": "Short, effective routine that fits any schedule" },
-          { "title": "Feel warmth & relaxation", "desc": "Immediate sensation of heat and looseness in the back" },
-          { "title": "Root-cause improvement", "desc": "Regular practice improves blood flow and prevents recurring pain" }
+          {
+            "title": "Fast relief",
+            "desc": "3 core acupoints quickly unblock and relax tight lower back"
+          },
+          {
+            "title": "No tools needed",
+            "desc": "Do it yourself at home, no equipment required"
+          },
+          {
+            "title": "10-20 minutes daily",
+            "desc": "Short, effective routine that fits any schedule"
+          },
+          {
+            "title": "Feel warmth & relaxation",
+            "desc": "Immediate sensation of heat and looseness in the back"
+          },
+          {
+            "title": "Root-cause improvement",
+            "desc": "Regular practice improves blood flow and prevents recurring pain"
+          }
         ],
         "instructor": {
           "name": "Master Qing Ji",
@@ -397,11 +413,26 @@
           "Want quick relief without massage or equipment"
         ],
         "benefits": [
-          { "title": "Quick tension release", "desc": "3 acupoints instantly unlock stiff neck and shoulders" },
-          { "title": "10 minutes daily", "desc": "Short routine, immediate relief" },
-          { "title": "No force, no equipment", "desc": "Gentle pressure, safe and effective" },
-          { "title": "Restore flexibility", "desc": "Move your neck and shoulders freely again" },
-          { "title": "Feel lighter & energized", "desc": "Release the heavy burden, feel refreshed" }
+          {
+            "title": "Quick tension release",
+            "desc": "3 acupoints instantly unlock stiff neck and shoulders"
+          },
+          {
+            "title": "10 minutes daily",
+            "desc": "Short routine, immediate relief"
+          },
+          {
+            "title": "No force, no equipment",
+            "desc": "Gentle pressure, safe and effective"
+          },
+          {
+            "title": "Restore flexibility",
+            "desc": "Move your neck and shoulders freely again"
+          },
+          {
+            "title": "Feel lighter & energized",
+            "desc": "Release the heavy burden, feel refreshed"
+          }
         ],
         "instructor": {
           "name": "Master Qing Ji",
@@ -433,11 +464,26 @@
           "Need a simple bedtime routine"
         ],
         "benefits": [
-          { "title": "Fast relaxation", "desc": "3 calming acupoints quickly relax nerves and emotions" },
-          { "title": "10 minutes in bed", "desc": "Do it lying down, right before sleep" },
-          { "title": "No pills, no devices", "desc": "Natural, safe, drug-free sleep support" },
-          { "title": "Fall asleep faster", "desc": "Calm your mind and enter sleep state quickly" },
-          { "title": "Sleep deeper", "desc": "Regular practice improves sleep quality and energy" }
+          {
+            "title": "Fast relaxation",
+            "desc": "3 calming acupoints quickly relax nerves and emotions"
+          },
+          {
+            "title": "10 minutes in bed",
+            "desc": "Do it lying down, right before sleep"
+          },
+          {
+            "title": "No pills, no devices",
+            "desc": "Natural, safe, drug-free sleep support"
+          },
+          {
+            "title": "Fall asleep faster",
+            "desc": "Calm your mind and enter sleep state quickly"
+          },
+          {
+            "title": "Sleep deeper",
+            "desc": "Regular practice improves sleep quality and energy"
+          }
         ],
         "instructor": {
           "name": "Master Qing Ji",
@@ -469,11 +515,26 @@
           "Looking for safe, effective self-care methods"
         ],
         "benefits": [
-          { "title": "Restore vitality", "desc": "Learn acupoints that support men's health and energy" },
-          { "title": "10-15 minutes daily", "desc": "Simple routine that fits your schedule" },
-          { "title": "Natural & safe", "desc": "Drug-free, holistic approach to wellness" },
-          { "title": "Scientific methods", "desc": "Based on Traditional Chinese Medicine principles" },
-          { "title": "Improve quality of life", "desc": "Feel more energized and balanced" }
+          {
+            "title": "Restore vitality",
+            "desc": "Learn acupoints that support men's health and energy"
+          },
+          {
+            "title": "10-15 minutes daily",
+            "desc": "Simple routine that fits your schedule"
+          },
+          {
+            "title": "Natural & safe",
+            "desc": "Drug-free, holistic approach to wellness"
+          },
+          {
+            "title": "Scientific methods",
+            "desc": "Based on Traditional Chinese Medicine principles"
+          },
+          {
+            "title": "Improve quality of life",
+            "desc": "Feel more energized and balanced"
+          }
         ],
         "instructor": {
           "name": "Master Qing Ji",
@@ -727,24 +788,98 @@
           "9": "Want to keep healthy but no time, no space, no foundation, don't know where to start"
         },
         "forms": {
-          "0": {"name": "Stance Foundation Form", "relieves": "Weak energy, cold limbs, unsteady lower body, fatigue", "core": "Steady stance, gather energy, improve vitality", "benefit": ""},
-          "1": {"name": "Neck & Shoulder Relaxation Form", "relieves": "Stiff neck, sore shoulders, dizziness, numb hands, neck hump", "core": "Loosen neck and shoulders, relieve tension quickly", "benefit": ""},
-          "2": {"name": "Chest Opening & Qi Balancing Form", "relieves": "Chest tightness, shortness of breath, stress, low mood", "core": "Open the chest, smooth breathing, calm the mind", "benefit": ""},
-          "3": {"name": "Waist & Hip Relaxation Form", "relieves": "Sore waist, stiff lower back, limited movement from sitting", "core": "Relax waist, protect the spine, restore flexibility", "benefit": ""},
-          "4": {"name": "Body & Muscle Stretching Form", "relieves": "Full-body tightness, stiff muscles, poor flexibility", "core": "Stretch gently, release tension, make the body supple", "benefit": ""},
-          "5": {"name": "Knee & Ankle Care Form", "relieves": "Knee discomfort, weak ankles, stiff joints", "core": "Protect joints gently, improve stability, no knee pressure", "benefit": ""},
-          "6": {"name": "Wrist & Finger Activation Form", "relieves": "Sore wrists, numb fingers, mouse hand, poor circulation", "core": "Activate fingers and wrists, ease overuse strain", "benefit": ""},
-          "7": {"name": "Breathing & Calming Form", "relieves": "Insomnia, anxiety, restlessness, poor sleep", "core": "Regulate breath, calm nerves, help you sleep well", "benefit": ""},
-          "8": {"name": "Body Twisting & Meridian Opening Form", "relieves": "Heavy body, slow blood flow, body aches, tiredness", "core": "Improve circulation, reduce stagnation, lighten the body", "benefit": ""},
-          "9": {"name": "Closing Form & Qi Returning", "relieves": "Scattered energy, restlessness after practice", "core": "Gather Qi, consolidate effects, fully relax body and mind", "benefit": ""}
+          "0": {
+            "name": "Stance Foundation Form",
+            "relieves": "Weak energy, cold limbs, unsteady lower body, fatigue",
+            "core": "Steady stance, gather energy, improve vitality",
+            "benefit": ""
+          },
+          "1": {
+            "name": "Neck & Shoulder Relaxation Form",
+            "relieves": "Stiff neck, sore shoulders, dizziness, numb hands, neck hump",
+            "core": "Loosen neck and shoulders, relieve tension quickly",
+            "benefit": ""
+          },
+          "2": {
+            "name": "Chest Opening & Qi Balancing Form",
+            "relieves": "Chest tightness, shortness of breath, stress, low mood",
+            "core": "Open the chest, smooth breathing, calm the mind",
+            "benefit": ""
+          },
+          "3": {
+            "name": "Waist & Hip Relaxation Form",
+            "relieves": "Sore waist, stiff lower back, limited movement from sitting",
+            "core": "Relax waist, protect the spine, restore flexibility",
+            "benefit": ""
+          },
+          "4": {
+            "name": "Body & Muscle Stretching Form",
+            "relieves": "Full-body tightness, stiff muscles, poor flexibility",
+            "core": "Stretch gently, release tension, make the body supple",
+            "benefit": ""
+          },
+          "5": {
+            "name": "Knee & Ankle Care Form",
+            "relieves": "Knee discomfort, weak ankles, stiff joints",
+            "core": "Protect joints gently, improve stability, no knee pressure",
+            "benefit": ""
+          },
+          "6": {
+            "name": "Wrist & Finger Activation Form",
+            "relieves": "Sore wrists, numb fingers, mouse hand, poor circulation",
+            "core": "Activate fingers and wrists, ease overuse strain",
+            "benefit": ""
+          },
+          "7": {
+            "name": "Breathing & Calming Form",
+            "relieves": "Insomnia, anxiety, restlessness, poor sleep",
+            "core": "Regulate breath, calm nerves, help you sleep well",
+            "benefit": ""
+          },
+          "8": {
+            "name": "Body Twisting & Meridian Opening Form",
+            "relieves": "Heavy body, slow blood flow, body aches, tiredness",
+            "core": "Improve circulation, reduce stagnation, lighten the body",
+            "benefit": ""
+          },
+          "9": {
+            "name": "Closing Form & Qi Returning",
+            "relieves": "Scattered energy, restlessness after practice",
+            "core": "Gather Qi, consolidate effects, fully relax body and mind",
+            "benefit": ""
+          }
         },
         "advantages": {
-          "0": {"icon": "⏱", "title": "Only 7 Minutes", "desc": "Short, efficient, fits any schedule"},
-          "1": {"icon": "🛡", "title": "100% Safe", "desc": "No jumping, no kneeling, no hard force, no injury"},
-          "2": {"icon": "🌿", "title": "Full-Body Care", "desc": "Neck, shoulders, waist, joints, sleep, mood all covered"},
-          "3": {"icon": "✨", "title": "Super Easy", "desc": "Zero experience needed, just follow and practice"},
-          "4": {"icon": "👥", "title": "For Everyone", "desc": "Office workers, seniors, busy people, all ages"},
-          "5": {"icon": "♾", "title": "Lifetime Benefit", "desc": "Learn once, benefit for life"}
+          "0": {
+            "icon": "⏱",
+            "title": "Only 7 Minutes",
+            "desc": "Short, efficient, fits any schedule"
+          },
+          "1": {
+            "icon": "🛡",
+            "title": "100% Safe",
+            "desc": "No jumping, no kneeling, no hard force, no injury"
+          },
+          "2": {
+            "icon": "🌿",
+            "title": "Full-Body Care",
+            "desc": "Neck, shoulders, waist, joints, sleep, mood all covered"
+          },
+          "3": {
+            "icon": "✨",
+            "title": "Super Easy",
+            "desc": "Zero experience needed, just follow and practice"
+          },
+          "4": {
+            "icon": "👥",
+            "title": "For Everyone",
+            "desc": "Office workers, seniors, busy people, all ages"
+          },
+          "5": {
+            "icon": "♾",
+            "title": "Lifetime Benefit",
+            "desc": "Learn once, benefit for life"
+          }
         },
         "audience": {
           "0": "Office workers with neck, shoulder and waist pain",
@@ -782,23 +917,92 @@
           "7": "Forced to fight back blindly, making the attacker more aggressive"
         },
         "forms": {
-          "0": {"name": "Tan Sau + Step + Chain Punches", "relieves": "Right straight punch from a taller attacker", "core": "Deflect, not block; expose gaps; counter fast", "benefit": "Neutralize heavy punches without strength"},
-          "1": {"name": "Fu Sau + Punch", "relieves": "Strong direct punch / full-force attack", "core": "Change angle, seal power, push attacker off balance", "benefit": "Stop even big attackers instantly"},
-          "2": {"name": "Lap Sau vs. Swing Punch", "relieves": "Big swings, left-right hooks", "core": "Stick to the arm, change attack path, open gaps", "benefit": "Avoid being knocked out; counter quickly"},
-          "3": {"name": "Bong Sau + Roll + Hook Punch", "relieves": "Elevator attack, front assault, no room to retreat", "core": "Turn waist, seal the arm, close-quarters strike", "benefit": "Works in tight spaces; defend and counter at once"},
-          "4": {"name": "Double Slap Control", "relieves": "Face grabbing, chest grabbing, provocation", "core": "Dual slap to disable attack ability", "benefit": "Shut down all incoming moves in 1 second"},
-          "5": {"name": "Tan Sau + Step + Block & Slap", "relieves": "Sudden rush, close control", "core": "Step forward, block face, control distance", "benefit": "Keep attacker away and take control"},
-          "6": {"name": "Cross Finger Strike vs. Straight Punch", "relieves": "Direct punch to body", "core": "Deflect first, strike lower body", "benefit": "One move to weaken the attacker"},
-          "7": {"name": "Elbow Control & Escape", "relieves": "Wrist grab, clothes grab, held arm", "core": "Lift, guide, redirect force", "benefit": "Break free in 1 second even if grabbed tight"},
-          "8": {"name": "Horse Stance + Rear Strike", "relieves": "Bear hug from behind, sudden restraint", "core": "Stable stance, rear counter, break free", "benefit": "Life-saving move for women in real danger"}
+          "0": {
+            "name": "Tan Sau + Step + Chain Punches",
+            "relieves": "Right straight punch from a taller attacker",
+            "core": "Deflect, not block; expose gaps; counter fast",
+            "benefit": "Neutralize heavy punches without strength"
+          },
+          "1": {
+            "name": "Fu Sau + Punch",
+            "relieves": "Strong direct punch / full-force attack",
+            "core": "Change angle, seal power, push attacker off balance",
+            "benefit": "Stop even big attackers instantly"
+          },
+          "2": {
+            "name": "Lap Sau vs. Swing Punch",
+            "relieves": "Big swings, left-right hooks",
+            "core": "Stick to the arm, change attack path, open gaps",
+            "benefit": "Avoid being knocked out; counter quickly"
+          },
+          "3": {
+            "name": "Bong Sau + Roll + Hook Punch",
+            "relieves": "Elevator attack, front assault, no room to retreat",
+            "core": "Turn waist, seal the arm, close-quarters strike",
+            "benefit": "Works in tight spaces; defend and counter at once"
+          },
+          "4": {
+            "name": "Double Slap Control",
+            "relieves": "Face grabbing, chest grabbing, provocation",
+            "core": "Dual slap to disable attack ability",
+            "benefit": "Shut down all incoming moves in 1 second"
+          },
+          "5": {
+            "name": "Tan Sau + Step + Block & Slap",
+            "relieves": "Sudden rush, close control",
+            "core": "Step forward, block face, control distance",
+            "benefit": "Keep attacker away and take control"
+          },
+          "6": {
+            "name": "Cross Finger Strike vs. Straight Punch",
+            "relieves": "Direct punch to body",
+            "core": "Deflect first, strike lower body",
+            "benefit": "One move to weaken the attacker"
+          },
+          "7": {
+            "name": "Elbow Control & Escape",
+            "relieves": "Wrist grab, clothes grab, held arm",
+            "core": "Lift, guide, redirect force",
+            "benefit": "Break free in 1 second even if grabbed tight"
+          },
+          "8": {
+            "name": "Horse Stance + Rear Strike",
+            "relieves": "Bear hug from behind, sudden restraint",
+            "core": "Stable stance, rear counter, break free",
+            "benefit": "Life-saving move for women in real danger"
+          }
         },
         "advantages": {
-          "0": {"icon": "💪", "title": "Skill beats strength", "desc": "Women, seniors, and small builds can all use it"},
-          "1": {"icon": "⚡", "title": "Learn in 7 minutes", "desc": "Simple moves, no complex routines"},
-          "2": {"icon": "📍", "title": "Works anywhere", "desc": "Elevator, street, corridor, no space needed"},
-          "3": {"icon": "🤝", "title": "Safe & non-violent", "desc": "Deflect and control, not brutal fighting"},
-          "4": {"icon": "🚀", "title": "Zero experience needed", "desc": "No flexibility or fitness required"},
-          "5": {"icon": "🛡", "title": "Covers 90% dangers", "desc": "Punches, grabs, hugs, traps — all solved"}
+          "0": {
+            "icon": "💪",
+            "title": "Skill beats strength",
+            "desc": "Women, seniors, and small builds can all use it"
+          },
+          "1": {
+            "icon": "⚡",
+            "title": "Learn in 7 minutes",
+            "desc": "Simple moves, no complex routines"
+          },
+          "2": {
+            "icon": "📍",
+            "title": "Works anywhere",
+            "desc": "Elevator, street, corridor, no space needed"
+          },
+          "3": {
+            "icon": "🤝",
+            "title": "Safe & non-violent",
+            "desc": "Deflect and control, not brutal fighting"
+          },
+          "4": {
+            "icon": "🚀",
+            "title": "Zero experience needed",
+            "desc": "No flexibility or fitness required"
+          },
+          "5": {
+            "icon": "🛡",
+            "title": "Covers 90% dangers",
+            "desc": "Punches, grabs, hugs, traps — all solved"
+          }
         },
         "audience": {
           "0": "Women who walk alone or work late",
@@ -1237,13 +1441,34 @@
           "Dizziness & Poor Blood Circulation to Head（1：02：05）"
         ],
         "highlights": [
-          {"title": "100% natural physical method", "desc": "No pills, no injections, no side effects"},
-          {"title": "3 fixed pressure points per condition", "desc": "Easy to find, remember and use"},
-          {"title": "Self-treatment at home", "desc": "Do it yourself anytime, anywhere"},
-          {"title": "Fast relief", "desc": "Headaches, toothaches, hiccups, congestion reduce quickly"},
-          {"title": "Root-cause repair", "desc": "Long-term improvement for tinnitus, dry eyes, scalp issues"},
-          {"title": "Zero experience needed", "desc": "No anatomy or meridian knowledge required"},
-          {"title": "For all ages", "desc": "Adults, seniors, students, office workers"}
+          {
+            "title": "100% natural physical method",
+            "desc": "No pills, no injections, no side effects"
+          },
+          {
+            "title": "3 fixed pressure points per condition",
+            "desc": "Easy to find, remember and use"
+          },
+          {
+            "title": "Self-treatment at home",
+            "desc": "Do it yourself anytime, anywhere"
+          },
+          {
+            "title": "Fast relief",
+            "desc": "Headaches, toothaches, hiccups, congestion reduce quickly"
+          },
+          {
+            "title": "Root-cause repair",
+            "desc": "Long-term improvement for tinnitus, dry eyes, scalp issues"
+          },
+          {
+            "title": "Zero experience needed",
+            "desc": "No anatomy or meridian knowledge required"
+          },
+          {
+            "title": "For all ages",
+            "desc": "Adults, seniors, students, office workers"
+          }
         ],
         "audience": [
           "People with frequent headaches, migraines, dizziness",
@@ -1293,13 +1518,34 @@
           "Arm Cannot Reach Back (Posterior Shoulder Pain) （1：37：46）"
         ],
         "highlights": [
-          {"title": "100% natural physical method", "desc": "No pills, no injections, no side effects"},
-          {"title": "3 fixed pressure points for each problem", "desc": "Easy to find, remember and use"},
-          {"title": "Self-treatment at home", "desc": "Do it yourself anytime, anywhere"},
-          {"title": "Fast pain relief", "desc": "Acute pain reduces immediately"},
-          {"title": "Root-cause repair", "desc": "Improve tenosynovitis, numbness, strain long-term"},
-          {"title": "Zero basics needed", "desc": "No meridian or anatomy knowledge required"},
-          {"title": "For the whole family", "desc": "Workers, housewives, seniors, kids"}
+          {
+            "title": "100% natural physical method",
+            "desc": "No pills, no injections, no side effects"
+          },
+          {
+            "title": "3 fixed pressure points for each problem",
+            "desc": "Easy to find, remember and use"
+          },
+          {
+            "title": "Self-treatment at home",
+            "desc": "Do it yourself anytime, anywhere"
+          },
+          {
+            "title": "Fast pain relief",
+            "desc": "Acute pain reduces immediately"
+          },
+          {
+            "title": "Root-cause repair",
+            "desc": "Improve tenosynovitis, numbness, strain long-term"
+          },
+          {
+            "title": "Zero basics needed",
+            "desc": "No meridian or anatomy knowledge required"
+          },
+          {
+            "title": "For the whole family",
+            "desc": "Workers, housewives, seniors, kids"
+          }
         ],
         "audience": [
           "People with hand/wrist pain from phone & computer use",
@@ -1341,13 +1587,34 @@
           "Acute Diarrhea – stomach cramps, loose bowels, sudden attacks（1：07：53）"
         ],
         "highlights": [
-          {"title": "100% natural physical method", "desc": "No pills, no needles, no side effects"},
-          {"title": "3 fixed pressure points for each issue", "desc": "Easy to find, remember and use"},
-          {"title": "Self-treatment at home", "desc": "Do it yourself anytime, anywhere"},
-          {"title": "Fast results", "desc": "Quick relief for acute symptoms, long-term improvement"},
-          {"title": "Save time & money", "desc": "No clinic visits, no expensive bills"},
-          {"title": "Zero experience needed", "desc": "No anatomy or meridian knowledge required"},
-          {"title": "For the whole family", "desc": "Adults, seniors, daily common problems all covered"}
+          {
+            "title": "100% natural physical method",
+            "desc": "No pills, no needles, no side effects"
+          },
+          {
+            "title": "3 fixed pressure points for each issue",
+            "desc": "Easy to find, remember and use"
+          },
+          {
+            "title": "Self-treatment at home",
+            "desc": "Do it yourself anytime, anywhere"
+          },
+          {
+            "title": "Fast results",
+            "desc": "Quick relief for acute symptoms, long-term improvement"
+          },
+          {
+            "title": "Save time & money",
+            "desc": "No clinic visits, no expensive bills"
+          },
+          {
+            "title": "Zero experience needed",
+            "desc": "No anatomy or meridian knowledge required"
+          },
+          {
+            "title": "For the whole family",
+            "desc": "Adults, seniors, daily common problems all covered"
+          }
         ],
         "audience": [
           "People troubled by repeated small daily discomforts",
@@ -1379,12 +1646,30 @@
           "Neck & shoulder stiffness from long-term sitting & phone use（30：54）"
         ],
         "highlights": [
-          {"title": "All-natural physical method", "desc": "No needles, no drugs, no side effects"},
-          {"title": "3 key pressure points", "desc": "Easy to find, easy to remember, fast relief"},
-          {"title": "Self-treatment at home", "desc": "Do it yourself, no helper needed"},
-          {"title": "Save time & money", "desc": "No clinic visits, no expensive bills"},
-          {"title": "Root-cause relief", "desc": "Treat front for back pain, target deep fascia"},
-          {"title": "Zero basics needed", "desc": "No anatomy knowledge required"}
+          {
+            "title": "All-natural physical method",
+            "desc": "No needles, no drugs, no side effects"
+          },
+          {
+            "title": "3 key pressure points",
+            "desc": "Easy to find, easy to remember, fast relief"
+          },
+          {
+            "title": "Self-treatment at home",
+            "desc": "Do it yourself, no helper needed"
+          },
+          {
+            "title": "Save time & money",
+            "desc": "No clinic visits, no expensive bills"
+          },
+          {
+            "title": "Root-cause relief",
+            "desc": "Treat front for back pain, target deep fascia"
+          },
+          {
+            "title": "Zero basics needed",
+            "desc": "No anatomy knowledge required"
+          }
         ],
         "audience": [
           "Office workers, drivers and people who use phones for long hours",
@@ -1424,13 +1709,34 @@
           "Acute Hemorrhoids (Pain, Burning, Swelling) （05：54）"
         ],
         "highlights": [
-          {"title": "100% natural physical method", "desc": "No pills, injections, or side effects"},
-          {"title": "3 fixed pressure points per condition", "desc": "Easy to find, remember & apply"},
-          {"title": "Self-treatment at home", "desc": "Do it yourself anytime, anywhere"},
-          {"title": "Fast pain relief", "desc": "Acute sprains, cramps & sharp pain reduce quickly"},
-          {"title": "Root-cause repair", "desc": "Long-term improvement for numbness, cold & stiffness"},
-          {"title": "Zero experience needed", "desc": "No anatomy or meridian knowledge required"},
-          {"title": "For all ages", "desc": "Seniors, office workers, manual workers, athletes"}
+          {
+            "title": "100% natural physical method",
+            "desc": "No pills, injections, or side effects"
+          },
+          {
+            "title": "3 fixed pressure points per condition",
+            "desc": "Easy to find, remember & apply"
+          },
+          {
+            "title": "Self-treatment at home",
+            "desc": "Do it yourself anytime, anywhere"
+          },
+          {
+            "title": "Fast pain relief",
+            "desc": "Acute sprains, cramps & sharp pain reduce quickly"
+          },
+          {
+            "title": "Root-cause repair",
+            "desc": "Long-term improvement for numbness, cold & stiffness"
+          },
+          {
+            "title": "Zero experience needed",
+            "desc": "No anatomy or meridian knowledge required"
+          },
+          {
+            "title": "For all ages",
+            "desc": "Seniors, office workers, manual workers, athletes"
+          }
         ],
         "audience": [
           "People with chronic waist, hip, knee or leg pain",
@@ -1461,13 +1767,34 @@
           "Heavy Menstrual Bleeding – uncontrollable flow, physical weakness（25：35）"
         ],
         "highlights": [
-          {"title": "100% natural physical method", "desc": "No drugs, no needles, no rinsing, no side effects"},
-          {"title": "Fixed pressure points", "desc": "3–5 key points per issue, easy to find, remember, and use"},
-          {"title": "Private & safe", "desc": "Do it yourself at home, no help needed, no embarrassment"},
-          {"title": "Save time & money", "desc": "No hospital visits, no expensive treatments, 5–10 minutes a day"},
-          {"title": "Acute + chronic care", "desc": "Fast relief for sudden symptoms, long-term prevention"},
-          {"title": "Zero basics required", "desc": "No anatomy or meridian knowledge needed"},
-          {"title": "Gentle & effective", "desc": "Safe for all ages, including postpartum women"}
+          {
+            "title": "100% natural physical method",
+            "desc": "No drugs, no needles, no rinsing, no side effects"
+          },
+          {
+            "title": "Fixed pressure points",
+            "desc": "3–5 key points per issue, easy to find, remember, and use"
+          },
+          {
+            "title": "Private & safe",
+            "desc": "Do it yourself at home, no help needed, no embarrassment"
+          },
+          {
+            "title": "Save time & money",
+            "desc": "No hospital visits, no expensive treatments, 5–10 minutes a day"
+          },
+          {
+            "title": "Acute + chronic care",
+            "desc": "Fast relief for sudden symptoms, long-term prevention"
+          },
+          {
+            "title": "Zero basics required",
+            "desc": "No anatomy or meridian knowledge needed"
+          },
+          {
+            "title": "Gentle & effective",
+            "desc": "Safe for all ages, including postpartum women"
+          }
         ],
         "audience": [
           "Women with breast lumps, tenderness, or menstrual breast pain",
@@ -1481,6 +1808,97 @@
           "Anyone who wants to stop wasting time and money on private health issues"
         ],
         "closing": "One course solves 7 common women's problems. Learn once, benefit for life - gentle, natural, and completely private."
+      }
+    }
+  },
+  "xuanxue": {
+    "pageTitle": "Daoist Folk Services",
+    "pageSubtitle": "Traditional Taoist folk consultations for relationship harmony, wealth treasury repair, Qi Men decision guidance, and karmic debt clearing.",
+    "sectionTitle": "Daoist Folk Services",
+    "sectionSubtitle": "Relationship · Wealth · Decision Timing · Karmic Clearing",
+    "sectionDescription": "Traditional Taoist folk culture services for people facing emotional blocks, wealth leakage, difficult choices, or repeated life obstacles.",
+    "viewServices": "View services",
+    "bookNow": "Book now",
+    "signInToBook": "Sign in to book",
+    "whoNeedsThis": "Who this is for",
+    "solution": "Traditional approach",
+    "benefits": "What may improve",
+    "serviceDetails": "Service includes",
+    "generalDisclaimer": "These services are traditional Chinese folk-culture consultations for reference and emotional/spiritual support. They do not replace medical, legal, financial, or psychological advice, and outcomes depend on real-world choices and actions.",
+    "services": {
+      "hehe": {
+        "title": "Relationship Harmony Adjustment | Break the cold-war deadlock and recover warmth",
+        "subtitle": "Distance, conflict, silence, and fading affection? Traditional Taoist harmony work to create a turning point for the relationship.",
+        "intro": "Sleepless nights, repeated checking of old messages, emotional distance, recurring arguments, misunderstandings, outside interference, and the painful feeling that every effort to repair the bond only pushes the other person further away. This service is for relationships that still matter but feel trapped in coldness and stalemate.",
+        "painPoint1": "Long silence, avoidance, or cold-war distance",
+        "painPoint2": "Repeated arguments and accumulated misunderstanding",
+        "painPoint3": "Outside interference, third-party pressure, or unwanted romantic distractions",
+        "solution": "Taoist harmony culture works with the traditional idea of yin-yang union to review the relational field between two people. The aim is to soften hostility, ease suspicion and distance, reduce negative interference, awaken tenderness and attachment, and help a stalled relationship gradually thaw into healthier communication.",
+        "benefit1": "Ease conflict, coldness, and opposition",
+        "benefit2": "Reduce suspicion and create space for communication",
+        "benefit3": "Reduce outside interference and romantic distractions",
+        "benefit4": "Create conditions for repair and renewed warmth",
+        "detail1": "Two-person relationship destiny review to locate root causes of conflict",
+        "detail2": "Customized relational field harmonization",
+        "detail3": "One-on-one practical communication and relationship guidance",
+        "detail4": "Long-term stabilization suggestions after repair",
+        "disclaimer": "Traditional folk-culture consultation for emotional reference only. We reject unethical requests such as damaging another marriage or forcibly separating a good relationship. Relationship outcomes depend on both people and real-world interaction."
+      },
+      "bucaiku": {
+        "title": "Wealth Treasury Restoration | Seal hidden money leaks so wealth can enter and stay",
+        "subtitle": "Earning hard but unable to save, repeated sudden expenses, and missed opportunities? A Taoist wealth treasury consultation to stabilize the foundation.",
+        "intro": "For people who work hard and earn, yet cannot keep savings: sudden medical, repair, dispute, or social expenses; business and investment setbacks; orders falling through; money coming and going with nothing left to build on.",
+        "painPoint1": "Income comes in but savings never stay",
+        "painPoint2": "Frequent sudden expenses and financial loss",
+        "painPoint3": "Business, orders, or investment opportunities repeatedly blocked",
+        "painPoint4": "Years of effort but unstable financial foundation",
+        "solution": "In Taoist folk belief, each person has a natal wealth treasury like a reservoir. Yearly clashes, natal pattern depletion, and unseen debts may create leaks. This consultation follows the wealth-treasury tradition to review the roots of leakage, symbolically repair gaps, open channels for livelihood, and support a steadier financial foundation.",
+        "benefit1": "Address patterns of money leakage and sudden loss",
+        "benefit2": "Stabilize primary income and review multiple earning paths",
+        "benefit3": "Offer long-term wealth-keeping guidance",
+        "detail1": "BaZi wealth-treasury review to locate leakage roots",
+        "detail2": "Personal wealth-treasury prayer text and symbolic restoration",
+        "detail3": "Five-path wealth field adjustment for job, side income, and business",
+        "detail4": "Daily behavior and feng-shui suggestions for keeping wealth stable",
+        "disclaimer": "Traditional folk-culture reference only. It cannot create wealth from nothing. Real wealth depends on work, rational operations, planning, and responsible decisions."
+      },
+      "qimen": {
+        "title": "Qi Men Dun Jia Reading | See hidden traps and choose better timing",
+        "subtitle": "Career, investment, relationships, or decisions at a crossroads? A traditional Qi Men reading to clarify risks, timing, and action paths.",
+        "intro": "For people standing at a crucial crossroads: business stagnation, risky partnerships, career uncertainty, relationship stalemate, confusing investment choices, or decisions that feel like costly guesses.",
+        "painPoint1": "Career or projects are stuck and partner risks are unclear",
+        "painPoint2": "Job change, investment, or cooperation decisions feel difficult",
+        "painPoint3": "Relationship or interpersonal situations are stuck",
+        "painPoint4": "Opportunities and traps appear together; timing is uncertain",
+        "painPoint5": "Repeated trial and error drains time, money, and energy",
+        "solution": "Qi Men Dun Jia is traditionally known as a high-level strategic art. It builds a time-space model through stars, palaces, gates, and spirits to examine obstacles, opportunities, difficult people, helpful people, and risk points. It does not freeze destiny; it clarifies the logic of the situation, better timing, useful direction, other parties’ attitudes, hidden danger points, and practical next moves.",
+        "benefit1": "Clarify advantages, risks, and hidden traps",
+        "benefit2": "Find better timing, direction, and communication strategy",
+        "detail1": "One focused Qi Men chart for one core question",
+        "detail2": "Full situation analysis: opportunity, obstacle, difficult people, helpful people",
+        "detail3": "Multi-angle reading for career, wealth, relationships, investment, cooperation, job decisions, and timing",
+        "detail4": "Personal action strategy: timing, communication, and risk avoidance",
+        "detail5": "Short-term trend reference for planning ahead",
+        "disclaimer": "Decision reference based on traditional Qi Men culture only. It cannot force outcomes or guarantee success. Career, wealth, and relationship outcomes depend on personal choices, real-world management, and action."
+      },
+      "huanyinzhai": {
+        "title": "Karmic Debt Clearance | Release hidden burdens and reduce repeated obstacles",
+        "subtitle": "Repeated money loss, unexplained discomfort, relationship conflict, and obstacles everywhere? Taoist folk guidance for clearing symbolic prenatal debt.",
+        "intro": "For people who feel trapped in long-term depletion: money disappears quickly, sudden losses keep coming, body and mood feel unsettled, relationships argue often, career cooperation collapses, opportunities slip away, difficult people appear, and household pressure or disputes repeat.",
+        "painPoint1": "Ongoing financial depletion and savings that do not stay",
+        "painPoint2": "Body, mood, and sleep feel unsettled over time",
+        "painPoint3": "Relationship or marriage conflict and distance",
+        "painPoint4": "Career, cooperation, and interpersonal trouble repeat",
+        "painPoint5": "Home atmosphere feels heavy with repeated disputes",
+        "solution": "In Taoist folk tradition, prenatal receiving debt is described as symbolic debt connected to one’s life fortune foundation. If left unresolved, it is believed to drain blessings and create repeated depletion. This consultation reviews the symbolic debt through BaZi, prepares a personal prayer-guidance process, and works to reduce negative interference so wealth, health, and relationships have more room to stabilize.",
+        "benefit1": "Reduce the feeling of hidden burden and constant depletion",
+        "benefit2": "Create more space for wealth, wellness, and relationships to settle",
+        "benefit3": "Use daily virtue and field-care suggestions to stabilize afterward",
+        "detail1": "BaZi wealth-treasury calculation to identify symbolic debt roots",
+        "detail2": "Personal debt-clearing prayer text and guidance",
+        "detail3": "Negative-interference harmonization to reduce loss, disputes, and distance",
+        "detail4": "Long-term home and daily virtue guidance to stabilize blessings",
+        "disclaimer": "Traditional Taoist folk-culture reference only. Wealth, health, and relationship outcomes depend on daily virtue, grounded effort, and rational decisions."
       }
     }
   }

@@ -11,7 +11,8 @@
     "myCourses": "マイコース",
     "login": "ログイン",
     "logout": "ログアウト",
-    "account": "アカウント"
+    "account": "アカウント",
+    "xuanxue": "道教民俗サービス"
   },
   "language": {
     "select": "言語",
@@ -1807,6 +1808,97 @@
           "プライベートな健康問題に時間とお金を無駄にするのをやめたい人"
         ],
         "closing": "1つのコースで7つの一般的な女性の問題を解決。一度学べば、一生の恩恵 — 優しく、自然で、完全にプライベート。"
+      }
+    }
+  },
+  "xuanxue": {
+    "pageTitle": "道教民俗サービス",
+    "pageSubtitle": "縁結びの調和、財庫の補修、奇門遁甲の判断支援、陰債の清めを扱う伝統文化相談。",
+    "sectionTitle": "道教民俗サービス",
+    "sectionSubtitle": "ご縁 · 財庫 · 奇門 · 陰債",
+    "sectionDescription": "関係の停滞、金運の漏れ、重要な選択、繰り返す障害に対し、道教民俗文化の観点から整理と助言を行います。",
+    "viewServices": "サービスを見る",
+    "bookNow": "予約する",
+    "signInToBook": "ログインして予約",
+    "whoNeedsThis": "このような方へ",
+    "solution": "伝統的な整え方",
+    "benefits": "期待されるサポート",
+    "serviceDetails": "サービス内容",
+    "generalDisclaimer": "本サービスは中国伝統民俗文化に基づく参考相談です。医療・法律・金融・心理の専門助言に代わるものではなく、結果は現実の選択と行動にも左右されます。",
+    "services": {
+      "hehe": {
+        "title": "縁の磁場調和（伝統文化相談）",
+        "subtitle": "Traditional Taoist harmony support for distance, conflict, and fading affection.",
+        "intro": "For relationships caught in coldness, repeated conflict, misunderstanding, outside interference, and emotional distance.",
+        "painPoint1": "رشتے میں خاموشی، دوری یا مسلسل ٹھنڈک",
+        "painPoint2": "بار بار جھگڑے اور غلط فہمیاں",
+        "painPoint3": "بیرونی مداخلت یا اضافی رومانوی خلل",
+        "solution": "A traditional harmony consultation that reviews the relational field, softens conflict, reduces interference, and supports warmer communication.",
+        "benefit1": "تنازع اور سرد مہری کو نرم کرنا",
+        "benefit2": "بدگمانی کم کر کے بات چیت کی گنجائش بنانا",
+        "benefit3": "بیرونی خلل کے اثر کو کم کرنا",
+        "benefit4": "رشتے میں دوبارہ گرم جوشی کے لیے حالات بنانا",
+        "detail1": "دو افراد کے رشتے کا جائزہ",
+        "detail2": "رشتے کی توانائی کے لیے مخصوص رہنمائی",
+        "detail3": "ایک سے ایک عملی تعلقاتی رہنمائی",
+        "detail4": "مرمت کے بعد تعلق کو مستحکم رکھنے کی تجاویز",
+        "disclaimer": "یہ صرف روایتی ثقافتی اور جذباتی حوالہ ہے؛ غیر اخلاقی درخواستیں قبول نہیں کی جاتیں۔"
+      },
+      "bucaiku": {
+        "title": "先天財庫の補修（伝統文化相談）",
+        "subtitle": "Traditional Taoist support for money leakage, unstable savings, and missed opportunities.",
+        "intro": "For repeated money leakage, sudden expenses, business setbacks, and income that never seems to stay.",
+        "painPoint1": "آمدنی آتی ہے مگر بچت نہیں رہتی",
+        "painPoint2": "اچانک خرچ اور مالی نقصان",
+        "painPoint3": "کاروبار یا سرمایہ کاری میں رکاوٹ",
+        "painPoint4": "محنت کے باوجود مالی بنیاد کمزور",
+        "solution": "A Taoist wealth-treasury consultation to review leakage roots, repair symbolic gaps, and support stable earning and saving patterns.",
+        "benefit1": "مالی رساؤ اور اچانک نقصان کے نمونوں کو سمجھنا",
+        "benefit2": "آمدنی کے راستوں کو منظم کرنا",
+        "benefit3": "طویل مدتی مالی استحکام کی رہنمائی",
+        "detail1": "بازی کے ذریعے مالی جائزہ",
+        "detail2": "ذاتی مالی دعا اور روایتی رہنمائی",
+        "detail3": "آمدنی کے مختلف راستوں کی رہنمائی",
+        "detail4": "روزمرہ اور فینگ شوئی تجاویز",
+        "disclaimer": "یہ دولت پیدا کرنے کی ضمانت نہیں؛ حقیقی مالی بہتری محنت، منصوبہ بندی اور دانشمندانہ فیصلوں پر منحصر ہے۔"
+      },
+      "qimen": {
+        "title": "奇門遁甲 時空推演（伝統文化相談）",
+        "subtitle": "Traditional Qi Men guidance for career, investment, relationships, and difficult decisions.",
+        "intro": "For important choices where the risks, timing, people, and direction are unclear.",
+        "painPoint1": "کام یا منصوبہ رکا ہوا ہے",
+        "painPoint2": "اہم فیصلوں میں الجھن",
+        "painPoint3": "رشتے یا لوگوں کی نیت واضح نہیں",
+        "painPoint4": "موقع اور خطرہ ساتھ ساتھ ہیں",
+        "painPoint5": "غلط تجربات وقت اور پیسہ ضائع کرتے ہیں",
+        "solution": "A Qi Men time-space model reviews obstacles, opportunities, risk points, timing, direction, and practical action paths.",
+        "benefit1": "فائدے، خطرات اور چھپی رکاوٹیں واضح کرنا",
+        "benefit2": "بہتر وقت، سمت اور رابطے کا طریقہ",
+        "detail1": "ایک اہم سوال کے لیے مکمل چارٹ",
+        "detail2": "موقع، رکاوٹ اور مددگار عوامل کا تجزیہ",
+        "detail3": "مختلف شعبوں کی تفصیلی رہنمائی",
+        "detail4": "عملی وقت اور خطرے سے بچاؤ کی رہنمائی",
+        "detail5": "قریبی رجحان کا حوالہ",
+        "disclaimer": "یہ صرف روایتی فیصلہ سازی کا حوالہ ہے، کامیابی کی ضمانت نہیں۔"
+      },
+      "huanyinzhai": {
+        "title": "先天受生陰債の清め（伝統文化相談）",
+        "subtitle": "Traditional Taoist folk support for repeated loss, pressure, conflict, and obstacles.",
+        "intro": "For repeated depletion across money, health feelings, relationships, career, household atmosphere, and interpersonal trouble.",
+        "painPoint1": "مالی توانائی کا مسلسل کم ہونا",
+        "painPoint2": "جسم، مزاج یا نیند بے سکون",
+        "painPoint3": "رشتے میں جھگڑا یا دوری",
+        "painPoint4": "کام اور لوگوں کے معاملات میں رکاوٹ",
+        "painPoint5": "گھر کا ماحول بھاری اور تنازعات",
+        "solution": "A Taoist folk consultation using BaZi review and personal prayer guidance to reduce symbolic burdens and repeated depletion.",
+        "benefit1": "چھپے بوجھ اور مسلسل کمی کا احساس کم کرنا",
+        "benefit2": "مال، صحت اور رشتوں کے لیے بہتر گنجائش",
+        "benefit3": "نیکی اور روزمرہ نگہداشت سے استحکام",
+        "detail1": "بازی کے ذریعے قرض اور رکاوٹ کا جائزہ",
+        "detail2": "ذاتی دعا اور روایتی رہنمائی",
+        "detail3": "منفی اثرات کم کرنے کی رہنمائی",
+        "detail4": "گھر اور روزمرہ کے لیے استحکام کی تجاویز",
+        "disclaimer": "یہ صرف روایتی ثقافتی حوالہ ہے؛ نتائج نیک عمل، محنت اور سمجھدار فیصلوں پر منحصر ہیں۔"
       }
     }
   }

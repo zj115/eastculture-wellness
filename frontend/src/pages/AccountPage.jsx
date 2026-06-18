@@ -47,10 +47,11 @@ function courseLabel(purchase, t) {
         jiujiu: t("account.courseQuickRelief"),
         guasha: t("account.courseGuaSha"),
     };
-    if (purchase.course_id && map[purchase.course_id]) return map[purchase.course_id];
-    if (purchase.service_id) {
-        return t(`xuanxue.services.${purchase.service_id}.title`, { defaultValue: purchase.service_id });
+    if (purchase.course_id?.startsWith("service:")) {
+        const serviceId = purchase.course_id.slice("service:".length);
+        return t(`xuanxue.services.${serviceId}.title`, { defaultValue: serviceId });
     }
+    if (purchase.course_id && map[purchase.course_id]) return map[purchase.course_id];
     if (purchase.video_key) {
         const parts = purchase.video_key.split("/");
         return parts[parts.length - 1].replace(/-/g, " ").replace(".mp4", "");

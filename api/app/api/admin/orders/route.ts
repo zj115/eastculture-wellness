@@ -20,7 +20,6 @@ export async function GET(req: NextRequest) {
       purchase_type,
       course_id,
       video_key,
-      service_id,
       status,
       created_at,
       paid_at,

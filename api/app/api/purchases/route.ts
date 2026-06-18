@@ -10,7 +10,7 @@ export async function GET(req: NextRequest) {
 
   const { data: purchases } = await supabaseAdmin
     .from("user_purchases")
-    .select("purchase_type, course_id, video_key, service_id, expires_at, created_at")
+    .select("purchase_type, course_id, video_key, expires_at, created_at")
     .eq("user_id", user.id)
     .eq("status", "active");
 

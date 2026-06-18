@@ -96,7 +96,7 @@ export async function POST(req: NextRequest) {
     let lineItems: Stripe.Checkout.SessionCreateParams.LineItem[] = [];
     let metadata: Record<string, string> = {
       userId: user.id,
-      type,
+      type: type === "service" ? "course" : type,
     };
 
     if (type === "video") {
@@ -153,7 +153,8 @@ export async function POST(req: NextRequest) {
           quantity: 1,
         },
       ];
-      metadata.serviceId = serviceId;
+      metadata.courseId = `service:${serviceId}`;
+      metadata.catalogType = "service";
     } else {
       return NextResponse.json({ error: "Invalid purchase type" }, { status: 400 });
     }
@@ -181,16 +182,16 @@ export async function POST(req: NextRequest) {
         : 0;
 
     const currency = type === "service" ? "nzd" : "usd";
+    const dbPurchaseType = metadata.type as "video" | "course" | "membership" | "service";
 
     await supabaseAdmin.from("orders").insert({
       user_id: user.id,
       stripe_session_id: session.id,
       amount_nzd: amount,
       currency: currency,
-      purchase_type: type,
+      purchase_type: dbPurchaseType,
       course_id: metadata.courseId || null,
       video_key: metadata.videoKey || null,
-      service_id: metadata.serviceId || null,
       status: "pending",
     });
 

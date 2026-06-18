@@ -15,7 +15,6 @@ interface Order {
   purchase_type: string;
   course_id: string | null;
   video_key: string | null;
-  service_id: string | null;
   status: string;
   created_at: string;
   paid_at: string | null;
@@ -46,10 +45,21 @@ const SERVICE_NAMES: Record<string, string> = {
 };
 
 function orderLabel(order: Order) {
+  if (order.course_id?.startsWith("service:")) {
+    const serviceId = order.course_id.slice("service:".length);
+    return SERVICE_NAMES[serviceId] ?? serviceId;
+  }
   if (order.course_id) return COURSE_NAMES[order.course_id] ?? order.course_id;
-  if (order.service_id) return SERVICE_NAMES[order.service_id] ?? order.service_id;
   if (order.video_key) return order.video_key;
   return order.purchase_type;
+}
+
+function summaryLabel(key: string) {
+  if (key.startsWith("service:")) {
+    const serviceId = key.slice("service:".length);
+    return SERVICE_NAMES[serviceId] ?? serviceId;
+  }
+  return COURSE_NAMES[key] ?? SERVICE_NAMES[key] ?? key;
 }
 
 function fmt(amount: number) {
@@ -190,9 +200,9 @@ export default function AdminPage() {
 
   const summaryMap: Record<string, { name: string; count: number; revenue: number }> = {};
   paidOrders.forEach((o) => {
-    const key = o.course_id ?? o.service_id ?? o.purchase_type;
+    const key = o.course_id ?? o.purchase_type;
     if (!summaryMap[key]) {
-      summaryMap[key] = { name: COURSE_NAMES[key] ?? SERVICE_NAMES[key] ?? key, count: 0, revenue: 0 };
+      summaryMap[key] = { name: summaryLabel(key), count: 0, revenue: 0 };
     }
     summaryMap[key].count += 1;
     summaryMap[key].revenue += Number(o.amount_nzd);

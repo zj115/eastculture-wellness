@@ -18,8 +18,8 @@ const SERVICES = [
         id: "hehe",
         titleKey: "xuanxue.services.hehe.title",
         subtitleKey: "xuanxue.services.hehe.subtitle",
-        price: 180,
-        priceDisplay: "$180 NZD",
+        price: 176,
+        priceDisplay: "$176 USD",
         coverImage: "/images/xuanxue/hehe.png",
         introKey: "xuanxue.services.hehe.intro",
         painPointKeys: [
@@ -46,8 +46,8 @@ const SERVICES = [
         id: "bucaiku",
         titleKey: "xuanxue.services.bucaiku.title",
         subtitleKey: "xuanxue.services.bucaiku.subtitle",
-        price: 180,
-        priceDisplay: "$180 NZD",
+        price: 176,
+        priceDisplay: "$176 USD",
         coverImage: "/images/xuanxue/bucaiku.png",
         introKey: "xuanxue.services.bucaiku.intro",
         painPointKeys: [
@@ -74,8 +74,8 @@ const SERVICES = [
         id: "qimen",
         titleKey: "xuanxue.services.qimen.title",
         subtitleKey: "xuanxue.services.qimen.subtitle",
-        price: 39,
-        priceDisplay: "$39 NZD",
+        price: 29,
+        priceDisplay: "$29 USD",
         coverImage: "/images/xuanxue/qimen.png",
         introKey: "xuanxue.services.qimen.intro",
         painPointKeys: [
@@ -103,8 +103,8 @@ const SERVICES = [
         id: "huanyinzhai",
         titleKey: "xuanxue.services.huanyinzhai.title",
         subtitleKey: "xuanxue.services.huanyinzhai.subtitle",
-        price: 120,
-        priceDisplay: "$120 NZD",
+        price: 440,
+        priceDisplay: "$440 USD",
         coverImage: "/images/xuanxue/huanyinzhai.png",
         introKey: "xuanxue.services.huanyinzhai.intro",
         painPointKeys: [

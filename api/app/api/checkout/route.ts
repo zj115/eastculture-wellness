@@ -49,25 +49,25 @@ const PRODUCTS = {
       nameZh: "9.9 快速缓解课程",
     },
   },
-  // Metaphysics / Taoist Folk Services - NZD pricing
+  // Metaphysics / Taoist Folk Services - USD pricing
   services: {
     hehe: {
-      price: 18000, // 180.00 NZD
+      price: 17600, // 176.00 USD
       name: "Relationship Harmony Adjustment",
       nameZh: "情缘磁场调和",
     },
     bucaiku: {
-      price: 18000, // 180.00 NZD
+      price: 17600, // 176.00 USD
       name: "Wealth Treasury Restoration",
       nameZh: "修补先天禄库",
     },
     qimen: {
-      price: 3900, // 39.00 NZD
+      price: 2900, // 29.00 USD
       name: "Qi Men Dun Jia Time-Space Reading",
       nameZh: "奇门遁甲时空推演",
     },
     huanyinzhai: {
-      price: 12000, // 120.00 NZD
+      price: 44000, // 440.00 USD
       name: "Karmic Debt Clearance",
       nameZh: "清偿先天受生阴债",
     },
@@ -146,7 +146,7 @@ export async function POST(req: NextRequest) {
       lineItems = [
         {
           price_data: {
-            currency: "nzd",
+            currency: "usd",
             product_data: { name: productName },
             unit_amount: service.price,
           },
@@ -181,7 +181,7 @@ export async function POST(req: NextRequest) {
         ? (PRODUCTS.services[serviceId as keyof typeof PRODUCTS.services]?.price ?? 0) / 100
         : 0;
 
-    const currency = type === "service" ? "nzd" : "usd";
+    const currency = "usd";
     const dbPurchaseType = metadata.type as "video" | "course" | "membership" | "service";
 
     await supabaseAdmin.from("orders").insert({

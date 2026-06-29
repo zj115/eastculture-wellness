@@ -257,17 +257,42 @@ function App() {
 
         refreshPurchases();
 
+        // Handle payment redirect
         const params = new URLSearchParams(window.location.search);
         const payment = params.get("payment");
         if (payment === "success") {
-            window.history.replaceState({}, "", window.location.pathname);
+            window.history.replaceState({}, "", window.location.pathname + window.location.hash);
             setTimeout(() => refreshPurchases(), 1500);
             setTimeout(() => refreshPurchases(), 4000);
             setTimeout(() => refreshPurchases(), 8000);
             setActivePage("mycourses");
         } else if (payment === "cancelled") {
-            window.history.replaceState({}, "", window.location.pathname);
+            window.history.replaceState({}, "", window.location.pathname + window.location.hash);
         }
+
+        // Handle hash-based routing for deep links
+        const hash = window.location.hash.slice(1); // Remove the '#'
+        if (hash && hash !== "home") {
+            setActivePage(hash);
+        }
+    }, []);
+
+    // Update URL hash when page changes
+    useEffect(() => {
+        const newHash = activePage === "home" ? "" : `#${activePage}`;
+        if (window.location.hash !== newHash) {
+            window.history.replaceState(null, "", window.location.pathname + window.location.search + newHash);
+        }
+    }, [activePage]);
+
+    // Listen for hash changes (browser back/forward)
+    useEffect(() => {
+        const handleHashChange = () => {
+            const hash = window.location.hash.slice(1);
+            setActivePage(hash || "home");
+        };
+        window.addEventListener("hashchange", handleHashChange);
+        return () => window.removeEventListener("hashchange", handleHashChange);
     }, []);
 
     // Page view tracking — fires on every page navigation with debounce
@@ -335,10 +360,13 @@ function App() {
 
     async function handlePurchase(type, options = {}) {
         if (authLoading) return;
-        if (!currentUser) {
+
+        // Allow guest checkout for services, require login for courses
+        if (!currentUser && type !== "service") {
             setActivePage("login");
             return;
         }
+
         try {
             const res = await fetch(`${API_BASE}/api/checkout`, {
                 method: "POST",

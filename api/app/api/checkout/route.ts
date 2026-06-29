@@ -84,18 +84,19 @@ const STRIPE_LOCALES: Record<string, Stripe.Checkout.SessionCreateParams.Locale>
 export async function POST(req: NextRequest) {
   try {
     const user = await getUserFromRequest(req);
-    if (!user) {
+    const body = await req.json();
+    const { type, courseId, videoKey, videoTitle, serviceId, serviceTitle, lang, guestEmail } = body;
+
+    // Allow guest checkout for services only, require login for courses/videos
+    if (!user && type !== "service") {
       return NextResponse.json({ error: "Login required" }, { status: 401 });
     }
-
-    const body = await req.json();
-    const { type, courseId, videoKey, videoTitle, serviceId, serviceTitle, lang } = body;
 
     const origin = req.headers.get("origin") || process.env.NEXT_PUBLIC_FRONTEND_URL || "https://wellnesseastern.com";
 
     let lineItems: Stripe.Checkout.SessionCreateParams.LineItem[] = [];
     let metadata: Record<string, string> = {
-      userId: user.id,
+      userId: user?.id || "guest",
       type: type === "service" ? "course" : type,
     };
 
@@ -160,40 +161,51 @@ export async function POST(req: NextRequest) {
     }
 
     // Create Stripe Checkout Session
-    const session = await stripe.checkout.sessions.create({
+    const sessionParams: Stripe.Checkout.SessionCreateParams = {
       mode: "payment",
       line_items: lineItems,
       success_url: `${origin}?payment=success`,
       cancel_url: `${origin}?payment=cancelled`,
-      customer_email: user.email,
       metadata,
       payment_method_types: ["card"],
       locale: STRIPE_LOCALES[lang] ?? "auto",
-    });
+    };
 
-    // Create pending order record
-    const amount =
-      type === "video"
-        ? videoKey?.startsWith("9.9/") ? 9.9 : 29
-        : type === "course"
-        ? (PRODUCTS.courses[courseId as keyof typeof PRODUCTS.courses]?.price ?? 0) / 100
-        : type === "service"
-        ? (PRODUCTS.services[serviceId as keyof typeof PRODUCTS.services]?.price ?? 0) / 100
-        : 0;
+    // For logged-in users, use their email; for guests (services only), collect email at checkout
+    if (user) {
+      sessionParams.customer_email = user.email;
+    } else {
+      sessionParams.billing_address_collection = "required";
+    }
 
-    const currency = "usd";
-    const dbPurchaseType = metadata.type as "video" | "course" | "membership" | "service";
+    const session = await stripe.checkout.sessions.create(sessionParams);
 
-    await supabaseAdmin.from("orders").insert({
-      user_id: user.id,
-      stripe_session_id: session.id,
-      amount_nzd: amount,
-      currency: currency,
-      purchase_type: dbPurchaseType,
-      course_id: metadata.courseId || null,
-      video_key: metadata.videoKey || null,
-      status: "pending",
-    });
+    // Create pending order record only if user is logged in
+    if (user) {
+      const amount =
+        type === "video"
+          ? videoKey?.startsWith("9.9/") ? 9.9 : 29
+          : type === "course"
+          ? (PRODUCTS.courses[courseId as keyof typeof PRODUCTS.courses]?.price ?? 0) / 100
+          : type === "service"
+          ? (PRODUCTS.services[serviceId as keyof typeof PRODUCTS.services]?.price ?? 0) / 100
+          : 0;
+
+      const currency = "usd";
+      const dbPurchaseType = metadata.type as "video" | "course" | "membership" | "service";
+
+      await supabaseAdmin.from("orders").insert({
+        user_id: user.id,
+        stripe_session_id: session.id,
+        amount_nzd: amount,
+        currency: currency,
+        purchase_type: dbPurchaseType,
+        course_id: metadata.courseId || null,
+        video_key: metadata.videoKey || null,
+        status: "pending",
+      });
+    }
+    // For guest purchases, order will be created by webhook when payment succeeds
 
     return NextResponse.json({ url: session.url });
   } catch (err) {

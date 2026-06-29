@@ -56,7 +56,34 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({ ok: true });
       }
 
-      // Update order status
+      // Handle guest purchases (userId === "guest")
+      if (userId === "guest") {
+        // For guest service purchases, create order record with guest identifier
+        const customerEmail = session.customer_details?.email || session.customer_email;
+        const amount = session.amount_total ? session.amount_total / 100 : 0;
+
+        const { data: guestOrder } = await supabaseAdmin
+          .from("orders")
+          .insert({
+            user_id: null, // No user ID for guest purchases
+            stripe_session_id: session.id,
+            amount_nzd: amount,
+            currency: session.currency || "usd",
+            purchase_type: type as "video" | "course" | "membership" | "service",
+            course_id: metadata.courseId || null,
+            video_key: metadata.videoKey || null,
+            status: "paid",
+            paid_at: new Date().toISOString(),
+            metadata: { guest_email: customerEmail },
+          })
+          .select("id")
+          .single();
+
+        console.log(`✅ Guest service purchase recorded: email=${customerEmail} session=${session.id} type=${type}`);
+        return NextResponse.json({ ok: true });
+      }
+
+      // Update order status for logged-in users
       const { data: order } = await supabaseAdmin
         .from("orders")
         .update({ status: "paid", paid_at: new Date().toISOString() })
@@ -69,7 +96,7 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({ ok: true });
       }
 
-      // Grant access
+      // Grant access for logged-in users
       await grantAccess(
         userId,
         order.id,

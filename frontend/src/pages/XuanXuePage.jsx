@@ -306,11 +306,7 @@ function ServiceDetail({ service, onClose, onPurchase, currentUser, authLoading 
                         disabled={authLoading}
                         className="w-full rounded-2xl bg-amber-600 px-6 py-4 text-base font-bold text-white hover:bg-amber-500 transition active:scale-[0.98] disabled:opacity-50"
                     >
-                        {authLoading
-                            ? t("common.loading")
-                            : currentUser
-                            ? t("xuanxue.bookNow")
-                            : t("xuanxue.signInToBook")}
+                        {authLoading ? t("common.loading") : t("xuanxue.bookNow")}
                     </button>
                 </div>
             </motion.div>
@@ -331,10 +327,7 @@ export default function XuanXuePage({
     const [selectedService, setSelectedService] = useState(null);
 
     function handlePurchase(service) {
-        if (!currentUser) {
-            onGoLogin?.();
-            return;
-        }
+        // Allow guest checkout for services - no login required
         onPurchase?.("service", {
             serviceId: service.id,
             serviceTitle: t(service.titleKey),

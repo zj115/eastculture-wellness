@@ -31,7 +31,7 @@ export interface Database {
       orders: {
         Row: {
           id: string;
-          user_id: string;
+          user_id: string | null;
           stripe_session_id: string | null;
           stripe_payment_intent: string | null;
           amount_nzd: number;
@@ -43,10 +43,11 @@ export interface Database {
           status: "pending" | "paid" | "failed" | "refunded";
           created_at: string;
           paid_at: string | null;
+          metadata: Record<string, any> | null;
         };
         Insert: {
           id?: string;
-          user_id: string;
+          user_id?: string | null;
           stripe_session_id?: string | null;
           stripe_payment_intent?: string | null;
           amount_nzd: number;
@@ -58,10 +59,11 @@ export interface Database {
           status?: "pending" | "paid" | "failed" | "refunded";
           created_at?: string;
           paid_at?: string | null;
+          metadata?: Record<string, any> | null;
         };
         Update: {
           id?: string;
-          user_id?: string;
+          user_id?: string | null;
           stripe_session_id?: string | null;
           stripe_payment_intent?: string | null;
           amount_nzd?: number;
@@ -73,6 +75,7 @@ export interface Database {
           status?: "pending" | "paid" | "failed" | "refunded";
           created_at?: string;
           paid_at?: string | null;
+          metadata?: Record<string, any> | null;
         };
         Relationships: [
           {

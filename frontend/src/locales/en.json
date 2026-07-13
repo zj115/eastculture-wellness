@@ -1899,7 +1899,20 @@
         "detail3": "Negative-interference harmonization to reduce loss, disputes, and distance",
         "detail4": "Long-term home and daily virtue guidance to stabilize blessings",
         "disclaimer": "Traditional Taoist folk-culture reference only. Wealth, health, and relationship outcomes depend on daily virtue, grounded effort, and rational decisions."
+      },
+      "buchajia": {
+        "title": "Price Difference Payment",
+        "subtitle": "Flexible payment adjustment for order differences, additional services, or custom arrangements.",
+        "intro": "For situations where you need to pay an additional amount: order upgrades, service add-ons, price adjustments, or special arrangements discussed with our team.",
+        "painPoint1": "Need to pay an order difference or upgrade fee",
+        "painPoint2": "Additional service arrangements requiring flexible payment",
+        "solution": "This is a simple payment tool that allows you to pay any difference amount in $1 increments. Select the quantity you need (e.g., 10 units = $10) to match the agreed amount.",
+        "benefit1": "Flexible payment in any amount needed",
+        "detail1": "Unit price: $1 USD per quantity. Select quantity to match your payment amount.",
+        "disclaimer": "This payment option is for order differences, upgrades, or special arrangements only. Please confirm the amount with our team before purchasing."
       }
-    }
+    },
+    "quantity": "Quantity",
+    "each": "each"
   }
 }

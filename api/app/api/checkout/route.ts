@@ -71,6 +71,11 @@ const PRODUCTS = {
       name: "Karmic Debt Clearance",
       nameZh: "清偿先天受生阴债",
     },
+    buchajia: {
+      price: 100, // 1.00 USD
+      name: "Price Difference Payment",
+      nameZh: "补差价",
+    },
   },
 } as const;
 
@@ -85,7 +90,7 @@ export async function POST(req: NextRequest) {
   try {
     const user = await getUserFromRequest(req);
     const body = await req.json();
-    const { type, courseId, videoKey, videoTitle, serviceId, serviceTitle, lang, guestEmail } = body;
+    const { type, courseId, videoKey, videoTitle, serviceId, serviceTitle, lang, guestEmail, quantity } = body;
 
     // Allow guest checkout for services only, require login for courses/videos
     if (!user && type !== "service") {
@@ -144,6 +149,7 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({ error: "Unknown service" }, { status: 400 });
       }
       const productName = lang === "zh" ? service.nameZh : service.name;
+      const purchaseQuantity = quantity && quantity > 0 ? quantity : 1;
       lineItems = [
         {
           price_data: {
@@ -151,11 +157,14 @@ export async function POST(req: NextRequest) {
             product_data: { name: productName },
             unit_amount: service.price,
           },
-          quantity: 1,
+          quantity: purchaseQuantity,
         },
       ];
       metadata.courseId = `service:${serviceId}`;
       metadata.catalogType = "service";
+      if (quantity) {
+        metadata.quantity = quantity.toString();
+      }
     } else {
       return NextResponse.json({ error: "Invalid purchase type" }, { status: 400 });
     }

@@ -128,6 +128,28 @@ const SERVICES = [
         ],
         disclaimerKey: "xuanxue.services.huanyinzhai.disclaimer",
     },
+    {
+        id: "buchajia",
+        titleKey: "xuanxue.services.buchajia.title",
+        subtitleKey: "xuanxue.services.buchajia.subtitle",
+        price: 1,
+        priceDisplay: "$1 USD",
+        coverImage: "/images/xuanxue/buchajia.jpg",
+        introKey: "xuanxue.services.buchajia.intro",
+        painPointKeys: [
+            "xuanxue.services.buchajia.painPoint1",
+            "xuanxue.services.buchajia.painPoint2",
+        ],
+        solutionKey: "xuanxue.services.buchajia.solution",
+        benefitKeys: [
+            "xuanxue.services.buchajia.benefit1",
+        ],
+        serviceDetailsKeys: [
+            "xuanxue.services.buchajia.detail1",
+        ],
+        disclaimerKey: "xuanxue.services.buchajia.disclaimer",
+        allowQuantity: true,
+    },
 ];
 
 // ─────────────────────────────────────────────
@@ -177,6 +199,7 @@ function ServiceCard({ service, onClick }) {
 
 function ServiceDetail({ service, onClose, onPurchase, currentUser, authLoading }) {
     const { t } = useTranslation();
+    const [quantity, setQuantity] = useState(1);
 
     return (
         <motion.div
@@ -224,8 +247,45 @@ function ServiceDetail({ service, onClose, onPurchase, currentUser, authLoading 
                             {t(service.subtitleKey)}
                         </p>
                         <div className="flex items-baseline gap-2">
-                            <span className="text-3xl font-bold text-amber-700">{service.priceDisplay}</span>
+                            <span className="text-3xl font-bold text-amber-700">
+                                {service.allowQuantity ? `$${(service.price * quantity).toFixed(2)} USD` : service.priceDisplay}
+                            </span>
                         </div>
+                        {service.allowQuantity && (
+                            <div className="mt-3 flex items-center gap-3">
+                                <label className="text-sm font-medium text-slate-700">
+                                    {t("xuanxue.quantity")}:
+                                </label>
+                                <div className="flex items-center gap-2">
+                                    <button
+                                        onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                                        className="w-8 h-8 rounded-lg bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold transition"
+                                    >
+                                        −
+                                    </button>
+                                    <input
+                                        type="number"
+                                        min="1"
+                                        max="999"
+                                        value={quantity}
+                                        onChange={(e) => {
+                                            const val = parseInt(e.target.value) || 1;
+                                            setQuantity(Math.max(1, Math.min(999, val)));
+                                        }}
+                                        className="w-16 h-8 text-center border border-slate-300 rounded-lg text-slate-900 font-medium"
+                                    />
+                                    <button
+                                        onClick={() => setQuantity(Math.min(999, quantity + 1))}
+                                        className="w-8 h-8 rounded-lg bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold transition"
+                                    >
+                                        +
+                                    </button>
+                                </div>
+                                <span className="text-sm text-slate-500">
+                                    ({service.priceDisplay} {t("xuanxue.each")})
+                                </span>
+                            </div>
+                        )}
                     </div>
 
                     {/* Intro */}
@@ -301,7 +361,7 @@ function ServiceDetail({ service, onClose, onPurchase, currentUser, authLoading 
                     <button
                         onClick={() => {
                             if (authLoading) return;
-                            onPurchase(service);
+                            onPurchase(service, service.allowQuantity ? quantity : undefined);
                         }}
                         disabled={authLoading}
                         className="w-full rounded-2xl bg-amber-600 px-6 py-4 text-base font-bold text-white hover:bg-amber-500 transition active:scale-[0.98] disabled:opacity-50"
@@ -326,11 +386,12 @@ export default function XuanXuePage({
     const { t } = useTranslation();
     const [selectedService, setSelectedService] = useState(null);
 
-    function handlePurchase(service) {
+    function handlePurchase(service, quantity) {
         // Allow guest checkout for services - no login required
         onPurchase?.("service", {
             serviceId: service.id,
             serviceTitle: t(service.titleKey),
+            quantity: quantity,
         });
     }
 

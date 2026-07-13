@@ -1,28 +1,27 @@
 // src/App.jsx
-import { useState, useEffect } from "react";
+import { useState, useEffect, lazy, Suspense } from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 
 const API_BASE = import.meta?.env?.VITE_API_BASE || "https://eastculture-api.vercel.app";
 
-import FaceYogaPage from "./pages/FaceYogaPage";
-import GuaShaPage from "./pages/GuaShaPage";
-import QimenPage from "./pages/QimenPage";
-import QigongPage from "./pages/QigongPage";
-import WingChunPage from "./pages/WingChunPage";
-import JiuJiuPage from "./pages/JiuJiuPage";
-import XuanXuePage from "./pages/XuanXuePage";
-import TcmPage from "./pages/TcmPage";
-import FengShuiPage from "./pages/FengShuiPage";
-import LoginPage from "./pages/LoginPage";
-import RegisterPage from "./pages/RegisterPage";
-
-import ProgramPage from "./pages/ProgramPage";
-import ShopPage from "./pages/ShopPage";
-import AboutPage from "./pages/AboutPage";
-import ContactPage from "./pages/ContactPage";
-import MyCoursesPage from "./pages/MyCoursesPage";
-import AccountPage from "./pages/AccountPage";
+const FaceYogaPage = lazy(() => import("./pages/FaceYogaPage"));
+const GuaShaPage = lazy(() => import("./pages/GuaShaPage"));
+const QimenPage = lazy(() => import("./pages/QimenPage"));
+const QigongPage = lazy(() => import("./pages/QigongPage"));
+const WingChunPage = lazy(() => import("./pages/WingChunPage"));
+const JiuJiuPage = lazy(() => import("./pages/JiuJiuPage"));
+const XuanXuePage = lazy(() => import("./pages/XuanXuePage"));
+const TcmPage = lazy(() => import("./pages/TcmPage"));
+const FengShuiPage = lazy(() => import("./pages/FengShuiPage"));
+const LoginPage = lazy(() => import("./pages/LoginPage"));
+const RegisterPage = lazy(() => import("./pages/RegisterPage"));
+const ProgramPage = lazy(() => import("./pages/ProgramPage"));
+const ShopPage = lazy(() => import("./pages/ShopPage"));
+const AboutPage = lazy(() => import("./pages/AboutPage"));
+const ContactPage = lazy(() => import("./pages/ContactPage"));
+const MyCoursesPage = lazy(() => import("./pages/MyCoursesPage"));
+const AccountPage = lazy(() => import("./pages/AccountPage"));
 
 const fadeInUp = {
     hidden: { opacity: 0, y: 40 },
@@ -101,7 +100,7 @@ function LessonCard({ lesson, onNavigate }) {
                 <img
                     src={imgErr ? lesson.fallbackImage : lesson.coverImage}
                     alt={t(lesson.titleKey)}
-                    loading="eager"
+                    loading="lazy"
                     onError={() => setImgErr(true)}
                     className="w-full h-full object-cover transition duration-500 group-hover:scale-105"
                 />
@@ -429,8 +428,9 @@ function App() {
                     <motion.section
                         className="order-1"
                         initial="hidden"
-                        animate="show"
-                        transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+                        whileInView="show"
+                        viewport={{ once: true, amount: 0.15 }}
+                        transition={{ duration: 0.6, ease: "easeOut" }}
                         variants={fadeInUp}
                     >
                         <SectionHeading
@@ -788,7 +788,9 @@ function App() {
                 </div>
             )}
 
-            {pageContent}
+            <Suspense fallback={<div className="flex items-center justify-center min-h-screen"><div className="text-slate-600">Loading...</div></div>}>
+                {pageContent}
+            </Suspense>
 
             {activePage !== "home" && (
                 <div className="mx-auto max-w-6xl px-4 pb-6">
